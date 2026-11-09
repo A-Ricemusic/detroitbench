@@ -1,7 +1,7 @@
 import {fixture} from './helpers/experience-fixture.mjs';
 import test from './helpers/test.mjs';import assert from 'node:assert/strict';
 import {assignReportNames,modelDisplayName,reportFileName,runHTML} from '../scripts/run-report.mjs';
-const stub=(id,label,model,createdAt)=>({id,label,model,createdAt});
+const stub=(id,label,model,createdAt)=>({id,label,model,createdAt,status:'completed'});
 
 test('report names are human, per-model numbered and collision-free',()=>{
  assert.equal(modelDisplayName(stub('a','Haiku 5.5','claude-haiku-5-5')),'Claude Haiku 5.5');assert.equal(modelDisplayName(stub('a','Claude Opus 5.5','claude-opus-5-5')),'Claude Opus 5.5');assert.equal(modelDisplayName(stub('a','Luna','gpt-6-luna')),'GPT-6 Luna');
@@ -16,10 +16,10 @@ test('display names come from the registry and reasoning level; earlier report f
  const ctx={registry:{vendors:[],models:{'gpt-6.1-sol':{name:'GPT-6.1 Sol'}}},reasoning:new Map([['b-low','low'],['c-high','high'],['d-high','high']])};
  const runs=[stub('a-run','Sol 6.1 run 1','gpt-6.1-sol','2026-11-07T10:00:00.000Z'),stub('b-low','Sol 6.1 low','gpt-6.1-sol','2026-11-07T11:00:00.000Z'),stub('c-high','Sol 6.1 high','gpt-6.1-sol','2026-11-07T12:00:00.000Z'),stub('d-high','Sol 6.1 high','gpt-6.1-sol','2026-11-07T13:00:00.000Z'),stub('e-new','Terra','gpt-6.1-terra','2026-11-07T14:00:00.000Z')];
  const names=assignReportNames(runs,ctx,new Set(['detroitbench-gpt-6-1-sol-6-1-low-run-01-2026-11-07.html']));
- assert.deepEqual([...runs].map(r=>names.get(r.id).displayName),['GPT-6.1 Sol · run 1','GPT-6.1 Sol · low','GPT-6.1 Sol · high','GPT-6.1 Sol · high · run 2','GPT-6.1 Terra · run 1']);
+ assert.deepEqual([...runs].map(r=>names.get(r.id).displayName),['GPT-6.1 Sol · run 1','GPT-6.1 Sol · low','GPT-6.1 Sol · high · run 1','GPT-6.1 Sol · high · run 2','GPT-6.1 Terra · run 1']);
  assert.equal(names.get('b-low').title,'GPT-6.1 Sol · low');
  assert.equal(names.get('b-low').file,'detroitbench-gpt-6-1-sol-6-1-low-run-01-2026-11-07.html','an existing report keeps its earlier file name');
- assert.equal(names.get('c-high').file,'detroitbench-gpt-6-1-sol-high-run-01-2026-11-07.html');assert.equal(names.get('a-run').file,'detroitbench-gpt-6-1-sol-run-1-run-01-2026-11-07.html');
+ assert.equal(names.get('c-high').file,'detroitbench-gpt-6-1-sol-high-run-1-run-01-2026-11-07.html');assert.equal(names.get('a-run').file,'detroitbench-gpt-6-1-sol-run-1-run-01-2026-11-07.html');
  assert.equal(new Set([...names.values()].map(n=>n.file)).size,runs.length);assert.deepEqual(assignReportNames([...runs].reverse(),ctx,new Set(['detroitbench-gpt-6-1-sol-6-1-low-run-01-2026-11-07.html'])),names);
 });
 
@@ -27,4 +27,16 @@ test('standalone report owns its palette and keeps IDs out of the hero',{timeout
  assert.ok(html.includes('<meta name="color-scheme" content="light dark">'));assert.match(html,/color-scheme:dark/);assert.match(html,/html\{background:var\(--bg\);color:var\(--text\)/);
  assert.ok(!/var\(--(foreground|card|muted-foreground|primary|font-sans)\b/.test(html),'must not depend on host theme variables');
  assert.ok(!hero.includes(run.id));assert.match(hero,/<h1>TEST ONLY <span class="dot">·<\/span> Run 01<\/h1>/);assert.ok(html.includes('<summary>Technical details</summary>'));assert.ok(html.includes(run.id));
+});
+
+
+test('only completed runs count at a reasoning level, in creation order',()=>{
+ const ctx={registry:{vendors:[],models:{grok:{name:'Grok 4.7'}}},reasoning:new Map([['abandoned','high'],['running','high'],['first','high'],['second','high']])};
+ const abandoned={...stub('abandoned','Grok high','grok','2026-11-01'),status:'abandoned'};
+ const running={...stub('running','Grok high','grok','2026-11-02'),status:'running'};
+ const first=stub('first','Grok high','grok','2026-11-03'),second=stub('second','Grok high','grok','2026-11-04');
+ const single=assignReportNames([first,abandoned,running],ctx);
+ assert.equal(single.size,1);assert.equal(single.get('first').displayName,'Grok 4.7 · high');
+ const pair=assignReportNames([second,abandoned,first,running],ctx);
+ assert.equal(pair.size,2);assert.equal(pair.get('first').displayName,'Grok 4.7 · high · run 1');assert.equal(pair.get('second').displayName,'Grok 4.7 · high · run 2');
 });

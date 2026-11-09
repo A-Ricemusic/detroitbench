@@ -39,7 +39,16 @@ export const rules={
 };
 
 export const state={ch17HouseOpen:false,ch17Reset:false,ch17Phase:null,ch17Minutes:0,ch17Done:{},ch17Memories:0,ch17Last:null,ch17Route:null,ch17Bear:false,ch17BathAndroid:'unseen',ch17Tv:null,ch17Spotted:null,ch17Outcome:null};
-export const labels={ch17Reset:'Kara’s memory wiped',ch17Memories:'Memories recovered',ch17Minutes:'Minutes gone in Zlatko’s house',ch17Bear:'Polar bear freed',ch17BathAndroid:'Bathroom android',ch17Tv:'News report watched',ch17Spotted:'Spotted while escaping',ch17Outcome:'Zlatko ending',monstersFreed:'Caged androids freed'};
+export const labels={
+ lutherHidden:"Luther’s hiding place",
+ ch17HouseOpen:"Rooms opened in Zlatko’s house",
+ ch17Phase:"Search through Zlatko’s house",
+ ch17Done:"Places searched at Zlatko’s",
+ ch17Last:"Last place searched at Zlatko’s",
+ ch17Route:"Escape route from Zlatko’s",
+ karaActive:"Kara continues her journey",
+ lutherWith:"Luther accompanies Kara",
+ch17Reset:'Kara’s memory wiped',ch17Memories:'Memories recovered',ch17Minutes:'Minutes gone in Zlatko’s house',ch17Bear:'Polar bear freed',ch17BathAndroid:'Bathroom android',ch17Tv:'News report watched',ch17Spotted:'Spotted while escaping',ch17Outcome:'Zlatko ending',monstersFreed:'Caged androids freed'};
 export const deathEffect={};
 
 // On the Run's endings in which Kara and Alice got across the freeway (chapter 13 ENDINGS: crossed, other, otherConnorDead).

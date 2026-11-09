@@ -71,7 +71,15 @@ export const state={
  ch24KitchenVisited:false,ch24KitchenPaused:false,ch24Target:null,
  ch24Ending:null,ch24Coin:false,ch24SimonFound:false,ch24SimonSurvived:false,ch24JerichoMemory:false,
  ch24ProtectedHank:false,ch24ConnorDied:false,ch24Wilson:null,ch24DeviantFound:null};
-export const labels={ch24NoOnce:'Took a second look at the broadcast room',
+export const labels={
+ ch24In:"Earlier events at Stratford Tower",
+ ch24Phase:"Investigation at Stratford Tower",
+ ch24Corridor:"Corridor examined",
+ ch24Room:"Broadcast room examined",
+ ch24Roof:"Roof examined",
+ ch24KitchenVisited:"Connor visited the kitchen",
+ ch24KitchenPaused:"Connor paused in the kitchen",
+ch24NoOnce:'Took a second look at the broadcast room',
  ch24Ending:'Public Enemy ending',ch24Coin:'Hank confiscated the coin',ch24SimonFound:'Connor found Simon on the roof',
  ch24SimonSurvived:'Simon survived on the roof',ch24JerichoMemory:'Connor saw Jericho in Simon’s memory',
  ch24ProtectedHank:'Connor protected Hank at the tower',ch24ConnorDied:'Connor died in Public Enemy',

@@ -84,7 +84,9 @@ export function inputs(s,c,version=2){
 }
 
 export const state={ch12In:null,ch12Garden:{},ch12Wait:{},ch12BreakRoom:false,ch12Topics:{},ch12Files:{},ch12CarlosFate:null,ch12Ending:null};
-export const labels={ch12Garden:'Done in the zen garden',ch12Wait:'Done while waiting for Hank',ch12BreakRoom:'Went to the break room',ch12Topics:'Asked Hank about',ch12Files:'Case files read',ch12CarlosFate:'Carlos’ android after Waiting for Hank',ch12Ending:'Waiting for Hank ending'};
+export const labels={
+ ch12In:"Earlier events before meeting Hank",
+ch12Garden:'Done in the zen garden',ch12Wait:'Done while waiting for Hank',ch12BreakRoom:'Went to the break room',ch12Topics:'Asked Hank about',ch12Files:'Case files read',ch12CarlosFate:'Carlos’ android after Waiting for Hank',ch12Ending:'Waiting for Hank ending'};
 export const deathEffect={};   // Connor cannot die in this chapter
 export const rules={ENDINGS,AMANDA_REACTION,HANK_ARRIVAL_IF_DIED:-1,HANK_IS_MAD:-1,TOPICS:{dog:1,basketball:-1,music:1,antiAndroids:-1,fowler:0,hours:0,work:0},AMANDA_APPROACH:{FRIENDLY:-1,ADAPT:-1,INDIFFERENT:1,'DON’T KNOW':0},COMPASSIONATE:1,BREAK_ROOM_TV:-1,DESK_CLUES};
 

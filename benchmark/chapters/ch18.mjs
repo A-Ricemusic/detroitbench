@@ -53,6 +53,11 @@ export const state={
 };
 
 export const labels={
+ ch18PartnersFound:"Suspect found in Carlos’s house",
+ ch18SavedHank:"Connor saved Hank on the roof",
+ ch18Diary:"Diary examined",
+ ch18Signs:"Signs examined",
+
  ch18Nest:'The Nest, as Amanda reads it',ch18Dog:'Hank’s dog at the window',ch18Attitude:'Attitude to Hank in the shower',
  ch18Shirt:'Shirt brought to Hank',ch18Roulette:'Learned Hank was playing Russian roulette',ch18Outcome:'Russian Roulette outcome',
  ch18Door:'Checks outside Hank’s house',ch18Scan:'Scans of Hank',ch18House:'Things looked at in Hank’s house',
@@ -84,6 +89,9 @@ const DOG={
 };
 
 export const gate={
+ // New repeatWhile data keeps the hub open; this flag authorizes exploration after the gun.
+ // Older snapshots already advance at the gun and never revisit the hub.
+ C11m:(s,h)=>h.n.gunExplorationRules||!s.ch18House.gun||'Connor finished exploring after inspecting the gun.',
  // The second answer needs something left to say once the first is given.
  C11b2:s=>s.ch18Diary||s.ch18Signs||'Connor had nothing more to tell Amanda.',
 };

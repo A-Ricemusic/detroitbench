@@ -38,7 +38,9 @@ export const rules={
 };
 export const state={edenPhase:null,edenDone:{},edenClubActions:0,edenContinued:false,edenHop:0,edenWrong:0,edenWarehouseActions:0,
  edenApproach:null,edenFight:null,edenOutcome:null,edenTracis:null,edenFailedAt:null};
-export const labels={edenDone:'Eden Club: places examined',edenClubActions:'Eden Club: actions on the club floor',edenContinued:'Asked Hank for one more minute',
+export const labels={
+ edenPhase:"Investigation at the Eden Club",
+edenDone:'Eden Club: places examined',edenClubActions:'Eden Club: actions on the club floor',edenContinued:'Asked Hank for one more minute',
  edenHop:'Androids traced on the blue-haired Traci’s path',edenWrong:'Androids probed that saw nothing',edenWarehouseActions:'Eden Club: actions in the warehouse',
  edenApproach:'Approach with the damaged Traci',edenFight:'Fight with the Tracis',edenOutcome:'The Eden Club ending',edenTracis:'The Tracis’ fate',edenFailedAt:'Where the Eden Club search failed'};
 export const deathEffect={};

@@ -61,6 +61,18 @@ export const state={
  ch13Meal:{},ch13RalphThreatened:false,ch13RalphInformed:false,ch13Spotted:false,ch13Fence:null,ch13Highway:null,
  ch13ConnorObeyed:false,ch13ConnorDied:false,ch13Ending:null};
 export const labels={
+ ch13StoleClothes:"Kara stole clothes",
+ ch13HadGun:"Kara brought a gun",
+ ch13ToddShooter:"Who shot Todd",
+ ch13WireCutters:"Kara brought wire cutters",
+ ch13Lot:"Search around the parking lot",
+ ch13Room:"Search in the motel room",
+ ch13Squat:"Search inside the squat",
+ ch13Up:"Search upstairs in the squat",
+ ch13Search:"Search for Kara and Alice",
+ ch13Meal:"Meal with Ralph",
+ ralphDefended:"Kara defended Ralph",
+
  ch13Start:'On the Run start',ch13Hair:'Kara’s new hair color',ch13Gun:'The gun in the squat',ch13StoleMoney:'Stole Ralph’s money',
  ch13RalphThreatened:'Kara threatened Ralph at the table',ch13RalphInformed:'Ralph informed on Kara',ch13Spotted:'Spotted by police in the street',
  ch13Fence:'Connor at the fence',ch13Highway:'On the highway',ch13ConnorObeyed:'Connor obeyed Hank at the fence',
@@ -77,7 +89,7 @@ export const wireCutters=s=>s.ch10WireCutters===true||['stolen','store','superma
 
 const start=(where)=>s=>shelterOf(s)===where||{car:'Kara did not spend the night in the abandoned car.',motel:'Kara did not spend the night in the motel.',squat:'Kara did not spend the night in the squat.'}[where];
 const on=(where)=>s=>s.ch13Start===where||{car:'Kara did not start the day in the parking lot.',motel:'Kara did not start the day in the motel.',squat:'Kara did not start the day in the squat.'}[where];
-const all=(...fs)=>s=>{for(const f of fs){const r=f(s);if(r!==true)return r}return true};
+const all=(...fs)=>(s,h)=>{for(const f of fs){const r=f(s,h);if(r!==true)return r}return true};
 const street=s=>(s.ch13Start==='car'||s.ch13Start==='motel'&&s.choices.C09m2==='0')||'Kara and Alice never walked to the station through the street.';
 const highway=(v,why)=>s=>s.ch13Highway===v||why;
 const tableAgain=prev=>s=>s.choices[prev]!==undefined&&!s.ch13Meal.done||'The talk at the table had already ended.';
@@ -91,7 +103,7 @@ export const gate={
  K09q0:start('squat'),K09q:on('squat'),K09q1:all(on('squat'),s=>!!s.ch13Squat.stuff||'Kara never looked at Ralph’s things.'),
  K09u:on('squat'),K09u1:all(on('squat'),s=>!!s.ch13Up.cut||'Kara never stood at the mirror upstairs.'),C09q0:on('squat'),
  K09q2:on('squat'),K09q3:on('squat'),K09q4:all(on('squat'),s=>s.choices.K09q3==='1'||'Kara sat down at once.'),
- K09q5:on('squat'),K09q6:on('squat'),K09q7:on('squat'),K09q8:all(on('squat'),tableAgain('K09q7')),K09q9:all(on('squat'),tableAgain('K09q8')),
+ K09q5:all(on('squat'),(s,h)=>!h.n.immediateSitBypass||s.choices.K09q3!=='0'||'Kara sat down at once.'),K09q6:on('squat'),K09q7:on('squat'),K09q8:all(on('squat'),tableAgain('K09q7')),K09q9:all(on('squat'),tableAgain('K09q8')),
  K09q10:on('squat'),C09q1:on('squat'),C09a:on('squat'),
  C09q:all(on('squat'),s=>!s.ch13RalphThreatened||'Ralph told Connor where Kara went, so there was no search.'),
  C09q2:all(on('squat'),s=>!!s.ch13Search.found||'Connor never looked under the stairs.'),C09q3:all(on('squat'),searchEnded),K09q11:all(on('squat'),searchEnded),
@@ -132,7 +144,7 @@ export function available(n,s,opts,h){
  const hub=HUBS[n.id];
  if(hub)return opts.filter(o=>!o.once||!s[hub][o.once]);
  if(n.id==='C09a'&&!s.ch13RalphThreatened)return h.without(PRESSURIZE);
- if(TABLE.includes(n.id))return opts.filter(o=>!(o.id===T.ASK&&s.ch13Meal.asked)&&!(o.id===T.BLUFF&&s.ch13Meal.bluffed))
+ if(TABLE.includes(n.id))return opts.filter(o=>!(n.familyAfterBluff&&o.id===T.FAMILY&&s.ch13Gun==='forgot'&&!s.ch13Up.corpse&&!s.ch13Meal.bluffed)).filter(o=>!(o.id===T.ASK&&s.ch13Meal.asked)&&!(o.id===T.BLUFF&&s.ch13Meal.bluffed))
   .map(o=>o.id===T.THREATEN?{...o,text:s.gun?TEXT.threatenGun:TEXT.threatenKnife}:o);
 }
 

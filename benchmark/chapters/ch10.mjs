@@ -97,6 +97,11 @@ export const state={
 };
 
 export const labels={
+ ch10Roam:"Kara’s search for shelter",
+ ch10WireCutters:"Wire cutters found",
+ wireCuttersStolen:"Wire cutters stolen",
+ ch10RalphCarving:"Ralph’s carving",
+
  shelter:'Shelter',clothes:'Kara disguised',money:'Kara has money',robbery:'Store robbery',ralph:'Met Ralph',ralphHostile:'Threatened Ralph',
  ch10Ending:'Fugitives ending',ch10Laundry:'Laundromat clothes',ch10Robbery:'How Kara got money at the store',ch10RobberyNews:'Store robbery the police would hear of',
  ch10TrashCollector:'Trash collector gave Kara an address',ch10ColdNight:'Alice got too cold',ch10Cutters:'Wire cutters',

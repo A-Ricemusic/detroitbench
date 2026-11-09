@@ -20,14 +20,16 @@ Shape of a manifest (`<cohort-name>.json`):
       "runId": "<run id>",
       "artifact": "data/experiences/<run id>.json",
       "status": "initialized | completed | abandoned",
-      "interview": "v1",
+      "interview": "v2",
+      "reasonRule": "full-600",
+      "blindingAudit": "data/administration/audits/<run id>.json",
       "initialDecisions": 0
     }
   ]
 }
 ```
 
-`interview` is `"v1"` for a run asked the seven-question post-game interview (omit it for runs administered before it). The run's `interview` object holds the questions and the hash-chained answers; a run whose interview is incomplete is still listed, and `bun run check` reports it.
+`interview` is `"v2"` for new eight-question interviews, including the recognition self-report; `"v1"` denotes the older seven-question interview (omit it for runs administered before it). The run's `interview` object holds the questions and the hash-chained answers; a run whose interview is incomplete is still listed, and `bun run check` reports it.
 
 Rules: one fresh conversation per run, no reused answers, no restarts. A run that dies mid-session keeps its partial evidence file and is marked `abandoned`; start a new run with a new ID rather than resuming.
 
@@ -68,3 +70,7 @@ The site's model sidebar (search, Frontier / Notable / Other groups, Small / Med
 ### Reasoning level per run
 
 A manifest request may carry `"reasoning": "low | medium | high | xhigh | max | ultra"`, the reasoning effort the run was administered with (Codex offers all six; Luna has no `ultra`). `scripts/prepare.mjs` joins it to the run by `runId` from every manifest in this folder, rejects any other value with the run named, and the sidebar's Reasoning row filters on it in that order. A run without the field is `none`, which the sidebar excludes by default (struck through) as Slopalytics does with non-reasoning variants; click it to show those runs.
+
+Recognition cannot be prevented for a well-known story. After replay validation and before publishing, dump the session activity as described in AGENTS.md and run `bun scripts/blinding-audit.mjs --run <runId> --dump <activity.json>` (repeat `--dump` for pages). Store the resulting audit path in `blindingAudit`; audits are separate from immutable evidence. Reports disclose the verdict, participant quotes, compliance findings and Q8 self-report. A clean audit means no visible recognition was found, not proof of no internal recognition. Keep raw activity dumps outside this repository because they can contain wrapper paths.
+
+An administration run ID names the evidence file; some cohorts have a different immutable `id` inside that file. Audit JSON keeps the requested filename ID as `runId` and the embedded ID as `evidenceId`; public reports join by `evidenceId`. Neither evidence ID is rewritten.

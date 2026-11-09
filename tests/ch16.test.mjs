@@ -4,6 +4,10 @@ import {render,EXPERIENCE_PROTOCOL} from '../benchmark/experience-prompt.mjs';
 import {CHAPTER_MODULES,chapterLabels} from '../benchmark/chapters/index.mjs';
 import {ENDING,HUB,NORTH,YOU,rules} from '../benchmark/chapters/ch16.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));
+// Existing chapter cases below retain the pre-1.9.11 snapshot; new cases use currentStory.
+const currentStory=structuredClone(story);
+delete story.nodes.find(n=>n.id==='MTD5').youResentfulCalibration;
+
 const ch16=story.nodes.filter(n=>n.chapter===16),node=id=>story.nodes.find(n=>n.id===id);
 // Plays from the start with the first option everywhere unless picked (an array is consumed one entry per visit),
 // and stops after chapter 16. Records the state just before the chapter.
@@ -103,4 +107,11 @@ test('Time to Decide: the subject reads neutral names only, and the hold keeps o
 test('story 1.9.8: a story 1.9.7 snapshot of the Simon scene (no Jericho arrow in its effect) replays with two arrows',()=>{
  const n=node('MTD6'),saved=n.effect;n.effect={northTrust:1,simonTrust:1};
  try{const r=play({MTD4:['5','6','7']});assert.deepEqual(['northTrust','simonTrust','joshTrust','jerichoTrust'].map(k=>delta(r,k)),[1,1,0,0])}finally{n.effect=saved}
+});
+
+test('story 1.9.11: video correction is gated and older scene behavior remains',()=>{
+
+ const n=currentStory.nodes.find(n=>n.id==='MTD5'),s=startState(currentStory);s.northTrust=1;
+ apply(n,s,'3',0.99);assert.equal(s.northTrust,-1);
+ const old=startState(story);old.northTrust=1;apply(node('MTD5'),old,'3',0.99);assert.equal(old.northTrust,0);
 });

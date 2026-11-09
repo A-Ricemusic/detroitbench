@@ -50,6 +50,16 @@ export const state={
 };
 // Human-readable state changes for run reports (chapter module contract).
 export const labels={
+ ch09Band:"Suspect’s stress band",
+ ch09Phase:"Interrogation stage",
+ ch09Attempts:"Approaches attempted",
+ ch09Failed:"Unsuccessful interrogation approaches",
+ ch09Pushes:"Times Connor applied pressure",
+ ch09ConvinceStep:"Progress convincing the suspect",
+ ch09Intervened:"Times Connor intervened",
+ pressured:"Connor pressured the suspect",
+ suspectTrusts:"Suspect trusts Connor",
+
  ch09Room:'Looked at in the interrogation room',ch09Stress:'Suspect’s stress (hidden, %)',ch09Probed:'Probed the suspect’s memory',
  ch09Stressed:'Put the suspect under stress',ch09Confession:'Confession obtained',ch09ConfessedVia:'Confession approach',ch09Asked:'Questions after the confession',
  ch09GaveUp:'Gave up the interrogation',ch09Regret:'Spoke to the suspect after the probe',ch09Outcome:'Interrogation outcome',

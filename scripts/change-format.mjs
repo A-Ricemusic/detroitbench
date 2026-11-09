@@ -9,7 +9,7 @@
 // tables below and the chapter modules' `words` ({stateKey: {subKeyOrValue: 'Words'}}), else camelCase split into words.
 import {SCALES,level,gaugeForKey} from '../benchmark/scales.mjs';
 import {chapterWords} from '../benchmark/chapters/index.mjs';
-import {CLUE_WORDS,PLAZA_WORDS,HOME_WORDS,PHASE_WORDS,LIFE_KEYS} from './run-report.mjs';
+import {HIDDEN_CHANGE_KEYS,CLUE_WORDS,PLAZA_WORDS,HOME_WORDS,PHASE_WORDS,LIFE_KEYS} from './run-report.mjs';
 
 const lowerWords=w=>Object.fromEntries(Object.entries(w).map(([k,v])=>[k,v[0].toUpperCase()+v.slice(1)]));
 const BUILT_IN_WORDS={hostageClues:lowerWords(CLUE_WORDS),plaza:lowerWords(PLAZA_WORDS),downstairs:lowerWords(HOME_WORDS),upstairs:lowerWords(HOME_WORDS),hostagePhase:PHASE_WORDS};
@@ -47,6 +47,7 @@ export function makeFormatter(LABELS){
   return out}
  const labelFor=c=>{const l=LABELS[c.key];if(l)return {label:LIFE_KEYS[c.key]&&typeof c.after==='boolean'?l.replace(/ alive$/,''):l};return {label:titleCase(c.key),unlabeled:c.key}};
  return function formatChange(c){
+  if(HIDDEN_CHANGE_KEYS.includes(c.key))return [];
   if(c.key==='knowledge'&&c.added)return Object.entries(c.added).filter(([,f])=>f?.length).map(([who,facts])=>({label:who+' learns',facts:facts.map(String)}));
   const {label,unlabeled}=labelFor(c),tag=unlabeled?{unlabeled}:{};
   const g=gaugeForKey[c.key];

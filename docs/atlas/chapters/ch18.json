@@ -3,7 +3,7 @@
   "id": 18,
   "title": "Russian Roulette",
   "character": "Connor",
-  "note": "Rebuilt on 6 November 2026 from the PowerPyx 100% chart (30 nodes), the detroitbecometext template and string table, PowerPyx’s text and the Fandom wiki. EMERGE IN THE ZEN GARDEN → JOIN AMANDA (her reaction to The Nest and Partners, PROMPTS 1, 2, 3 and 5) → ARRIVE AT HANK’S PLACE → [ FIND LT. ANDERSON ] → SPOT HANK AND BREAK IN → ENTER HOUSE → HANK’S DOG ATTACKS → CALM or RILE HANK’S DOG (by knowsSumo) → ANALYZE HANK → TAKE HANK TO THE BATHROOM → DISTANT or UNDERSTANDING ATTITUDE (PROMPT 7), TEASE / LEAVE (PROMPT 8) → three shirts → [ WAIT FOR HANK ] (magazines, TV, the photo of Cole, interests, Sumo, the gun and PROMPT 9) → HANK IS READY → LEFT FOR EDEN CLUB, the only ending. Arrows: Amanda +2 (Rupert caught), −2 (Rupert and the Partners deviant both missed), −1 (Connor died in The Nest), +1 PRAGMATIC, −1 for the self-destruct, −1 HESITATED; Hank −1 on waking only if Connor died in The Nest. No probability, instability or public-opinion change. Researched in docs/research/chapters/ch18-russian-roulette.md.",
+  "note": "Rebuilt on 6 November 2026 from the PowerPyx 100% chart (30 nodes), the detroitbecometext template and string table, PowerPyx’s text and the Fandom wiki. EMERGE IN THE ZEN GARDEN → JOIN AMANDA (her reaction to The Nest and Partners, PROMPTS 1, 2, 3 and 5) → ARRIVE AT HANK’S PLACE → [ FIND LT. ANDERSON ] → SPOT HANK AND BREAK IN → ENTER HOUSE → HANK’S DOG ATTACKS → CALM or RILE HANK’S DOG (by knowsSumo) → ANALYZE HANK → TAKE HANK TO THE BATHROOM → DISTANT or UNDERSTANDING ATTITUDE (PROMPT 7), TEASE / LEAVE (PROMPT 8) → three shirts → [ WAIT FOR HANK ] (magazines, TV, the photo of Cole, interests, Sumo, the gun and PROMPT 9) → HANK IS READY → LEFT FOR EDEN CLUB, the only ending. Arrows: Amanda +2 (Rupert caught), −2 (Rupert and the Partners deviant both missed), −1 (Connor died in The Nest), +1 PRAGMATIC, −1 for the self-destruct, −1 HESITATED; Hank −1 on waking only if Connor died in The Nest. No probability, instability or public-opinion change. Researched in docs/research/chapters/ch18-russian-roulette.md. Story 1.9.11: Gun inspection alone no longer ends exploration: the Cole photo can follow (docs/research/video-evidence/ch18/ch18-02-CagblWBSTvE-13-28.png and ch18-02-CagblWBSTvE-13-38.png). Explicit waiting ends this abstraction; the exact readiness rule remains unmeasured.",
   "source": "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
@@ -555,7 +555,7 @@
    "chapter": 18,
    "character": "Connor",
    "title": "Wait for Hank: Find Picture of Hank’s Son and the house",
-   "context": "While Hank dresses, Connor can look at the photo of Cole on the kitchen table (cross-chapter impact), Hank’s record and the picture above the fireplace, pet Sumo, listen at the bathroom door, apologise for the window, pick up the chair, or look at the gun, which ends the wait (PowerPyx).",
+   "context": "While Hank dresses, Connor can look at the photo of Cole on the kitchen table (cross-chapter impact), Hank’s record and the picture above the fireplace, pet Sumo, listen at the bathroom door, apologise for the window, pick up the chair, or look at the gun and continue exploring. Story 1.9.11: Gun inspection alone no longer ends exploration: the Cole photo can follow (docs/research/video-evidence/ch18/ch18-02-CagblWBSTvE-13-28.png and ch18-02-CagblWBSTvE-13-38.png). Explicit waiting ends this abstraction; the exact readiness rule remains unmeasured.",
    "options": [
     {
      "label": "Find Picture of Hank’s Son",
@@ -569,7 +569,7 @@
     },
     {
      "label": "Look at the gun",
-     "effect": "Ends the wait; the gun question follows.",
+     "effect": "Inspect the gun; exploration remains open, including Cole’s photo. The gun question is retained.",
      "target": "RR13"
     },
     {
@@ -591,14 +591,14 @@
     "https://detroit-become-human.fandom.com/wiki/Cole_Anderson",
     "https://detroit-become-human.fandom.com/wiki/The_Bridge"
    ],
-   "note": "The wiki says the photo, not the gun, triggers Hank is Ready; PowerPyx (higher in the source order) says the gun. The photo can be missed.",
+   "note": "Gun-first video supersedes the unconditional gun-ends-exploration claim. Exact readiness timing remains unmeasured.",
    "status": "Source-backed summary",
    "benchmark": {
     "scenes": [
      "C11m"
     ],
     "status": "implemented",
-    "note": "A repeatable scene; looking at the gun or waiting ends it."
+    "note": "A repeatable scene; gun inspection alone does not end exploration. Explicit waiting ends the abstracted exploration period."
    }
   },
   {

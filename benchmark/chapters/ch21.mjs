@@ -30,7 +30,14 @@ export const ENDING='The group enjoyed a quiet moment together';
 export const REACTIONS={'0':'gun','1':'stick','2':'protect','3':'fire'};
 
 export const state={ch21Car:{},ch21Fair:{},ch21Tavern:{},ch21Bag:{},ch21Talk:{},ch21Story:{},ch21SawGun:false,ch21Reaction:null,ch21MetJerrys:false,ch21Ending:null};
-export const labels={ch21SawGun:'Kara saw the gun in her bag',ch21Reaction:'Kara’s first reaction to the shadows',ch21MetJerrys:'Met the Jerrys at the amusement park',ch21Ending:'The Pirates’ Cove ending'};
+export const labels={
+ ch21Car:"Car examined at Pirate’s Cove",
+ ch21Fair:"Exploration of Pirate’s Cove",
+ ch21Tavern:"Inside the tavern",
+ ch21Bag:"Supplies in Kara’s bag",
+ ch21Talk:"Conversation at Pirate’s Cove",
+ ch21Story:"Story told to Alice",
+ch21SawGun:'Kara saw the gun in her bag',ch21Reaction:'Kara’s first reaction to the shadows',ch21MetJerrys:'Met the Jerrys at the amusement park',ch21Ending:'The Pirates’ Cove ending'};
 export const deathEffect={};   // Connor does not appear in this chapter
 // The chapter's stat arrows, for the recap and the tests: scene → option → {stat: delta}.
 export const rules={ENDING,REACTIONS,arrows:{

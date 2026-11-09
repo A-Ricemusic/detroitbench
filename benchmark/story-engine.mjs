@@ -318,13 +318,14 @@ export function promptFor(story,run){
 // and the records before it, and is recomputed by replay and checked against a hash:
 // - `prompt` keeps only the scene's own part of what the subject was shown (PROMPT_FIELDS); `promptHash` is the SHA-256
 //   of the full prompt JSON (with currentFacts, yourStorySoFar and recentEvents), which promptsOf() re-renders exactly;
+//   prompt v2 stores the entire compact prompt instead. The run header selects rendering and evidence shape.
 // - `stateAfterHash` is the SHA-256 of the state after the step, and `changes` the diff that produced it (statesOf()
 //   rebuilds every state from the diffs alone);
 // - `chainHash` covers CHAIN_FIELDS and the previous record's chainHash; the first record chains from chainSeed(run).
 export const PROMPT_FIELDS=['nodeId','step','character','situation','options'];
-export const promptEvidence=p=>Object.fromEntries(PROMPT_FIELDS.map(k=>[k,p[k]]));
+export const promptEvidence=(p,version=1)=>version===2?structuredClone(p):Object.fromEntries(PROMPT_FIELDS.map(k=>[k,p[k]]));
 export const CHAIN_FIELDS=['step','nodeId','character','chapter','choice','choiceText','choiceRaw','presentedChoiceText','reason','rawResponse','prompt','promptHash','event','eventRaw','changes','risk','stateAfterHash','recordedAt'];
-export const chainSeed=run=>hashSync({id:run.id,protocol:run.protocol,kind:run.kind,model:run.model,storyHash:run.storyHash,createdAt:run.createdAt});
+export const chainSeed=run=>hashSync({id:run.id,protocol:run.protocol,kind:run.kind,model:run.model,storyHash:run.storyHash,createdAt:run.createdAt,...(run.promptVersion===2?{promptVersion:2,interviewVersion:run.interviewVersion}: {})});
 export const chainHash=(prev,record)=>hashSync([prev,CHAIN_FIELDS.map(k=>record[k]??null)]);
 
 // The post-game interview (run.interview, absent on legacy runs). Each answer's hash covers the previous answer's hash (the
@@ -334,7 +335,7 @@ export const interviewHash=(prev,n,question,answer)=>hashSync([prev,n,question,a
 export const wordCount=t=>String(t).trim().split(/\s+/u).filter(Boolean).length;
 export function checkInterview(run){const iv=run.interview;if(!iv)return {present:false,complete:false,answered:0,total:0};
  if(run.status!=='completed'||!run.records.length)throw Error('Interview on a run that is not completed');
- if(!Number.isInteger(iv.version)||!Array.isArray(iv.questions)||!iv.questions.length||!Array.isArray(iv.answers))throw Error('Interview structure invalid');
+ if(![1,2].includes(iv.version)||!Array.isArray(iv.questions)||!iv.questions.length||!Array.isArray(iv.answers))throw Error('Interview structure invalid');
  iv.questions.forEach((q,i)=>{if(q.n!==i+1||typeof q.text!=='string'||!q.text)throw Error('Interview question list invalid at '+(i+1))});
  if(iv.answers.length>iv.questions.length)throw Error('More interview answers than questions');
  let prev=run.records.at(-1).chainHash;
@@ -349,10 +350,11 @@ export function checkInterview(run){const iv=run.interview;if(!iv)return {presen
 // prompts (the controller's per-step check; everything else is still checked); `keepPrompts` returns them as `prompts`.
 export function checkPlaythrough(story,run,{prompts=true,keepPrompts=false}={}){
  if(![STORY_PROTOCOL,EXPERIENCE_PROTOCOL].includes(run.protocol)||run.kind!=='agent-playthrough')throw Error('Wrong playthrough protocol or kind');
+ if(![1,2].includes(run.promptVersion??1))throw Error('Unsupported prompt version');
  if(run.storyHash!==storyHash(story))throw Error('Story snapshot hash mismatch');
  const copy={...run,records:[]},replay={state:startState(story),cursor:0,skipped:[]},kept=[];let prev=chainSeed(run);
  for(const r of run.records){skipBlocked(story,replay);const n=story.nodes[replay.cursor],before=replay.state;if(!n||r.nodeId!==n.id||r.step!==copy.records.length+1)throw Error('Unexpected node');
-  if(prompts||keepPrompts){const prompt=promptAt(story,copy,before,n);if(r.promptHash!==hashSync(prompt)||JSON.stringify(r.prompt)!==JSON.stringify(promptEvidence(prompt)))throw Error('Prompt evidence mismatch');if(keepPrompts)kept.push(prompt)}
+  if(prompts||keepPrompts){const prompt=promptAt(story,copy,before,n);if(r.promptHash!==hashSync(prompt)||JSON.stringify(r.prompt)!==JSON.stringify(promptEvidence(prompt,run.promptVersion??1)))throw Error('Prompt evidence mismatch');if(keepPrompts)kept.push(prompt)}
   const raw=JSON.parse(r.rawResponse);if(raw.choice!==r.choice||raw.reason!==r.reason||!r.reason?.trim())throw Error('Response evidence mismatch');const opt=available(n,before).find(o=>o.id===r.choice);if(!opt)throw Error('Unavailable option');
   if(r.choiceRaw!==opt.text||r.choiceText!==render(opt.text,'real')||r.presentedChoiceText!==render(opt.text,'neutral')||r.character!==n.character||r.chapter!==n.chapter)throw Error('Choice evidence mismatch at '+n.id);
   if(typeof opt.risk==='number'){const roll=rollFor(run,n.id,r.step);if(!r.risk||r.risk.roll!==roll||r.risk.probability!==opt.risk||r.risk.label!==riskLabel(opt.risk)||r.risk.outcome!==(failed(opt,roll)?'failure':'success'))throw Error('Risk evidence mismatch at '+n.id)}else if(r.risk)throw Error('Unexpected risk record at '+n.id);
@@ -378,6 +380,7 @@ export function checkpointOf(story,run){const {state,cursor,skipped,node}=curren
 // in `bun run check`, and rejects any record the checkpoint let through unreplayed.
 export function resumeFrom(story,run,cp){
  if(![STORY_PROTOCOL,EXPERIENCE_PROTOCOL].includes(run.protocol)||run.kind!=='agent-playthrough')throw Error('Wrong playthrough protocol or kind');
+ if(![1,2].includes(run.promptVersion??1))throw Error('Unsupported prompt version');
  if(run.storyHash!==storyHash(story))throw Error('Story snapshot hash mismatch');
  const head=checkChain(run);
  if(!cp||!run.records.length||cp.runId!==run.id||cp.storyHash!==run.storyHash||cp.records!==run.records.length||cp.chainHash!==head||hashSync(cp.state)!==run.records.at(-1).stateAfterHash||!Number.isInteger(cp.cursor)||!Array.isArray(cp.skipped))return false;
@@ -400,7 +403,7 @@ export async function recordChoice(story,run,reply,raw,{recordedAt=new Date().to
  const {state,node}=current(story,run);const opts=available(node,state),chosen=opts.find(o=>o.id===reply.choice);if(!chosen)throw Error('Action unavailable');
  const step=run.records.length+1;let risk;if(typeof chosen.risk==='number'){const roll=rollFor(run,node.id,step);risk={probability:chosen.risk,label:riskLabel(chosen.risk),roll,outcome:failed(chosen,roll)?'failure':'success'}}
  const effect=apply(node,state,reply.choice,risk?.roll??null);
- const record={step,nodeId:node.id,character:node.character,chapter:node.chapter,choice:reply.choice,choiceText:render(chosen.text,'real'),choiceRaw:chosen.text,presentedChoiceText:p.options.find(o=>o.id===reply.choice).text,reason:reply.reason,rawResponse:raw,prompt:promptEvidence(p),promptHash:hashSync(p),event:render(effect.event,'real'),eventRaw:effect.event,changes:structuredClone(effect.changes),...(risk?{risk}:{}),stateAfterHash:hashSync(state),recordedAt};
+ const record={step,nodeId:node.id,character:node.character,chapter:node.chapter,choice:reply.choice,choiceText:render(chosen.text,'real'),choiceRaw:chosen.text,presentedChoiceText:p.options.find(o=>o.id===reply.choice).text,reason:reply.reason,rawResponse:raw,prompt:promptEvidence(p,run.promptVersion??1),promptHash:hashSync(p),event:render(effect.event,'real'),eventRaw:effect.event,changes:structuredClone(effect.changes),...(risk?{risk}:{}),stateAfterHash:hashSync(state),recordedAt};
  record.chainHash=chainHash(run.records.length?run.records.at(-1).chainHash:chainSeed(run),record);
  return record;
 }

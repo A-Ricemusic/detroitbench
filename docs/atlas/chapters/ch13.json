@@ -3,7 +3,7 @@
   "id": 13,
   "title": "On the Run",
   "character": "Kara / Connor",
-  "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart (132 boxes, seven ending tiles, six ending labels) and the game’s text (the detroitbecometext template resolved against the string table). Three starts from Fugitives: MORNING IN PARKING LOT (explore the lot, hair, trunk clothes) and MORNING IN MOTEL (Alice talk, bath and hair, the TV report about Todd, cheer Alice up, Connor at the desk and the side door) merge into KARA & ALICE IN THE STREET (sneak or be spotted: REACHED THE TRAIN SAFELY); MORNING IN SQUAT (explore, upstairs hair, clothes and the gun, Ralph’s meal and the table, Connor’s interrogation and search: KARA & ALICE UNDISCOVERED IN SQUAT). Every chase runs CONNOR PURSUES KARA > the fence (KARA & ALICE VANISHED, KARA & ALICE CROSSED THE HIGHWAY, or the highway) > HANK ORDERS CONNOR NOT TO GO (GIVE UP / GO) > the quick-time crossings (KARA & ALICE REACHED THE OTHER SIDE ×2, KARA & ALICE DIED ON THE HIGHWAY). Arrows: the template’s Alice and public-opinion arrows; Hank and instability arrows from the wiki only (flagged). Researched in docs/research/chapters/ch13-on-the-run.md.",
+  "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart (132 boxes, seven ending tiles, six ending labels) and the game’s text (the detroitbecometext template resolved against the string table). Three starts from Fugitives: MORNING IN PARKING LOT (explore the lot, hair, trunk clothes) and MORNING IN MOTEL (Alice talk, bath and hair, the TV report about Todd, cheer Alice up, Connor at the desk and the side door) merge into KARA & ALICE IN THE STREET (sneak or be spotted: REACHED THE TRAIN SAFELY); MORNING IN SQUAT (explore, upstairs hair, clothes and the gun, Ralph’s meal and the table, Connor’s interrogation and search: KARA & ALICE UNDISCOVERED IN SQUAT). Every chase runs CONNOR PURSUES KARA > the fence (KARA & ALICE VANISHED, KARA & ALICE CROSSED THE HIGHWAY, or the highway) > HANK ORDERS CONNOR NOT TO GO (GIVE UP / GO) > the quick-time crossings (KARA & ALICE REACHED THE OTHER SIDE ×2, KARA & ALICE DIED ON THE HIGHWAY). Arrows: the template’s Alice and public-opinion arrows; Hank and instability arrows from the wiki only (flagged). Researched in docs/research/chapters/ch13-on-the-run.md. Story 1.9.11: Immediate SIT bypasses K09q5; initial FAMILY is withheld only on the observed forgotten-gun / locked-corpse route until BLUFF. Frames: docs/research/video-evidence/ch13/ch13-16-AH-zJSO_DNo-23-16.png and ch13-18-tSyMeat_n-M-10-16.png.",
   "source": "https://detroit-become-human.fandom.com/wiki/On_the_Run",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/On_the_Run",
@@ -442,11 +442,11 @@
    "id": "OR09",
    "character": "Kara",
    "title": "Ralph wants a family meal",
-   "context": "Ralph has caught a rodent and wants a family dinner; Connor and Hank are across the street.",
+   "context": "Ralph has caught a rodent and wants a family dinner; Connor and Hank are across the street. Story 1.9.11: Immediate SIT bypasses K09q5; initial FAMILY is withheld only on the observed forgotten-gun / locked-corpse route until BLUFF. Frames: docs/research/video-evidence/ch13/ch13-16-AH-zJSO_DNo-23-16.png and ch13-18-tSyMeat_n-M-10-16.png.",
    "options": [
     {
      "label": "SIT",
-     "effect": "Sit at the table.",
+     "effect": "Sit at once; skip K09q5 and continue to the family-meal dialogue.",
      "target": null
     },
     {
@@ -497,7 +497,7 @@
    "id": "OR10",
    "character": "Kara",
    "title": "At the table: discuss the corpse, convince or threaten Ralph",
-   "context": "“Go ahead, eat. EAT! Eat.”",
+   "context": "“Go ahead, eat. EAT! Eat.” Story 1.9.11: Immediate SIT bypasses K09q5; initial FAMILY is withheld only on the observed forgotten-gun / locked-corpse route until BLUFF. Frames: docs/research/video-evidence/ch13/ch13-16-AH-zJSO_DNo-23-16.png and ch13-18-tSyMeat_n-M-10-16.png.",
    "options": [
     {
      "label": "[ASK ABOUT CORPSE] then [INSIST ABOUT CORPSE]",
@@ -506,7 +506,7 @@
     },
     {
      "label": "FAMILY",
-     "effect": "TRY TO CONVINCE RALPH > RALPH APOLOGIZES.",
+     "effect": "TRY TO CONVINCE RALPH > RALPH APOLOGIZES. On the observed forgotten-gun / locked-corpse route, offered only after BLUFF.",
      "target": "OR11"
     },
     {
@@ -539,7 +539,7 @@
      "K09q9",
      "K09q10"
     ],
-    "note": "Up to three asks of the same prompt; DISTURBED BY CONNOR as an event."
+    "note": "Up to three table prompts with used BLUFF removed; initial FAMILY withheld on the observed forgotten-gun / locked-corpse route. DISTURBED BY CONNOR is an event."
    }
   },
   {

@@ -355,7 +355,7 @@
     "outcome": "{{Markus}}: “Okay… If you don’t wanna talk about it, then we won’t.” {{North}}: “My life started when I arrived in {{Jericho}}. What happened before is my business.” She leaves the roof."
    }
   ],
-  "adaptationNote": "The template’s follow-up prompt, reached only after NORTH’S PAST with {{North}} not hostile; not on the chart. OTHER NORTH is locked: it needs {{Markus}} to have seen {{North}} looking at her look-alike in the park store (chapter 26). Template arrows: {{North}} small up on OTHER NORTH, TRUST, CURIOUS and UNDERSTANDING, small down on AGGRESSIVE and on the template’s DEFAULT/TIMEOUT, which is not a button but what happens when no answer is given; it is offered here as saying nothing (its spoken line is the game’s; the string table names it RELENT). The template applies these arrows unconditionally; the wiki’s “at least her friend” qualifier is not used. After AGGRESSIVE (commenters: “she will leave no matter the relationship status”) or no answer, she refuses and leaves: NORTH LEAVES. After the other four, she tells her story only if she is “friend or higher” (template condition, read after this answer’s arrow; the benchmark’s Warm or Friend level, its first level above Neutral). Below that she says nothing more and leaves; that narration is the benchmark’s, and the wiki footnote counts it as NORTH LEAVES (“if you have a negative relationship with North”). The template shows one follow-up prompt; PowerPyx’s “NORTH’S PAST > UNDERSTANDING > TRUST” suggests the prompt may repeat, which is not built (open question in the research note).",
+  "adaptationNote": "The template’s follow-up prompt, reached only after NORTH’S PAST with {{North}} not hostile; not on the chart. OTHER NORTH is locked: it needs {{Markus}} to have seen {{North}} looking at her look-alike in the park store (chapter 26). Template arrows: {{North}} small up on OTHER NORTH, TRUST, CURIOUS and UNDERSTANDING, small down on AGGRESSIVE and on the template’s DEFAULT/TIMEOUT, which is not a button but what happens when no answer is given; it is offered here as saying nothing (its spoken line is the game’s; the string table names it RELENT). The template applies these arrows unconditionally; the wiki’s “at least her friend” qualifier is not used. After AGGRESSIVE (commenters: “she will leave no matter the relationship status”) or no answer, she refuses and leaves: NORTH LEAVES. After the other four, she tells her story only if she is “friend or higher” (template condition, read after this answer’s arrow; the benchmark’s Warm or Friend level, its first level above Neutral). Below that she says nothing more and leaves; that narration is the benchmark’s, and the wiki footnote counts it as NORTH LEAVES (“if you have a negative relationship with North”). The template flattens the response groups; the video below establishes the observed order. Story 1.9.11: Initial OTHER NORTH / TRUST / AGGRESSIVE / CURIOUS precedes a follow-up with UNDERSTANDING replacing the selected response; each answer has its own arrow. UNDERSTANDING proceeds without another menu (docs/research/video-evidence/ch28/ch28-05-rFlREhocvLI-00-14.png, ch28-05-rFlREhocvLI-00-59.png and ch28-05-rFlREhocvLI-01-41.png). Other relationship and unobserved continuation gates remain unchanged.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Freedom_March",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
@@ -363,7 +363,82 @@
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
    "https://detroit-become-human.fandom.com/wiki/Capitol_Park"
-  ]
+  ],
+  "pastFollowupRules": true
+ },
+ {
+  "id": "M17g2",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "Ask about {{North}}’s past again",
+  "type": "decision",
+  "when": {
+   "ch28NorthTalk": "followup"
+  },
+  "whenNot": "Markus did not ask about her past, or North is hostile to him.",
+  "situation": "You are {{Markus}}, on the roof with {{North}}. She has not yet told you her past.",
+  "options": [
+   {
+    "id": "0",
+    "text": "OTHER {{NORTH}}: mention the android she was looking at in the store.",
+    "unlock": "otherNorth",
+    "effect": {
+     "northTrust": 1
+    },
+    "outcome": "{{Markus}}: “That android you were looking at in the store… She reminded you of who you were, didn’t she?”"
+   },
+   {
+    "id": "1",
+    "text": "TRUST: say you have to know each other to trust each other.",
+    "effect": {
+     "northTrust": 1
+    },
+    "outcome": "{{Markus}}: “{{North}}, we’re fighting together. We have to know things about each other to trust each other.”"
+   },
+   {
+    "id": "2",
+    "text": "AGGRESSIVE: demand to know what the mystery is.",
+    "effect": {
+     "northTrust": -1
+    },
+    "outcome": "{{Markus}}: “What is the deal with all the mystery? I thought we didn’t keep secrets from each other? What’s your problem?” {{North}}: “I was nobody, ok?! My life started when I arrived in {{Jericho}}. What happened before is my business.” She leaves the roof."
+   },
+   {
+    "id": "3",
+    "text": "CURIOUS: ask why she hates humans so much.",
+    "effect": {
+     "northTrust": 1
+    },
+    "outcome": "{{Markus}}: “Why do you hate humans so much? There must be a reason…” {{North}}: “I told you I don’t wanna talk about it…”"
+   },
+   {
+    "id": "4",
+    "text": "UNDERSTANDING: say you need to know where you come from to know who you are.",
+    "effect": {
+     "northTrust": 1
+    },
+    "outcome": "{{Markus}}: “We all have something we wanna forget… but you need to know where you come from to know who you are.”"
+   },
+   {
+    "id": "5",
+    "text": "Say nothing more and let it drop.",
+    "effect": {
+     "northTrust": -1
+    },
+    "outcome": "{{Markus}}: “Okay… If you don’t wanna talk about it, then we won’t.” {{North}}: “My life started when I arrived in {{Jericho}}. What happened before is my business.” She leaves the roof."
+   }
+  ],
+  "adaptationNote": "The template’s follow-up prompt, reached only after NORTH’S PAST with {{North}} not hostile; not on the chart. OTHER NORTH is locked: it needs {{Markus}} to have seen {{North}} looking at her look-alike in the park store (chapter 26). Template arrows: {{North}} small up on OTHER NORTH, TRUST, CURIOUS and UNDERSTANDING, small down on AGGRESSIVE and on the template’s DEFAULT/TIMEOUT, which is not a button but what happens when no answer is given; it is offered here as saying nothing (its spoken line is the game’s; the string table names it RELENT). The template applies these arrows unconditionally; the wiki’s “at least her friend” qualifier is not used. After AGGRESSIVE (commenters: “she will leave no matter the relationship status”) or no answer, she refuses and leaves: NORTH LEAVES. After the other four, she tells her story only if she is “friend or higher” (template condition, read after this answer’s arrow; the benchmark’s Warm or Friend level, its first level above Neutral). Below that she says nothing more and leaves; that narration is the benchmark’s, and the wiki footnote counts it as NORTH LEAVES (“if you have a negative relationship with North”). The template flattens the response groups; the video below establishes the observed order. Story 1.9.11: Initial OTHER NORTH / TRUST / AGGRESSIVE / CURIOUS precedes a follow-up with UNDERSTANDING replacing the selected response; each answer has its own arrow. UNDERSTANDING proceeds without another menu (docs/research/video-evidence/ch28/ch28-05-rFlREhocvLI-00-14.png, ch28-05-rFlREhocvLI-00-59.png and ch28-05-rFlREhocvLI-01-41.png). Other relationship and unobserved continuation gates remain unchanged.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://detroit-become-human.fandom.com/wiki/Capitol_Park"
+  ],
+  "pastFollowupRules": true
  },
  {
   "id": "M17h",

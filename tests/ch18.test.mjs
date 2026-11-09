@@ -4,6 +4,10 @@ import {startState,blocked,available,apply,nextCursor,situationFor,CONNOR_DEATH_
 import {render,experiencePrompt,EXPERIENCE_PROTOCOL} from '../benchmark/experience-prompt.mjs';
 import {rules,nestInputs} from '../benchmark/chapters/ch18.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));
+// Existing chapter cases below retain the pre-1.9.11 snapshot; new cases use currentStory.
+const currentStory=structuredClone(story);
+const legacyHouse=story.nodes.find(n=>n.id==='C11m');delete legacyHouse.gunExplorationRules;legacyHouse.repeatWhile={'ch18House.gun':false,'ch18House.wait':false};
+
 const node=id=>story.nodes.find(n=>n.id===id);
 const CH18=['C11z','C11a','C11b1','C11b2','C11c','C11d','C11e','C11f','C11g','C11h','C11i','C11j','C11k','C11l','R18','C11m','C11n','C11o'];
 const TEMPLATE='https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html';
@@ -158,4 +162,12 @@ test('Amanda: story 1.9.10 gives a small down when Rupert got away and the Partn
  const n=node('C11z'),was=n.notCaughtPartnersFound;delete n.notCaughtPartnersFound;
  try{assert.equal(play({...NEST.gotAway,suspect:true},{C11a:'2'}).s.amandaTrust,0)}finally{n.notCaughtPartnersFound=was}
  assert.equal(play(NEST.notFound,{C11a:'1'}).s.amandaTrust,rules.amanda.doubleFailure);
+});
+
+test('story 1.9.11: video correction is gated and older scene behavior remains',()=>{
+
+ const n=currentStory.nodes.find(n=>n.id==='C11m'),s=startState(currentStory);
+ apply(n,s,'6',0.99);assert.equal(nextCursor(currentStory,currentStory.nodes.indexOf(n),n,s),currentStory.nodes.indexOf(n));
+ assert.ok(available(n,s).some(o=>o.id==='0'));const disabled=structuredClone(n);delete disabled.gunExplorationRules;assert.ok(blocked(disabled,s));assert.equal(blocked(n,s),null);apply(n,s,'0',0.99);assert.equal(s.knowsCole,true);
+ const old=node('C11m'),os=startState(story);apply(old,os,'6',0.99);assert.notEqual(nextCursor(story,story.nodes.indexOf(old),old,os),story.nodes.indexOf(old));
 });

@@ -29,7 +29,11 @@ export const RISKS=Object.freeze({hide:0.1,window:0.25,frontDoor:0.25,fightDowns
 
 export const state={ch07Next:null,ch07Exit:null,ch07Fought:false,ch07ToddChased:false,ch07Outcome:null};
 // Human labels consumed by the run report through the chapter-module contract.
-export const labels={ch07Outcome:'Stormy Night ending',ch07Fought:'Kara fought Todd off (he lived, hurt)',ch07ToddChased:'Todd chased Kara and Alice'};
+export const labels={
+ ch07Next:"Kara’s next destination",
+ ch07Exit:"How Kara left the house",
+ karaOutcome:"Kara’s ending",
+ch07Outcome:'Stormy Night ending',ch07Fought:'Kara fought Todd off (he lived, hurt)',ch07ToddChased:'Todd chased Kara and Alice'};
 export const rules={ENDINGS,RISKS,
  // A Kara who hid gets a second try at the fight downstairs (wiki: "Kara will be presented with the same chance to charge and
  // stun Todd downstairs. Otherwise, if Kara already stunned Todd upstairs, Kara will shut down"): two tries at the same risk.

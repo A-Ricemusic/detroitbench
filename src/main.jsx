@@ -10,6 +10,7 @@ import Runs from './pages/Runs.jsx';
 const Research=lazy(()=>import('./pages/Research.jsx'));
 const Sources=lazy(()=>import('./pages/Sources.jsx'));
 const HowItWasMade=lazy(()=>import('./pages/HowItWasMade.jsx'));
+const Interview=lazy(()=>import('./pages/Interview.jsx'));
 const Report=lazy(()=>import('./pages/Report.jsx'));
 
 const TITLES={runs:'Detroit Become Human AI benchmark',research:'Question bank',sources:'Sources',how:'How it was made'};
@@ -20,10 +21,11 @@ function App(){
  const [route,navigate]=useRoute();const section=route.segs[0];
  // #/runs/<id>/report is the in-app run report (the router redirects #/runs/<id> there).
  const report=section==='runs'&&route.segs[2]==='report'&&route.segs[1];
- const pageKey=section==='research'?route.segs.slice(0,2).join('/'):report?'report/'+report:section;
+ const interview=section==='runs'&&route.segs[2]==='interview'&&route.segs[1];
+ const pageKey=section==='research'?route.segs.slice(0,2).join('/'):interview?'interview/'+interview:report?'report/'+report:section;
  useEffect(()=>{if(route.n>0)scrollTo({top:0,behavior:'instant'})},[pageKey]);
  // The report page and the How it was made page set their own titles.
- useEffect(()=>{if(!report&&section!=='how')document.title=TITLES[section]+' · DetroitBench'},[section,report]);
+ useEffect(()=>{if(!report&&!interview&&section!=='how')document.title=TITLES[section]+' · DetroitBench'},[section,report,interview]);
  const skip=e=>{e.preventDefault();const m=document.getElementById('main');m.focus();m.scrollIntoView()};
  return <>
   <a href="#main" onClick={skip} className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-md focus:bg-accent focus:px-3 focus:py-2 focus:text-on-accent">Skip to content</a>
@@ -31,7 +33,8 @@ function App(){
   <div className="pb-[calc(3.5rem+env(safe-area-inset-bottom))] md:pb-0">
    <main id="main" tabIndex={-1} className="container-x mx-auto max-w-7xl pt-6 md:pt-10 min-h-[70dvh] outline-none scroll-mt-[var(--header-h)]">
     <ModelFocusProvider key={pageKey}><ErrorBoundary key={report?'report':section}><Suspense fallback={<Loading/>}>
-     {section==='runs'&&!report&&<Runs/>}
+     {section==='runs'&&!report&&!interview&&<Runs/>}
+     {interview&&<Interview key={interview} id={interview}/>}
      {report&&<Report key={report} id={report} chapter={route.query.chapter}/>}
      {section==='research'&&<Research route={route} navigate={navigate}/>}
      {section==='sources'&&<Sources/>}

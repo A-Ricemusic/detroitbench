@@ -57,7 +57,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li><code>R28</code> the magazines (media); <code>M17a</code> the roof, repeatable: the mirror once, the piano or the beam ends it.</li>
 <li><code>M17b</code>, <code>M17c</code>, <code>M17d</code>: the three prompts with the game’s labels. The locked lines read chapter 26’s flags.</li>
 <li><code>M17e</code>: North ±1.</li>
-<li><code>M17f</code> (North ±1); <code>M17g</code> only after NORTH’S PAST with North not Hostile (checked after the +1). “No answer” is offered as “Say nothing more and let it drop.”</li>
+<li><code>M17f</code> (North ±1); <code>M17g</code> only after NORTH’S PAST with North not Hostile (checked after the +1). The initial response opens <code>M17g2</code>, offering UNDERSTANDING in place of that response. Each has its own arrow. “No answer” is offered as “Say nothing more and let it drop.”</li>
 <li><code>M17h</code> only when North is Warm or Friend after the follow-up’s arrow (and not after AGGRESSIVE or no answer). REACT: North +2 and <code>northLover</code>.</li>
 <li><code>M17i</code> event, gated on Simon left behind and alive.</li>
 <li><code>M17j</code> event; <code>M17k</code> repeatable mall scene. Leaving with nobody converted plays Simon’s (or Josh’s) line and the scene goes on.</li>
@@ -80,7 +80,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>M17e</td><td>AVOID, NOT IMPORTANT</td><td class="n">North −1</td><td>template SmallDown; wiki</td></tr>
 <tr><td>M17f</td><td>NORTH’S PAST</td><td class="n">North +1</td><td>template; wiki</td></tr>
 <tr><td>M17f</td><td>LEAVE</td><td class="n">North −1</td><td>template; wiki</td></tr>
-<tr><td>M17g</td><td>OTHER NORTH, TRUST, CURIOUS, UNDERSTANDING</td><td class="n">North +1</td><td>template</td></tr>
+<tr><td>M17g / M17g2</td><td>Initial OTHER NORTH, TRUST, CURIOUS; follow-up UNDERSTANDING or another remaining response</td><td class="n">North +1</td><td>template</td></tr>
 <tr><td>M17g</td><td>AGGRESSIVE, no answer</td><td class="n">North −1</td><td>template (DEFAULT/TIMEOUT)</td></tr>
 <tr><td>M17h</td><td>REACT (SHARE MEMORIES)</td><td class="n">North +2, Lover</td><td>template LargeUp; Relationship_Stat “Rises to Lover”</td></tr>
 <tr><td>M17k–M18b</td><td>ten androids freed</td><td class="n">Jericho +1 once</td><td>wiki only (“around 10”); counts and group size are the benchmark’s</td></tr>
@@ -118,7 +118,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li><b>Simon’s rescue threshold.</b> Template “has a good relationship with Markus”; Simon page “at least Friend”; PowerPyx “positive (friendly)”; the chapter wiki Note “Markus is not unpopular” (the old version used Jericho’s regard); commenters disagree on Neutral. The benchmark uses Simon’s own regard at Warm or above.</li>
 <li><b>“Friend or higher”</b> for North’s story is the benchmark’s Warm level (its first above Neutral), read after the follow-up’s arrow.</li>
 <li><b>No answer</b> to North’s follow-up is offered as an option (“Say nothing more and let it drop.”), as is DON’T REACT for the connect timeout.</li>
-<li><b>The follow-up is asked once.</b> PowerPyx’s “UNDERSTANDING &gt; TRUST” suggests it may repeat.</li>
+<li><b>Two response stages.</b> Video shows the initial answer followed by a menu offering UNDERSTANDING; UNDERSTANDING then leads to the story without another TRUST menu.</li>
 <li><b>The second ATTACK</b> goes straight into the fight; the template’s “See ATTACK” could mean CONFIRM / ABANDON again.</li>
 <li><b>The fight</b> is a risk roll of 0.35 (no published odds). PUSH is a choice inside it.</li>
 <li><b>DON’T SHOOT</b> carries no arrows (SACRIFICE’s sit on that option in the template), though Relationship_Stat lists the rescue endings under Jericho large increase.</li>
@@ -144,7 +144,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <ul class="check">
 <li>Whether a Neutral Simon still saves Markus after SACRIFICE (benchmark: no; Warm or above).</li>
 <li>At what North level she tells her story (benchmark: Warm, i.e. three small ups above Neutral).</li>
-<li>Whether North’s follow-up prompt repeats after CURIOUS or UNDERSTANDING.</li>
+<li>Unobserved continuation and relationship conditions beyond the filmed initial-answer → UNDERSTANDING sequence remain unverified.</li>
 <li>After STAND GROUND then ATTACK: is there a CONFIRM / ABANDON again?</li>
 <li>Whether a rescued lost fight (DON’T SHOOT, John or Simon saves him) shows a Jericho arrow.</li>
 <li>What REVENGE does, and whether INTERVENE (the owner) shows any stat.</li>
@@ -152,5 +152,5 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li>How many failed inputs lose the fight, and whether Push appears every time.</li>
 </ul>
 </main>
-</body>
+<p>Story 1.9.11: Initial OTHER NORTH / TRUST / AGGRESSIVE / CURIOUS precedes a follow-up with UNDERSTANDING replacing the selected response; each answer has its own arrow. UNDERSTANDING proceeds without another menu (docs/research/video-evidence/ch28/ch28-05-rFlREhocvLI-00-14.png, ch28-05-rFlREhocvLI-00-59.png and ch28-05-rFlREhocvLI-01-41.png). Other relationship and unobserved continuation gates remain unchanged.</p></body>
 </html>

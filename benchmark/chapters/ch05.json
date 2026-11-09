@@ -268,6 +268,14 @@
      "painterActivity": "piano"
     },
     "outcome": "{{Markus}} moves the stool and sits down at the piano, thinking about what to play."
+   },
+   {
+    "id": "3",
+    "text": "WAIT: do nothing while {{Carl}} finishes breakfast.",
+    "sets": {
+     "painterActivity": "none"
+    },
+    "outcome": "{{Markus}} waits while {{Carl}} finishes breakfast."
    }
   ],
   "situationWhen": [
@@ -284,7 +292,7 @@
     "text": "Before long {{Carl}} switches the TV off: “Television: off. Mankind is so depressing… Nothing but greed, stupidity and violence… 5,000 years of civilization just to get to where we are…”"
    }
   ],
-  "adaptationNote": "The chart’s checkpoint FIND SOMETHING TO DO and its choice group PLAY CHESS / READ BOOK / PLAY PIANO, in the chart’s order with the chart’s labels (also the game’s objectives). One pastime per playthrough (PowerPyx: “You can pick one side activity to do and the story will progress automatically”). The choice is stored as `painterActivity` (chess, book, piano) for Night of the Soul, where it decides whether Markus can look at the chessboard, browse books or play the piano if Carl is alive. Not offered: doing nothing, which the wiki and transcript allow (“Don’t Find Something To Do”: Carl finishes his breakfast and gives the same speech) but the chart does not draw. Carl switching the TV off is the transcript’s “after some time” line, shown when Markus spent the time on the news. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat).",
+  "adaptationNote": "The chart’s checkpoint FIND SOMETHING TO DO and its choice group PLAY CHESS / READ BOOK / PLAY PIANO, in the chart’s order with the chart’s labels (also the game’s objectives). One pastime per playthrough (PowerPyx: “You can pick one side activity to do and the story will progress automatically”). The choice is stored as `painterActivity` (chess, book, piano) for Night of the Soul, where it decides whether Markus can look at the chessboard, browse books or play the piano if Carl is alive. Carl switching the TV off is the transcript’s “after some time” line, shown when Markus spent the time on the news. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat). Story 1.9.11: Waiting without an activity reaches the existing speech and studio instruction (docs/research/video-evidence/ch05/ch05-08-Girel6zYFVo-02-32.png and ch05-08-Girel6zYFVo-02-52.png). No precise idle timer is inferred.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/The_Painter",
    "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
@@ -294,7 +302,8 @@
    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg",
    "https://detroit-become-human.fandom.com/wiki/Night_of_the_Soul"
-  ]
+  ],
+  "waitRules": true
  },
  {
   "id": "M01g",

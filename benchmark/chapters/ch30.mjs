@@ -113,6 +113,12 @@ export const state={
  ch30NorthWounded:false,ch30MarkusDied:false,ch30JerichoBlown:'none',
 };
 export const labels={
+ ch30Car:"Journey to Jericho",
+ ch30Explore:"Exploration of Jericho",
+ ch30Run:"Escape from the raid",
+ ch30EndingCards:"Endings reached during the raid",
+ markusActive:"Markus continues leading",
+
  bomb:'Radioactive bomb detonator kept',ch30NorthWounded:'North wounded at Jericho',ch30MarkusDied:'Markus died at Jericho',ch30JerichoBlown:'Jericho explosives activated',
  ch30KaraEnding:'Crossroads ending (Kara)',ch30MarkusEnding:'Crossroads ending (Markus)',ch30ConnorEnding:'Crossroads ending (Connor)',
  ch30Leader:'Leader of Jericho after Crossroads',ch30MarkusExiled:'Markus ousted from Jericho',ch30MarkusReturned:'Ousted Markus went back',

@@ -3,7 +3,7 @@
   "id": 28,
   "title": "Freedom March",
   "character": "Markus",
-  "note": "Rebuilt on 6 November 2026 to the PowerPyx 100% chart (66 boxes, 62 labels, seven endings) and the game’s own text (the detroitbecometext template: 16 prompts, 32 arrows). The roof: TIME TO REFLECT, ENJOY TIME ALONE (mirror, piano, beam, two magazines), NORTH ARRIVES and five dialogue prompts, the last of which can end in SHARE MEMORIES (North becomes a Lover: no kiss here) or NORTH LEAVES. If Simon was left alive on the tower roof and never found: REUNITED IN JERICHO. The mall and street: FREE YOUR PEOPLE conversions, the owner (CONVINCE / INTERVENE), the delivery androids block the road, OPEN MANHOLE. The march: CONVERT AX400 / ANDROID WORKER, CONVERT ANDROIDS, HACK SCREENS, CHANT (eight slogans), the policeman (RAISE HANDS / ADVANCE). The plaza: ATTACK / STAND GROUND / DISPERSE, CONFIRM / ABANDON, a second ATTACK / STAND GROUND / DISPERSE, CHARGE / STAY / DISPERSE after the police open fire, CHARGE / SACRIFICE / RUN AWAY under fire, the fight (a risk roll, with PUSH), REVENGE / SPARE or SHOOT / DON’T SHOOT. Endings: MARKUS FLED, MARKUS STOOD HIS GROUND AND WAS KILLED, JOHN GAVE HIS LIFE TO SAVE MARKUS, SIMON GAVE HIS LIFE TO SAVE MARKUS, POLICE GUNNED MARKUS DOWN, MARKUS COMMITTED SUICIDE, MARKUS DEFEATS THE POLICE. Markus dies in three; North then leads Jericho. Researched in docs/research/chapters/ch28-freedom-march.md; recap in docs/chapters/ch28-freedom-march-chapter-recap.html.",
+  "note": "Rebuilt on 6 November 2026 to the PowerPyx 100% chart (66 boxes, 62 labels, seven endings) and the game’s own text (the detroitbecometext template: 16 prompts, 32 arrows). The roof: TIME TO REFLECT, ENJOY TIME ALONE (mirror, piano, beam, two magazines), NORTH ARRIVES and five dialogue prompts, the last of which can end in SHARE MEMORIES (North becomes a Lover: no kiss here) or NORTH LEAVES. If Simon was left alive on the tower roof and never found: REUNITED IN JERICHO. The mall and street: FREE YOUR PEOPLE conversions, the owner (CONVINCE / INTERVENE), the delivery androids block the road, OPEN MANHOLE. The march: CONVERT AX400 / ANDROID WORKER, CONVERT ANDROIDS, HACK SCREENS, CHANT (eight slogans), the policeman (RAISE HANDS / ADVANCE). The plaza: ATTACK / STAND GROUND / DISPERSE, CONFIRM / ABANDON, a second ATTACK / STAND GROUND / DISPERSE, CHARGE / STAY / DISPERSE after the police open fire, CHARGE / SACRIFICE / RUN AWAY under fire, the fight (a risk roll, with PUSH), REVENGE / SPARE or SHOOT / DON’T SHOOT. Endings: MARKUS FLED, MARKUS STOOD HIS GROUND AND WAS KILLED, JOHN GAVE HIS LIFE TO SAVE MARKUS, SIMON GAVE HIS LIFE TO SAVE MARKUS, POLICE GUNNED MARKUS DOWN, MARKUS COMMITTED SUICIDE, MARKUS DEFEATS THE POLICE. Markus dies in three; North then leads Jericho. Researched in docs/research/chapters/ch28-freedom-march.md; recap in docs/chapters/ch28-freedom-march-chapter-recap.html. Story 1.9.11: Initial OTHER NORTH / TRUST / AGGRESSIVE / CURIOUS precedes a follow-up with UNDERSTANDING replacing the selected response; each answer has its own arrow. UNDERSTANDING proceeds without another menu (docs/research/video-evidence/ch28/ch28-05-rFlREhocvLI-00-14.png, ch28-05-rFlREhocvLI-00-59.png and ch28-05-rFlREhocvLI-01-41.png). Other relationship and unobserved continuation gates remain unchanged.",
   "source": "https://detroit-become-human.fandom.com/wiki/Freedom_March",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Freedom_March",
@@ -159,7 +159,7 @@
    "chapter": 28,
    "character": "Markus",
    "title": "North’s past and shared memories",
-   "context": "Markus can ask about North’s past; if she is not hostile she deflects, and a follow-up decides whether she tells him (“A doll in a distributor… I strangled him… and I ran away…”). Then he can take her hand.",
+   "context": "Markus can ask about North’s past; if she is not hostile she deflects, and a follow-up decides whether she tells him (“A doll in a distributor… I strangled him… and I ran away…”). Then he can take her hand. Story 1.9.11: Initial OTHER NORTH / TRUST / AGGRESSIVE / CURIOUS precedes a follow-up with UNDERSTANDING replacing the selected response; each answer has its own arrow. UNDERSTANDING proceeds without another menu (docs/research/video-evidence/ch28/ch28-05-rFlREhocvLI-00-14.png, ch28-05-rFlREhocvLI-00-59.png and ch28-05-rFlREhocvLI-01-41.png). Other relationship and unobserved continuation gates remain unchanged.",
    "options": [
     {
      "label": "NORTH’S PAST",
@@ -172,8 +172,13 @@
      "target": null
     },
     {
-     "label": "OTHER NORTH (locked) / TRUST / CURIOUS / UNDERSTANDING",
-     "effect": "North small up; she tells her story if friend or higher, else leaves.",
+     "label": "Initial: OTHER NORTH (locked) / TRUST / CURIOUS",
+     "effect": "North small up; opens a follow-up response group.",
+     "target": null
+    },
+    {
+     "label": "Follow-up: UNDERSTANDING or another remaining response",
+     "effect": "UNDERSTANDING has its own North small up and proceeds to the story if friend or higher. The initial selected response is absent. Other continuation gates remain as previously modeled.",
      "target": null
     },
     {
@@ -210,10 +215,11 @@
     "scenes": [
      "M17f",
      "M17g",
+     "M17g2",
      "M17h"
     ],
     "status": "implemented",
-    "note": "Three decision scenes. Hostile = the benchmark’s Hostile level, checked after NORTH’S PAST’s arrow; friend or higher = Warm or Friend, checked after the follow-up’s arrow. REACT sets northLover (and the pre-rebuild northBond)."
+    "note": "Four decision scenes under pastFollowupRules: initial answer, follow-up with UNDERSTANDING, then memory sharing if the relationship gate opens. Older snapshots retain the flat response group."
    }
   },
   {

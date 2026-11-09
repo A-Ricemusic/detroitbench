@@ -38,7 +38,14 @@ export const state={
  ch29Room:{unlocked:false,open:false,time:ROOM_TIME,clock:'plenty',guesses:[],seen:{},done:{},talk:null,talking:false,voice:false,located:null,timedOut:false,mapUnlinked:false},
  ch29Outcome:null                      // the chart’s ending label
 };
-export const labels={ch29Route:'Route through the station',ch29Help:'Hank’s answer when Perkins arrives',ch29Gavin:'Gavin at the archive door',ch29Outcome:'Last Chance, Connor ending',hankResigned:'Hank resigned'};
+export const labels={
+ ch29Garden:"Visit to Amanda’s garden",
+ ch29Amanda:"Conversation with Amanda",
+ ch29SavedHank:"Connor previously saved Hank",
+ ch29NeverEmpathy:"Connor showed no empathy",
+ ch29Room:"Evidence room examined",
+ connorOutcome:"Connor’s ending",
+ch29Route:'Route through the station',ch29Help:'Hank’s answer when Perkins arrives',ch29Gavin:'Gavin at the archive door',ch29Outcome:'Last Chance, Connor ending',hankResigned:'Hank resigned'};
 export const deathEffect={}; // no arrow on any of the chapter’s three Connor deaths (template; wiki on the Gavin death)
 
 // ------------------------------------------------------------ inputs

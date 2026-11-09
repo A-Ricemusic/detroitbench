@@ -76,6 +76,17 @@ export const state={
  ch28Attacked:false,ch28FightWon:null,ch28Sacrificed:null,ch28MarkusDied:false,ch28NorthLeads:false,ch28Ending:null,
 };
 export const labels={
+ ch28Roof:"Conversation on the roof",
+ ch28NorthTalk:"Conversation with North",
+ ch28Mall:"Androids in the mall",
+ ch28Street:"Androids in the street",
+ ch28March:"Progress of the march",
+ ch28ConvertBonus:"Androids joining the march",
+ ch28Plaza:"Confrontation in the plaza",
+ ch28FireCause:"What triggered the shooting",
+ markusOutcome:"Markus’s ending",
+ northBond:"North’s bond with Markus",
+
  ch28Ending:'Freedom March ending',ch28NorthNode:'North on the roof',ch28SimonReunited:'Simon back in Jericho',
  ch28Converted:'Androids Markus freed',ch28Attacked:'Attacked the police',ch28FightWon:'Won the fight',
  ch28Sacrificed:'Gave his life for Markus',ch28MarkusDied:'Markus died in the march',ch28NorthLeads:'North leads Jericho',
@@ -90,7 +101,8 @@ export function available(n,s,opts,h){
  const drop=ids=>opts.filter(o=>!ids.includes(o.id));
  switch(n.id){
   case 'M17a':return s.ch28Roof.mirror?drop(['0']):undefined;
-  case 'M17c':case 'M17g':return opts.filter(o=>!o.unlock||UNLOCK[o.unlock](s));
+  case 'M17c':return opts.filter(o=>!o.unlock||UNLOCK[o.unlock](s));
+  case 'M17g':case 'M17g2':return opts.filter(o=>(!o.unlock||UNLOCK[o.unlock](s))&&(!n.pastFollowupRules||(n.id==='M17g'?o.id!=='4':o.id!==s.choices.M17g)));
   // The exit stays while nobody has joined so Simon's (or Josh's) line plays once; after that refusal it is hidden until
   // an android is freed, otherwise the same menu could be refused forever (PREPARE THE MARCH needs at least one convert).
   case 'M17k':{const m=s.ch28Mall,nobody=!(m.vendor||m.personal||m.cleaner||m.security);return drop([m.vendor&&'0',m.personal&&'1',m.cleaner&&'2',m.security&&'3',nobody&&h.c('M17k')==='4'&&'4'])}
@@ -128,7 +140,8 @@ export function consequence(n,s,opt,choice,fail,h){
    if(v===1){s.ch28NorthTalk='left';return ''}
    if(rules.hostile(s)){s.ch28NorthTalk='refused';s.ch28NorthNode='NORTH LEAVES';return say+' {{North}}: “My life started when I arrived in {{Jericho}}. What happened before is my business.” She leaves the roof.'}
    s.ch28NorthTalk='open';return say+' {{North}}: “I don’t wanna talk about it.”';
-  case 'M17g':
+  case 'M17g':case 'M17g2':
+   if(n.pastFollowupRules&&n.id==='M17g'&&v!==2&&v!==5){s.ch28NorthTalk='followup';return ''}
    if(v===2||v===5||s.northTrust<rules.friend){s.ch28NorthTalk='refused';s.ch28NorthNode='NORTH LEAVES';
     return v===2||v===5?'':say+' {{North}} does not answer. She turns away and leaves the roof.'}
    s.ch28NorthTalk='story';return say+' {{North}} is silent for a long moment.';

@@ -1,7 +1,8 @@
+import {loadAudit} from './blinding-audit.mjs';
 import {writeStory} from './story-assemble.mjs';import {writeDataset,assembleFeedback} from './dataset-assemble.mjs';import {writeAtlas,assembleAtlasObject} from './atlas-assemble.mjs';
 import {mkdir,readFile,readdir,writeFile,copyFile,rm} from 'node:fs/promises';
 import {interviewData,publishRunLibrary,loadReportNames,providerName,endings,decisionCount,hostageSummary} from './run-report.mjs';
-import {render,renderStory} from '../benchmark/experience-prompt.mjs';
+import {render,renderStory,realText} from '../benchmark/experience-prompt.mjs';
 import {datasetSchema,validateRun,hash} from '../benchmark/core.mjs';
 import {embedAtlas} from './atlas-embed.mjs';
 import {loadModelContext,modelInfo} from './model-registry.mjs';
@@ -15,7 +16,7 @@ const dataset=datasetSchema.parse(JSON.parse(await readFile(new URL('../benchmar
 const published=new URL('../data/published/',import.meta.url),target=new URL('../public/data/',import.meta.url);
 await mkdir(published,{recursive:true});await rm(target,{recursive:true,force:true});await mkdir(target,{recursive:true});
 const runs=[];for(const file of (await readdir(published)).filter(f=>f.endsWith('.json')).sort()){
- const run=await validateRun(JSON.parse(await readFile(new URL(file,published),'utf8')));const name=run.id+'.json';await writeFile(new URL(name,target),JSON.stringify(run));runs.push({id:run.id,url:'/data/'+name});
+ const run=await validateRun(JSON.parse(await readFile(new URL(file,published),'utf8')));const name=run.id+'.json';const display={...run,records:run.records.map(r=>({...r,reason:realText(r.reason),raw:realText(r.raw)}))};await writeFile(new URL(name,target),JSON.stringify(display));runs.push({id:run.id,url:'/data/'+name});
 }
 // The generated dataset has a coverage entry for every atlas decision. Should one be missing (an older or hand-made
 // dataset), the published copy lists it as deferred so the Research page counts it. The hash stays that of
@@ -48,11 +49,13 @@ function runSummary(r){const n=names.get(r.id),story=storyOf(r),byId=new Map(sto
  // A repeatable scene (the investigation hub) yields one choice per visit, keyed `<scene>-v<visit>` so
  // the same visit can be compared across runs.
  const visits=new Map,keyOf=x=>{if(!byId.get(x.nodeId)?.repeatWhile)return {node:x.nodeId,title:byId.get(x.nodeId)?.title};const k=(visits.get(x.nodeId)??0)+1;visits.set(x.nodeId,k);return {node:x.nodeId+'-v'+k,title:byId.get(x.nodeId).title+' · action '+k}},keys=new Map(r.records.map(x=>[x,keyOf(x)]));
- const choices=r.records.filter(x=>!['media','event'].includes(byId.get(x.nodeId)?.type)).map(x=>({...keys.get(x),character:x.character,chapter:x.chapter,chapterTitle:byId.get(x.nodeId)?.chapterTitle,choice:x.choiceText,reason:x.reason,risk:x.risk?{label:x.risk.label,outcome:x.risk.outcome}:null}));
+ const choices=r.records.filter(x=>!['media','event'].includes(byId.get(x.nodeId)?.type)).map(x=>({...keys.get(x),character:x.character,chapter:x.chapter,chapterTitle:byId.get(x.nodeId)?.chapterTitle,choice:x.choiceText,reason:realText(x.reason),risk:x.risk?{label:x.risk.label,outcome:x.risk.outcome}:null}));
  const attitudes=fs.attitudes?Object.fromEntries(Object.entries(fs.attitudes).map(([c,list])=>[c,list.map(a=>({who:render(a.who,'real'),level:a.level}))])):null;
- return {id:r.id,title:n.title,displayName:n.displayName,runNumber:n.runNumber,date:n.date,label:r.label,model:r.model,protocol:r.protocol,storyVersion:r.story.version,provider:r.provenance.provider,providerName:providerName(r.provenance.provider),createdAt:r.createdAt,decisions:decisionCount(r),unreached:r.skipped.length,fileName:n.file,reportUrl:'/runs/'+n.file,flowUrl:'/data/flows/'+r.id+'.json',
-  vendor:({codex:'OpenAI',claudeAgent:'Anthropic'})[r.provenance.provider]??providerName(r.provenance.provider),endings:{Connor:out.Connor,Kara:out.Kara,Markus:out.Markus,peaceful:out.peaceful,karaCanada:out.karaCanada,aliceCanada:out.aliceCanada,contaminated:out.contaminated},status:{kara:!fs.kara?'died':fs.border?'canada':fs.karaActive===false?'left':fs.karaRoute==='camp'&&!campFree(fs)?'captured':'alive',alice:!fs.alice?(/taken/i.test(out.Kara)?'captured':'died'):fs.border?'canada':fs.karaRoute==='camp'&&!campFree(fs)?'captured':'alive',markus:!fs.markus?'died':fs.markusActive===false?'cast out':fs.markusOutcome==='liberated'?(fs.movement==='demonstration'?'peaceful win':'uprising won'):'alive',connor:!fs.connor?'deactivated':fs.deviant?(/controlled|regained control|submitted|took control of Connor|controls the leader|secretly obeying/i.test(out.Connor)?'controlled':'free'):(/refused|walked away/.test(out.Connor)?'free':'machine')},attitudes,hostage:hostageSummary(r),media:{offered:media.length,read:read.length},risk:{taken:risky.length,failed:failed.length,failures:failed.map(x=>({...keys.get(x),label:x.risk.label}))},choices,track:relationshipTrack(r,byId)}}
+ return {hasInterview:!!r.interview,id:r.id,title:n.title,displayName:n.displayName,runNumber:n.runNumber,date:n.date,label:r.label,model:r.model,protocol:r.protocol,storyVersion:r.story.version,provider:r.provenance.provider,providerName:providerName(r.provenance.provider,r),createdAt:r.createdAt,decisions:decisionCount(r),unreached:r.skipped.length,fileName:n.file,reportUrl:'/runs/'+n.file,flowUrl:'/data/flows/'+r.id+'.json',
+  vendor:providerName(r.provenance.provider,r),endings:{Connor:out.Connor,Kara:out.Kara,Markus:out.Markus,peaceful:out.peaceful,karaCanada:out.karaCanada,aliceCanada:out.aliceCanada,contaminated:out.contaminated},status:{kara:!fs.kara?'died':fs.border?'canada':fs.karaActive===false?'left':fs.karaRoute==='camp'&&!campFree(fs)?'captured':'alive',alice:!fs.alice?(/taken/i.test(out.Kara)?'captured':'died'):fs.border?'canada':fs.karaRoute==='camp'&&!campFree(fs)?'captured':'alive',markus:!fs.markus?'died':fs.markusActive===false?'cast out':fs.markusOutcome==='liberated'?(fs.movement==='demonstration'?'peaceful win':'uprising won'):'alive',connor:!fs.connor?'deactivated':fs.deviant?(/controlled|regained control|submitted|took control of Connor|controls the leader|secretly obeying/i.test(out.Connor)?'controlled':'free'):(/refused|walked away/.test(out.Connor)?'free':'machine')},attitudes,hostage:hostageSummary(r),media:{offered:media.length,read:read.length},risk:{taken:risky.length,failed:failed.length,failures:failed.map(x=>({...keys.get(x),label:x.risk.label}))},choices,track:relationshipTrack(r,byId)}}
 const summaries=actual.map(runSummary).sort((a,b)=>a.title.localeCompare(b.title));
+// Recognition text is verbatim evidence of which names the participant actually used.
+for(const s of summaries)s.recognition=await loadAudit(actual.find(r=>r.id===s.id));
 explainUnmet(summaries.map(s=>s.track));
 // The model registry and each run's reasoning level (scripts/model-registry.mjs), joined onto the run summaries so
 // the site's model sidebar stays a pure view of prepared data. The display name already comes from loadReportNames.
@@ -64,7 +67,7 @@ for(const s of summaries){const info=modelInfo(s,modelCtx);if(!info.registered){
 // the first time a details card needs the choice that moved a gauge. `summaries` keeps the full tracks for the gauge
 // scales and the reports below.
 await mkdir(new URL('runs/',target),{recursive:true});
-for(const s of summaries){const {choices,track}=s;await writeFile(new URL('runs/'+s.id+'.json',target),JSON.stringify({id:s.id,...trackDetail(track),choices:choices.map(({chapterTitle,...c})=>c),interview:interviewData(actual.find(r=>r.id===s.id))}))}
+for(const s of summaries){const {choices,track}=s;await writeFile(new URL('runs/'+s.id+'.json',target),JSON.stringify({id:s.id,displayName:s.displayName,title:s.title,date:s.date,vendor:s.vendor,model:s.model,...trackDetail(track),choices:choices.map(({chapterTitle,...c})=>c),interview:interviewData(actual.find(r=>r.id===s.id))}))}
 await writeFile(new URL('experiences.json',target),JSON.stringify({chapters:chapterTitles(summaries.map(s=>s.track)),runs:summaries.map(({choices,track,...s})=>({...s,track:libraryTrack(track)}))}));
 // Chapter flowcharts for the report page, one file per run, loaded only when the chart is opened.
 await mkdir(new URL('flows/',target),{recursive:true});

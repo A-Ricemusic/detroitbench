@@ -3,7 +3,7 @@
   "id": 16,
   "title": "Time to Decide",
   "character": "Markus",
-  "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart (10 nodes and the phase label [ EXPLORE JERICHO ]) and the game’s text (the detroitbecometext template resolved against the string table). INSIDE JERICHO (checkpoint) → [ EXPLORE JERICHO: TALK TO DYING ANDROID, TALK TO JOSH, TALK TO NORTH, TALK TO DAMAGED ANDROID, LET THERE BE LIGHT, all optional ] → TALK TO LUCY and CHECK EMPTY CRATE (both required, in parallel) → TALK TO SIMON → MARKUS HATCHED A PLAN, the only ending. Three prompts off the chart: the arrival (TRAIL / ANDROID / JERICHO / REFUGE / FREE?, then LOST / SOMBER / LUCID / DIRECT) and North’s topics (TIME HERE? / WOUNDED / JERICHO / YOU / SPARE PARTS). Arrows, all small: Josh +1 for talking to him; North +1 for talking to her, −1 for YOU, +1 at the Simon scene; Simon +1 at the Simon scene. No Jericho arrow (the wiki lists one at the Simon scene; the template does not). No probability, timer, public-opinion or instability change. Researched in docs/research/chapters/ch16-time-to-decide.md.",
+  "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart (10 nodes and the phase label [ EXPLORE JERICHO ]) and the game’s text (the detroitbecometext template resolved against the string table). INSIDE JERICHO (checkpoint) → [ EXPLORE JERICHO: TALK TO DYING ANDROID, TALK TO JOSH, TALK TO NORTH, TALK TO DAMAGED ANDROID, LET THERE BE LIGHT, all optional ] → TALK TO LUCY and CHECK EMPTY CRATE (both required, in parallel) → TALK TO SIMON → MARKUS HATCHED A PLAN, the only ending. Three prompts off the chart: the arrival (TRAIL / ANDROID / JERICHO / REFUGE / FREE?, then LOST / SOMBER / LUCID / DIRECT) and North’s topics (TIME HERE? / WOUNDED / JERICHO / YOU / SPARE PARTS). Arrows, all small: Josh +1 for talking to him; North +1 for talking to her, −1 for YOU, +1 at the Simon scene; Simon +1 at the Simon scene. No Jericho arrow (the wiki lists one at the Simon scene; the template does not). No probability, timer, public-opinion or instability change. Researched in docs/research/chapters/ch16-time-to-decide.md. Story 1.9.11: YOU shows RESENTFUL before Simon (docs/research/video-evidence/ch16/ch16-03-3y5R9Td2TLg-25-25.png). One additional downward point is the smallest local calibration fitting the existing bands, not a measured arrow size.",
   "source": "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
@@ -276,7 +276,7 @@
    "chapter": 16,
    "character": "Markus",
    "title": "North’s topics (not a chart node)",
-   "context": "The template’s prompt in “Talk with North”; her closing line: “If you came here for comfort, you came to the wrong place.”",
+   "context": "The template’s prompt in “Talk with North”; her closing line: “If you came here for comfort, you came to the wrong place.” Story 1.9.11: YOU shows RESENTFUL before Simon (docs/research/video-evidence/ch16/ch16-03-3y5R9Td2TLg-25-25.png). One additional downward point is the smallest local calibration fitting the existing bands, not a measured arrow size.",
    "options": [
     {
      "label": "TIME HERE?",
@@ -295,7 +295,7 @@
     },
     {
      "label": "YOU",
-     "effect": "“What do you care?” North −1 (small; template {REL North SmallDown}; wiki “Picking “you” while talking to her”).",
+     "effect": "North small-down icon; benchmark −2 total with a one-point local calibration to reproduce Resentful before Simon. Exact hidden magnitude unmeasured.",
      "target": null
     },
     {
@@ -317,14 +317,14 @@
     "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
     "https://detroit-become-human.fandom.com/wiki/North"
    ],
-   "note": "One topic per talk (template: one choice group, one closing line; not confirmed in game). The Relationship_Stat page’s “Rises to “Neutral” if asked North about “You”” does not fit the template’s icons at face value; open question for the operator.",
+   "note": "One topic per talk remains the template-based abstraction. Video verifies Resentful after YOU before Simon, without uniquely measuring numeric steps or offsets.",
    "status": "Source-backed summary",
    "benchmark": {
     "scenes": [
      "MTD5"
     ],
     "status": "implemented",
-    "note": "A decision cut in from the hold, then back. YOU applies northTrust −1, so the talk nets 0."
+    "note": "A decision cut in from the hold, then back. YOU has a one-point additional downward calibration under youResentfulCalibration; older snapshots retain −1."
    }
   },
   {

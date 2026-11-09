@@ -41,6 +41,18 @@ export const state={
 };
 
 export const labels={
+ ch06Firm:"Connor refused to wait in the car",
+ ch06Searching:"Search for the deviant",
+ ch06Phase:"Investigation progress",
+ ch06Clock:"Time spent investigating",
+ ch06Mood:"Hank’s mood during the investigation",
+ ch06Clues:"Evidence examined at Carlos’s house",
+ ch06QuizStep:"Reconstruction questions answered",
+ ch06WrongLine:"Incorrect reconstruction answer",
+ ch06UnsolvedBy:"Who ended the investigation",
+ suspect:"Suspect found",
+ suspectAlive:"Suspect alive",
+
  ch06Drink:'Hank’s drink at the bar',ch06Evidence:'Evidence reviewed (of 10)',ch06Knows:'Connor knows what happened',
  ch06Mistakes:'Wrong answers in the reconstruction',ch06Outcome:'Partners outcome',ch06DeviantFound:'Deviant found in Partners',
  ch06SawWriting:'Connor examined the writing on the wall',ch06KnowsRA9:'Connor knows about rA9',ch06SawStatue:'Connor has seen the statue',

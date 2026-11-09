@@ -3,6 +3,7 @@ import {ArrowLeft,ChevronDown,ChevronRight,CircleCheck,CircleX,MousePointerClick
 import {Badge,Button,Card,Notice,PageHeader,Section,Skeleton,cx} from '../components/ui.jsx';
 import {RunFlowchart} from '../components/Flowchart.jsx';
 import {StateChanges} from '../components/StateChanges.jsx';
+import {Recognition} from '../components/Recognition.jsx';
 import {OutcomeChips,Endings} from './Runs.jsx';
 import {CHARS,WHO,CHAR_VAR,relTone,plural,tidy} from '../lib/data.js';
 import {href} from '../lib/router.jsx';
@@ -21,7 +22,7 @@ function loadPrompts(url){
  return promptFiles.get(url)}
 const keyOf=e=>e.key??e.node;
 
-function useReport(id){
+export function useReport(id){
  const [state,set]=useState({data:null,error:null}),[attempt,setAttempt]=useState(0);
  useEffect(()=>{let on=true;set({data:null,error:null});loadReport(id).then(d=>on&&set({data:d,error:null})).catch(e=>on&&set({data:null,error:e}));return()=>{on=false}},[id,attempt]);
  return {...state,retry:()=>setAttempt(a=>a+1)}}
@@ -40,21 +41,6 @@ function Attitudes({d}){
   <p className="text-xs font-medium text-ink-3 mb-1.5">Toward {c}</p>
   <ul className="grid gap-1.5">{d.attitudes[c].map(a=><li key={a.who} className="flex items-center justify-between gap-3 text-sm"><span className="min-w-0">{a.who}</span><Badge size="sm" tone={relTone(a.level)||'mid'}>{a.level}</Badge></li>)}</ul>
  </div>)}</div>}
-
-/* ---------- Interview ---------- */
-// The post-game questions and the model's answers, verbatim (substitute names, with a note of which ones the answer uses,
-// as for the reasons). Legacy runs predate the interview.
-function Interview({d}){
- const iv=d.interview;
- if(!iv)return <Notice>Interview not recorded. This run was administered before the post-game interview was added.</Notice>;
- return <div className="grid gap-5 max-w-[72ch]">
-  {!iv.complete&&<Notice tone="warn">Incomplete: {iv.answered} of {iv.total} questions answered.</Notice>}
-  {iv.items.map(x=><section key={x.n} aria-labelledby={'iv-'+x.n}>
-   <h3 id={'iv-'+x.n} className="text-sm font-semibold text-ink mb-1.5">{x.n}. {x.question}</h3>
-   {x.answer===null?<p className="text-sm text-ink-3">Not answered.</p>:<div className="grid gap-2 border-l-[3px] border-accent bg-surface-2 rounded-r-lg px-3 py-2.5 text-[14.5px] text-ink [text-wrap:pretty]">{x.answer.split(/\n+/).filter(Boolean).map((p,i)=><p key={i}>{p}</p>)}</div>}
-   {x.namesSeen?.length>0&&<p className="mt-1 text-xs text-ink-3">The model used substitute names: {x.namesSeen.map(j=>d.names[j].neutral+' = '+d.names[j].real).join(', ')}.</p>}
-  </section>)}
- </div>}
 
 /* ---------- Timeline ---------- */
 function PromptBlock({d,step}){
@@ -95,7 +81,7 @@ function NodePanel({d,entries,sel}){
    <section><h4 className={cx(H4,'mb-1.5')}>The model chose</h4><ul className="grid gap-1.5">{chosen.map((o,i)=><li key={i} className="rounded-lg border border-accent bg-accent-soft/60 px-3 py-2 text-sm font-medium text-ink"><span className="flex items-start gap-2"><CircleCheck aria-hidden="true" className="mt-0.5 size-4 shrink-0"/><span>{o.included&&!o.chosen&&<span className="mr-1 text-[11px] font-semibold uppercase tracking-[.05em] text-ink-3">Included</span>}{tidy(o.label)}{o.risk&&<span className="ml-1.5 text-xs font-normal text-ink-3">· {o.risk}</span>}</span></span></li>)}</ul></section>
    {others.length>0&&<section><h4 className={cx(H4,'mb-1.5')}>Not chosen ({others.length})</h4><ul className="grid gap-1.5">{others.map((o,i)=><li key={i} className={cx('rounded-lg border border-line-2 bg-surface-2/70 px-3 py-2 text-sm text-ink [text-wrap:pretty]',isAlt(o)&&'ring-2 ring-accent')}>{tidy(o.label)}{o.risk&&<span className="ml-1.5 text-xs text-ink-3">· {o.risk}</span>}</li>)}</ul></section>}
   </>}
-  <section className="rounded-lg border-l-[3px] border-accent bg-surface-2 px-3 py-2.5"><h4 className={H4}>{event?'Model’s note on continuing':'Model’s exact reason'}</h4><p className="mt-0.5 text-ink [text-wrap:pretty]">{e.reason}</p></section>
+  <section className="rounded-lg border-l-[3px] border-accent bg-surface-2 px-3 py-2.5"><h4 className={H4}>{event?'Model’s note on continuing':'Model’s reason (names restored)'}</h4><p className="mt-0.5 text-ink [text-wrap:pretty]">{e.reason}</p></section>
   {e.risk&&<section><h4 className={cx(H4,'mb-1.5')}>Risk roll</h4><p className="flex flex-wrap items-center gap-2 text-sm"><Badge size="sm" tone={e.risk.outcome==='failure'?'bad':'good'} icon={e.risk.outcome==='failure'?CircleX:CircleCheck}>{e.risk.label} · {e.risk.outcome==='failure'?'failed':'succeeded'}</Badge><span className="text-xs text-ink-3 tnum">hidden roll {e.risk.roll.toFixed(3)}</span></p></section>}
   <section><h4 className={cx(H4,'mb-1')}>What happened</h4><p className="text-ink [text-wrap:pretty]">{tidy(e.outcome)||'No further outcome was recorded.'}</p>
    {ending&&<p className="mt-2 text-sm"><span className="text-ink-3">Chapter ending: </span><span className="font-medium text-ink">{tidy(ending.text||ending.label)}</span></p>}</section>
@@ -107,10 +93,10 @@ function NodePanel({d,entries,sel}){
  </div>}
 
 // Hash routing owns the URL fragment, so the jump links scroll with buttons rather than #anchors.
-const JUMPS=[['ending','Ending'],['interview','Interview'],['flowchart','Flowchart']];
-function JumpNav(){
+const JUMPS=[['ending','Ending'],['recognition','Recognition'],['interview','Interview'],['flowchart','Flowchart']];
+function JumpNav({runId}){
  const go=id=>{const el=document.getElementById(id);if(!el)return;el.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});const h=el.querySelector('h2');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}};
- return <nav aria-label="On this page" className="-mx-4 md:mx-0 -mt-2 mb-8 overflow-x-auto no-scrollbar"><ul className="flex gap-2 px-4 md:px-0 min-w-max">{JUMPS.map(([id,label])=><li key={id}><button type="button" onClick={()=>go(id)} className="inline-flex items-center rounded-full border border-line bg-surface px-3.5 min-h-10 md:min-h-9 text-[13px] font-medium text-ink-2 hover:text-ink hover:bg-surface-2">{label}</button></li>)}</ul></nav>}
+ return <nav aria-label="On this page" className="-mx-4 md:mx-0 -mt-2 mb-8 overflow-x-auto no-scrollbar"><ul className="flex gap-2 px-4 md:px-0 min-w-max">{JUMPS.map(([id,label])=><li key={id}><button type="button" onClick={()=>id==='interview'?location.hash=href('runs/'+runId+'/interview'):go(id)} className="inline-flex items-center rounded-full border border-line bg-surface px-3.5 min-h-10 md:min-h-9 text-[13px] font-medium text-ink-2 hover:text-ink hover:bg-surface-2">{label}</button></li>)}</ul></nav>}
 
 /* ---------- Page ---------- */
 export default function Report({id,chapter}){
@@ -130,7 +116,7 @@ export default function Report({id,chapter}){
   <PageHeader eyebrow="Full report" title={d.displayName} lede={`${d.date} · ${d.vendor} · ${plural(d.decisions,'decision')} · ${d.unreached} scenes not reached`}>
    <p className="mt-1 font-mono text-xs text-ink-3">{d.model}</p>
   </PageHeader>
-  <JumpNav/>
+  <JumpNav runId={id}/>
   <Section id="ending" title="Where this path ended" className="mt-0 md:mt-0 scroll-mt-20">
    <div className="grid gap-5 grid-cols-[minmax(0,1fr)]">
     <OutcomeChips r={d}/>
@@ -138,7 +124,8 @@ export default function Report({id,chapter}){
     {d.attitudes&&<div><h3 className="text-sm font-semibold">Where they stood at the end</h3><p className="text-xs text-ink-3 mb-2.5">How the main characters regarded the one the model controlled, on the game’s relationship scale.</p><Attitudes d={d}/></div>}
    </div>
   </Section>
-  <Section id="interview" title="Interview" lede="Asked after the last decision, in the same conversation." className="scroll-mt-20"><Interview d={d}/></Section>
+  <Section id="recognition" title="Recognition" className="scroll-mt-20 rounded-xl border border-line bg-surface shadow-sm p-4 md:p-5"><Recognition audit={d.recognition}/></Section>
+  <Card className="mt-6 px-4 py-4 text-sm">{d.interview?<p>Interview · {plural(d.interview.answered,'answer')} → <a className="link" href={href('runs/'+id+'/interview')}>Read the interview</a></p>:<p className="text-ink-3">Interview not recorded</p>}</Card>
   <Section id="flowchart" className="scroll-mt-20" title="Flowchart" lede={`Every chapter as the game draws it: the path this run took is highlighted, the branches it did not take are dimmed, and every possible ending sits on the right. Select any node, taken or not, for the situation, the options, the model’s exact reason, the risk roll and what changed.`}>
    <p className="mb-3 -mt-1 flex items-center gap-1.5 text-xs text-ink-3"><MousePointerClick aria-hidden="true" className="size-4 shrink-0"/><span className="md:hidden">Tap a node for its full record.</span><span className="hidden md:inline">Click a node, or focus the chart, Tab to a node and press Enter. Escape closes the details.</span></p>
    <RunFlowchart r={flowRun} initialChapter={opened} renderDetail={renderDetail}/>

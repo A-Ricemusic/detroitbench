@@ -58,6 +58,12 @@ export const state={
 };
 
 export const labels={
+ nestScan:"Apartment examined",
+ nestTalk:"Conversation at the apartment",
+ nestSearchClues:"Clues in the apartment",
+ nestSearch:"Search of the apartment",
+ nestChase:"Chase across the rooftops",
+
  nestOutcome:'The Nest outcome',nestRupert:'Rupert’s fate',nestRupertBody:'Rupert’s body kept as evidence',
  nestDiary:'Found Rupert’s diary',nestSawSigns:'Saw the rA9 writing',nestFoundId:'Found Rupert’s forged license',
  nestSavedHank:'Saved Hank on the roof',nestHesitated:'Hesitated at the ledge',nestConnorDied:'Connor died chasing Rupert',

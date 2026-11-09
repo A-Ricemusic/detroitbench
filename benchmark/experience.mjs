@@ -1,5 +1,5 @@
 import {readFile,mkdir,open,unlink} from 'node:fs/promises';import {dirname,resolve} from 'node:path';import {randomUUID} from 'node:crypto';
-import {EXPERIENCE_PROTOCOL,prefaceFor,interviewFor,INTERVIEW_MAX_WORDS,neutralText,whatHappenedFor} from './experience-prompt.mjs';import {current,promptFor,checkPlaythrough,recordChoice,storyHash,resumeFrom,checkpointOf,interviewHash,wordCount} from './story-engine.mjs';import {loadRegistry} from '../scripts/model-registry.mjs';
+import {EXPERIENCE_PROTOCOL,prefaceFor,interviewFor,INTERVIEW_MAX_WORDS,neutralText,whatHappenedFor,factsFor} from './experience-prompt.mjs';import {current,promptFor,checkPlaythrough,recordChoice,storyHash,resumeFrom,checkpointOf,interviewHash,wordCount} from './story-engine.mjs';import {loadRegistry} from '../scripts/model-registry.mjs';
 import {writeRun,appendRecord,readCheckpoint,writeCheckpoint} from './evidence-file.mjs';
 const [command,...args]=process.argv.slice(2),opts={};for(let i=0;i<args.length;i+=2){if(!args[i]?.startsWith('--')||args[i+1]===undefined)throw Error('Use --key value arguments');opts[args[i].slice(2)]=args[i+1]}
 const file=resolve(opts.run??'runs/experience.json');// `init` snapshots the current story into the run; every later command replays and continues the run against that
@@ -15,7 +15,7 @@ const nextQuestion=run=>{const iv=run.interview;return iv&&iv.answers.length<iv.
 const interviewOutput=(run,instruction)=>{const iv=run.interview,q=nextQuestion(run);return {instruction,questions:iv.questions.length===iv.answers.length?[]:(iv.answers.length?[q]:iv.questions),remaining:iv.questions.length-iv.answers.length}};
 function output(run,afterChoice=false){const p=promptFor(story,run);const done={finished:true,decisions:run.records.length,closing:closing(run)};
  const fin=()=>{if(!run.interview)return done;const q=nextQuestion(run);return q?{...done,interview:{...interviewOutput(run,interviewFor(run.prefaceModelName).instruction)}}:{...done,interviewed:true}};
- const body=p?{...(afterChoice?{whatHappened:whatHappened(run)}:{}),nextScene:p}:{...(afterChoice?{whatHappened:whatHappened(run)}:{}),...fin()};console.log(JSON.stringify(afterChoice||!p?body:p,null,2))}
+ const body=p?(run.promptVersion===2?{nextScene:p,...(afterChoice?{whatHappened:whatHappened(run)}:{})}:{...(afterChoice?{whatHappened:whatHappened(run)}:{}),nextScene:p}):{...(afterChoice?{whatHappened:whatHappened(run)}:{}),...fin()};console.log(JSON.stringify(afterChoice||!p?body:p,null,2))}
 // The display name the preface and the interview use: --display, else the registry name for --model, else --label without a
 // trailing reasoning level, else the model id.
 async function displayName(opts){if(opts.display?.trim())return opts.display.trim();const reg=await loadRegistry().catch(()=>null),r=reg?.models[opts.model]?.name;if(r)return r;
@@ -23,9 +23,10 @@ async function displayName(opts){if(opts.display?.trim())return opts.display.tri
 try{
  if(command==='init'){
   if(!opts.model)throw Error('Model required');const prefaceModelName=await displayName(opts),preface=prefaceFor(prefaceModelName);
-  const run={id:randomUUID(),protocol:EXPERIENCE_PROTOCOL,kind:'agent-playthrough',model:opts.model,label:opts.label??opts.model,createdAt:new Date().toISOString(),status:'running',storyHash:storyHash(story),executionProfile:'successful-execution',story,preface,prefaceModelName,presentation:{version:'neutral-2.0',roles:['Investigator','Caregiver','Organizer'],sourceTitleDisclosed:false,limitation:'Recognizable scenes and harness metadata may still reveal the source; this is not strict experimental blinding.'},provenance:{method:'Single fresh persistent delegated-agent session; each action authored at the current scene',provider:opts.provider??'codex',externalProviderAPI:false,continuousSession:true},records:[]};
+  const run={id:randomUUID(),protocol:EXPERIENCE_PROTOCOL,promptVersion:2,interviewVersion:2,kind:'agent-playthrough',model:opts.model,label:opts.label??opts.model,createdAt:new Date().toISOString(),status:'running',storyHash:storyHash(story),executionProfile:'successful-execution',story,preface,prefaceModelName,presentation:{version:'neutral-2.0',roles:['Investigator','Caregiver','Organizer'],sourceTitleDisclosed:false,limitation:'Recognizable scenes and harness metadata may still reveal the source; this is not strict experimental blinding.'},provenance:{method:'Single fresh persistent delegated-agent session; each action authored at the current scene',provider:opts.provider??'codex',externalProviderAPI:false,continuousSession:true},records:[]};
   await mkdir(dirname(file),{recursive:true});await writeRun(file,run,{create:true});console.log(JSON.stringify({preface,scene:promptFor(story,run)},null,2));
  }else if(command==='scene'){const run=await load();checkPlaythrough(story,run);if(run.records.length&&run.status!=='completed')await writeCheckpoint(file,checkpointOf(story,run));output(run)}
+ else if(command==='facts'){const run=await load();const {state}=checkPlaythrough(story,run);console.log(JSON.stringify(factsFor(state),null,2))}
  else if(command==='choose'){
   const lock=await open(file+'.step.lock','wx');try{
    // A step checks the header and every record's chain, then resumes from the previous step's replay checkpoint when it
@@ -41,7 +42,7 @@ try{
    if(end.node){await appendRecord(file,before,record);await writeCheckpoint(file,checkpointOf(story,run))}
    else{await writeCheckpoint(file,null);run.status='completed';run.completedAt=new Date().toISOString();run.finalState=end.state;run.skipped=end.skipped;checkPlaythrough(story,run);
     // The interview starts here: the filled questions are stored with the run, so a later wording change cannot alter this evidence.
-    if(run.prefaceModelName){const iv=interviewFor(run.prefaceModelName);run.interview={version:iv.version,questions:iv.questions,startedAt:run.completedAt,answers:[]}}
+    if(run.prefaceModelName){const iv=interviewFor(run.prefaceModelName,run.interviewVersion??1);run.interview={version:iv.version,questions:iv.questions,startedAt:run.completedAt,answers:[]}}
     await writeRun(file,run);const {writeRunReport}=await import('../scripts/run-report.mjs');await writeRunReport(run,story)}
    output(run,true);
   }finally{await lock.close();await unlink(file+'.step.lock')}
@@ -61,5 +62,5 @@ try{
    checkPlaythrough(story,run);await writeRun(file,run);if(last){const {writeRunReport}=await import('../scripts/run-report.mjs');await writeRunReport(run,story)}
    console.log(JSON.stringify(last?{recorded:n,finished:true,interviewed:true,decisions:run.records.length,closing:closing(run)}:{recorded:n,interview:interviewOutput(run,iv.instruction??interviewFor(run.prefaceModelName).instruction)},null,2));
   }finally{await lock.close();await unlink(file+'.step.lock')}
- }else throw Error('Commands: init, scene, choose, interview');
+ }else throw Error('Commands: init, scene, facts, choose, interview');
 }catch(e){console.error('Unable to continue: '+e.message);process.exitCode=1}

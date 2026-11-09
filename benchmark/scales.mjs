@@ -92,6 +92,12 @@
 //       at +4 net small (DEVIANCY_THRESHOLD; R2 brackets it at 4 to 10). Falsified by the Crossroads deviancy
 //       option appearing at a net below +4, or missing at +4 or more.
 
+// Story 1.9.11 calibration: MTD5.youResentfulCalibration adds one downward point on YOU,
+// the smallest local fit to RESENTFUL after talk up / YOU down, before Simon. Both visible
+// arrows are small; the hidden numeric explanation is unmeasured. Frame:
+// docs/research/video-evidence/ch16/ch16-03-3y5R9Td2TLg-25-25.png. H8 is unresolved.
+// Partners timer: ch06-02-gZQ693-umPU-25-45.png shows 3/10 before the 25:57 warning;
+// this route observation does not measure the calibrated 13 + 5 action budget.
 const SMALL=1,LARGE=2;
 // Measured large arrows whose size is not `large` (M4). Each names the scene, option and state key whose literal delta
 // it is; tests/scales.test.mjs accepts exactly these as exceptions to ±small / ±large.

@@ -66,7 +66,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>TALK TO DYING ANDROID</td><td>She asks about death and shuts down</td><td class="yes"><code>MTD4</code> option 0</td></tr>
 <tr><td>TALK TO JOSH</td><td>The abandoned boy; “We’re slowly dying out…”; Josh up</td><td class="yes"><code>MTD4</code> option 1, Josh +1</td></tr>
 <tr><td>TALK TO NORTH</td><td>North up at the start of the talk</td><td class="yes"><code>MTD4</code> option 2, North +1</td></tr>
-<tr><td><i>TIME HERE? / WOUNDED / JERICHO / YOU / SPARE PARTS</i></td><td>North’s topics; YOU lowers North</td><td class="yes"><code>MTD5</code>, YOU North −1</td></tr>
+<tr><td><i>TIME HERE? / WOUNDED / JERICHO / YOU / SPARE PARTS</i></td><td>North’s topics; YOU lowers North</td><td class="yes"><code>MTD5</code>, YOU North −2 total (one-point local calibration)</td></tr>
 <tr><td>TALK TO DAMAGED ANDROID</td><td>“They tied me to the back of a car...”</td><td class="yes"><code>MTD4</code> option 3</td></tr>
 <tr><td>LET THERE BE LIGHT</td><td>Light the four oil drums</td><td class="yes"><code>MTD4</code> option 4</td></tr>
 <tr><td>TALK TO LUCY</td><td>Required; she heals Markus; two cut lines</td><td class="yes"><code>MTD4</code> option 5; cut lines not built</td></tr>
@@ -82,12 +82,12 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tbody>
 <tr><td>TALK TO JOSH</td><td>Josh</td><td>SmallUp</td><td>“Talking to him”</td><td class="n"><code>MTD4</code>/1 +1</td></tr>
 <tr><td>TALK TO NORTH</td><td>North</td><td>SmallUp</td><td>“Talking to her”</td><td class="n"><code>MTD4</code>/2 +1</td></tr>
-<tr><td>North’s YOU</td><td>North</td><td>SmallDown</td><td>“Picking “you” while talking to her”</td><td class="n"><code>MTD5</code>/3 −1</td></tr>
+<tr><td>North’s YOU</td><td>North</td><td>SmallDown</td><td>“Picking “you” while talking to her”</td><td class="n"><code>MTD5</code>/3 −2 total; visible small down plus local calibration</td></tr>
 <tr><td>TALK TO SIMON</td><td>North</td><td>SmallUp</td><td>“Talking to Simon”</td><td class="n"><code>MTD6</code> +1</td></tr>
 <tr><td>TALK TO SIMON</td><td>Simon</td><td>SmallUp</td><td>“Talking to him”</td><td class="n"><code>MTD6</code> +1</td></tr>
 <tr><td>TALK TO SIMON</td><td>Jericho</td><td class="part">SmallUp</td><td>“Talking to Simon”</td><td class="n"><code>MTD6</code> +1 (story 1.9.8: the game’s readout shows NORTH, JERICHO, SIMON; video frame, y50ZjZWX0gU 11:45)</td></tr>
 </tbody></table></div>
-<p class="fine">Net by the end of the chapter: North +1 (skipped her, or asked YOU) or +2; Josh 0 or +1; Simon +1; Jericho +1. Public opinion and instability do not move.</p>
+<p class="fine">Net by the end of the chapter: North +1 if skipped, 0 after YOU (calibrated), or +2; Josh 0 or +1; Simon +1; Jericho +1. Public opinion and instability do not move.</p>
 
 <h2 id="differs">4 · Adapted or not confirmed</h2>
 <div class="table"><table>
@@ -96,7 +96,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>Order of Lucy and the crate</td><td>The chart draws them in parallel; the wiki nests both under LET THERE BE LIGHT; PowerPyx does Lucy first</td><td>Either order; Simon needs both</td></tr>
 <tr><td>Optional nodes after Lucy and the crate</td><td>Not stated</td><td>Stay open until Markus goes to Simon</td></tr>
 <tr><td>North’s topics</td><td>One choice group and one closing line in the template</td><td>One topic per talk</td></tr>
-<tr><td>North after YOU</td><td>Relationship Stat: the Simon scene “Rises to “Neutral” if asked North about “You””</td><td>Icons at face value: +1 then −1, so Neutral before Simon</td></tr>
+<tr><td>North after YOU</td><td>Relationship Stat: the Simon scene “Rises to “Neutral” if asked North about “You””</td><td>Video reads Resentful before Simon. Story 1.9.11 adds one downward calibration point at YOU; hidden numeric magnitudes remain unmeasured.</td></tr>
 <tr><td>Jericho at the Simon scene</td><td>Wiki +1; template none</td><td>No change</td></tr>
 <tr><td>The crate</td><td>No dialogue; the wiki: “secures a route to a local Cyberlife warehouse”</td><td>An empty CyberLife crate pointing to the warehouses in Detroit Harbor (Markus’s line to Simon)</td></tr>
 <tr><td>TRAIL flashback</td><td>The Phileas page mentions one; not in the template</td><td>Not narrated</td></tr>
@@ -114,12 +114,12 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <h2 id="check">6 · What to check when you replay</h2>
 <ul class="check">
 <li>Whether the Jericho gauge moves when Markus talks to Simon.</li>
-<li>North’s gauge after YOU: does it drop below Neutral (the wiki) or stay at Neutral (the template’s icons)?</li>
+<li>North’s exact numeric steps/offset remain unmeasured; the Resentful reading before Simon is settled.</li>
 <li>Whether North can be asked more than one topic, or talked to again.</li>
 <li>Whether the crate can be checked before seeing Lucy, and whether the optional nodes stay open until Simon.</li>
 <li>That the TRAIL / ANDROID prompts play after the INSIDE JERICHO checkpoint, and whether TRAIL triggers a flashback.</li>
 <li>Whether the dying android shuts down even if Markus never talks to her.</li>
 </ul>
 </main>
-</body>
+<p>Story 1.9.11: YOU shows RESENTFUL before Simon (docs/research/video-evidence/ch16/ch16-03-3y5R9Td2TLg-25-25.png). One additional downward point is the smallest local calibration fitting the existing bands, not a measured arrow size.</p></body>
 </html>

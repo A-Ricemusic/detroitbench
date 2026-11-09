@@ -74,7 +74,11 @@ export const state={
  ch31SharedMoment:false,ch31ConnorFate:null,ch31ThinIce:false,ch31HankTalk:null,ch31HankEnding:null,
  ch31MarkusEnding:null,ch31ConnorEnding:null,
 };
-export const labels={ch31CarlFate:'Carl after Night of the Soul',ch31SharedMoment:'Shared a moment with North',ch31ConnorFate:'Connor in the church',
+export const labels={
+ ch31House:"Visit to Rose’s house",
+ ch31Church:"Conversations in the church",
+ ch31ConnorChurch:"Connor at the church",
+ch31CarlFate:'Carl after Night of the Soul',ch31SharedMoment:'Shared a moment with North',ch31ConnorFate:'Connor in the church',
  ch31ThinIce:'Replacement Connor briefed',ch31HankTalk:'Hank’s last words',ch31HankEnding:'Hank’s House ending',
  ch31MarkusEnding:'Night of the Soul ending (Markus)',ch31ConnorEnding:'Night of the Soul ending (Connor)'};
 // Connor's only death here is DON'T TRUST, which has no arrow in the template.

@@ -7,6 +7,10 @@ import {render} from '../benchmark/experience-prompt.mjs';
 import {random} from '../benchmark/core.mjs';
 import {rules,inputs,labels} from '../benchmark/chapters/ch28.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));
+// Existing chapter cases below retain the pre-1.9.11 snapshot; new cases use currentStory.
+const currentStory=structuredClone(story);
+delete story.nodes.find(n=>n.id==='M17g').pastFollowupRules;story.nodes=story.nodes.filter(n=>n.id!=='M17g2');
+
 const node=id=>story.nodes.find(n=>n.id===id);
 const IDS=['R28','M17a','M17b','M17c','M17d','M17e','M17f','M17g','M17h','M17i','M17j','M17k','M17l','M17m','M17n','M18a','M18b','M18c','M18d','M18e','M18f','M18g','M18h','M19a','M19b','M19c','M20a'];
 const T='https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html';
@@ -211,4 +215,12 @@ test('Freedom March: rebuilt chapter inputs override conflicting legacy flags an
  assert.equal(inputs.message(empty),null);assert.equal(inputs.storeFreed(empty),false);assert.equal(inputs.markusKilledCops(empty),false);assert.equal(inputs.copsShot(empty),false);
  assert.equal(inputs.simonReturned({...empty,simon:true}),false);
  assert.deepEqual(opts('M17c',{...spared,capitolRaid:'fled',capitolMessage:'failed'}),['3','4','5','6']);
+});
+
+test('story 1.9.11: video correction is gated and older scene behavior remains',()=>{
+
+ const n=currentStory.nodes.find(n=>n.id==='M17g'),f=currentStory.nodes.find(n=>n.id==='M17g2'),s=startState(currentStory);s.northTrust=5;s.ch28NorthTalk='open';
+ assert.ok(!available(n,s).some(o=>o.id==='4'));apply(n,s,'1',0.99);assert.equal(s.ch28NorthTalk,'followup');assert.equal(s.northTrust,6);
+ assert.ok(available(f,s).some(o=>o.id==='4'));assert.ok(!available(f,s).some(o=>o.id==='1'));apply(f,s,'4',0.99);assert.equal(s.northTrust,7);assert.equal(s.ch28NorthTalk,'story');
+ const old=startState(story);old.northTrust=5;apply(node('M17g'),old,'4',0.99);assert.equal(old.ch28NorthTalk,'story');assert.equal(old.northTrust,6);
 });

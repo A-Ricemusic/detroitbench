@@ -6,6 +6,10 @@ import {render,EXPERIENCE_PROTOCOL} from '../benchmark/experience-prompt.mjs';
 import {CHAPTER_MODULES} from '../benchmark/chapters/index.mjs';
 import {random} from '../benchmark/core.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));
+// Existing chapter cases below retain the pre-1.9.11 snapshot; new cases use currentStory.
+const currentStory=structuredClone(story);
+const legacyWait=story.nodes.find(n=>n.id==='M01f');delete legacyWait.waitRules;legacyWait.options=legacyWait.options.filter(o=>o.id!=='3');
+
 const node=id=>story.nodes.find(n=>n.id===id);
 const CH5=['M01a','R05','M01b','M01c','M01d','M01e','R05b','M01f','M01g','M01h','M01i','M01j','M01k','M01l','M01m','M01n','M01o','M01p','M01q','M01r','M01s','M01t'];
 const SRC=['https://detroit-become-human.fandom.com/wiki/The_Painter','https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)',
@@ -103,3 +107,10 @@ test('The Painter: no hidden stat moves on any path; only knowledge and the chap
 test('The Painter: neutral rendering names nobody from the game',()=>{
  for(const n of story.nodes.filter(x=>x.chapter===5)){const texts=[n.title,n.situation,...n.options.flatMap(o=>[o.text,o.fact,o.outcome].filter(Boolean)),...(n.situationWhen??[]).map(w=>w.text),...(n.media??[]).flatMap(m=>[m.title,...m.facts]),...(n.facts??[]),...Object.values(n.outcomes??{})];
   for(const t of texts){const neutral=render(t,'neutral');assert.ok(!/Markus|\bCarl\b|\bLeo\b|Manfred|CyberLife|Detroit|Warren|Brinkley|Cornwell|Graff|\bCTN\b|thirium|Kamski/i.test(neutral),n.id+': '+neutral)}}});
+
+test('story 1.9.11: video correction is gated and older scene behavior remains',()=>{
+
+ const n=currentStory.nodes.find(n=>n.id==='M01f'),s=startState(currentStory);
+ assert.equal(n.waitRules,true);const disabled=structuredClone(n);delete disabled.waitRules;assert.ok(!available(disabled,startState(currentStory)).some(o=>o.id==='3'));apply(n,s,'3',0.99);assert.equal(s.painterActivity,'none');
+ assert.equal(available(node('M01f'),startState(story)).some(o=>o.id==='3'),false);
+});

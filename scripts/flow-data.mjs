@@ -10,7 +10,7 @@ import {SCALES,level} from '../benchmark/scales.mjs';
 //   metadata and option `sets`, and for The Hostage the engine's end() names; the reached one comes from the lane's
 //   change to the lane's chapter ending state key (`chNNEnding`, `*Outcome`, ...).
 import {readFileSync} from 'node:fs';
-import {renderStory,render} from '../benchmark/experience-prompt.mjs';
+import {renderStory,render,realText} from '../benchmark/experience-prompt.mjs';
 import {CHAPTER_MODULES} from '../benchmark/chapters/index.mjs';
 import {statesOf} from '../benchmark/story-engine.mjs';
 import {shortLabel,iconFor} from '../src/lib/flowchart.js';
@@ -136,14 +136,14 @@ export function runFlows(run,{endings={}}={}){
     const options=sceneOptions(n,rs).map(o=>{const hits=rs.filter(x=>x.choice===o.id),hit=hits[0];
      const orders=kind==='hub'?hits.map(h=>rs.indexOf(h)+1):[];
      return {...o,taken:hits.length>0,order:orders[0]??null,orders,key:hit?keyOf(hit):r?keyOf(r):n.id,
-      ...(hit?{risk:hit.risk?{label:hit.risk.label,outcome:hit.risk.outcome}:null,reason:hit.reason,outcome:hit.event&&hit.event!==hit.choiceText?hit.event:null,step:hit.step}:{})}});
+      ...(hit?{risk:hit.risk?{label:hit.risk.label,outcome:hit.risk.outcome}:null,reason:realText(hit.reason),outcome:hit.event&&hit.event!==hit.choiceText?hit.event:null,step:hit.step}:{})}});
     const hub=cut.get(n.id)??null;
     // A cut-in is placed after the hub action that triggered it.
     const after=hub&&r?records.filter(x=>x.nodeId===hub&&x.step<r.step).length:null;
     return {id:n.id,title:n.title,type:n.type,kind,phase:n.chart?.group??n.phase??null,cutinOf:hub,cutinAfter:after,visits:rs.length,
      ...(n.chart?.label?{chartLabel:render(n.chart.label,'real')}:{}),
      visited,key:r?keyOf(r):n.id,skip:visited?null:(skipped.get(n.id)??'Not on this path'),
-     ...(n.type==='event'&&r?{outcome:r.event??null,step:r.step}:{}),options}});
+     ...(n.type==='event'&&r?{outcome:r.event??null,reason:realText(r.reason),step:r.step}:{}),options}});
    // Endings: every label the chapter can produce for this lane, the reached one from the lane's ending-key change.
    const end=laneRecords.at(-1),before=stateOf(laneRecords[0],false),after=stateOf(chRecords.at(-1),true);
    const died=!!end&&!!LIFE[character]&&(after?.[LIFE[character]]===false&&before?.[LIFE[character]]!==false||(character==='Connor'&&(after?.connorDeaths??0)>(before?.connorDeaths??0)));

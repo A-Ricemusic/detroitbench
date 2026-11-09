@@ -15,7 +15,7 @@ test('the broadcast speech change reads as the demand that was added',()=>{
  assert.deepEqual(formatChange({key:'stratfordSpeech',before:{opening:'calm',first:'endOfSlavery'},after:{opening:'calm',first:'endOfSlavery',second:'justice'}}),[{label:'The broadcast speech',lines:['Second demand: Justice']}]);
  assert.deepEqual(formatChange({key:'hankTrust',before:-1,after:1}),[{label:'Hank',text:'Tense → Neutral (+2)'}]);
  assert.deepEqual(formatChange({key:'knowledge',added:{Connor:['A fact.']}}),[{label:'Connor learns',facts:['A fact.']}]);
- assert.deepEqual(formatChange({key:'ch07Next',before:null,after:'K03u'}),[{label:'Ch07 Next',text:'— → K03u',unlabeled:'ch07Next'}]);
+ assert.deepEqual(formatChange({key:'ch07Next',before:null,after:'K03u'}),[]);
 });
 
 test('every state change of every completed run renders as prose',()=>{

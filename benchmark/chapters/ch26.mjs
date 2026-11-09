@@ -73,6 +73,16 @@ export const state={
 };
 
 export const labels={
+ capitolPrompt:"Current message to the androids",
+ capitolHurry:"Time pressure at Capitol Park",
+ capitolSecure:"Store secured",
+ capitolTruckFound:"Truck found",
+ capitolSpread:"Androids spreading the message",
+ capitolTime:"Time spent at Capitol Park",
+ capitolIdle:"Time spent waiting at Capitol Park",
+ capitolMolotovAt:"Where Markus prepared the firebomb",
+ capitolNodes:"Places visited at Capitol Park",
+
  capitolRaid:'Capitol Park store raid',capitolEnding:'Capitol Park ending',capitolMessage:'Capitol Park message',
  capitolOfficers:'The two officers in Capitol Park',capitolChrisDead:'Chris and his partner killed',capitolOtherNorth:'Looked at the android with North’s face',
  capitolDrone:'Police drone',capitolAlarm:'Store alarm deactivated',capitolRoad:'Road blocked',capitolTruck:'Truck ready',capitolMinutes:'Store timer, minutes used',

@@ -30,6 +30,11 @@ export const deathEffect={};
 const read=(s,item)=>[String(item),'all'].includes(s.choices.R05);
 export const mediaWhen={centuryUnread:s=>!read(s,0),titanUnread:s=>!read(s,1)};
 
+// New snapshots explicitly enable waiting; older scene data keeps the three activities.
+export function available(n,s,opts){
+ if(n.id==='M01f'&&!n.waitRules)return opts.filter(o=>o.id!=='3');
+}
+
 export const OUTCOME='Leo intruded to ask for money';
 export function consequence(n,s){
  if(n.id!=='M01t')return;

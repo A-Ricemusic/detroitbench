@@ -19,6 +19,9 @@ export const state={fromDeadSearch:{},fromDeadBeggar:null,fromDeadPump:null,from
  fromDeadJerichoKey:false,fromDeadLedRemoved:false,fromDeadOutcome:null};
 
 export const labels={
+ fromDeadSearch:"Search through the junkyard",
+ fromDeadPumpReplaced:"Pump regulator replaced",
+
  fromDeadBeggar:'From the Dead: the android who begged to die',
  fromDeadPump:'From the Dead: the android with the pump regulator',
  fromDeadPumpSource:'From the Dead: where Markus’s pump regulator came from',

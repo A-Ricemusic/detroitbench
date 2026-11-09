@@ -964,3 +964,19 @@ export function reconcileInputs(s){
  }
 }
 export function consequence(n,s,opt,choice,fail,h){if(n.id==='PC01')reconcileInputs(s);return tokenizeCaps(OWNER.get(n.id)?.consequence?.(n,s,opt,choice,fail,h))}
+
+
+// Reader-facing labels for chapter progress and cross-chapter outcomes.
+Object.assign(labels,{
+ "ch32pc": "Questions at the president’s press conference",
+ "ch32kl": "Kara’s route through the curfew",
+ "ch32md": "Progress of the demonstration",
+ "ch32bf": "Connor’s struggle against Amanda",
+ "jerry": "Jerry alive",
+ "late": "Kara missed the last bus",
+ "bus": "Kara reached the bus",
+ "aliceWounded": "Alice wounded",
+ "karaWounded": "Kara wounded",
+ "lutherOnBoat": "Luther aboard the boat",
+ "campEscape": "Escape from the camp"
+});

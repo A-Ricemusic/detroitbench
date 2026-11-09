@@ -30,7 +30,9 @@ export const ENDING='Markus hatched a plan';
 export const HUB='MTD4',NORTH='MTD5',YOU='3';
 
 export const state={ch16Hold:{},ch16Outcome:null};
-export const labels={ch16Outcome:'Time to Decide ending'};
+export const labels={
+ ch16Hold:"Exploration of Jericho’s hold",
+ch16Outcome:'Time to Decide ending'};
 export const rules={ENDING,HUB,NORTH,YOU,
  ARROWS:[
   {scene:'MTD4',option:'1',key:'joshTrust',delta:1,source:'template {REL Josh SmallUp}; wiki “Talking to him”'},
@@ -41,6 +43,7 @@ export const rules={ENDING,HUB,NORTH,YOU,
   {scene:'MTD6',option:'0',key:'jerichoTrust',delta:1,source:'wiki “Talking to Simon”; video frame, y50ZjZWX0gU 11:45 (story 1.9.8)'},
  ]};
 
-export function consequence(n,s){
+export function consequence(n,s,opt,choice,fail,h){
+ if(n.id===NORTH&&n.youResentfulCalibration&&choice===YOU){h.north(-1);return ''}
  if(n.id==='MTD6'){s.ch16Outcome=ENDING;return ''}   // '' = the event's outcome text
 }

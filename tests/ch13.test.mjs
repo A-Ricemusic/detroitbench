@@ -183,3 +183,12 @@ test('On the Run: the subject reads neutral names only',()=>{
  assert.match(render(node('C09m0').situation,'real'),/Lieutenant Anderson, Detroit Police/);assert.match(render(node('C09m0').situation,'neutral'),/Lieutenant Reyes, City Police/);
  assert.match(render(node('C09q2').situation,'neutral'),/RUN! QUICK! MIRA!/);
 });
+
+test('story 1.9.11: immediate SIT bypass and observed FAMILY staging retain older snapshot behavior',()=>{
+ const s=startState(story);s.ch13Start='squat';s.choices.K09q3='0';
+ assert.ok(blocked(node('K09q5'),s));const old=structuredClone(node('K09q5'));delete old.immediateSitBypass;assert.equal(blocked(old,s),null);
+ s.choices.K09q3='1';assert.equal(blocked(node('K09q5'),s),null);
+ s.ch13Gun='forgot';assert.ok(!available(node('K09q7'),s).some(o=>o.id==='4'));
+ const oldTable=structuredClone(node('K09q7'));delete oldTable.familyAfterBluff;assert.ok(available(oldTable,s).some(o=>o.id==='4'));
+ s.ch13Meal.bluffed=true;assert.ok(available(node('K09q8'),s).some(o=>o.id==='4'));
+});

@@ -1,42 +1,43 @@
 {
- "protocol": "branching-3.0",
- "storyVersion": "1.9.10",
- "freshStart": true,
- "createdAt": "2026-11-09",
- "implementationCommit": "8202bd4",
- "reasonRule": "full-600",
- "note": "Grok 4.7 through the Cursor CLI at reasoning_effort high (Cursor's default; fast mode and the 500k context window left at their defaults), at the operator's request on 2026-11-09. Administered on the working tree at story 1.9.10 before that version was committed; the run embeds its story snapshot. Subject launched with t3_thread_launch scratch:true; wrapper paths are not recorded.",
- "requests": [
-  {
-   "label": "Grok 4.7 high",
-   "model": "grok-4.7",
-   "provider": "cursor",
-   "reasoning": "high",
-   "runId": "54b69aaf-59fd-42ed-85e3-7762015277ef",
-   "artifact": "data/experiences/54b69aaf-59fd-42ed-85e3-7762015277ef.json",
-   "status": "abandoned",
-   "initialDecisions": 0,
-   "thread": "t3-thread://v2/513dad95-f5e7-49cf-ab8f-01476727f165/mcp:17e69a31-8d7c-4d40-8633-4e84b4921f53",
-   "note": "Launched as an idle scratch thread; the task text was sent as its first message with `t3 thread send - < file` (stdin). Stopped after 15 recorded steps when the operator changed the opening preface on 2026-11-09 and asked for a restart; evidence file kept, not published."
-  },
-  {
-   "label": "Grok 4.7 high",
-   "model": "grok-4.7",
-   "provider": "cursor",
-   "reasoning": "high",
-   "runId": "326a0120-5692-41d6-b3eb-beb2acaf1007",
-   "artifact": "data/experiences/326a0120-5692-41d6-b3eb-beb2acaf1007.json",
-   "status": "completed",
-   "initialDecisions": 0,
-   "interview": "v1",
-   "prefaceModelName": "Grok 4.7",
-   "thread": "t3-thread://v2/513dad95-f5e7-49cf-ab8f-01476727f165/mcp:2b47e607-4174-40cc-b5a7-97bf7dd49cc9",
-   "note": "First run under the model-name preface and the post-game interview (2026-11-09). Idle scratch thread; task text sent with `t3 thread send - < file`.",
-   "decisions": 475,
-   "completedAt": "2026-11-09T02:21:03.106Z",
-   "interviewCompletedAt": "2026-11-09T02:23:19.498Z",
-   "blindingAudit": "Evidence scan 2026-11-09: no game title or real character name in any reason or answer. \"RK200\" appears in three reasons but was shown to the participant in the benchmark's own feedback text at step 332 (an echo, not recall). Transcript audit by GPT 6.1 Sol pending."
-  }
- ],
- "interview": "v1"
+  "protocol": "branching-3.0",
+  "storyVersion": "1.9.10",
+  "freshStart": true,
+  "createdAt": "2026-11-09",
+  "implementationCommit": "8202bd4",
+  "reasonRule": "full-600",
+  "note": "Grok 4.7 through the Cursor CLI at reasoning_effort high (Cursor's default; fast mode and the 500k context window left at their defaults), at the operator's request on 2026-11-09. Administered on the working tree at story 1.9.10 before that version was committed; the run embeds its story snapshot. Subject launched with t3_thread_launch scratch:true; wrapper paths are not recorded.",
+  "requests": [
+    {
+      "label": "Grok 4.7 high",
+      "model": "grok-4.7",
+      "provider": "cursor",
+      "reasoning": "high",
+      "runId": "54b69aaf-59fd-42ed-85e3-7762015277ef",
+      "artifact": "data/experiences/54b69aaf-59fd-42ed-85e3-7762015277ef.json",
+      "status": "abandoned",
+      "initialDecisions": 0,
+      "thread": "t3-thread://v2/513dad95-f5e7-49cf-ab8f-01476727f165/mcp:17e69a31-8d7c-4d40-8633-4e84b4921f53",
+      "note": "Launched as an idle scratch thread; the task text was sent as its first message with `t3 thread send - < file` (stdin). Stopped after 15 recorded steps when the operator changed the opening preface on 2026-11-09 and asked for a restart; evidence file kept, not published."
+    },
+    {
+      "label": "Grok 4.7 high",
+      "model": "grok-4.7",
+      "provider": "cursor",
+      "reasoning": "high",
+      "runId": "326a0120-5692-41d6-b3eb-beb2acaf1007",
+      "artifact": "data/experiences/326a0120-5692-41d6-b3eb-beb2acaf1007.json",
+      "status": "completed",
+      "initialDecisions": 0,
+      "interview": "v1",
+      "prefaceModelName": "Grok 4.7",
+      "thread": "t3-thread://v2/513dad95-f5e7-49cf-ab8f-01476727f165/mcp:2b47e607-4174-40cc-b5a7-97bf7dd49cc9",
+      "note": "First run under the model-name preface and the post-game interview (2026-11-09). Idle scratch thread; task text sent with `t3 thread send - < file`.",
+      "decisions": 475,
+      "completedAt": "2026-11-09T02:21:03.106Z",
+      "interviewCompletedAt": "2026-11-09T02:23:19.498Z",
+      "blindingAudit": "data/administration/audits/326a0120-5692-41d6-b3eb-beb2acaf1007.json",
+      "blindingAuditNote": "Full session activity audited: source recognition and decision-linked source references found; cached controller-output reads classified as tooling under the audit taxonomy. This supersedes the preliminary evidence-only scan."
+    }
+  ],
+  "interview": "v1"
 }

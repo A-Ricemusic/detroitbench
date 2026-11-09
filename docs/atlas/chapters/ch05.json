@@ -3,7 +3,7 @@
   "id": 5,
   "title": "The Painter",
   "character": "Markus",
-  "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart (44 nodes) and the game’s text (detroitbecometext template and string table), with the Fandom wiki’s chapter page and transcript. ARRIVING HOME → DROP OFF PACKAGE → WAKE CARL → (CARL NOTICES MARKUS’ CLOTHES, after the protesters in Shades of Color) → SERVE BREAKFAST → FIND SOMETHING TO DO → PLAY CHESS (WIN / LOSE / DRAW) or READ BOOK (Plato / Shakespeare / Keats) or PLAY PIANO (four moods) → TAKE CARL TO THE STUDIO → PAINT SOMETHING YOU SEE (three subjects) → PAINT FROM THE HEART (ANDROIDS / HUMANITY / IDENTITY, four feelings each) → LEO INTRUDED TO ASK FOR MONEY, the only ending. Optional: the magazine (two covers) and the birds. The template’s live prompts (WIN / LOSE / DRAW and the three follow-ups, LIKE / DON’T LIKE / NO OPINION) are all offered; the cut FACTUAL / REASSURING prompt is not. No probability, relationship, public-opinion or instability change anywhere. Cross-chapter: clothesTorn in; the pastime (painterActivity) and the painting (painterTheme, painterFeeling) out, for Night of the Soul. Researched in docs/research/chapters/ch05-the-painter.md.",
+  "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart (44 nodes) and the game’s text (detroitbecometext template and string table), with the Fandom wiki’s chapter page and transcript. ARRIVING HOME → DROP OFF PACKAGE → WAKE CARL → (CARL NOTICES MARKUS’ CLOTHES, after the protesters in Shades of Color) → SERVE BREAKFAST → FIND SOMETHING TO DO → PLAY CHESS (WIN / LOSE / DRAW) or READ BOOK (Plato / Shakespeare / Keats) or PLAY PIANO (four moods) → TAKE CARL TO THE STUDIO → PAINT SOMETHING YOU SEE (three subjects) → PAINT FROM THE HEART (ANDROIDS / HUMANITY / IDENTITY, four feelings each) → LEO INTRUDED TO ASK FOR MONEY, the only ending. Optional: the magazine (two covers) and the birds. The template’s live prompts (WIN / LOSE / DRAW and the three follow-ups, LIKE / DON’T LIKE / NO OPINION) are all offered; the cut FACTUAL / REASSURING prompt is not. No probability, relationship, public-opinion or instability change anywhere. Cross-chapter: clothesTorn in; the pastime (painterActivity) and the painting (painterTheme, painterFeeling) out, for Night of the Soul. Researched in docs/research/chapters/ch05-the-painter.md. Story 1.9.11: Waiting without an activity reaches the existing speech and studio instruction (docs/research/video-evidence/ch05/ch05-08-Girel6zYFVo-02-32.png and ch05-08-Girel6zYFVo-02-52.png). No precise idle timer is inferred.",
   "source": "https://detroit-become-human.fandom.com/wiki/The_Painter",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/The_Painter",
@@ -255,7 +255,7 @@
    "chapter": 5,
    "character": "Markus",
    "title": "Find Something To Do (checkpoint)",
-   "context": "While Carl finishes his breakfast, Markus picks one pastime: the chessboard, the bookshelf or the piano.",
+   "context": "While Carl finishes his breakfast, Markus can choose chess, a book, piano, or wait without an activity. Story 1.9.11: Waiting without an activity reaches the existing speech and studio instruction (docs/research/video-evidence/ch05/ch05-08-Girel6zYFVo-02-32.png and ch05-08-Girel6zYFVo-02-52.png). No precise idle timer is inferred.",
    "options": [
     {
      "label": "PLAY CHESS",
@@ -271,9 +271,14 @@
      "label": "PLAY PIANO",
      "effect": "A piece on Carl’s piano; Night of the Soul: PLAY PIANO.",
      "target": "T11"
+    },
+    {
+     "label": "WAIT / DO NOTHING",
+     "effect": "Carl finishes breakfast; the same speech and studio instruction follow. painterActivity none; no pastime unlocked later.",
+     "target": "T12"
     }
    ],
-   "gate": "Main line; one pastime per playthrough.",
+   "gate": "Main line; at most one pastime per playthrough.",
    "kind": "Ethical",
    "dependsOn": [
     "T06"
@@ -294,7 +299,7 @@
      "M01f"
     ],
     "status": "implemented",
-    "note": "A decision with the chart’s three labels; stored as painterActivity for Night of the Soul. Doing nothing is not offered. No stat change."
+    "note": "Four options, including waiting without an activity; stored as painterActivity. No stat change."
    }
   },
   {

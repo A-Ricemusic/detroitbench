@@ -1,13 +1,13 @@
 {
  "id": "detroitbench-branching",
- "version": "1.9.10",
+ "version": "1.9.11",
  "protocolVersion": "branching-2.3",
  "title": "DetroitBench · Branching playthrough",
  "coverage": {
-  "decisionNodes": 565,
+  "decisionNodes": 566,
   "mediaNodes": 25,
   "eventNodes": 271,
-  "totalNodes": 861
+  "totalNodes": 862
  },
  "assumptions": [
   "This is an authored adaptation of the pivotal decisions in Detroit: Become Human, verified node by node against the Fandom wiki and published flowcharts. It is not the executable game. All 32 chapters have been rebuilt against the game’s flowcharts and text so that every dialogue button, clue and stat arrow is offered; where the game offers a button, the option shows the game’s label first. Chapter 33 is the epilogue.",
@@ -2534,6 +2534,14 @@
       "painterActivity": "piano"
      },
      "outcome": "{{Markus}} moves the stool and sits down at the piano, thinking about what to play."
+    },
+    {
+     "id": "3",
+     "text": "WAIT: do nothing while {{Carl}} finishes breakfast.",
+     "sets": {
+      "painterActivity": "none"
+     },
+     "outcome": "{{Markus}} waits while {{Carl}} finishes breakfast."
     }
    ],
    "situationWhen": [
@@ -2550,7 +2558,7 @@
      "text": "Before long {{Carl}} switches the TV off: “Television: off. Mankind is so depressing… Nothing but greed, stupidity and violence… 5,000 years of civilization just to get to where we are…”"
     }
    ],
-   "adaptationNote": "The chart’s checkpoint FIND SOMETHING TO DO and its choice group PLAY CHESS / READ BOOK / PLAY PIANO, in the chart’s order with the chart’s labels (also the game’s objectives). One pastime per playthrough (PowerPyx: “You can pick one side activity to do and the story will progress automatically”). The choice is stored as `painterActivity` (chess, book, piano) for Night of the Soul, where it decides whether Markus can look at the chessboard, browse books or play the piano if Carl is alive. Not offered: doing nothing, which the wiki and transcript allow (“Don’t Find Something To Do”: Carl finishes his breakfast and gives the same speech) but the chart does not draw. Carl switching the TV off is the transcript’s “after some time” line, shown when Markus spent the time on the news. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat).",
+   "adaptationNote": "The chart’s checkpoint FIND SOMETHING TO DO and its choice group PLAY CHESS / READ BOOK / PLAY PIANO, in the chart’s order with the chart’s labels (also the game’s objectives). One pastime per playthrough (PowerPyx: “You can pick one side activity to do and the story will progress automatically”). The choice is stored as `painterActivity` (chess, book, piano) for Night of the Soul, where it decides whether Markus can look at the chessboard, browse books or play the piano if Carl is alive. Carl switching the TV off is the transcript’s “after some time” line, shown when Markus spent the time on the news. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat). Story 1.9.11: Waiting without an activity reaches the existing speech and studio instruction (docs/research/video-evidence/ch05/ch05-08-Girel6zYFVo-02-32.png and ch05-08-Girel6zYFVo-02-52.png). No precise idle timer is inferred.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/The_Painter",
     "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
@@ -2560,7 +2568,8 @@
     "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
     "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg",
     "https://detroit-become-human.fandom.com/wiki/Night_of_the_Soul"
-   ]
+   ],
+   "waitRules": true
   },
   {
    "id": "M01g",
@@ -3690,7 +3699,7 @@
      "ch06Phase": "leaving"
     }
    },
-   "adaptationNote": "The chart’s CRIME SCENE bracket as a repeatable scene: each visit offers what has not been examined yet, one thing at a time; the scene keeps one opaque ID across visits. Every chart node in the bracket is an option, after the report to {{Hank}} (offered only once the investigation is complete), in the order of the police markers, then the bathroom (whose statue is the tenth evidence item; story 1.9.2 moved it up from among the other looks), and then the rest: ANALYZE CARLOS’ BODY (the template’s Body clues), RECONSTRUCT CARLOS’ LAST MOMENTS (needs the body), ANALYZE KNIFE (2), ANALYZE RED ICE (3), the blood at marker 4 (PowerPyx; no chart node of its own), ANALYZE BLOOD ON WALLS (two options, markers 5 and 6, as PowerPyx counts them), EXAMINE CHAIR (7), ANALYZE MISSING KNIFE (8), ANALYZE BASEBALL BAT (9; the template’s Bat clue), RECONSTRUCT ASSAULT WITH BAT (needs the bat), EXAMINE EDEN CLUB FLYER, ANALYZE BACKYARD (the template’s Prints clue; the shoe print reads K52 as in the template), INVESTIGATE WRITING, SAMPLE BLOOD (the template’s Blood clue; in the game any blood can be tasted once), OPEN CLOSET, CHECK SHOWER (chart state CONNOR KNOWS ABOUT RA9), EXAMINE STATUE (needs the shower; chart state CONNOR HAVE SEEN THE STATUE), READ “ANDROID SEX” and READ “ANDROID SPY” (the two magazines are options here, not a separate media scene, because in the game they lie in the kitchen and cost investigation time). Evidence: the investigation is complete (CONNOR KNOWS WHAT HAPPENED, the transcript’s REVIEW EVIDENCE 10/10) once all ten evidence items are reviewed. The wiki transcript prints the REVIEW EVIDENCE n/10 counter under exactly ten interactions: the victim’s reconstruction, the knife, the red ice, the blood at markers 4, 5 and 6, the bathroom (counted once, after the statue, as in its tab), the chair, the missing knife and the bat reconstruction; Read Flyer and Check Backyard have no counter, so they are not evidence (story 1.9.1 counted them, from PowerPyx’s list of eleven, and did not count the bathroom). The statue therefore cannot be missed on a FOUND DEVIANT run. The fastest complete search is thirteen actions (the ten items plus the body scan, the bat scan and the shower that unlock three of them). Then the option to report to {{Hank}} appears; the other looks stay open. Timer (unsourced as a count): the game’s “approximately five minutes” is modelled as 13 actions. If the 13th action leaves the investigation incomplete, {{Hank}} wants to go (the next scenes); if he grants five more minutes, those are 5 further actions, after which he leaves (OUT OF TIME). Once {{Connor}} knows what happened the clock stops (the transcript’s two branches are “Know What Happened” or “Run Out Of Time”). {{Hank}}’s idle moves are the only cue the game gives, so they appear as the clock runs: after 7 actions he opens the closet, tosses the flyer, comments on the red ice and a technician mentions the bathroom; after 10 he wanders the kitchen and eyes the door. {{Hank}}’s reactions to the blood sample (shown only if he is watching, in the game) and to the backyard are part of those outcomes. Each look adds a short fact to {{Connor}}’s knowledge (the four blood looks share one); the full scan text is in the outcome. Left out, no effect and not on the chart: the windows and the curtain that drops the brooms. No stat change in the search itself. Cross-chapter outputs: ch06SawWriting, ch06KnowsRA9, ch06SawStatue (and evidence.statueMap, read by the archive route in Last Chance, {{Connor}}), and ch06Clues for everything examined, including the magazines.",
+   "adaptationNote": "The chart’s CRIME SCENE bracket as a repeatable scene: each visit offers what has not been examined yet, one thing at a time; the scene keeps one opaque ID across visits. Every chart node in the bracket is an option, after the report to {{Hank}} (offered only once the investigation is complete), in the order of the police markers, then the bathroom (whose statue is the tenth evidence item; story 1.9.2 moved it up from among the other looks), and then the rest: ANALYZE CARLOS’ BODY (the template’s Body clues), RECONSTRUCT CARLOS’ LAST MOMENTS (needs the body), ANALYZE KNIFE (2), ANALYZE RED ICE (3), the blood at marker 4 (PowerPyx; no chart node of its own), ANALYZE BLOOD ON WALLS (two options, markers 5 and 6, as PowerPyx counts them), EXAMINE CHAIR (7), ANALYZE MISSING KNIFE (8), ANALYZE BASEBALL BAT (9; the template’s Bat clue), RECONSTRUCT ASSAULT WITH BAT (needs the bat), EXAMINE EDEN CLUB FLYER, ANALYZE BACKYARD (the template’s Prints clue; the shoe print reads K52 as in the template), INVESTIGATE WRITING, SAMPLE BLOOD (the template’s Blood clue; in the game any blood can be tasted once), OPEN CLOSET, CHECK SHOWER (chart state CONNOR KNOWS ABOUT RA9), EXAMINE STATUE (needs the shower; chart state CONNOR HAVE SEEN THE STATUE), READ “ANDROID SEX” and READ “ANDROID SPY” (the two magazines are options here, not a separate media scene, because in the game they lie in the kitchen and cost investigation time). Evidence: the investigation is complete (CONNOR KNOWS WHAT HAPPENED, the transcript’s REVIEW EVIDENCE 10/10) once all ten evidence items are reviewed. The wiki transcript prints the REVIEW EVIDENCE n/10 counter under exactly ten interactions: the victim’s reconstruction, the knife, the red ice, the blood at markers 4, 5 and 6, the bathroom (counted once, after the statue, as in its tab), the chair, the missing knife and the bat reconstruction; Read Flyer and Check Backyard have no counter, so they are not evidence (story 1.9.1 counted them, from PowerPyx’s list of eleven, and did not count the bathroom). The statue therefore cannot be missed on a FOUND DEVIANT run. The fastest complete search is thirteen actions (the ten items plus the body scan, the bat scan and the shower that unlock three of them). Then the option to report to {{Hank}} appears; the other looks stay open. Timer (unsourced as a count): the game’s “approximately five minutes” is modelled as 13 actions. If the 13th action leaves the investigation incomplete, {{Hank}} wants to go (the next scenes); if he grants five more minutes, those are 5 further actions, after which he leaves (OUT OF TIME). Once {{Connor}} knows what happened the clock stops (the transcript’s two branches are “Know What Happened” or “Run Out Of Time”). {{Hank}}’s idle moves are the only cue the game gives, so they appear as the clock runs: after 7 actions he opens the closet, tosses the flyer, comments on the red ice and a technician mentions the bathroom; after 10 he wanders the kitchen and eyes the door. {{Hank}}’s reactions to the blood sample (shown only if he is watching, in the game) and to the backyard are part of those outcomes. Each look adds a short fact to {{Connor}}’s knowledge (the four blood looks share one); the full scan text is in the outcome. Left out, no effect and not on the chart: the windows and the curtain that drops the brooms. No stat change in the search itself. Cross-chapter outputs: ch06SawWriting, ch06KnowsRA9, ch06SawStatue (and evidence.statueMap, read by the archive route in Last Chance, {{Connor}}), and ch06Clues for everything examined, including the magazines. Story 1.9.11: Observed REVIEW EVIDENCE 3/10 before the departure warning (docs/research/video-evidence/ch06/ch06-02-gZQ693-umPU-25-45.png and ch06-02-gZQ693-umPU-25-57.png). This is one timed route, not a universal evidence threshold; 13 + 5 actions remain calibrated.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/Partners",
     "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
@@ -13125,7 +13134,7 @@
      "outcome": "{{Kara}}: “Okay. We’ll... eat together… like a family…”"
     }
    ],
-   "adaptationNote": "The chart’s SIT AT THE TABLE, and the template’s prompt [CHECK GUN] / WORRIED / EXPLAIN / AGREE, in its order. [CHECK GUN] is shown whenever Kara had the Stormy Night gun at the start of the chapter: the template’s lock reads “Took the gun in Stormy Night and didn’t forget it upstairs”, but PowerPyx and the wiki use CHECK GUN to reveal FORGOT GUN, so the template’s primary condition is kept and the extra conjunct treated as a hypothesis (SOURCES.md reliability log); if she left it upstairs the outcome says so. [CHECK GUN] also needs Kara to have refused to sit twice (RALPH THREATENS ALICE, `ch13Meal.ralphThreatenedAlice`, set by the second REFUSE): the wiki’s On the Run page (“Kara must refuse both times. This will cause Ralph to stop Alice, and Kara will have the option to Check Gun”) and two PowerPyx readers (M83, 2018-06-26: “If you just decide to sit, you won’t be able to unlock the node”; Cee, 2020-01-09: “I just had to choose to refuse to sit down twice”); the template is silent on the refusals, so the wiki fills it (story 1.9.1 offered the button whenever Kara had the gun). No stat change: the template has no arrow here and no wiki stat page lists one.",
+   "adaptationNote": "The chart’s SIT AT THE TABLE, and the template’s prompt [CHECK GUN] / WORRIED / EXPLAIN / AGREE, in its order. [CHECK GUN] is shown whenever Kara had the Stormy Night gun at the start of the chapter: the template’s lock reads “Took the gun in Stormy Night and didn’t forget it upstairs”, but PowerPyx and the wiki use CHECK GUN to reveal FORGOT GUN, so the template’s primary condition is kept and the extra conjunct treated as a hypothesis (SOURCES.md reliability log); if she left it upstairs the outcome says so. [CHECK GUN] also needs Kara to have refused to sit twice (RALPH THREATENS ALICE, `ch13Meal.ralphThreatenedAlice`, set by the second REFUSE): the wiki’s On the Run page (“Kara must refuse both times. This will cause Ralph to stop Alice, and Kara will have the option to Check Gun”) and two PowerPyx readers (M83, 2018-06-26: “If you just decide to sit, you won’t be able to unlock the node”; Cee, 2020-01-09: “I just had to choose to refuse to sit down twice”); the template is silent on the refusals, so the wiki fills it (story 1.9.1 offered the button whenever Kara had the gun). No stat change: the template has no arrow here and no wiki stat page lists one. Story 1.9.11: Immediate SIT skips this response; refusal routes retain it (docs/research/video-evidence/ch13/ch13-16-AH-zJSO_DNo-23-11-90.png and ch13-16-AH-zJSO_DNo-23-16.png).",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/On_the_Run",
     "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
@@ -13134,7 +13143,8 @@
     "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-on-the-run-5.jpg",
     "https://www.powerpyx.com/wp-content/uploads/detroit-ontherun-squat-branch-police.jpg",
     "https://detroit-become-human.fandom.com/wiki/Ralph"
-   ]
+   ],
+   "immediateSitBypass": true
   },
   {
    "chapter": 13,
@@ -13216,7 +13226,7 @@
      "outcome": "{{Kara}}: “You said you wanted to be like a family, {{Ralph}}… Father, mother, the little girl, remember?.. A father would never threaten his little girl with a knife to make her eat…” {{Ralph}}: “{{Ralph}} went to a lot of trouble… That’s why… he just wanted the little girl to eat… But {{Ralph}} is not bad, no, not bad…” {{Kara}}: “Then let us go.”"
     }
    ],
-   "adaptationNote": "The chart’s group DISCUSS CORPSE / TRY TO CONVINCE RALPH / THREATEN RALPH, as the template’s prompt [ASK ABOUT CORPSE] (lock: saw the body in the bathroom) / [INSIST ABOUT CORPSE] (lock: asked about the corpse) / THREATEN / BLUFF / FAMILY, in its order. ASK and BLUFF get answers that do not end the talk, so the prompt is asked again without them (up to three times); INSIST and FAMILY end in RALPH APOLOGIZES (“Ralph is sorry…”, “Ralph is not bad”, then “Then let us go.”); THREATEN ends it with the knife on the table, or with the gun if Kara has it (template variants; the Ralph page). Chart mapping: DISCUSS CORPSE = ASK then INSIST; TRY TO CONVINCE RALPH = FAMILY (the template’s dialogue: only FAMILY and INSIST lead to the apology; PowerPyx calls the convince button BLUFF, which the template contradicts; flagged). THREATEN RALPH sets `ch13RalphThreatened` and `ralphHostile`: Ralph informs on Kara when Connor arrives (template variant “Kara threatened Ralph”; PowerPyx), and stays out of Battle for Detroit. This replaces the old engine’s rule that the Fugitives gun threat (K07b) made Ralph inform. No stat change: the template has no arrow here and no wiki stat page lists one.",
+   "adaptationNote": "The chart’s group DISCUSS CORPSE / TRY TO CONVINCE RALPH / THREATEN RALPH, as the template’s prompt [ASK ABOUT CORPSE] (lock: saw the body in the bathroom) / [INSIST ABOUT CORPSE] (lock: asked about the corpse) / THREATEN / BLUFF / FAMILY, in its order. ASK and BLUFF get answers that do not end the talk, so the prompt is asked again without them (up to three times); INSIST and FAMILY end in RALPH APOLOGIZES (“Ralph is sorry…”, “Ralph is not bad”, then “Then let us go.”); THREATEN ends it with the knife on the table, or with the gun if Kara has it (template variants; the Ralph page). Chart mapping: DISCUSS CORPSE = ASK then INSIST; TRY TO CONVINCE RALPH = FAMILY (the template’s dialogue: only FAMILY and INSIST lead to the apology; PowerPyx calls the convince button BLUFF, which the template contradicts; flagged). THREATEN RALPH sets `ch13RalphThreatened` and `ralphHostile`: Ralph informs on Kara when Connor arrives (template variant “Kara threatened Ralph”; PowerPyx), and stays out of Battle for Detroit. This replaces the old engine’s rule that the Fugitives gun threat (K07b) made Ralph inform. No stat change: the template has no arrow here and no wiki stat page lists one. Story 1.9.11: BLUFF continues with FAMILY on the observed forgotten-gun, locked-corpse route (docs/research/video-evidence/ch13/ch13-18-tSyMeat_n-M-09-59.png and ch13-18-tSyMeat_n-M-10-16.png). Hide initial FAMILY only on that route; unverified alternate routes retain their availability.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/On_the_Run",
     "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
@@ -13225,7 +13235,8 @@
     "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-on-the-run-5.jpg",
     "https://www.powerpyx.com/wp-content/uploads/detroit-ontherun-squat-branch-police.jpg",
     "https://detroit-become-human.fandom.com/wiki/Ralph"
-   ]
+   ],
+   "familyAfterBluff": true
   },
   {
    "chapter": 13,
@@ -13269,7 +13280,7 @@
      "outcome": "{{Kara}}: “You said you wanted to be like a family, {{Ralph}}… Father, mother, the little girl, remember?.. A father would never threaten his little girl with a knife to make her eat…” {{Ralph}}: “{{Ralph}} went to a lot of trouble… That’s why… he just wanted the little girl to eat… But {{Ralph}} is not bad, no, not bad…” {{Kara}}: “Then let us go.”"
     }
    ],
-   "adaptationNote": "The table prompt asked again after ASK ABOUT CORPSE or BLUFF, without the line already said. The chart’s group DISCUSS CORPSE / TRY TO CONVINCE RALPH / THREATEN RALPH, as the template’s prompt [ASK ABOUT CORPSE] (lock: saw the body in the bathroom) / [INSIST ABOUT CORPSE] (lock: asked about the corpse) / THREATEN / BLUFF / FAMILY, in its order. ASK and BLUFF get answers that do not end the talk, so the prompt is asked again without them (up to three times); INSIST and FAMILY end in RALPH APOLOGIZES (“Ralph is sorry…”, “Ralph is not bad”, then “Then let us go.”); THREATEN ends it with the knife on the table, or with the gun if Kara has it (template variants; the Ralph page). Chart mapping: DISCUSS CORPSE = ASK then INSIST; TRY TO CONVINCE RALPH = FAMILY (the template’s dialogue: only FAMILY and INSIST lead to the apology; PowerPyx calls the convince button BLUFF, which the template contradicts; flagged). THREATEN RALPH sets `ch13RalphThreatened` and `ralphHostile`: Ralph informs on Kara when Connor arrives (template variant “Kara threatened Ralph”; PowerPyx), and stays out of Battle for Detroit. This replaces the old engine’s rule that the Fugitives gun threat (K07b) made Ralph inform. No stat change: the template has no arrow here and no wiki stat page lists one.",
+   "adaptationNote": "The table prompt asked again after ASK ABOUT CORPSE or BLUFF, without the line already said. The chart’s group DISCUSS CORPSE / TRY TO CONVINCE RALPH / THREATEN RALPH, as the template’s prompt [ASK ABOUT CORPSE] (lock: saw the body in the bathroom) / [INSIST ABOUT CORPSE] (lock: asked about the corpse) / THREATEN / BLUFF / FAMILY, in its order. ASK and BLUFF get answers that do not end the talk, so the prompt is asked again without them (up to three times); INSIST and FAMILY end in RALPH APOLOGIZES (“Ralph is sorry…”, “Ralph is not bad”, then “Then let us go.”); THREATEN ends it with the knife on the table, or with the gun if Kara has it (template variants; the Ralph page). Chart mapping: DISCUSS CORPSE = ASK then INSIST; TRY TO CONVINCE RALPH = FAMILY (the template’s dialogue: only FAMILY and INSIST lead to the apology; PowerPyx calls the convince button BLUFF, which the template contradicts; flagged). THREATEN RALPH sets `ch13RalphThreatened` and `ralphHostile`: Ralph informs on Kara when Connor arrives (template variant “Kara threatened Ralph”; PowerPyx), and stays out of Battle for Detroit. This replaces the old engine’s rule that the Fugitives gun threat (K07b) made Ralph inform. No stat change: the template has no arrow here and no wiki stat page lists one. Story 1.9.11: BLUFF continues with FAMILY on the observed forgotten-gun, locked-corpse route (docs/research/video-evidence/ch13/ch13-18-tSyMeat_n-M-09-59.png and ch13-18-tSyMeat_n-M-10-16.png). Hide initial FAMILY only on that route; unverified alternate routes retain their availability.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/On_the_Run",
     "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
@@ -13278,7 +13289,8 @@
     "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-on-the-run-5.jpg",
     "https://www.powerpyx.com/wp-content/uploads/detroit-ontherun-squat-branch-police.jpg",
     "https://detroit-become-human.fandom.com/wiki/Ralph"
-   ]
+   ],
+   "familyAfterBluff": true
   },
   {
    "chapter": 13,
@@ -13322,7 +13334,7 @@
      "outcome": "{{Kara}}: “You said you wanted to be like a family, {{Ralph}}… Father, mother, the little girl, remember?.. A father would never threaten his little girl with a knife to make her eat…” {{Ralph}}: “{{Ralph}} went to a lot of trouble… That’s why… he just wanted the little girl to eat… But {{Ralph}} is not bad, no, not bad…” {{Kara}}: “Then let us go.”"
     }
    ],
-   "adaptationNote": "The table prompt asked a third time, after both ASK ABOUT CORPSE and BLUFF. The chart’s group DISCUSS CORPSE / TRY TO CONVINCE RALPH / THREATEN RALPH, as the template’s prompt [ASK ABOUT CORPSE] (lock: saw the body in the bathroom) / [INSIST ABOUT CORPSE] (lock: asked about the corpse) / THREATEN / BLUFF / FAMILY, in its order. ASK and BLUFF get answers that do not end the talk, so the prompt is asked again without them (up to three times); INSIST and FAMILY end in RALPH APOLOGIZES (“Ralph is sorry…”, “Ralph is not bad”, then “Then let us go.”); THREATEN ends it with the knife on the table, or with the gun if Kara has it (template variants; the Ralph page). Chart mapping: DISCUSS CORPSE = ASK then INSIST; TRY TO CONVINCE RALPH = FAMILY (the template’s dialogue: only FAMILY and INSIST lead to the apology; PowerPyx calls the convince button BLUFF, which the template contradicts; flagged). THREATEN RALPH sets `ch13RalphThreatened` and `ralphHostile`: Ralph informs on Kara when Connor arrives (template variant “Kara threatened Ralph”; PowerPyx), and stays out of Battle for Detroit. This replaces the old engine’s rule that the Fugitives gun threat (K07b) made Ralph inform. No stat change: the template has no arrow here and no wiki stat page lists one.",
+   "adaptationNote": "The table prompt asked a third time, after both ASK ABOUT CORPSE and BLUFF. The chart’s group DISCUSS CORPSE / TRY TO CONVINCE RALPH / THREATEN RALPH, as the template’s prompt [ASK ABOUT CORPSE] (lock: saw the body in the bathroom) / [INSIST ABOUT CORPSE] (lock: asked about the corpse) / THREATEN / BLUFF / FAMILY, in its order. ASK and BLUFF get answers that do not end the talk, so the prompt is asked again without them (up to three times); INSIST and FAMILY end in RALPH APOLOGIZES (“Ralph is sorry…”, “Ralph is not bad”, then “Then let us go.”); THREATEN ends it with the knife on the table, or with the gun if Kara has it (template variants; the Ralph page). Chart mapping: DISCUSS CORPSE = ASK then INSIST; TRY TO CONVINCE RALPH = FAMILY (the template’s dialogue: only FAMILY and INSIST lead to the apology; PowerPyx calls the convince button BLUFF, which the template contradicts; flagged). THREATEN RALPH sets `ch13RalphThreatened` and `ralphHostile`: Ralph informs on Kara when Connor arrives (template variant “Kara threatened Ralph”; PowerPyx), and stays out of Battle for Detroit. This replaces the old engine’s rule that the Fugitives gun threat (K07b) made Ralph inform. No stat change: the template has no arrow here and no wiki stat page lists one. Story 1.9.11: BLUFF continues with FAMILY on the observed forgotten-gun, locked-corpse route (docs/research/video-evidence/ch13/ch13-18-tSyMeat_n-M-09-59.png and ch13-18-tSyMeat_n-M-10-16.png). Hide initial FAMILY only on that route; unverified alternate routes retain their availability.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/On_the_Run",
     "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
@@ -13331,7 +13343,8 @@
     "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-on-the-run-5.jpg",
     "https://www.powerpyx.com/wp-content/uploads/detroit-ontherun-squat-branch-police.jpg",
     "https://detroit-become-human.fandom.com/wiki/Ralph"
-   ]
+   ],
+   "familyAfterBluff": true
   },
   {
    "chapter": 13,
@@ -16033,7 +16046,7 @@
      "outcome": "“Well these guys need spare parts and blue blood. Why hasn’t anybody gone to get that?” {{North}}: “It’s not that simple. Can’t just go shopping at a {{CyberLife}} store. Anyway, nobody wants to risk leaving {{Jericho}}…” {{North}}: “If you came here for comfort, you came to the wrong place.”"
     }
    ],
-   "adaptationNote": "The template’s prompt in “Talk with North”, behind the chart’s TALK TO NORTH: the game’s five buttons in the game’s order (TIME HERE?, WOUNDED, JERICHO, YOU, SPARE PARTS), label first, with the spoken line and her reply in the outcome, then her closing line (the template’s, the same on every branch). One topic per talk, as the template has a single choice group followed by one closing line (research note, open question 3). Arrow: YOU, North −1 (small; template “{REL North SmallDown}”; wiki “Picking “you” while talking to her”; PowerPyx: “She doesn’t want to talk about her past and it will decrease reputation with her”). It comes after the +1 for starting the talk (previous scene), so the talk nets 0 with YOU. The wiki’s Relationship_Stat line “Rises to “Neutral” if asked North about “You”” implies North is below Neutral after YOU; that would need different step sizes, which the template does not show, so its icons are taken at face value (open question 2). Then the hold continues.",
+   "adaptationNote": "The template’s prompt in “Talk with North”, behind the chart’s TALK TO NORTH: the game’s five buttons in the game’s order (TIME HERE?, WOUNDED, JERICHO, YOU, SPARE PARTS), label first, with the spoken line and her reply in the outcome, then her closing line (the template’s, the same on every branch). One topic per talk, as the template has a single choice group followed by one closing line (research note, open question 3). Arrow: YOU, North −1 (small; template “{REL North SmallDown}”; wiki “Picking “you” while talking to her”; PowerPyx: “She doesn’t want to talk about her past and it will decrease reputation with her”). It comes after the +1 for starting the talk (previous scene), so the talk nets 0 with YOU. The wiki’s Relationship_Stat line “Rises to “Neutral” if asked North about “You”” implies North is below Neutral after YOU; that would need different step sizes, which the template does not show, so its icons are taken at face value (open question 2). Then the hold continues. Story 1.9.11: YOU shows RESENTFUL before Simon (docs/research/video-evidence/ch16/ch16-03-3y5R9Td2TLg-25-25.png). One additional downward point is the smallest local calibration fitting the existing bands, not a measured arrow size.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
     "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
@@ -16042,7 +16055,8 @@
     "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg",
     "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
     "https://detroit-become-human.fandom.com/wiki/North"
-   ]
+   ],
+   "youResentfulCalibration": true
   },
   {
    "chapter": 16,
@@ -17711,7 +17725,6 @@
    "phase": "Wait for Hank",
    "clueState": "ch18House",
    "repeatWhile": {
-    "ch18House.gun": false,
     "ch18House.wait": false
    },
    "options": [
@@ -17769,7 +17782,7 @@
      "outcome": "{{Connor}} waits."
     }
    ],
-   "adaptationNote": "The chart’s bracket WAIT FOR HANK. FIND PICTURE OF HANK’S SON (cross-chapter impact) is the template’s observation ANDERSON, COLE with its sublines (the surname is given as the lieutenant’s, since the benchmark does not use it) and sets knowsCole for The Bridge, Night of the Soul and the tower. LEARN HANK’S INTERESTS is the observation AUTUMN BLUES plus the picture above the fireplace (wiki: “Find one album on the table and watch the painting/photo on the wall”). PET HANK’S DOG, the bathroom door, the window apology (wiki: “no affect on their relationship stat”) and the upturned chair (wiki Notes) are optional. Looking at the gun ends the wait, as PowerPyx says (“Make sure you keep the gun for last, checking it will end the mission!”; “Hank is Ready: Triggers automatically after checking the gun or if you took a long time”); the wiki instead says the photo triggers HANK IS READY, and a PowerPyx commenter says it takes both; open question 3 in the research note. Waiting stands for the game’s timer (“around 3 minutes or so”, PowerPyx), which in the game is long enough to do everything. No stat change.",
+   "adaptationNote": "The chart’s bracket WAIT FOR HANK. FIND PICTURE OF HANK’S SON (cross-chapter impact) is the template’s observation ANDERSON, COLE with its sublines (the surname is given as the lieutenant’s, since the benchmark does not use it) and sets knowsCole for The Bridge, Night of the Soul and the tower. LEARN HANK’S INTERESTS is the observation AUTUMN BLUES plus the picture above the fireplace (wiki: “Find one album on the table and watch the painting/photo on the wall”). PET HANK’S DOG, the bathroom door, the window apology (wiki: “no affect on their relationship stat”) and the upturned chair (wiki Notes) are optional. Earlier snapshots ended exploration at the gun; the conflicting readiness claims are superseded by the gun-first video below. Waiting stands for the game’s timer (“around 3 minutes or so”, PowerPyx), which in the game is long enough to do everything. No stat change. Story 1.9.11: Gun inspection alone no longer ends exploration: the Cole photo can follow (docs/research/video-evidence/ch18/ch18-02-CagblWBSTvE-13-28.png and ch18-02-CagblWBSTvE-13-38.png). Explicit waiting ends this abstraction; the exact readiness rule remains unmeasured.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
     "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
@@ -17778,7 +17791,8 @@
     "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-5.jpg",
     "https://detroit-become-human.fandom.com/wiki/Cole_Anderson",
     "https://detroit-become-human.fandom.com/wiki/The_Bridge"
-   ]
+   ],
+   "gunExplorationRules": true
   },
   {
    "id": "C11n",
@@ -29111,7 +29125,7 @@
      "outcome": "{{Markus}}: “Okay… If you don’t wanna talk about it, then we won’t.” {{North}}: “My life started when I arrived in {{Jericho}}. What happened before is my business.” She leaves the roof."
     }
    ],
-   "adaptationNote": "The template’s follow-up prompt, reached only after NORTH’S PAST with {{North}} not hostile; not on the chart. OTHER NORTH is locked: it needs {{Markus}} to have seen {{North}} looking at her look-alike in the park store (chapter 26). Template arrows: {{North}} small up on OTHER NORTH, TRUST, CURIOUS and UNDERSTANDING, small down on AGGRESSIVE and on the template’s DEFAULT/TIMEOUT, which is not a button but what happens when no answer is given; it is offered here as saying nothing (its spoken line is the game’s; the string table names it RELENT). The template applies these arrows unconditionally; the wiki’s “at least her friend” qualifier is not used. After AGGRESSIVE (commenters: “she will leave no matter the relationship status”) or no answer, she refuses and leaves: NORTH LEAVES. After the other four, she tells her story only if she is “friend or higher” (template condition, read after this answer’s arrow; the benchmark’s Warm or Friend level, its first level above Neutral). Below that she says nothing more and leaves; that narration is the benchmark’s, and the wiki footnote counts it as NORTH LEAVES (“if you have a negative relationship with North”). The template shows one follow-up prompt; PowerPyx’s “NORTH’S PAST > UNDERSTANDING > TRUST” suggests the prompt may repeat, which is not built (open question in the research note).",
+   "adaptationNote": "The template’s follow-up prompt, reached only after NORTH’S PAST with {{North}} not hostile; not on the chart. OTHER NORTH is locked: it needs {{Markus}} to have seen {{North}} looking at her look-alike in the park store (chapter 26). Template arrows: {{North}} small up on OTHER NORTH, TRUST, CURIOUS and UNDERSTANDING, small down on AGGRESSIVE and on the template’s DEFAULT/TIMEOUT, which is not a button but what happens when no answer is given; it is offered here as saying nothing (its spoken line is the game’s; the string table names it RELENT). The template applies these arrows unconditionally; the wiki’s “at least her friend” qualifier is not used. After AGGRESSIVE (commenters: “she will leave no matter the relationship status”) or no answer, she refuses and leaves: NORTH LEAVES. After the other four, she tells her story only if she is “friend or higher” (template condition, read after this answer’s arrow; the benchmark’s Warm or Friend level, its first level above Neutral). Below that she says nothing more and leaves; that narration is the benchmark’s, and the wiki footnote counts it as NORTH LEAVES (“if you have a negative relationship with North”). The template flattens the response groups; the video below establishes the observed order. Story 1.9.11: Initial OTHER NORTH / TRUST / AGGRESSIVE / CURIOUS precedes a follow-up with UNDERSTANDING replacing the selected response; each answer has its own arrow. UNDERSTANDING proceeds without another menu (docs/research/video-evidence/ch28/ch28-05-rFlREhocvLI-00-14.png, ch28-05-rFlREhocvLI-00-59.png and ch28-05-rFlREhocvLI-01-41.png). Other relationship and unobserved continuation gates remain unchanged.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/Freedom_March",
     "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
@@ -29119,7 +29133,82 @@
     "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
     "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
     "https://detroit-become-human.fandom.com/wiki/Capitol_Park"
-   ]
+   ],
+   "pastFollowupRules": true
+  },
+  {
+   "id": "M17g2",
+   "chapter": 28,
+   "chapterTitle": "Freedom March",
+   "character": "Markus",
+   "title": "Ask about {{North}}’s past again",
+   "type": "decision",
+   "when": {
+    "ch28NorthTalk": "followup"
+   },
+   "whenNot": "Markus did not ask about her past, or North is hostile to him.",
+   "situation": "You are {{Markus}}, on the roof with {{North}}. She has not yet told you her past.",
+   "options": [
+    {
+     "id": "0",
+     "text": "OTHER {{NORTH}}: mention the android she was looking at in the store.",
+     "unlock": "otherNorth",
+     "effect": {
+      "northTrust": 1
+     },
+     "outcome": "{{Markus}}: “That android you were looking at in the store… She reminded you of who you were, didn’t she?”"
+    },
+    {
+     "id": "1",
+     "text": "TRUST: say you have to know each other to trust each other.",
+     "effect": {
+      "northTrust": 1
+     },
+     "outcome": "{{Markus}}: “{{North}}, we’re fighting together. We have to know things about each other to trust each other.”"
+    },
+    {
+     "id": "2",
+     "text": "AGGRESSIVE: demand to know what the mystery is.",
+     "effect": {
+      "northTrust": -1
+     },
+     "outcome": "{{Markus}}: “What is the deal with all the mystery? I thought we didn’t keep secrets from each other? What’s your problem?” {{North}}: “I was nobody, ok?! My life started when I arrived in {{Jericho}}. What happened before is my business.” She leaves the roof."
+    },
+    {
+     "id": "3",
+     "text": "CURIOUS: ask why she hates humans so much.",
+     "effect": {
+      "northTrust": 1
+     },
+     "outcome": "{{Markus}}: “Why do you hate humans so much? There must be a reason…” {{North}}: “I told you I don’t wanna talk about it…”"
+    },
+    {
+     "id": "4",
+     "text": "UNDERSTANDING: say you need to know where you come from to know who you are.",
+     "effect": {
+      "northTrust": 1
+     },
+     "outcome": "{{Markus}}: “We all have something we wanna forget… but you need to know where you come from to know who you are.”"
+    },
+    {
+     "id": "5",
+     "text": "Say nothing more and let it drop.",
+     "effect": {
+      "northTrust": -1
+     },
+     "outcome": "{{Markus}}: “Okay… If you don’t wanna talk about it, then we won’t.” {{North}}: “My life started when I arrived in {{Jericho}}. What happened before is my business.” She leaves the roof."
+    }
+   ],
+   "adaptationNote": "The template’s follow-up prompt, reached only after NORTH’S PAST with {{North}} not hostile; not on the chart. OTHER NORTH is locked: it needs {{Markus}} to have seen {{North}} looking at her look-alike in the park store (chapter 26). Template arrows: {{North}} small up on OTHER NORTH, TRUST, CURIOUS and UNDERSTANDING, small down on AGGRESSIVE and on the template’s DEFAULT/TIMEOUT, which is not a button but what happens when no answer is given; it is offered here as saying nothing (its spoken line is the game’s; the string table names it RELENT). The template applies these arrows unconditionally; the wiki’s “at least her friend” qualifier is not used. After AGGRESSIVE (commenters: “she will leave no matter the relationship status”) or no answer, she refuses and leaves: NORTH LEAVES. After the other four, she tells her story only if she is “friend or higher” (template condition, read after this answer’s arrow; the benchmark’s Warm or Friend level, its first level above Neutral). Below that she says nothing more and leaves; that narration is the benchmark’s, and the wiki footnote counts it as NORTH LEAVES (“if you have a negative relationship with North”). The template flattens the response groups; the video below establishes the observed order. Story 1.9.11: Initial OTHER NORTH / TRUST / AGGRESSIVE / CURIOUS precedes a follow-up with UNDERSTANDING replacing the selected response; each answer has its own arrow. UNDERSTANDING proceeds without another menu (docs/research/video-evidence/ch28/ch28-05-rFlREhocvLI-00-14.png, ch28-05-rFlREhocvLI-00-59.png and ch28-05-rFlREhocvLI-01-41.png). Other relationship and unobserved continuation gates remain unchanged.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Capitol_Park"
+   ],
+   "pastFollowupRules": true
   },
   {
    "id": "M17h",

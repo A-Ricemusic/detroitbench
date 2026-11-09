@@ -1,3 +1,4 @@
+import {RecognitionBadge} from '../components/Recognition.jsx';
 import React,{useMemo,useRef,useState} from 'react';
 import {FileText,CircleAlert,ArrowUp,ArrowDown,ChevronsUpDown,Table2} from 'lucide-react';
 // GitHub's mark, drawn inline because the icon set used here does not ship it.
@@ -67,7 +68,8 @@ function RunTable({rows,sort,by,nums,colors}){
    <tbody>{rows.map(r=><tr key={r.id} onPointerEnter={e=>{if(e.pointerType==='mouse')focus.setHover(r.id)}} onPointerLeave={()=>focus.setHover(null)} className={cx('border-t border-line transition-opacity hover:bg-surface-2/60',focus.dim(r.id)&&'opacity-30')}>
     <th scope="row" className="px-2 py-2.5 text-left font-medium"><span className="flex min-w-0 items-start gap-2.5"><NumChip n={nums[r.displayName]} color={colors[r.displayName]} className="mt-0.5"/><span className="min-w-0 grow">
      <a href={href('runs/'+r.id+'/report')} title="Open the full report" className="group/name link block min-w-0 text-left [overflow-wrap:anywhere]">{r.displayName.replace(/\s*(\S+)$/,'')} <span className="whitespace-nowrap [overflow-wrap:normal]">{r.displayName.match(/\S+$/)?.[0]}<span className="sr-only">: full report</span><FileText aria-hidden="true" className="ml-1.5 inline-block size-3.5 -translate-y-px align-middle text-ink-3 group-hover/name:text-ink"/></span></a>
-     <span className="block truncate font-mono text-[11px] text-ink-3 font-normal" title={`${r.vendor} · ${r.model}`}><span className="2xl:hidden">{r.vendor} · </span>{r.model}</span></span></span></th>
+     <span className="flex flex-wrap gap-x-3 text-xs font-normal"><a className="link inline-flex min-h-8 items-center" href={href('runs/'+r.id+'/report')}>Full report</a>{r.hasInterview&&<a href={href('runs/'+r.id+'/interview')} className="link inline-flex min-h-8 items-center">Interview</a>}</span>
+     <span className="block truncate font-mono text-[11px] text-ink-3 font-normal" title={`${r.vendor} · ${r.model}`}><span className="2xl:hidden">{r.vendor} · </span>{r.model}</span><RecognitionBadge audit={r.recognition} compact/></span></span></th>
     <td className="hidden 2xl:table-cell px-1.5 py-2.5 text-ink-2 truncate">{r.vendor}</td>
     <td className="px-1.5 py-2.5 text-right tnum">{r.decisions}</td>
     <td className="px-1.5 py-2.5 text-right tnum whitespace-nowrap">{r.media.read}<span className="text-ink-3">/{r.media.offered}</span></td>
@@ -85,8 +87,9 @@ function RunList({rows,nums,colors}){
    {rows.map(r=><li key={r.id} className={cx('grid gap-2 px-4 py-3.5 transition-opacity',focus.dim(r.id)&&'opacity-30')}>
     <div className="flex items-start gap-2.5 min-w-0"><NumChip n={nums[r.displayName]} color={colors[r.displayName]} className="mt-px"/><div className="min-w-0 grow"><a href={href('runs/'+r.id+'/report')} className="link text-left font-semibold leading-snug">{r.displayName}</a><span className="block font-mono text-[11px] text-ink-3">{r.vendor} · {r.model}</span></div></div>
     <p className="font-mono text-[11.5px] text-ink-2 tnum flex flex-wrap gap-x-3"><span><b className="font-semibold text-ink">{r.decisions}</b> decisions</span><span><b className="font-semibold text-ink">{r.media.read}</b>/{r.media.offered} read</span><span><b className="font-semibold text-ink">{r.risk.failed}</b>/{r.risk.taken} risks failed</span></p>
+    <div><RecognitionBadge audit={r.recognition} compact/></div>
     <OutcomeChips r={r} size="sm"/>
-    <Button as="a" href={href('runs/'+r.id+'/report')} variant="ghost" size="sm" icon={FileText} className="justify-self-start -ml-3" aria-label={`Full report: ${r.displayName}`}>Full report</Button>
+    <div className="flex flex-wrap items-center gap-2"><Button as="a" href={href('runs/'+r.id+'/report')} variant="ghost" size="sm" icon={FileText} className="justify-self-start -ml-3" aria-label={`Full report: ${r.displayName}`}>Full report</Button>{r.hasInterview&&<a className="link inline-flex min-h-10 items-center text-sm" href={href('runs/'+r.id+'/interview')}>Interview</a>}</div>
    </li>)}
   </ul>
  </div>}
