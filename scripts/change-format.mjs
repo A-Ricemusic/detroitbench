@@ -25,7 +25,7 @@ const splitWords=s=>s.replace(/([a-z0-9])([A-Z])/g,'$1 $2').replace(/([0-9])([A-
 export const sentenceCase=s=>{const w=splitWords(String(s)).toLowerCase();return w.charAt(0).toUpperCase()+w.slice(1)};
 export const titleCase=s=>splitWords(String(s)).split(/[\s_]+/).filter(Boolean).map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(' ');
 
-export function makeFormatter(LABELS){
+export function makeFormatter(LABELS,scalesVersion){
  const WORDS={...BUILT_IN_WORDS,...chapterWords()};
  const keyWord=(key,k)=>WORDS[key]?.[k]??COMMON[k]??(isCode(k)?sentenceCase(k):String(k));
  const val=(key,v)=>{if(v===null||v===undefined)return '—';if(typeof v==='boolean')return v?'yes':'no';if(typeof v==='number')return String(v);
@@ -51,7 +51,7 @@ export function makeFormatter(LABELS){
   if(c.key==='knowledge'&&c.added)return Object.entries(c.added).filter(([,f])=>f?.length).map(([who,facts])=>({label:who+' learns',facts:facts.map(String)}));
   const {label,unlabeled}=labelFor(c),tag=unlabeled?{unlabeled}:{};
   const g=gaugeForKey[c.key];
-  if(g&&typeof c.after==='number'){const b=typeof c.before==='number'?c.before:SCALES[g].startValue,lb=level(g,b),la=level(g,c.after),d=c.after-b;
+  if(g&&typeof c.after==='number'){const b=typeof c.before==='number'?c.before:SCALES[g].startValue,lb=level(g,b,undefined,scalesVersion),la=level(g,c.after,undefined,scalesVersion),d=c.after-b;
    return [{label:SCALES[g].who,text:(lb===la?la:lb+' → '+la)+' ('+signed(d)+')',...tag}]}
   if(c.added){const lines=Object.entries(c.added).flatMap(([k,list])=>(list??[]).map(v=>keyWord(c.key,k)+': added '+val(c.key,v)));return [{label,lines,...tag}]}
   if(plain(c.before)||plain(c.after)){const lines=diff(c.key,c.before,c.after);return lines.length?[{label,lines,...tag}]:[]}

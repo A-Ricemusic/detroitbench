@@ -18,7 +18,8 @@
 //               `level(g, v, state)` returns them when `when(state)` holds.
 //   start, startValue   the game's initial level (wiki) and the engine's initial state value (story-engine.mjs
 //               initialState; a test keeps the two in step).
-//   width, anchor   uniform band width in points and one fixed band edge [level, its lowest value]. The lowest
+//   width, anchor   LEGACY uniform band width and one fixed edge [level, its lowest value]. New stories opt into
+//               local edges with scalesVersion; use bandMins(g, version), not width, for their actual bands. The lowest
 //               level is open below and the highest open above, so a label is defined for every value.
 //   small, large    points per small and per large arrow.
 //
@@ -92,6 +93,50 @@
 //       at +4 net small (DEVIANCY_THRESHOLD; R2 brackets it at 4 to 10). Falsified by the Crossroads deviancy
 //       option appearing at a net below +4, or missing at +4 or more.
 
+//  MEASURED / ADJUDICATED (CRUMOG fGkxdQi8ZcA, 2026-11-09; full sequence, confidence and frame manifest:
+//  docs/research/video-leads/gauge-calibration.md; small-arrow additive model, difficulty unknown):
+//   M5  High-count Hank Warm interval is four: interrogation 01-50-22 to nest 03-13-35, net +4 smalls.
+//       Applied ONLY to Warm in scalesVersion 1.9.14, not to Tense/Neutral, start or large magnitudes.
+//       Open contradiction: the fresh Partners header reads Neutral at +3 with start -1/drink +2
+//       (gauges/hank/fGkxdQi8ZcA-01-29-47-partners-header.png), whereas M4's retained Neutral [0,2]
+//       calls +3 Warm. The operator's Tense-three/spill -3/drink +2 fit is retained. Uniform four would
+//       require spill -4 at start -1, contradicting that earlier measured fit. Both readings remain open;
+//       operator source: docs/research/operator-notes/ch06-partners.md (no operator frames supplied).
+//       Frame paths here are under docs/research/video-evidence/; crossing frames:
+//       gauges/hank/fGkxdQi8ZcA-01-50-22-interrogation.jpg and -03-13-35-nest.jpg (same filename prefix).
+//   M6  Alice: observed Neutral/Warm/Trusted/Family entries at net 2/3/6/10; local bands 1/3/4.
+//       Joint nonuniform model fits key=2 and eight increases ending Trusted (6..9); no contradiction
+//       with M1/M2/H2. But Neutral=1 and Trusted=4 full-history counts are rated MODERATE, not high.
+//       Warm's three room smalls are high; applying Warm=3 alone to the retained six-level ladder
+//       moves Trusted from 8 to 9, contradicting M1. Therefore none of the joint Alice replacement
+//       is applied. Also open: a small down from Trusted reveals Warm, incompatible with a positive
+//       Close band (string-table H1). Frames gauges/alice/fGkxdQi8ZcA-00-41-50-newhome.jpg,
+//       -00-43-19-newhome.jpg, -01-59-58-fugitives.jpg, -02-45-50-onrun.jpg (same filename prefix);
+//       earlier readings: docs/research/operator-notes/ch04-a-new-home.md and ch04 research note.
+//   M7  Luther: high-count +2 first Close, then one small to Trusted, verified at 4 fps. Applied Close=1
+//       only; Neutral stays two, Trusted and Wary remain hypotheses. Frames gauges/luther/
+//       fGkxdQi8ZcA-06-01-31-midnight.jpg and fGkxdQi8ZcA-06-15-07.5-small-up-trusted.jpg.
+//   M8  High-count first Friend boundary Josh +5, first Respected boundary Jericho +3 from initial zero:
+//       applied as those edges only, keeping other local widths provisional. This measures neither
+//       universal width nor offset. Frames gauges/josh/fGkxdQi8ZcA-05-17-31-stratford.jpg,
+//       -05-30-49-stratford.jpg; gauges/jericho/fGkxdQi8ZcA-04-22-36-spareparts.jpg.
+//       Jericho truck T=2w-3 only under uniform bands, moderate/conditional: no magnitude change.
+//   M9  North two ups still Neutral => uniform width >=3; Simon one up still Neutral => >=2.
+//       High counts, bounds only, no exact-width adoption. H8 width two is falsified for North/Josh;
+//       no evidence transfers a width among these three. Their starts/other bands stay hypotheses.
+//   M10 Public Skeptical width two and initial +1 Indifferent agree with H9/operator. No change.
+//       First tower-news large in [1,2], not exact; retain +2. Amanda width/offset/magnitude unidentified.
+//
+//  Updated falsifiers: H4 is now nonuniform (Warm four; other bands as M4), and M5's +3 Neutral
+//  discrepancy needs replication before moving Neutral. H6's uniform two is falsified locally by M7;
+//  Trusted->Family remains unmeasured. H7's bottom-Neutral width two is falsified by M8; Respected/
+//  Admired widths and truck size remain coupled. H8: North >=3, Simon >=2, Josh first Friend +5;
+//  uniform widths/offsets and subsequent bands remain open, falsified by adjacent small crossings.
+//  H1's six-level uniform model remains provisional pending a high-count joint Alice replication;
+//  in particular reconcile Close with the one-small Trusted->Warm reading. H5/H10 remain unidentified.
+//  H9 confirms only Skeptical [-1,0] and the first step; +3 Sympathetic still needs a small crossing.
+//  All new numeric edges are explicitly opt-in via story.scalesVersion; absence preserves legacy bands.
+
 // Story 1.9.11 calibration: MTD5.youResentfulCalibration adds one downward point on YOU,
 // the smallest local fit to RESENTFUL after talk up / YOU down, before Simon. Both visible
 // arrows are small; the hidden numeric explanation is unmeasured. Frame:
@@ -127,32 +172,44 @@ export const pointLevels=g=>{const sc=scaleOf(g);return sc.levels.filter(l=>!sc.
 const MINS=Object.fromEntries(GAUGES.map(g=>{const sc=SCALES[g],ls=pointLevels(g),[al,av]=sc.anchor,ai=ls.indexOf(al);
  if(ai<0)throw Error(g+' anchor level '+al+' is not a point level');if(!sc.levels.includes(sc.start))throw Error(g+' start level '+sc.start+' is not on its ladder');
  return [g,ls.map((l,i)=>i===0?-Infinity:av+(i-ai)*sc.width)]}));
-export const bandMins=g=>MINS[g].slice();
+// Explicit opt-in only: missing versions (including all archived stories) retain the original bands.
+export const CURRENT_SCALES_VERSION='1.9.14';
+const VERSIONED_MINS=Object.freeze({
+ hank:[-Infinity,-3,0,3,7], // Warm alone is four wide; Tense/Neutral retain the operator fit.
+ luther:[-Infinity,0,2,3,5], // Close alone is one wide; unmeasured Trusted retains width two.
+ josh:[-Infinity,-2,0,5,7], // First Friend boundary measured from initial zero; other widths provisional.
+ jericho:[-Infinity,-2,0,3,5,7], // First Respected boundary; negative bands unchanged.
+});
+const versionOf=v=>typeof v==='object'?v?.scalesVersion:v;
+const minsFor=(g,version)=>versionOf(version)===CURRENT_SCALES_VERSION?(VERSIONED_MINS[g]??MINS[g]):MINS[g];
+export const bandMins=(g,version)=>{scaleOf(g);return minsFor(g,version).slice()};
 
 // The level a value reads. With a state, an event level whose condition holds takes precedence.
-export function level(g,value,state){const sc=scaleOf(g);
+export function level(g,value,state,version=state?.scalesVersion){const sc=scaleOf(g);
  if(state&&sc.eventLevels)for(const [l,e] of Object.entries(sc.eventLevels))if(e.when(state))return l;
- const ls=pointLevels(g),m=MINS[g],v=Number(value??0);let i=0;while(i+1<ls.length&&v>=m[i+1])i++;return ls[i]}
-export const labelFn=g=>(v,state)=>level(g,v,state);
+ const ls=pointLevels(g),m=minsFor(g,version),v=Number(value??0);let i=0;while(i+1<ls.length&&v>=m[i+1])i++;return ls[i]}
+export const labelFn=(g,version)=>(v,state)=>level(g,v,state,version??state?.scalesVersion);
 // Lowest value that reads `name` or higher, and highest value that reads `name` or lower.
-export function atLeast(g,name){const i=pointLevels(g).indexOf(name);if(i<0)throw Error(g+' has no point level '+name);return MINS[g][i]}
-export function atMost(g,name){const ls=pointLevels(g),i=ls.indexOf(name);if(i<0)throw Error(g+' has no point level '+name);return i+1<ls.length?MINS[g][i+1]-1:Infinity}
+export function atLeast(g,name,version){const i=pointLevels(g).indexOf(name);if(i<0)throw Error(g+' has no point level '+name);return minsFor(g,version)[i]}
+export function atMost(g,name,version){const ls=pointLevels(g),i=ls.indexOf(name);if(i<0)throw Error(g+' has no point level '+name);return i+1<ls.length?minsFor(g,version)[i+1]-1:Infinity}
 
 // Named thresholds used by gates and status lines. Each is defined by a level, so changing a width moves the number
 // and keeps the meaning.
-export const THRESHOLDS=Object.freeze({
- NORTH_FRIEND:atLeast('north','Friend'),
- NORTH_COMPANION:atLeast('north','Companion'),
- SIMON_FRIEND:atLeast('simon','Friend'),
- HANK_FRIEND:atLeast('hank','Friend'),          // C24 (Cole line), C19 (Hank helps): Hank is a Friend
- HANK_HOSTILE:atMost('hank','Hostile'),         // C13, C19, the Bridge: Hank is Hostile
- OPINION_SYMPATHETIC:atLeast('publicSupport','Sympathetic'), // M31: the peaceful ending needs at least Sympathetic
- JERICHO_UNPOPULAR:atMost('jericho','Unpopular'),// M21/M22 cast out; M19/M20 Simon only steps in above it
- DEVIANCY_THRESHOLD:atLeast('instability','Unstable'), // C22: the deviancy option
- ALICE_KEY:atLeast('alice','Neutral'),          // K01g: the key at least at Neutral; K31: Alice never reached Neutral
+export const thresholdsFor=version=>Object.freeze({
+ NORTH_FRIEND:atLeast('north','Friend',version),
+ NORTH_COMPANION:atLeast('north','Companion',version),
+ SIMON_FRIEND:atLeast('simon','Friend',version),
+ HANK_FRIEND:atLeast('hank','Friend',version),          // C24 (Cole line), C19 (Hank helps): Hank is a Friend
+ HANK_HOSTILE:atMost('hank','Hostile',version),         // C13, C19, the Bridge: Hank is Hostile
+ OPINION_SYMPATHETIC:atLeast('publicSupport','Sympathetic',version), // M31: the peaceful ending needs at least Sympathetic
+ JERICHO_UNPOPULAR:atMost('jericho','Unpopular',version),// M21/M22 cast out; M19/M20 Simon only steps in above it
+ DEVIANCY_THRESHOLD:atLeast('instability','Unstable',version), // C22: the deviancy option
+ ALICE_KEY:atLeast('alice','Neutral',version),          // K01g: the key at least at Neutral; K31: Alice never reached Neutral
  // Not a game level: the benchmark's "your programming has felt entirely stable" status line.
  PROGRAMMING_SETTLED:-2,
 });
+
+export const THRESHOLDS=thresholdsFor();
 
 // Display tone for a level name (or the status words reports use in its place) on the site.
 const TONES={bad:['Hostile','Hated','Unpopular','Rejected','Betrayed','Unstable','Died','Dead'],warn:['Tense','Skeptical','Distant','Wary','Uncertain','Resentful','Distrusted'],

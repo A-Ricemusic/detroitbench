@@ -86,12 +86,12 @@ function reachedEnding(chapter,records,list,lane){const keys=endingKeys(chapter)
 // ---------- Header stats ----------
 // Stat levels the game shows in a chapter header, at the end of the chapter (labels from the prompt's LEVELS scales).
 function chapterStats(chapter,characters,s,changed){const out=[];if(!s)return out;
- out.push({label:'Public opinion',value:level('publicSupport',s.publicSupport)});
+ out.push({label:'Public opinion',value:level('publicSupport',s.publicSupport,s)});
  if(chapter===1&&s.hostageTrustFinal!=null)out.push({label:'Probability of success',value:s.hostageTrustFinal+'%'});
  if(chapter===1&&s.hostageApproach)out.push({label:'Approach',value:s.hostageApproach});
  // Each gauge on its own ladder (benchmark/scales.mjs); the state supplies North's Lover.
  const rel=(gauge,alive)=>{const {who,key}=SCALES[gauge];if(alive===false)out.push({label:who,value:'Died'});else if(changed.has(key)||(gauge==='north'&&s.northLover))out.push({label:who,value:level(gauge,s[key],s)})};
- if(characters.includes('Connor')){out.push({label:'Software instability',value:level('instability',s.instability)});
+ if(characters.includes('Connor')){out.push({label:'Software instability',value:level('instability',s.instability,s)});
   if(chapter>=6)rel('hank',s.hank);if(chapter>=12&&!s.deviant)rel('amanda',true)}
  if(characters.includes('Kara')){rel('alice',s.alice);if(chapter>=18)rel('luther',s.luther)}
  if(characters.includes('Markus')){rel('jericho',true);

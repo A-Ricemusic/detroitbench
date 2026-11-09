@@ -18,7 +18,7 @@ const meets=(req,s)=>!req||Object.entries(req).every(([k,v])=>{const x=k.split('
 // State changes in prose (scripts/change-format.mjs), shared with the question bank's feedback panel
 // (scripts/dataset-assemble.mjs), so both describe a change the same way.
 export const changeLabels=()=>({...CHANGE_LABELS,...chapterLabels()});
-export const changeFormatter=()=>makeFormatter(changeLabels());
+export const changeFormatter=scalesVersion=>makeFormatter(changeLabels(),scalesVersion);
 export function reportData(run,name,summary){
  const story=renderStory(run.story,'real'),nodes=new Map(story.nodes.map(n=>[n.id,n])),skips=new Map(run.skipped.map(s=>[s.id,s.reason]));
  const LABELS={...CHANGE_LABELS,...chapterLabels()},states=statesOf(run),out=endings(run);
@@ -28,7 +28,7 @@ export function reportData(run,name,summary){
   const reads=items.filter(m=>m.kind!=='tv').map(m=>m.title),watches=items.filter(m=>m.kind==='tv'&&!isRadio(m)).map(m=>m.title),listens=items.filter(m=>m.kind==='tv'&&isRadio(m)).map(m=>m.title),parts=[];
   if(reads.length)parts.push('reads '+joinList(reads));if(watches.length)parts.push('watches '+joinList(watches));if(listens.length)parts.push('listens to '+joinList(listens));return WHO[n.character].replace(' & Alice','')+' '+parts.join(', and ')+'.'};
  const outcomeOf=(r,n,changes)=>{const m=mediaSentence(r,n);if(m)return tidy(m);if(r.event&&r.event!==r.choiceText)return tidy(r.event);const o=changes.find(c=>['connorOutcome','karaOutcome','markusOutcome'].includes(c.key)&&c.after&&c.after!=='unresolved'&&c.after!=='liberated');return o?o.after:''};
- const formatChange=makeFormatter(LABELS);
+ const formatChange=makeFormatter(LABELS,run.story?.scalesVersion);
  // One timeline entry per record and per scene never reached, in the standalone page's order: chronological, each
  // unreached scene at its position in the story. A repeatable scene's first visit keeps the scene ID as its key.
  const byNode=new Map;for(const r of run.records){if(!byNode.has(r.nodeId))byNode.set(r.nodeId,[]);byNode.get(r.nodeId).push(r)}

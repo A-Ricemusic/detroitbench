@@ -136,20 +136,20 @@ Relationships and world stats are defined once in `benchmark/scales.mjs`, which 
 
 | Gauge | Toward | Ladder, lowest first | Start | Band width |
 |---|---|---|---|---|
-| Hank | Connor | Hostile, Tense, Neutral, Warm, Friend | Tense | 3 points |
+| Hank | Connor | Hostile, Tense, Neutral, Warm, Friend | Tense | Tense 3; Neutral 3; Warm 4 points |
 | Amanda | Connor | Betrayed (by event), Distrusted, Neutral, Trusted | Trusted | 3 points |
 | Alice | Kara | Distant, Neutral, Warm, Close, Trusted, Family | Distant | 2 points |
-| Luther | Kara | Wary, Neutral, Close, Trusted, Family | Neutral | 2 points |
-| Jericho | Markus | Rejected (by event), Unpopular, Uncertain, Neutral, Respected, Admired, Leader | Neutral | 2 points |
+| Luther | Kara | Wary, Neutral, Close, Trusted, Family | Neutral | Neutral 2; Close 1; Trusted 2 points |
+| Jericho | Markus | Rejected (by event), Unpopular, Uncertain, Neutral, Respected, Admired, Leader | Neutral | Uncertain 2; Neutral 3; Respected 2; Admired 2 points |
 | North | Markus | Hostile, Resentful, Neutral, Friend, Companion, Lover (by event) | Neutral | 2 points |
 | Simon | Markus | Hostile, Resentful, Neutral, Friend, Companion | Neutral | 2 points |
-| Josh | Markus | Hostile, Resentful, Neutral, Friend, Companion | Neutral | 2 points |
+| Josh | Markus | Hostile, Resentful, Neutral, Friend, Companion | Neutral | Resentful 2; Neutral 5; Friend 2 points |
 | Public opinion | Markus | Hated, Hostile, Skeptical, Indifferent, Sympathetic, Supportive | Skeptical | 2 points |
 | Software instability | Connor | Stable, Unstable (the game shows only a meter between MACHINE and DEVIANT) | Stable | 4 points |
 
 **Measured.** Alice in A New Home (operator, 2026-11-06): eight small increases end on Trusted, not Family. Hank in Partners (operator, 2026-11-07): large arrows are not one size (see Partners below). Measured large arrows written at their own size: SPILL HANK'S DRINK (Partners): −3.
 
-**Hypotheses.** Every other width, start and threshold is a hypothesis, each with the in-game reading that would falsify it. Two examples: Hank's bands are assumed three points wide starting at the top of Tense, and the deviancy option is assumed to open at +4 software instability. Community readings are recorded, not adopted, except where a measurement matches one. The full list is in the header of `benchmark/scales.mjs`.
+**Hypotheses.** Unmeasured widths, starts and thresholds remain hypotheses, each with the in-game reading that would falsify it. Story 1.9.14 applies only the high-count local intervals (Hank Warm four, Luther Close one) and first boundaries (Josh Friend +5, Jericho Respected +3). The table uses that story’s scalesVersion; older runs retain their original bands. Alice’s joint model remains unapplied because the full-history counts are moderate. North ≥3 and Simon ≥2 are bounds, not exact widths. Two examples: Hank retains the Partners Tense/Neutral fit with a locally measured four-point Warm band, and the deviancy option is assumed to open at +4 software instability. Community readings are recorded, not adopted, except where a measurement matches one. The full list is in the header of `benchmark/scales.mjs`.
 
 ### Execution assumptions
 
@@ -167,7 +167,7 @@ At **10% or lower** at any point, Daniel jumps with Emma. After REASSURE, **80% 
 
 ### Partners
 
-Hank's gauge starts on Tense, at −1. Bands: Hostile −4 or less · Tense −3 to −1 · Neutral 0 to 2 · Warm 3 to 5 · Friend 6 or more. The game's text marks the drink arrows large without saying how large "large" is.
+Hank's gauge starts on Tense, at −1. Bands: Hostile −4 or less · Tense −3 to −1 · Neutral 0 to 2 · Warm 3 to 6 · Friend 7 or more in story 1.9.14 (earlier: Warm 3 to 5, Friend from 6). The game's text marks the drink arrows large without saying how large "large" is.
 
 On 2026-11-07 the operator replayed the chapter twice and read Hank's level after every arrow. The spill dropped him a full band; the bought drink raised him less than one. The minimal fit, adopted in story 1.9.3: **the spill −3, the drink +2**, and no arrow on finding the deviant.
 

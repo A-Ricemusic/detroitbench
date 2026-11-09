@@ -44,7 +44,7 @@ const outcome=async f=>{try{const v=await f();return {ok:true,v:JSON.stringify(v
 
 // A run of `length` decisions, alternating first and last offered option so both stats and branches move.
 // `untilRisk` keeps going past `length` until a risky action is recorded (story 1.9.2 has none in chapters 1 to 6).
-async function build(length,{untilRisk=false}={}){const run={id:'replay-equivalence',protocol:EXPERIENCE_PROTOCOL,kind:'agent-playthrough',storyHash:await hash(story),status:'running',records:[]};
+async function build(length,{untilRisk=false}={}){const run={id:'replay-equivalence',protocol:EXPERIENCE_PROTOCOL,kind:'agent-playthrough',story,storyHash:await hash(story),status:'running',records:[]};
  while((run.records.length<length||untilRisk&&!run.records.some(x=>x.risk))&&current(story,run).node){const p=promptFor(story,run),o=p.options,choice=(o.find(x=>x.id==='skip')??o[run.records.length%2?o.length-1:0]).id;run.records.push(await recordChoice(story,run,{choice,reason:'test'},JSON.stringify({choice,reason:'test'})))}
  return run}
 

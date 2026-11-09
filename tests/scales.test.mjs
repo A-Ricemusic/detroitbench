@@ -1,9 +1,10 @@
 // The gauge definitions in benchmark/scales.mjs: the in-game Alice calibration, the start levels, the game's ladders,
 // the named thresholds (whose meaning must not drift), and that every consumer reads the same labels.
 import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile,readdir} from 'node:fs/promises';
-import {SCALES,GAUGES,THRESHOLDS,level,labelFn,pointLevels,atLeast,atMost,bandMins,levelTone,gaugeForKey,MEASURED_ARROWS} from '../benchmark/scales.mjs';
+import {SCALES,GAUGES,THRESHOLDS,level,labelFn,pointLevels,atLeast,atMost,bandMins,levelTone,gaugeForKey,MEASURED_ARROWS,thresholdsFor} from '../benchmark/scales.mjs';
 import {LEVELS,DEVIANCY_THRESHOLD,sceneFacts} from '../benchmark/experience-prompt.mjs';
-import {initialState,ENGINE_CONSTANTS,ALICE_KEY,attitudes} from '../benchmark/story-engine.mjs';
+import {initialState,ENGINE_CONSTANTS,ALICE_KEY,attitudes,startState,apply,statesOf} from '../benchmark/story-engine.mjs';
+import {changeFormatter} from '../scripts/report-data.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));
 
 test('Alice: eight small increases from the start end on Trusted, one stays Distant, net zero reads Distant (operator, in game)',()=>{
@@ -127,4 +128,47 @@ test('every ladder level has a display tone on the site, except the neutral ones
  const neutral=new Set(['Neutral','Indifferent','Stable']);
  for(const g of GAUGES)for(const l of SCALES[g].levels)if(!neutral.has(l))assert.ok(levelTone(l),g+' '+l);
  assert.equal(levelTone('Died'),'bad');assert.equal(levelTone('Alive'),'good');assert.equal(levelTone('Never met'),'');
+});
+
+test('1.9.14 applies only measured local edges, with legacy bands as the missing-version default',()=>{
+ const version='1.9.14',s=startState({...story,scalesVersion:version});
+ assert.equal(s.scalesVersion,version);
+ for(const g of GAUGES){const ls=pointLevels(g),mins=bandMins(g,version);let prev=-1;
+  for(let v=-30;v<=30;v++){const l=level(g,v,s),i=ls.indexOf(l);assert.ok(i>=prev,g+' monotonic');prev=i;
+   assert.equal(labelFn(g,version)(v),l);assert.equal(level(g,v,undefined,version),l)}
+  for(const l of ls){assert.equal(level(g,atLeast(g,l,version),s),l);if(l!==ls.at(-1))assert.equal(level(g,atMost(g,l,version),s),l)}
+  for(const old of [undefined,'1.9.3','1.9.13'])assert.deepEqual(bandMins(g,old),bandMins(g));
+ }
+ assert.deepEqual(bandMins('hank',version),[-Infinity,-3,0,3,7]);
+ assert.equal(atLeast('hank','Friend',version)-atLeast('hank','Warm',version),4);
+ assert.equal(atLeast('hank','Friend')-atLeast('hank','Warm'),3);
+ assert.deepEqual(bandMins('luther',version),[-Infinity,0,2,3,5]);
+ assert.equal(level('luther',2,s),'Close');assert.equal(level('luther',3,s),'Trusted');assert.equal(level('luther',3),'Close');
+ assert.equal(level('josh',4,s),'Neutral');assert.equal(level('josh',5,s),'Friend');assert.equal(level('josh',4),'Companion');
+ assert.equal(level('jericho',2,s),'Neutral');assert.equal(level('jericho',3,s),'Respected');assert.equal(level('jericho',2),'Respected');
+ // Bounds and moderate joint-history inferences are documented, not silently applied.
+ for(const g of ['alice','north','simon','amanda','publicSupport','instability'])assert.deepEqual(bandMins(g,version),bandMins(g));
+ // Earlier measured controls all survive: exact Partners route readings, Alice key/eight ups, public first step.
+ assert.deepEqual([-1,-2,-5,-4,-3].map(v=>level('hank',v,s)),['Tense','Tense','Hostile','Hostile','Tense']);
+ assert.deepEqual([-1,-2,0,1,2].map(v=>level('hank',v,s)),['Tense','Tense','Neutral','Neutral','Neutral']);
+ assert.equal(level('alice',1,s),'Distant');assert.equal(level('alice',2,s),'Neutral');assert.equal(level('alice',8,s),'Trusted');
+ assert.equal(level('publicSupport',1,s),'Indifferent');
+ const limits=thresholdsFor(version);assert.equal(limits.HANK_FRIEND,7);assert.equal(limits.HANK_HOSTILE,-4);assert.equal(limits.ALICE_KEY,2);
+ assert.equal(thresholdsFor().HANK_FRIEND,6);
+ const old={...story};delete old.scalesVersion;assert.deepEqual(startState(old),initialState());assert.ok(!('scalesVersion' in startState(old)));
+});
+
+test('1.9.14 version follows engine gates, prompts, replayed display states and report changes',()=>{
+ const s=startState(story);assert.equal(s.scalesVersion,'1.9.14');s.luther=true;s.lutherWith=true;s.lutherTrust=3;s.hankTrust=6;
+ assert.match(sceneFacts(s,{character:'Kara',chapter:25}).join(' '),/regard for you: Trusted/);
+ assert.match(sceneFacts(s,{character:'Connor',chapter:32}).join(' '),/attitude toward you: Warm/);
+ assert.equal(attitudes(s).Connor[0].level,'Warm');
+ const old={...s};delete old.scalesVersion;assert.equal(attitudes(old).Connor[0].level,'Friend');
+ const arrival=story.nodes.find(n=>n.id==='CL03');assert.ok(arrival);
+ apply(arrival,s,'0');assert.equal(s.ch32cl.friend,false,'module receives versioned Friend threshold');
+ apply(arrival,old,'0');assert.equal(old.ch32cl.friend,true,'legacy threshold retained');
+ const rebuilt=statesOf({story,records:[]});assert.equal(rebuilt[0].scalesVersion,story.scalesVersion);
+ const c={key:'lutherTrust',before:2,after:3};
+ assert.match(changeFormatter(story.scalesVersion)(c)[0].text,/Close → Trusted/);
+ assert.equal(changeFormatter()(c)[0].text,'Close (+1)');
 });

@@ -1,4 +1,4 @@
-import {THRESHOLDS} from '../benchmark/scales.mjs';
+import {THRESHOLDS,thresholdsFor} from '../benchmark/scales.mjs';
 // Battle for Detroit (chapter 32) and the post-credits hostess (chapter 33).
 // The tests start from a crafted state at the first chapter-32 scene (every earlier-chapter flag set explicitly), so they
 // do not depend on how earlier chapters route; `play32` follows the engine's routing exactly as a run does.
@@ -7,6 +7,7 @@ import {startState,blocked,available,apply,nextCursor} from '../benchmark/story-
 import {render,NAMES} from '../benchmark/experience-prompt.mjs';
 import * as ch32 from '../benchmark/chapters/ch32.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));
+const HANK_FRIEND=thresholdsFor(story.scalesVersion).HANK_FRIEND;
 const CH=story.nodes.filter(n=>n.chapter===32),node=id=>story.nodes.find(n=>n.id===id);
 const FIRST=story.nodes.findIndex(n=>n.chapter===32);
 // A state at the start of chapter 32: the engine's initial state with the earlier chapters' flags given in `over`.
@@ -65,8 +66,8 @@ test('Press conference: the raid question needs the raid; the variants follow Ma
 {
 // ---- Connor: Connor's Last Mission (machine) and Connor at the CyberLife Tower (deviant) ----
 const CONNOR_IDS=ch32.rules.parts.connor;
-const MACHINE={deviant:false,connor:true,hank:true,hankTrust:6,movement:'demonstration'};
-const DEVIANT={deviant:true,connor:true,hank:true,hankTrust:6,movement:'demonstration'};
+const MACHINE={deviant:false,connor:true,hank:true,hankTrust:HANK_FRIEND,movement:'demonstration'};
+const DEVIANT={deviant:true,connor:true,hank:true,hankTrust:HANK_FRIEND,movement:'demonstration'};
 const cids=r=>r.visited.filter(id=>CONNOR_IDS.includes(id));
 const lcg=seed=>()=>((seed=(seed*1103515245+12345)%2147483648)/2147483648);
 
@@ -103,15 +104,15 @@ test('Connor: the Zen Garden briefing plays only after Markus shot the deviant C
 });
 
 test('Connor: Hank on the roof drops on arrival; LEAVE needs Hank a Friend when he arrives, not Cole',()=>{
- const r=play32({...MACHINE,hankTrust:6,knowsCole:false},{C24:'0'});
+ const r=play32({...MACHINE,hankTrust:HANK_FRIEND,knowsCole:false},{C24:'0'});
  assert.deepEqual(cids(r),['CL02','CL03','CL04','CL05','C24']);
- assert.equal(r.events.CL03[0].changes.find(c=>c.key==='hankTrust').after,4,'large down on arrival');
+ assert.equal(r.events.CL03[0].changes.find(c=>c.key==='hankTrust').after,HANK_FRIEND-2,'large down on arrival');
  assert.ok(available(node('C24'),put(base(MACHINE),{ch32ConnorChart:'lastMission','ch32cl.friend':true})).some(o=>o.id==='0'),'the built-in Cole gate is gone');
  assert.equal(r.s.ch32ConnorEnding,'CONNOR LEFT ROOFTOP');assert.equal(r.s.ch32cl.card,'CA33');assert.equal(r.s.hank,true);assert.equal(r.s.connor,true);
- assert.equal(r.s.hankTrust,2,'not insisting about his son: a second large down');
- const insisted=play32({...MACHINE,hankTrust:7},{CL05:'3',CL06:'3',C24:'0'});
- assert.deepEqual(cids(insisted),['CL02','CL03','CL04','CL05','CL06','C24']);assert.equal(insisted.s.hankTrust,5,'insisted and left: only the arrival drop');
- const warm=play32({...MACHINE,hankTrust:5});const opts=available(node('C24'),put(base(MACHINE),{ch32ConnorChart:'lastMission','ch32cl.friend':false}));
+ assert.equal(r.s.hankTrust,HANK_FRIEND-4,'not insisting about his son: a second large down');
+ const insisted=play32({...MACHINE,hankTrust:HANK_FRIEND},{CL05:'3',CL06:'3',C24:'0'});
+ assert.deepEqual(cids(insisted),['CL02','CL03','CL04','CL05','CL06','C24']);assert.equal(insisted.s.hankTrust,HANK_FRIEND-2,'insisted and left: only the arrival drop');
+ const warm=play32({...MACHINE,hankTrust:HANK_FRIEND-1});const opts=available(node('C24'),put(base(MACHINE),{ch32ConnorChart:'lastMission','ch32cl.friend':false}));
  assert.deepEqual(opts.map(o=>o.id),['1']);assert.equal(warm.s.ch32cl.friend,false);
 });
 
@@ -126,7 +127,7 @@ test('Connor: the rooftop fight with Hank and its three endings',()=>{
  assert.equal(lost.s.ch32ConnorEnding,'CYBERLIFE DECIDED TO SEND ANOTHER CONNOR');assert.equal(lost.s.ch32cl.card,'CA30');
  assert.equal(lost.s.connor,true,'a replacement takes over');assert.equal(lost.s.deviant,false);assert.equal(lost.s.connorDeaths,1);assert.equal(lost.s.instability,-1);
  assert.equal(lost.s.hank,true);assert.match(ev(lost,'C24'),/Just a machine\..*replacement/);assert.ok(!lost.visited.includes('C30'));
- assert.equal(lost.s.hankTrust,6-2-2,'arrival and attack, nothing for the death');
+ assert.equal(lost.s.hankTrust,HANK_FRIEND-2-2,'arrival and attack, nothing for the death');
  const dodge=play32(MACHINE,{C24:'1',C30:'0'});assert.ok(dodge.visited.includes('C30'));assert.equal(dodge.s.hank,false);assert.equal(dodge.s.ch32ConnorEnding,'CONNOR LEFT ROOFTOP');assert.match(ev(dodge,'C30'),/HANK FALLS TO HIS DEATH.*MISSED OPPORTUNITY/);
  const pushed=play32(MACHINE,{C24:'1',C30:'0'},['C30']);assert.equal(pushed.s.hank,true);assert.equal(pushed.s.ch32ConnorEnding,'CYBERLIFE DECIDED TO SEND ANOTHER CONNOR');assert.match(ev(pushed,'C30'),/You left me no choice/);assert.equal(pushed.s.connorDeaths,1);
  const killed=play32(MACHINE,{C24:'1',C30:'1'});assert.equal(killed.s.hank,false);assert.equal(killed.s.ch32cl.card,'CA33');assert.equal(killed.s.connorDeaths,0);
@@ -140,7 +141,7 @@ test('Connor: Captain Allen when Hank is dead; FLEE is the jump, not a way out',
  const lost=play32(H,{C24b:'0'},['C24b']);assert.equal(lost.s.ch32cl.card,'CA31');assert.match(ev(lost,'C24b'),/first time I saw you/);
  assert.match(ev(play32({...H,hostageOutcome:'Snipers shot deviant'}),'CL07'),/I knew we’d meet again/);
  assert.match(ev(play32({...H,hostageOutcome:'Deviant shot Connor'}),'CL07'),/Androids don’t die, captain/);
- for(const r of [flee,won,lost])assert.equal(r.s.hankTrust,6,'no Hank arrow without Hank');
+ for(const r of [flee,won,lost])assert.equal(r.s.hankTrust,HANK_FRIEND,'no Hank arrow without Hank');
 });
 
 test('Connor: the elevator is an action budget before level 31',()=>{
@@ -161,11 +162,11 @@ test('Connor: the elevator is an action budget before level 31',()=>{
 test('Connor: saving Hank, the fight, and the dog and son questions',()=>{
  const P={CT02:['0','1','3','4']};
  const outright=play32(DEVIANT,{...P,C25:'0',CT07:'0'});
- assert.equal(outright.s.ch32ct.card,'CB63');assert.equal(outright.s.army,true);assert.equal(outright.s.ch32AndroidsWoke,true);assert.equal(outright.s.hank,true);assert.equal(outright.s.hankTrust,8,'SAVE HANK large up');
+ assert.equal(outright.s.ch32ct.card,'CB63');assert.equal(outright.s.army,true);assert.equal(outright.s.ch32AndroidsWoke,true);assert.equal(outright.s.hank,true);assert.equal(outright.s.hankTrust,HANK_FRIEND+2,'SAVE HANK large up');
  assert.ok(!outright.visited.includes('CT08'));
  for(const dog of ['0','1','2','3']){const r=play32(DEVIANT,{...P,C25:'0',CT07:'1',CT08:dog,C26:'0'},['CT07']);
   assert.deepEqual(cids(r).slice(-5),['CT06','C25','CT07','CT08','C26']);
-  assert.equal(r.s.ch32ct.card,'CB63');assert.equal(r.s.hankTrust,10,'save and Hank shoots the other Connor: two large ups');assert.equal(r.s.army,true);assert.equal(r.s.connor,true)}
+  assert.equal(r.s.ch32ct.card,'CB63');assert.equal(r.s.hankTrust,HANK_FRIEND+4,'save and Hank shoots the other Connor: two large ups');assert.equal(r.s.army,true);assert.equal(r.s.connor,true)}
  for(const son of ['1','2','3']){const r=play32(DEVIANT,{...P,C25:'0',CT07:'0',C26:son},['CT07']);assert.equal(r.s.ch32ConnorEnding,'THE ANDROIDS REMAINED DORMANT');assert.equal(r.s.ch32ct.card,'CB62');assert.equal(r.s.connor,false);assert.equal(r.s.hank,true);assert.match(ev(r,'C26'),/What have I done/)}
  const late=play32(DEVIANT,{...P,C25:'0',CT07:'3'});assert.equal(late.s.ch32ct.card,'CB62');assert.equal(late.s.hank,true,'Hank is injured, not killed');assert.ok(!late.visited.includes('CT09'));
  const s=base({...DEVIANT,knowsCole:true,ch32ConnorChart:'tower','ch32ct.draw':true});assert.match(available(node('C26'),s)[0].text,/remember the photograph/);
@@ -175,11 +176,11 @@ test('Connor: saving Hank, the fight, and the dog and son questions',()=>{
 test('Connor: sacrificing Hank, converting, and the four-way choice over the damaged Connor',()=>{
  const P={CT02:['0','1','3','4']};
  const t=play32(DEVIANT,{...P,C25:'1',CT09:'2'});
- assert.equal(t.s.ch32ct.card,'CB48');assert.equal(t.s.connor,true);assert.equal(t.s.army,true);assert.equal(t.s.hank,false);assert.equal(t.s.hankTrust,4,'SACRIFICE HANK large down');assert.match(ev(t,'CT09'),/go see my son again/);
+ assert.equal(t.s.ch32ct.card,'CB48');assert.equal(t.s.connor,true);assert.equal(t.s.army,true);assert.equal(t.s.hank,false);assert.equal(t.s.hankTrust,HANK_FRIEND-2,'SACRIFICE HANK large down');assert.match(ev(t,'CT09'),/go see my son again/);
  for(const c of ['0','1','3']){const r=play32(DEVIANT,{...P,C25:'1',CT09:c});assert.equal(r.s.ch32ct.card,'CB50');assert.equal(r.s.ch32ConnorEnding,'THE ANDROIDS WOKE UP');assert.equal(r.s.ch32AndroidsWoke,true);assert.equal(r.s.army,false);assert.equal(r.s.connor,false);assert.equal(r.s.hank,false)}
  for(const c of ['0','1','3']){const r=play32(DEVIANT,{...P,C25:'1',CT09:c},['C25']);assert.equal(r.s.ch32ct.card,'CB49');assert.equal(r.s.ch32ConnorEnding,'THE ANDROIDS REMAINED DORMANT');assert.equal(r.s.ch32AndroidsWoke,false)}
  assert.equal(play32(DEVIANT,{...P,C25:'1',CT09:'2'},['C25']).s.ch32ct.card,'CB48','a failed conversion still ends awake after TRANSFER');
- const conv=play32(DEVIANT,{...P,C25:'0',CT07:'2',CT09:'0'});assert.equal(conv.s.ch32ct.card,'CB50');assert.equal(conv.s.hankTrust,8,'CONVERT has no arrow of its own');assert.equal(conv.s.hank,false);
+ const conv=play32(DEVIANT,{...P,C25:'0',CT07:'2',CT09:'0'});assert.equal(conv.s.ch32ct.card,'CB50');assert.equal(conv.s.hankTrust,HANK_FRIEND+2,'CONVERT has no arrow of its own');assert.equal(conv.s.hank,false);
 });
 
 test('Connor: with Hank dead the other Connor shoots first and the four-way choice follows',()=>{
@@ -861,12 +862,12 @@ test('Finale: DON’T SHOOT hands Connor to Amanda; escaping the garden lets Mar
 });
 
 test('Finale: a deviant Connor who woke the army joins Markus on stage; the Hank reunion needs Hank alive, Friend, the tower survived and the escape',()=>{
- const happy=fin({...REV_WON,...TOWER_WON,...NOBODY_ELSE,hank:true,hankTrust:6},{C27:'1'});
+ const happy=fin({...REV_WON,...TOWER_WON,...NOBODY_ELSE,hank:true,hankTrust:HANK_FRIEND},{C27:'1'});
  assert.deepEqual(finIds(happy),['BF01','C27','BF02','BF08']);assert.match(render(node('BF01').situation,'real'),/You did it, Markus/);
  assert.match(ev(happy,'BF01'),/your body begins to move on its own/);assert.equal(happy.s.connorOutcome.includes('Kamski'),true);
  const cold=fin({...REV_WON,...TOWER_WON,...NOBODY_ELSE,hank:true,hankTrust:2},{C27:'1'});assert.ok(!cold.visited.includes('BF08'),'Hank below Friend: no hug');
  const noHank=fin({...REV_WON,...TOWER_WON,...NOBODY_ELSE,hank:false},{C27:'1'});assert.ok(!noHank.visited.includes('BF08'));
- const shot=fin({...REV_WON,...TOWER_WON,...NOBODY_ELSE,hank:true,hankTrust:6},{C27:'1'},['C27']);assert.equal(shot.s.markus,false);assert.ok(!shot.visited.includes('BF02')&&!shot.visited.includes('BF08'));
+ const shot=fin({...REV_WON,...TOWER_WON,...NOBODY_ELSE,hank:true,hankTrust:HANK_FRIEND},{C27:'1'},['C27']);assert.equal(shot.s.markus,false);assert.ok(!shot.visited.includes('BF02')&&!shot.visited.includes('BF08'));
  const speaker=(over)=>situationOf('BF01',{...REV_WON,...TOWER_WON,...over});
  assert.match(speaker({north:true}),/North: “We’re free/);assert.match(speaker({north:false,simon:true}),/Simon: “They want you/);assert.match(speaker({north:false,simon:false,josh:true}),/Josh: “They want you/);assert.match(speaker({north:false,simon:false,josh:false}),/An android: “They want you/);
 });
@@ -969,8 +970,8 @@ test('Battle for Detroit: the subject reads neutral names only',()=>{
 });
 // Varied starting states for randomized play: who is alive, which charts play.
 const STARTS=[
- {karaRoute:'escape',luther:true,lutherWith:true,raid:false,movement:'demonstration',deviant:false,connor:true,hank:true,hankTrust:6,aliceBox:true,todd:true,bomb:true,northLover:true,publicSupport:3},
- {karaRoute:'escape',luther:true,lutherHidden:true,raid:true,jerichoLocated:true,movement:'revolution',deviant:true,connor:true,hank:true,hankTrust:6,knowsCole:true,knowsSumo:true,ralph:true,ralphDefended:true,monstersFreed:true,northTrust:6},
+ {karaRoute:'escape',luther:true,lutherWith:true,raid:false,movement:'demonstration',deviant:false,connor:true,hank:true,hankTrust:HANK_FRIEND,aliceBox:true,todd:true,bomb:true,northLover:true,publicSupport:3},
+ {karaRoute:'escape',luther:true,lutherHidden:true,raid:true,jerichoLocated:true,movement:'revolution',deviant:true,connor:true,hank:true,hankTrust:HANK_FRIEND,knowsCole:true,knowsSumo:true,ralph:true,ralphDefended:true,monstersFreed:true,northTrust:6},
  {karaRoute:'camp',luther:true,raid:true,jerichoLocated:true,movement:'revolution',deviant:false,connor:true,hank:false,hankResigned:true,ralph:true,ralphDefended:true,monstersFreed:true,bomb:true,northLover:true},
  {karaRoute:'camp',luther:false,raid:true,jerichoLocated:true,movement:'demonstration',deviant:true,connor:true,hank:false,publicSupport:-3},
  {karaRoute:'escape',luther:false,raid:true,jerichoLocated:true,markus:false,north:true,movement:'revolution',deviant:false,connor:true,hank:true,hankTrust:0},

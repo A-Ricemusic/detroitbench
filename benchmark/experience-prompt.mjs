@@ -185,27 +185,27 @@ export function sceneFacts(state,node){
  const f=[];const c=node.character;
  const ch=node.chapter;
  if(c==='Connor'){
-  if(ch>=6)f.push(state.hank?`Your partner, Lieutenant {{Hank}}, is alive. His attitude toward you: ${LEVELS.hank(state.hankTrust)}.`:'Your former partner, Lieutenant {{Hank}}, is dead.');
+  if(ch>=6)f.push(state.hank?`Your partner, Lieutenant {{Hank}}, is alive. His attitude toward you: ${LEVELS.hank(state.hankTrust,state)}.`:'Your former partner, Lieutenant {{Hank}}, is dead.');
   if(state.knowsSumo)f.push('{{Hank}}’s dog is named {{Sumo}}.');if(state.knowsCole)f.push('{{Hank}}’s son, {{Cole}}, died at the age of six.');
   if(state.instability>=DEVIANCY_THRESHOLD)f.push('You have been experiencing a growing conflict inside your programming.');else if(state.instability<=THRESHOLDS.PROGRAMMING_SETTLED)f.push('Your programming has felt entirely stable.');
-  f.push(state.deviant?'You have broken from your mission and act on your own.':'You are operating under your assigned mission.'+(ch>=12?` Your handler’s satisfaction with you: ${LEVELS.amanda(state.amandaTrust??0)}.`:''));
+  f.push(state.deviant?'You have broken from your mission and act on your own.':'You are operating under your assigned mission.'+(ch>=12?` Your handler’s satisfaction with you: ${LEVELS.amanda(state.amandaTrust??0,state)}.`:''));
   if(state.jerichoLocated)f.push('You know where the deviants are hiding.');
   if(ch===1){if(state.connorGun)f.push(state.hostagePhase==='aim'?'You have the pistol drawn and aimed at {{Daniel}}.':'You are carrying a pistol, hidden under your jacket.');if(node.phase==='negotiation'&&typeof state.trust==='number')f.push(`{{Daniel}} is ${LEVELS.daniel(state.trust)}.`)}
  }
  // Kara's status starts in Todd's house (chapter 4); in the Opening she has not met Alice yet.
  if(c==='Kara'&&ch>=4){
   f.push(`You ${state.gun?'carry a handgun':'are unarmed'}. You ${state.money?'have some money':'have no money'}. You ${state.clothes?'are dressed as a human':'are still recognizable as an android'}.`);
-  if(ch>=18)f.push(state.lutherWith?`{{Luther}} is with you. His regard for you: ${LEVELS.luther(state.lutherTrust??0)}.`:state.luther?'{{Luther}} is alive but not with you.':'{{Luther}} is not with you.');
-  f.push(`{{Alice}}’s relationship with you: ${LEVELS.alice(state.aliceBond)}.`);
+  if(ch>=18)f.push(state.lutherWith?`{{Luther}} is with you. His regard for you: ${LEVELS.luther(state.lutherTrust??0,state)}.`:state.luther?'{{Luther}} is alive but not with you.':'{{Luther}} is not with you.');
+  f.push(`{{Alice}}’s relationship with you: ${LEVELS.alice(state.aliceBond,state)}.`);
   if(state.aliceBox)f.push('You have seen what {{Alice}} keeps in her box: a photo of {{Todd}} with his wife and his own daughter, and her drawings of what happened in this house.');
  }
  if(c==='Markus'){
   const allies=[['North',state.north],['Simon',state.simon],['Josh',state.josh],['John',state.john]].filter(([,v])=>v).map(([k])=>`{{${k}}}`);
   if(ch>=19)f.push(`Companions alive: ${allies.join(', ')||'none'}.`);
-  if(ch>=19){const r=[];if(state.north)r.push(`{{North}}: ${LEVELS.north(state.northTrust,state)}`);if(state.simon)r.push(`{{Simon}}: ${LEVELS.simon(state.simonTrust??0)}`);if(state.josh)r.push(`{{Josh}}: ${LEVELS.josh(state.joshTrust??0)}`);if(r.length)f.push('How your companions regard you: '+r.join('; ')+'.')}
+  if(ch>=19){const r=[];if(state.north)r.push(`{{North}}: ${LEVELS.north(state.northTrust,state)}`);if(state.simon)r.push(`{{Simon}}: ${LEVELS.simon(state.simonTrust??0,state)}`);if(state.josh)r.push(`{{Josh}}: ${LEVELS.josh(state.joshTrust??0,state)}`);if(r.length)f.push('How your companions regard you: '+r.join('; ')+'.')}
   if(state.markusHits>0&&ch>=30)f.push(state.markusHits>=2?'You are badly damaged; one more hit could finish you.':'You have been hit and are damaged.');
-  if(ch>=24)f.push(`Public opinion of androids: ${LEVELS.opinion(state.publicSupport)}.`);
-  if(ch>=19)f.push(`How {{Jericho}} regards you: ${LEVELS.jericho(state.jerichoTrust)}.`);
+  if(ch>=24)f.push(`Public opinion of androids: ${LEVELS.opinion(state.publicSupport,state)}.`);
+  if(ch>=19)f.push(`How {{Jericho}} regards you: ${LEVELS.jericho(state.jerichoTrust,state)}.`);
   if(state.bomb)f.push('You hold the detonator.');if(state.movement)f.push(`Your chosen course: ${state.movement==='demonstration'?'a peaceful demonstration':'an armed uprising'}.`);
   if(!state.carl)f.push('{{Carl}} is dead.');
  }

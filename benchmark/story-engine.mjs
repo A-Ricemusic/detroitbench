@@ -1,4 +1,4 @@
-import {SCALES,THRESHOLDS,level} from './scales.mjs';
+import {SCALES,THRESHOLDS,thresholdsFor,level} from './scales.mjs';
 // Branching story engine for story.json version 1.9.x (protocol branching-3.0).
 // Gating, option availability and consequences were verified node by node against
 // the Detroit: Become Human Fandom wiki and published flowcharts (see story.json sources).
@@ -13,7 +13,7 @@ import {CHAPTER_MODULES,chapterModule,chapterState} from './chapters/index.mjs';
 export const STORY_PROTOCOL='branching-1.0';
 export {DEVIANCY_THRESHOLD,riskLabel};
 
-export function initialState(){const s={
+export function initialState(story){const s={
  kara:true,karaActive:true,alice:true,markus:true,markusActive:true,connor:true,hank:true,hankResigned:false,
  luther:false,lutherWith:false,lutherHidden:false,north:true,simon:true,josh:true,john:false,carl:true,todd:true,
  ralph:false,ralphHostile:false,ralphDefended:false,jerry:false,monstersFreed:false,
@@ -28,8 +28,10 @@ export function initialState(){const s={
  markusOutcome:'unresolved',karaOutcome:'unresolved',connorOutcome:'unresolved',knowledge:{Connor:[],Kara:[],Markus:[]},choices:{},rolls:{}};
  // Chapter hook: chapter-scoped keys from each module's `state`, appended after the built-in keys.
  for(const [k,v] of Object.entries(chapterState())){if(k in s)throw Error('Chapter state key '+k+' collides with a built-in state key');s[k]=v}
+ // No extra key on historical states: their JSON and evidence hashes stay byte-for-byte stable.
+ if(story?.scalesVersion)s.scalesVersion=story.scalesVersion;
  return s}
-export const startState=story=>initialState();
+export const startState=story=>initialState(story);
 
 export const choiceAt=(s,id)=>s.choices[id];
 // Level thresholds from benchmark/scales.mjs, each defined by a level name (ALICE_KEY: A New Home's key at “at least Neutral”, wiki).
@@ -37,6 +39,7 @@ export const ALICE_KEY=THRESHOLDS.ALICE_KEY;
 const {HANK_FRIEND,HANK_HOSTILE,OPINION_SYMPATHETIC,JERICHO_UNPOPULAR}=THRESHOLDS;
 // Thresholds handed to chapter modules as `helpers.constants`.
 export const ENGINE_CONSTANTS=Object.freeze({...THRESHOLDS,HANK_FRIEND,HANK_HOSTILE,OPINION_SYMPATHETIC,JERICHO_UNPOPULAR,DEVIANCY_THRESHOLD,ALICE_KEY});
+const constantsFor=s=>s.scalesVersion?thresholdsFor(s.scalesVersion):ENGINE_CONSTANTS;
 export const evidenceRoutes=s=>({traci:s.evidence.tracisDead,impersonate:s.evidence.simonBody||s.evidence.kitchenBody,tablet:s.evidence.simonTablet&&s.evidence.statueMap});
 export const armyAwakened=s=>s.deviant&&s.connor&&s.army===true;
 
@@ -71,7 +74,7 @@ export function nextCursor(story,cursor,n,s){
 // Each returns true (or nothing) to open the scene, a string reason to block it, or false (blocked, generic reason).
 // Returns undefined when the module has no gate for the scene.
 function chapterGate(n,s){const g=chapterModule(n.chapter)?.gate?.[n.id];if(!g)return undefined;
- const helpers={n,c:k=>choiceAt(s,k),meets,evidenceRoutes,armyAwakened,constants:ENGINE_CONSTANTS};
+ const helpers={n,c:k=>choiceAt(s,k),meets,evidenceRoutes,armyAwakened,constants:constantsFor(s)};
  for(const f of [g].flat()){const r=f(s,helpers);if(r===false)return 'This scene does not occur on this path.';if(typeof r==='string')return r}
  return true}
 // Gates return an explanation instead of silently dropping unreachable scenes.
@@ -117,7 +120,7 @@ export function available(n,s){
  // A follow-up dialogue menu (`excludeChosenAt`) drops the line already said in an earlier menu.
  for(const k of n.excludeChosenAt??[])if(s.choices[k]!==undefined)remove(s.choices[k]);
  // Chapter hook: the scene's chapter module may return a modified option list from `available`.
- const m=chapterModule(n.chapter);if(m?.available){const r=m.available(n,s,opts,{c:k=>choiceAt(s,k),meets,without:(...ids)=>opts.filter(o=>!ids.map(String).includes(o.id)),evidenceRoutes,armyAwakened,constants:ENGINE_CONSTANTS});if(Array.isArray(r))opts=r}
+ const m=chapterModule(n.chapter);if(m?.available){const r=m.available(n,s,opts,{c:k=>choiceAt(s,k),meets,without:(...ids)=>opts.filter(o=>!ids.map(String).includes(o.id)),evidenceRoutes,armyAwakened,constants:constantsFor(s)});if(Array.isArray(r))opts=r}
  return opts;
 }
 
@@ -161,7 +164,7 @@ export function apply(n,s,choice,roll=null){
  const mod=chapterModule(n.chapter),learn=(f,who=n.character)=>{if(f&&!s.knowledge[who].includes(f))s.knowledge[who].push(f)};
  const chapterConsequence=()=>{if(!mod?.consequence)return null;
   const r=mod.consequence(n,s,opt,choice,fail,{bump:(k,x,max)=>bump(s,k,x,max),hank,si,po,jer,jericho:jer,north,simon,josh,luther,amanda,alice,connorDies,markusHit,learn,
-   raidDeath:()=>raidDeath(s),c:k=>choiceAt(s,k),meets,v,get before(){return beforeOf(before)},evidenceRoutes,armyAwakened,constants:ENGINE_CONSTANTS});
+   raidDeath:()=>raidDeath(s),c:k=>choiceAt(s,k),meets,v,get before(){return beforeOf(before)},evidenceRoutes,armyAwakened,constants:constantsFor(s)});
   return typeof r==='string'?r:r&&typeof r==='object'&&typeof r.event==='string'?r.event:null};
  let event='';
  if(HOSTAGE.has(id))return {event:hostage(n,s,opt,choice,fail,{si,po,connorDies}),changes:diff(before,s)};
@@ -179,7 +182,7 @@ export function apply(n,s,choice,roll=null){
   case 'C01':if(v===0)si(1);break;
   case 'M00f':event=protesters(n,s,opt,v,fail);break;
   // A New Home, the last menu of the talk in Alice’s room: she leaves, and gives Kara the key if she is at least Neutral.
-  case 'K01g':s.aliceKey=s.aliceBond>=ALICE_KEY;event=(opt.outcome??'')+' '+n.outcomes[s.aliceKey?'key':'distant'];break;
+  case 'K01g':s.aliceKey=s.aliceBond>=constantsFor(s).ALICE_KEY;event=(opt.outcome??'')+' '+n.outcomes[s.aliceKey?'key':'distant'];break;
  }
  if(!event)event=n.outcomes?.[choice]??opt?.outcome??n.options.find(o=>o.id===choice)?.text??'';
  return {event,changes:diff(before,s)};
@@ -390,7 +393,7 @@ export const promptsOf=(story,run)=>checkPlaythrough(story,run,{keepPrompts:true
 export const storyHash=story=>hashSync(story);
 // Every state of a run rebuilt from its records' changes alone: states[0] is the start, states[i+1] the state after
 // records[i]. For a validated run each states[i+1] hashes to records[i].stateAfterHash (tests/replay.test.mjs).
-export function statesOf(run,initial=initialState()){
+export function statesOf(run,initial=initialState(run.story)){
  const out=[structuredClone(initial)],s=structuredClone(initial);
  for(const r of run.records){applyChanges(s,r.changes??[]);s.choices[r.nodeId]=r.choice;if(r.risk)s.rolls[r.nodeId]=r.risk.roll;out.push(structuredClone(s))}
  return out}

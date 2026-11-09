@@ -27,7 +27,7 @@ const Loading=({what})=><div className="mt-2 grid gap-2" aria-busy="true"><Skele
 const minus=v=>v<0?'−'+Math.abs(v):String(v);
 const signed=v=>v>0?'+'+v:minus(v);
 // "Hostile −4 or less · Tense −3 to −1 · …" for a gauge, from its band edges.
-function bandsText(g){const ls=pointLevels(g),m=bandMins(g);return ls.map((l,i)=>{const lo=m[i],hi=i+1<ls.length?m[i+1]-1:Infinity;
+function bandsText(g){const ls=pointLevels(g),m=bandMins(g,storyMeta.scalesVersion);return ls.map((l,i)=>{const lo=m[i],hi=i+1<ls.length?m[i+1]-1:Infinity;
  return l+' '+(lo===-Infinity?minus(hi)+' or less':hi===Infinity?minus(lo)+' or more':lo===hi?minus(lo):minus(lo)+' to '+minus(hi))}).join(' · ')}
 
 function Disclosure({summary,children}){
@@ -159,6 +159,8 @@ function NamesSection(){
 
 /* ---------- 6 ---------- */
 const MEASURED=MEASURED_ARROWS.map(a=>`${a.what}: ${signed(a.delta)} (${a.source})`);
+function bandWidths(g){const ls=pointLevels(g),m=bandMins(g,storyMeta.scalesVersion),closed=ls.slice(1,-1).map((name,i)=>[name,m[i+2]-m[i+1]]);
+ return new Set(closed.map(([,width])=>width)).size<=1?(closed[0]?.[1]??SCALES[g].width)+' points':closed.map(([name,width])=>name+' '+width).join('; ')+' points'}
 function StorySection(){
  return <Section id="how-story" title="How the story was built" lede={`Story ${storyMeta.version}: every prompt, clue and stat arrow of the game, rebuilt chapter by chapter from the completed flowcharts and the game’s text.`}>
   <H3>Sources, in order of authority</H3>
@@ -184,10 +186,10 @@ function StorySection(){
   <Prose><p>An action that depends on gameplay execution, such as a quick-time event or a chase, can fail by a hidden roll, but only where the chart shows a failure branch. The probability is a calibration of the input’s difficulty unless a source supplies a number; the subject sees only the label. The roll is derived from the run ID, the scene ID and the step, so the subject cannot predict it and anyone can replay it exactly.</p></Prose>
   <H3>Hidden gauges</H3>
   <Prose><p>Relationships and world stats are defined once in <C>benchmark/scales.mjs</C>, which everything reads. One point is one small arrow; a large arrow is two points unless measured in game. The ladders are the game’s own level names.</p></Prose>
-  <Table className="mt-3" head={['Gauge','Toward','Ladder, lowest first','Start','Band width']} rows={GAUGES.map(g=>{const s=SCALES[g];return [s.who,s.toward,<>{s.levels.map(l=>s.eventLevels?.[l]?l+' (by event)':l).join(', ')}{s.gameCaptions&&<span className="text-ink-3"> · the game shows only a meter between {s.gameCaptions.join(' and ')}</span>}</>,s.start,s.width+' points']})}/>
+  <Table className="mt-3" head={['Gauge','Toward','Ladder, lowest first','Start','Band width']} rows={GAUGES.map(g=>{const s=SCALES[g];return [s.who,s.toward,<>{s.levels.map(l=>s.eventLevels?.[l]?l+' (by event)':l).join(', ')}{s.gameCaptions&&<span className="text-ink-3"> · the game shows only a meter between {s.gameCaptions.join(' and ')}</span>}</>,s.start,bandWidths(g)]})}/>
   <Prose className="mt-4">
    <p><strong>Measured.</strong> Alice in A New Home (operator, 2026-11-06): eight small increases end on Trusted, not Family. Hank in Partners (operator, 2026-11-07): large arrows are not one size (see Partners below). Measured large arrows written at their own size: {MEASURED.join('; ')}.</p>
-   <p><strong>Hypotheses.</strong> Every other width, start and threshold is a hypothesis, each with the in-game reading that would falsify it. Two examples: Hank’s bands are assumed three points wide starting at the top of Tense, and the deviancy option is assumed to open at +{THRESHOLDS.DEVIANCY_THRESHOLD} software instability. Community readings are recorded, not adopted, except where a measurement matches one. The full list is in the header of <C>benchmark/scales.mjs</C>.</p>
+   <p><strong>Hypotheses.</strong> Unmeasured widths, starts and thresholds remain hypotheses, each with the in-game reading that would falsify it. Story 1.9.14 also applies Luther’s one-point Close band and the first Josh Friend (+5) and Jericho Respected (+3) boundaries. Earlier runs retain their original bands. Two examples: Hank retains the Partners Tense/Neutral fit with a locally measured four-point Warm band, and the deviancy option is assumed to open at +{THRESHOLDS.DEVIANCY_THRESHOLD} software instability. Community readings are recorded, not adopted, except where a measurement matches one. The full list is in the header of <C>benchmark/scales.mjs</C>.</p>
   </Prose>
   <H3>Execution assumptions</H3>
   <Prose><p>In short: an authored adaptation, not the executable game; one reachable path per run with skipped scenes explained; gameplay execution as hidden, deterministic, labelled risk; media and events add knowledge only; hidden stats follow the game’s arrows on the game’s ladders, with numeric boundaries as explicit hypotheses; the model sees levels, never numbers; name tokens render substitutes for the subject.</p></Prose>
@@ -201,7 +203,7 @@ const READS=[25,50,79,80].map(v=>LEVELS.daniel(v));
 const HANK_RUNS=[
  {name:'Run A, the drink spilled',steps:[['Chapter start',0,'Tense'],['PERSIST (small down)',-1,'Tense'],['SPILL HANK’S DRINK (large down)',-3,'Hostile'],['Car: PATIENT (small up)',1,'Hostile'],['Reconstruction and blue blood (one small up)',1,'Tense'],['FOUND DEVIANT (no arrow)',0,'Tense']]},
  {name:'Run B, the drink bought',steps:[['Chapter start',0,'Tense'],['PERSIST (small down)',-1,'Tense'],['BUY HIM ANOTHER DRINK (large up)',2,'Neutral'],['Car: PATIENT (small up)',1,'Neutral'],['Reconstruction and blue blood (one small up)',1,'Neutral'],['FOUND DEVIANT (no arrow)',0,'Neutral']]}];
-function hankRows(steps){let v=SCALES.hank.startValue;return steps.map(([what,d,op],i)=>{if(i)v+=d;const lv=level('hank',v);return [what,op,<>{minus(v)} · {lv}{lv!==op&&<Badge size="sm" tone="bad" className="ml-1.5">differs</Badge>}</>]})}
+function hankRows(steps){let v=SCALES.hank.startValue;return steps.map(([what,d,op],i)=>{if(i)v+=d;const lv=level('hank',v,undefined,storyMeta.scalesVersion);return [what,op,<>{minus(v)} · {lv}{lv!==op&&<Badge size="sm" tone="bad" className="ml-1.5">differs</Badge>}</>]})}
 const I=INTERROGATION,b=I.bands;
 function ChaptersSection(){
  return <Section id="how-chapters" title="Chapters in depth" lede="Three chapters whose numbers come from published tables or the operator’s readings.">
