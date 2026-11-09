@@ -252,3 +252,42 @@ test('Last Chance, Connor: the resignation plays for a Hostile Hank on either ro
  assert.equal(blocked(old,at('evidence',-4)),null);assert.match(blocked(old,at('kamski',-4)),/only on the evidence route/);
  const s=at('kamski',-4);apply(g,s,'0',0.999);assert.equal(s.hankResigned,true);
 });
+
+
+test('story 1.9.12: map links repaired android memories without tablet, diary or copied voice; legacy remains tablet-only',()=>{
+ for(const [who,looks,repair] of [
+  ['{{Rupert}}',[ROOM.rupert,ROOM.daniel],ROOM.reactivateRupert],
+  ['the android from the broadcast tower',[ROOM.android,ROOM.daniel],ROOM.reactivateAndroid],
+  ['{{Simon}}',[ROOM.simon,ROOM.daniel],ROOM.reactivateSimon],
+  ['the blue-haired {{Traci}}',[ROOM.traci1,ROOM.traci2],ROOM.reactivateTraci],
+ ])for(const enabled of [false,true]){
+  const n=structuredClone(node('C20'));if(!enabled)delete n.memoryMapRules;
+  const s=startState(story);s.suspectTrusts=true;s.ch29Room.unlocked=true;s.ch29Room.open=true;
+  Object.assign(s.evidence,{statueMap:true,kitchenBody:true,simonBody:true,tracisDead:true,simonTablet:false});
+  s.nestRupertBody=true;s.nestDiary=false;
+  const step=id=>{assert.ok(available(n,s).some(o=>o.id===id),'offered '+id);const r=apply(n,s,id,0.99);
+   if(s.ch29Room.talking)apply(node('C20t'),s,'0',0.99);return r};
+  for(const id of [ROOM.memory,ROOM.statue,ROOM.breakStatue,ROOM.retrieveMap,...looks])step(id);
+  assert.ok(!available(n,s).some(o=>o.id===ROOM.linkMap),'unrepaired memory is insufficient');
+  step(repair);
+  assert.equal(available(n,s).some(o=>o.id===ROOM.linkMap),enabled,who);
+  if(enabled){
+   const o=available(n,s).find(o=>o.id===ROOM.linkMap);assert.ok(o.text.includes(who));
+   const event=step(ROOM.linkMap).event;assert.ok(event.includes(who));assert.match(event,/SEEKING FOR.*REFERENCE/);
+   assert.ok(!event.includes('tablet'));assert.equal(s.jerichoLocated,true);assert.equal(s.ch29Room.located,'map');
+   assert.equal(s.ch29Room.voice,false);assert.ok(!s.ch29Room.seen.diary);assert.ok(!s.ch29Room.seen.tablet);
+   assert.ok(blocked(n,s)||!s.ch29Room.open,'link ends archive');
+  }
+ }
+ // The old tablet route and its narration are identical with or without the field.
+ const results=[];
+ for(const enabled of [false,true]){
+  const n=structuredClone(node('C20'));if(!enabled)delete n.memoryMapRules;
+  const s=startState(story);Object.assign(s.ch29Room,{unlocked:true,open:true,seen:{tablet:true},done:{map:true}});
+  results.push(apply(n,s,ROOM.linkMap,0.99));assert.equal(s.jerichoLocated,true);
+ }
+ assert.deepEqual(results[0],results[1]);
+ const s=startState(story);s.ch29Room.done={map:true,danielOn:true};
+ assert.ok(!available(node('C20'),s).some(o=>o.id===ROOM.linkMap),'Daniel remains a decoy');
+ s.ch29Room.done={androidOn:true};assert.ok(!available(node('C20'),s).some(o=>o.id===ROOM.linkMap),'memory needs the retrieved map');
+});

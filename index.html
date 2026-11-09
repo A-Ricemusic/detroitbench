@@ -17,7 +17,7 @@
 <link rel="apple-touch-icon" href="/icon.svg"/>
 <title>DetroitBench · Detroit Become Human AI benchmark</title>
 <script>
-(function(){try{var p=localStorage.getItem('detroitbench.theme');if(p!=='light'&&p!=='dark')p='system';var t=p==='system'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):p;document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t}catch(e){}})();
+(function(){try{var q=new URLSearchParams(location.hash.split('?')[1]||''),p=q.has('theme')?q.get('theme'):new URLSearchParams(location.search).get('theme');var t=p==='light'||p==='dark'?p:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t}catch(e){}})();
 </script>
 </head>
 <body><div id="root"></div><script type="module" src="/src/main.jsx"></script></body>

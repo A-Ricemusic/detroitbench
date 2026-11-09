@@ -123,7 +123,7 @@ export default function Report({id,chapter}){
     {d.attitudes&&<div><h3 className="text-sm font-semibold">Where they stood at the end</h3><p className="text-xs text-ink-3 mb-2.5">How the main characters regarded the one the model controlled, on the game’s relationship scale.</p><Attitudes d={d}/></div>}
    </div>
   </Section>
-  <Card className="mt-6 px-4 py-4 text-sm"><p>Interview and recognition · {d.interview?plural(d.interview.answered,'answer'):'Interview not recorded'} → <a className="link" href={href('runs/'+id+'/interview')}>Read</a></p></Card>
+  <Card className="mt-6 px-4 py-4 text-sm"><p><a className="flex min-h-10 items-center flex-wrap gap-x-1" href={href('runs/'+id+'/interview')}>Interview and recognition · {d.interview?plural(d.interview.answered,'answer'):'Interview not recorded'} → <span className="link">Read</span></a></p></Card>
   <Section id="flowchart" className="scroll-mt-20" title="Flowchart" lede={`Every chapter as the game draws it: the path this run took is highlighted, the branches it did not take are dimmed, and every possible ending sits on the right. Select any node, taken or not, for the situation, the options, the model’s exact reason, the risk roll and what changed.`}>
    <p className="mb-3 -mt-1 flex items-center gap-1.5 text-xs text-ink-3"><MousePointerClick aria-hidden="true" className="size-4 shrink-0"/><span className="md:hidden">Tap a node for its full record.</span><span className="hidden md:inline">Click a node, or focus the chart, Tab to a node and press Enter. Escape closes the details.</span></p>
    <RunFlowchart r={flowRun} initialChapter={opened} renderDetail={renderDetail}/>

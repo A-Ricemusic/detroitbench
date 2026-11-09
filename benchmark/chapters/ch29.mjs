@@ -77,14 +77,15 @@ export const ROOM={ortiz:'0',tablet:'1',memory:'2',daniel:'3',rupert:'4',diary:'
 const LOOK=['ortiz','tablet','memory','daniel','rupert','diary','statue','traci1','traci2','broadcast','simon','android'];
 const BY_ID=Object.fromEntries(Object.entries(ROOM).map(([k,id])=>[id,k]));
 // Whether each chain step can be taken now (the looks are gated by their `requires` and by not having been seen).
-function roomOpen(R){const {seen:x,done:d}=R;return {
+const memorySource=R=>R.done.androidOn?'the android from the broadcast tower':R.done.simonOn?'{{Simon}}':R.done.traciOn?'the blue-haired {{Traci}}':R.done.rupertOn?'{{Rupert}}':null;
+function roomOpen(R,memoryMapRules=false){const {seen:x,done:d}=R;return {
  reactivateDaniel:x.daniel&&x.ortiz&&!d.danielOn,                       // #4717 from Carlos’ android
  reactivateRupert:x.rupert&&(x.daniel||x.ortiz)&&!d.rupertOn,           // #9164 from Daniel or Carlos’ android
  decryptionKey:d.rupertOn&&!d.rupertKey,
  analyzeDiary:d.rupertKey&&x.diary,
  breakStatue:x.statue&&x.memory&&!d.statueBroken,                       // the “truth is inside” recording first
  retrieveMap:d.statueBroken&&!d.map,
- linkMap:d.map&&x.tablet&&!d.mapTried,
+ linkMap:d.map&&(x.tablet||(memoryMapRules&&!!memorySource(R)))&&!d.mapTried,
  reactivateTraci:x.traci1&&x.traci2&&!d.traciOn,                        // #6755 from the brown-haired Traci
  removeHead:d.traciTalked&&x.traci2&&!d.head,
  trickTraci:d.head&&!d.traciTricked,
@@ -117,7 +118,7 @@ function room(n,s,opt,choice,fail,h){
   case 'retrieveMap':d.map=true;h.learn('The map in the statue places {{Jericho}} somewhere in the {{Ferndale}} neighborhood.');break;
   // LINK MAP TO OTHER EVIDENCE always works (PowerPyx: UNABLE TO LINK MAP TO OTHER EVIDENCE is reached by breaking the statue
   // and letting the time run out, recorded by the timeout as mapUnlinked); story 1.9.1 rolled 0.2 here.
-  case 'linkMap':d.mapTried=true;locate(s,R,'map');h.learn('{{Jericho}} is a ship moored at the old docks in {{Ferndale}}.');text='{{Connor}} runs the map against the memory on the tablet. SEEKING FOR {{FERNDALE}} REFERENCE... {{FERNDALE}} LOCATED. The ship in the memory is moored at the old docks. {{Connor}}: “Bingo.”'+LOCATED;break;
+  case 'linkMap':d.mapTried=true;locate(s,R,'map');h.learn('{{Jericho}} is a ship moored at the old docks in {{Ferndale}}.');text=(n.memoryMapRules&&!R.seen.tablet?'{{Connor}} takes the hand of '+memorySource(R)+' and scans the reactivated android’s memory. ':'{{Connor}} runs the map against the memory on the tablet. ')+'SEEKING FOR {{FERNDALE}} REFERENCE... {{FERNDALE}} LOCATED. The ship in the memory is moored at the old docks. {{Connor}}: “Bingo.”'+LOCATED;break;
   case 'reactivateTraci':d.traciOn=true;talk='traci';break;
   case 'removeHead':d.head=true;break;
   case 'trickTraci':d.traciTricked=true;break;
@@ -194,11 +195,11 @@ export function available(n,s,opts,h){
  // Rebuilt from the scene’s own options: the engine’s built-in removal for the old C20 (options 0 to 2 by evidenceRoutes)
  // still runs before this hook and would hide the first three looks.
  if(n.id==='C20'){
-  const R=s.ch29Room,open=roomOpen(R);
+  const R=s.ch29Room,open=roomOpen(R,n.memoryMapRules);
   // Canonical handoffs override the old data-driven evidence requirements, including explicit false.
   const present=o=>o.id===ROOM.rupert?inputs.rupertBody(s):o.id===ROOM.diary?inputs.rupertDiary(s):
    [ROOM.traci1,ROOM.traci2].includes(o.id)?inputs.tracisBodies(s):h.meets(o.requires,s);
-  return n.options.filter(present).map(o=>({...o})).filter(o=>{const k=BY_ID[o.id];return LOOK.includes(k)?!R.seen[k]:!!open[k]});
+  return n.options.filter(present).map(o=>({...o})).filter(o=>{const k=BY_ID[o.id];return LOOK.includes(k)?!R.seen[k]:!!open[k]}).map(o=>n.memoryMapRules&&o.id===ROOM.linkMap&&!R.seen.tablet?{...o,text:'LINK MAP TO OTHER EVIDENCE: scan the memory of '+memorySource(R)+' for {{Ferndale}} references.'}:o);
  }
 }
 

@@ -7,9 +7,10 @@ export const SHARED=['models','hide-reasoning','theme'];
 const listeners=new Set,emit=()=>{for(const l of listeners)l()};
 addEventListener('hashchange',emit);addEventListener('popstate',emit);
 const split=h=>{const i=h.indexOf('?');return [i<0?h:h.slice(0,i),new URLSearchParams(i<0?'':h.slice(i+1))]};
-export const readQuery=()=>split(location.hash||'')[1];
+export const readQuery=()=>{const p=split(location.hash||'')[1],theme=new URLSearchParams(location.search).get('theme');if(!p.has('theme')&&(theme==='light'||theme==='dark'))p.set('theme',theme);return p};
 // `updates` maps a key to a string (set, '' kept as an empty value), or null/undefined (removed).
 export function setQuery(updates){const [path,p]=split(location.hash||'#/runs');for(const [k,v] of Object.entries(updates)){if(v===null||v===undefined)p.delete(k);else p.set(k,v)}
+ if(Object.hasOwn(updates,'theme')){const url=new URL(location.href);url.searchParams.delete('theme');history.replaceState(history.state,'',url)}
  const s=p.toString().replace(/%2C/gi,',');const next=(path||'#/runs')+(s?'?'+s:'');if(next!==location.hash)history.replaceState(history.state,'',next);emit()}
 const subscribe=l=>{listeners.add(l);return()=>listeners.delete(l)};
 // The raw value of one key: null when absent, '' when present and empty.

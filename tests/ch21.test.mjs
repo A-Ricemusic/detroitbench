@@ -29,18 +29,19 @@ test('The Pirates’ Cove: 20 Kara scenes between The Eden Club and The Bridge, 
  assert.ok(!story.nodes.some(n=>n.id==='K14'),'the old merged attack scene is gone');
 });
 
-test('The Pirates’ Cove: every stat change is a template arrow, and nothing else moves a stat',()=>{
+test('The Pirates’ Cove: sourced template and footage arrows, and nothing else moves a stat',()=>{
  const found={};for(const n of ch21){assert.equal(n.effect,undefined,n.id);for(const o of n.options)if(o.effect)(found[n.id]??={})[o.id]=o.effect}
+ found.K14b['0']=available(node('K14b'),startState(story)).find(o=>o.id==='0').effect;
  assert.deepEqual(found,rules.arrows);
  // Small arrows are size 1; the media scene changes no opinion.
  for(const per of Object.values(rules.arrows))for(const eff of Object.values(per))for(const v of Object.values(eff))assert.equal(Math.abs(v),1);
  assert.ok(node('R21').media.every(m=>!m.effect&&!m.when));
- // Maximum path: fire report, bed, poster, KISS, Luther: opinion −1, Alice +3, Luther +1. Minimum path: no change.
+ // Maximum path: fire report, bed, poster, KISS, Luther: opinion −2, Alice +3, Luther +1. Minimum path: no change.
  const max=play({K14b:['0','1'],K14k:'2'},{fire:true}),min=play({K14k:'0'});
- assert.equal(max.s.publicSupport,-1);assert.equal(max.s.aliceBond,3);assert.equal(max.s.aliceMax,3);assert.equal(max.s.lutherTrust,1);
+ assert.equal(max.s.publicSupport,-2);assert.equal(max.s.aliceBond,3);assert.equal(max.s.aliceMax,3);assert.equal(max.s.lutherTrust,1);
  assert.equal(min.s.publicSupport,0);assert.equal(min.s.aliceBond,2,'the bed and the poster answer are unavoidable');assert.equal(min.s.lutherTrust,1,'every answer to Luther raises him');
- // The wiki-only arrows are not built: turning the news on, and the end of the story.
- const news=play({K14b:'0'},{fire:false});assert.equal(news.s.publicSupport,0);
+ // Initial-news loss is footage-confirmed; the wiki-only story-ending arrow is not built.
+ const news=play({K14b:'0'},{fire:false});assert.equal(news.s.publicSupport,-1);
  for(const o of node('K14l').options)assert.equal(o.effect,undefined);
 });
 
@@ -127,4 +128,17 @@ test('The Pirates’ Cove: the subject reads neutral names only',()=>{
  for(const t of texts)assert.ok(!/\bKara\b|\bAlice\b|\bLuther\b|\bZlatko\b|\bJerry\b|\bJerrys\b|\bIvan\b|Pirates[’']? Cove|Detroit|Warren|CyberLife|Canada|rA9|RA9|Here4u|Nabokov|Ben Williams|Webb|Brinkley|Cartland|\{\{/.test(t),t.slice(0,200));
  const all=texts.join(' ');assert.match(all,/Buccaneer Bay/);assert.match(all,/Oskar/);assert.match(all,/qL7/);assert.match(all,/Bennys/);assert.match(all,/MIRA!/);assert.match(all,/ABEL’S PAST/);assert.match(all,/a close run-in with investigators/);assert.match(all,/They met great dangers/);
  assert.match(render('{{PiratesCove}} {{Ivan}} {{rA9}} {{RA9}}','real'),/^Pirates’ Cove Ivan rA9 RA9$/);
+});
+
+
+test('story 1.9.12: initial news loses opinion once, fire remains separate, old stories retain zero',()=>{
+ for(const enabled of [false,true]){
+  const n=structuredClone(node('K14b'));if(!enabled)delete n.newsOpinionRules;
+  const s=startState(story);s.fire=true;
+  apply(n,s,'0',0.99);assert.equal(s.publicSupport,enabled?-1:0);
+  assert.ok(!available(n,s).some(o=>o.id==='0'),'news clue prevents a second loss');
+  assert.ok(available(n,s).some(o=>o.id==='1'));apply(n,s,'1',0.99);
+  assert.equal(s.publicSupport,enabled?-2:-1,'fire loss remains separate');
+  assert.ok(!available(n,s).some(o=>o.id==='1'));
+ }
 });

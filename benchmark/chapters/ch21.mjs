@@ -3,11 +3,10 @@
 // One line, three free-roam hubs and one ending, THE GROUP ENJOYED A QUIET MOMENT TOGETHER. Nothing can kill anyone and
 // nothing carries a risk. Free-roam and dialogue hubs repeat using clueState and repeatWhile; the story hub
 // advances through eight gated prompts. The automatic tavern fire plays before its hub.
-// Every stat arrow is data-driven in ch21.json (`effect`), so it shows in the checklist and the atlas:
+// Stat arrows are option effects; available() attaches the initial-news effect only with newsOpinionRules:
 //
-//  - Public opinion −1: the fourth car-TV report, the house fire, offered only if Kara set Zlatko's house on fire (K14b,
-//    option 1; the template's only arrow in the chapter). The wiki's extra −1 for turning the news on is not built: the
-//    template has no arrow there and wins for arrows (research note §10.3).
+//  - Public opinion −1 on initial news with newsOpinionRules (1.9.12 footage); a separate −1 on the fire report.
+//    Without the scene field, initial news retains its legacy zero.
 //  - Alice +1: making the bed (K14g, option 4); after any answer to the poster question (K14i); KISS (K14k, option 2).
 //    The wiki's +1 after the story ending is not built (no template arrow, §10.3). Maximum +3, no decrease.
 //  - Luther +1: any answer to "have you ever noticed anything about Alice?" (K14n).
@@ -41,12 +40,17 @@ ch21SawGun:'Kara saw the gun in her bag',ch21Reaction:'Kara’s first reaction t
 export const deathEffect={};   // Connor does not appear in this chapter
 // The chapter's stat arrows, for the recap and the tests: scene → option → {stat: delta}.
 export const rules={ENDING,REACTIONS,arrows:{
- K14b:{'1':{publicSupport:-1}},
+ K14b:{'0':{publicSupport:-1},'1':{publicSupport:-1}},
  K14g:{'4':{aliceBond:1}},
  K14i:{'0':{aliceBond:1},'1':{aliceBond:1},'2':{aliceBond:1}},
  K14k:{'2':{aliceBond:1}},
  K14n:{'0':{lutherTrust:1},'1':{lutherTrust:1},'2':{lutherTrust:1}},
 }};
+
+// Clue hubs bypass consequence; attach the new arrow only for stories carrying the scene rule.
+export function available(n,s,opts){
+ if(n.id==='K14b'&&n.newsOpinionRules)return opts.map(o=>o.id==='0'?{...o,effect:rules.arrows.K14b['0']}:o);
+}
 
 export function consequence(n,s,opt,choice,fail,h){
  switch(n.id){

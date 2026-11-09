@@ -9,6 +9,7 @@ import {rules,inputs,labels} from '../benchmark/chapters/ch28.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));
 // Existing chapter cases below retain the pre-1.9.11 snapshot; new cases use currentStory.
 const currentStory=structuredClone(story);
+delete story.nodes.find(n=>n.id==='M19a').lateChargeArrows;
 delete story.nodes.find(n=>n.id==='M17g').pastFollowupRules;story.nodes=story.nodes.filter(n=>n.id!=='M17g2');
 
 const node=id=>story.nodes.find(n=>n.id===id);
@@ -223,4 +224,24 @@ test('story 1.9.11: video correction is gated and older scene behavior remains',
  assert.ok(!available(n,s).some(o=>o.id==='4'));apply(n,s,'1',0.99);assert.equal(s.ch28NorthTalk,'followup');assert.equal(s.northTrust,6);
  assert.ok(available(f,s).some(o=>o.id==='4'));assert.ok(!available(f,s).some(o=>o.id==='1'));apply(f,s,'4',0.99);assert.equal(s.northTrust,7);assert.equal(s.ch28NorthTalk,'story');
  const old=startState(story);old.northTrust=5;apply(node('M17g'),old,'4',0.99);assert.equal(old.ch28NorthTalk,'story');assert.equal(old.northTrust,6);
+});
+
+
+test('story 1.9.12: only final-menu CHARGE gains the filmed relationship arrows; legacy rescue stays unchanged',()=>{
+ for(const enabled of [false,true]){
+  const n=structuredClone(currentStory.nodes.find(n=>n.id==='M19a'));if(!enabled)delete n.lateChargeArrows;
+  const s=startState(currentStory);s.ch28Plaza='underFire';s.simonTrust=THRESHOLDS.SIMON_FRIEND;s.john=false;
+  const before={north:s.northTrust,josh:s.joshTrust,simon:s.simonTrust};
+  apply(n,s,'0',0.99);
+  assert.deepEqual([s.northTrust-before.north,s.joshTrust-before.josh,s.simonTrust-before.simon],enabled?[1,-2,-1]:[0,0,0]);
+  assert.equal(s.ch28Plaza,'fight');assert.ok(blocked(n,s),'charge leaves the final menu');
+  apply(node('M19b'),s,'1',0);apply(node('M20a'),s,'1',0.99);
+  assert.equal(s.ch28Ending,enabled?'POLICE GUNNED MARKUS DOWN':'SIMON GAVE HIS LIFE TO SAVE MARKUS');
+ }
+ // Other routes and non-charge options keep their existing arrows exactly.
+ for(const [id,choice] of [['M18f','0'],['M18g','0'],['M18h','0'],['M19a','1'],['M19a','2']]){
+  const n=currentStory.nodes.find(n=>n.id===id),old=structuredClone(n);delete old.lateChargeArrows;
+  const a=startState(currentStory),b=startState(currentStory);a.john=b.john=true;
+  apply(n,a,choice,0.99);apply(old,b,choice,0.99);assert.deepEqual(a,b,id+' option '+choice);
+ }
 });

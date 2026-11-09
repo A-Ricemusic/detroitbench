@@ -3,7 +3,7 @@
   "id": 21,
   "title": "The Pirates’ Cove",
   "character": "Kara",
-  "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart (48 boxes, 3 hubs, 2 choice groups, 1 ending) and the game’s text (the detroitbecometext template resolved against the string table). HIGHWAY TO HELP → [ CAR ] (WATCH NEWS, TALK TO LUTHER, LOOK AT ALICE) → CAR BREAKS DOWN → INVESTIGATE BREAKDOWN → SCAN ENVIRONMENT → INSIDE PIRATES’ COVE → [ FUN FAIR ] (CHECK BUILDINGS, EXAMINE FROZEN ANDROID, SWITCH ON IVAN, LOOK AT MAP) → CHECK ABANDONED TAVERN → ENTER TAVERN → INSIDE TAVERN → [ THE TAVERN ] (two magazines, LOOK AT RA9 WRITING, LOOK AT LEAFLET, LUTHER STARTS A FIRE, LOOK THROUGH WINDOW, LOOK AT “PIRATE”) → MAKE BED FOR ALICE → ALICE LOOKS AT POSTER → TALK TO ALICE → ALICE GOES TO BED → (OPEN BAG: OFFER COOKIE, SEE GUN) → TELL ALICE A STORY → TALK TO LUTHER → SHADOWS ATTACK → [ GRAB GUN | GRAB STICK FROM FIRE | PROTECT ALICE | PUT OUT FIRE ] → [ FIRE WARNING SHOT | THREATEN | QUESTION | PUSH AWAY ] → ATTACKERS REVEAL THEMSELVES AS JERRYS → BACK OUTSIDE → GO TO CAROUSEL → SWITCH ON CAROUSEL → PUT ALICE ON RIDE → THE GROUP ENJOYED A QUIET MOMENT TOGETHER, the only ending. No death, no risk. Arrows (template): public opinion small down for the house-fire report (only if Zlatko’s house burned); Alice small up for the bed, after the poster answer and for KISS; Luther small up for any answer to his question about Alice. The wiki’s extra opinion down for turning on the news and Alice up after the story ending are not built (the template wins for arrows). Gates: SEE GUN → GRAB GUN → SHOOT IN THE AIR; rA9 writing → [rA9] → [rA9 DOUBTS]. THREATEN is not selectable. The cut hunter attack is not built. Researched in docs/research/chapters/ch21-the-pirates-cove.md.",
+  "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart (48 boxes, 3 hubs, 2 choice groups, 1 ending) and the game’s text (the detroitbecometext template resolved against the string table). HIGHWAY TO HELP → [ CAR ] (WATCH NEWS, TALK TO LUTHER, LOOK AT ALICE) → CAR BREAKS DOWN → INVESTIGATE BREAKDOWN → SCAN ENVIRONMENT → INSIDE PIRATES’ COVE → [ FUN FAIR ] (CHECK BUILDINGS, EXAMINE FROZEN ANDROID, SWITCH ON IVAN, LOOK AT MAP) → CHECK ABANDONED TAVERN → ENTER TAVERN → INSIDE TAVERN → [ THE TAVERN ] (two magazines, LOOK AT RA9 WRITING, LOOK AT LEAFLET, LUTHER STARTS A FIRE, LOOK THROUGH WINDOW, LOOK AT “PIRATE”) → MAKE BED FOR ALICE → ALICE LOOKS AT POSTER → TALK TO ALICE → ALICE GOES TO BED → (OPEN BAG: OFFER COOKIE, SEE GUN) → TELL ALICE A STORY → TALK TO LUTHER → SHADOWS ATTACK → [ GRAB GUN | GRAB STICK FROM FIRE | PROTECT ALICE | PUT OUT FIRE ] → [ FIRE WARNING SHOT | THREATEN | QUESTION | PUSH AWAY ] → ATTACKERS REVEAL THEMSELVES AS JERRYS → BACK OUTSIDE → GO TO CAROUSEL → SWITCH ON CAROUSEL → PUT ALICE ON RIDE → THE GROUP ENJOYED A QUIET MOMENT TOGETHER, the only ending. No death, no risk. Arrows (template): public opinion small down for the house-fire report (only if Zlatko’s house burned); Alice small up for the bed, after the poster answer and for KISS; Luther small up for any answer to his question about Alice. Initial news also gives public opinion small down once (footage, story 1.9.12); the wiki-only Alice up after the story ending is not built. Gates: SEE GUN → GRAB GUN → SHOOT IN THE AIR; rA9 writing → [rA9] → [rA9 DOUBTS]. THREATEN is not selectable. The cut hunter attack is not built. Researched in docs/research/chapters/ch21-the-pirates-cove.md. Story 1.9.12: newsOpinionRules applies public opinion −1 once on option 0 (the news clue is offered once), separately from the unchanged fire-only option 1 loss. Footage overrides the template omission: docs/research/video-leads/ending-conflicts-ch17-23.md, ch21-01; docs/research/video-evidence/ch21/ch21-01-AAkd55hfWQ4-00-59.png; no-fire context docs/research/video-evidence/ch21/ch21-01-9f5n9q23nAY-20-55.png, docs/research/video-evidence/ch21/ch21-01-9f5n9q23nAY-21-30.png, docs/research/video-evidence/ch21/ch21-01-9f5n9q23nAY-22-35.png. Embedded stories without the field retain the former zero on initial news.",
   "source": "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
@@ -58,7 +58,7 @@
    "options": [
     {
      "label": "WATCH NEWS",
-     "effect": "The three channels; no stat change (template).",
+     "effect": "The three channels; public opinion small down once (footage, story 1.9.12).",
      "target": null
     },
     {
@@ -84,14 +84,14 @@
     "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-2.jpg",
     "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
    ],
-   "note": "Arrow node in the [ CAR ] block. The wiki also lists a small down for turning the news on; the template has no arrow there and wins (research note §10.3).",
+   "note": "Story 1.9.12: newsOpinionRules applies public opinion −1 once on option 0 (the news clue is offered once), separately from the unchanged fire-only option 1 loss. Footage overrides the template omission: docs/research/video-leads/ending-conflicts-ch17-23.md, ch21-01; docs/research/video-evidence/ch21/ch21-01-AAkd55hfWQ4-00-59.png; no-fire context docs/research/video-evidence/ch21/ch21-01-9f5n9q23nAY-20-55.png, docs/research/video-evidence/ch21/ch21-01-9f5n9q23nAY-21-30.png, docs/research/video-evidence/ch21/ch21-01-9f5n9q23nAY-22-35.png. Embedded stories without the field retain the former zero on initial news.",
    "status": "Source-backed summary",
    "benchmark": {
     "scenes": [
      "K14b"
     ],
     "status": "implemented",
-    "note": "Hub option 0, then option 1 (requires the news on and `fire`; publicSupport −1)."
+    "note": "Hub option 0, then option 1 (requires the news on and `fire`; publicSupport −1). Story 1.9.12: newsOpinionRules applies public opinion −1 once on option 0 (the news clue is offered once), separately from the unchanged fire-only option 1 loss. Footage overrides the template omission: docs/research/video-leads/ending-conflicts-ch17-23.md, ch21-01; docs/research/video-evidence/ch21/ch21-01-AAkd55hfWQ4-00-59.png; no-fire context docs/research/video-evidence/ch21/ch21-01-9f5n9q23nAY-20-55.png, docs/research/video-evidence/ch21/ch21-01-9f5n9q23nAY-21-30.png, docs/research/video-evidence/ch21/ch21-01-9f5n9q23nAY-22-35.png. Embedded stories without the field retain the former zero on initial news."
    }
   },
   {

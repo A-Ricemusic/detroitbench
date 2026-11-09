@@ -176,7 +176,7 @@ export function consequence(n,s,opt,choice,fail,h){
   case 'M18f':if(v===0)return charge(s);s.ch28Plaza='second';return '';
   case 'M18g':if(v===0)return charge(s);if(v===1){s.ch28Plaza='underFire';s.ch28FireCause='unprovoked'}else s.ch28Plaza='openFire';return '';
   case 'M18h':if(v===0)return charge(s);if(v===1){s.ch28Plaza='underFire';s.ch28FireCause='stay';return ''}return fled(s);
-  case 'M19a':if(v===0)return charge(s);if(v===2)return fled(s);return say+' '+rescue(s,'sacrifice');
+  case 'M19a':if(v===0){if(n.lateChargeArrows){h.north(1);h.josh(-2);h.simon(-1)}return charge(s)}if(v===2)return fled(s);return say+' '+rescue(s,'sacrifice');
   case 'M19b':
    if(fail){s.ch28FightWon=false;s.ch28Plaza='lost';h.jer(-2);return say+' The police line holds. {{Markus}} is shot and goes down. LOSE THE FIGHT.'}
    s.ch28FightWon=true;s.ch28Plaza='won';h.jer(2);h.po(-2);return say+' The androids break the police line. WIN THE FIGHT.';

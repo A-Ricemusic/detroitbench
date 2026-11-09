@@ -43,7 +43,7 @@ function LevelChart({scale,runs,colors,nums,titles,compact}){
  const px=p=>x(p.c),py=p=>y(p.v)+dodge(p.s.r.id,p.c);
  // End markers sharing a spot fan out sideways (fanEndMarks), kept clear of the right-hand labels (their leader starts
  // at x1+18) or, on phones, of the plot's edge.
- const fan=useMemo(()=>fanEndMarks(series.flatMap(s=>{const last=s.ended&&[...s.pts].reverse().find(p=>p.v!==null);return last?[{id:s.r.id,x:x(last.c)+9,y:y(last.v)}]:[]}),compact?W-6:x1+13),[series,compact,W,H,scale.key]);
+ const fan=useMemo(()=>fanEndMarks(series.flatMap(s=>{const last=s.ended&&[...s.pts].reverse().find(p=>p.v!==null);return last?[{id:s.r.id,x:x(last.c)+9,y:y(last.v),renderY:y(last.v)+dodge(s.r.id,last.c)}]:[]}),compact?W-6:x1+13),[series,compact,W,H,scale.key,dodge]);
  const step=[1,2,5,10].find(s=>(x1-x0)/xMax*s>=100)??10,ticks=[0,...Array.from({length:Math.floor(xMax/step)},(_,i)=>(i+1)*step).filter(c=>(xMax-c)/xMax*(x1-x0)>=60),xMax];
  // Right-end labels: one per run at its last value, shifted up if they would run off the plot. They sit 24px apart,
  // closer (down to 15px, in a smaller type) when that is what it takes to name every run in the plot's height.
@@ -85,7 +85,7 @@ function LevelChart({scale,runs,colors,nums,titles,compact}){
       {segs.map((seg,j)=><path key={j} d={seg.map((p,k)=>(k?'L':'M')+x(p.c).toFixed(1)+','+(y(p.v)+dodge(s.r.id,p.c)).toFixed(1)).join('')} fill="none" stroke={col} strokeWidth={hl?3.5:2.25} opacity={hl?1:0.8} strokeLinejoin="round" strokeLinecap="round"/>)}
       {s.ended&&last&&(f=>f&&f.count>0&&<>
        <text x={x(last.c)+9+f.dx} y={y(last.v)+dodge(s.r.id,last.c)} textAnchor="middle" dominantBaseline="central" className="end-mark" style={{fill:col}}>{BROKE.has(scale.key)?'|':'✕'}</text>
-       {f.count>1&&<text x={x(last.c)+9+f.dx+6} y={y(last.v)+dodge(s.r.id,last.c)-7} textAnchor="start" dominantBaseline="central" className="halo-text tnum" style={{fontSize:10,fontWeight:600}} aria-hidden="true">{f.count}</text>}
+       {f.count>1&&<text x={x(last.c)+9+f.dx+6} y={y(last.v)+dodge(s.r.id,last.c)-7} textAnchor="start" dominantBaseline="central" className="halo-text tnum" style={{fontSize:11,fontWeight:600}} aria-hidden="true">{f.count}</text>}
       </>)(fan.get(s.r.id))}
      </g>})}
     {points.map(p=>{const col=colors[p.s.r.displayName]??DIM,on=hp?.key===p.key||pp?.key===p.key,faded=!active&&hp&&!on;

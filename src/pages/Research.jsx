@@ -39,7 +39,7 @@ export default function Research({route,navigate}){
  function clearAll(){if(!chosen||confirm(`Clear all ${chosen} saved choices on this device?`))persist({})}
  const dataset=bank?.dataset,questions=dataset?.questions??[],selectedRun=runs.find(r=>r.id===runId)||runs[0],live=runs.filter(r=>r.kind==='live');
  const filtered=questions.filter(q=>(character==='All'||q.character===character)&&(chapter==='All'||String(q.chapter)===chapter)&&true);
- const routedId=safeDecode(route.segs[2]||''),routed=questions.find(q=>q.id===routedId);const selected=routed||filtered[0];const hiddenByFilter=!!routed&&!filtered.includes(routed);
+ const routedId=safeDecode(route.segs[2]||''),routed=questions.find(q=>q.id===routedId);const missingScenario=!!routedId&&!routed;const selected=missingScenario?null:routed||filtered[0];const hiddenByFilter=!!routed&&!filtered.includes(routed);
  const chosen=Object.keys(answers).filter(id=>questions.some(q=>q.id===id)).length,covered=dataset?dataset.coverage.filter(c=>c.status==='included').length:0;
  const items=runs.length?[{key:'scenarios',label:'Scenarios',path:'research/scenarios',count:questions.length||undefined},{key:'runs',label:'Independent runs',path:'research/runs'}]:[];
  const resetFilters=()=>{setCharacter('All');setChapter('All')};
@@ -60,7 +60,7 @@ export default function Research({route,navigate}){
 
   {page==='scenarios'&&<>
    <PageHeader eyebrow={eyebrow} title="Scenarios" lede="Each scene as the playthrough presents it, without the earlier choices that lead there. Pick what you would do."/>{tabs}
-   {bank&&<>
+   {bank&&missingScenario?<Notice>No scenario with that id. <a className="link inline-flex min-h-10 items-center" href={href('research/scenarios')}>Back to the question bank</a></Notice>:bank&&<>
     <div className="flex flex-col gap-3 md:flex-row md:items-end" data-filters>
      <div className="grid grid-cols-2 gap-3 md:contents">
      <Select label="Character" value={character} className="md:w-48" options={['All',...charactersFor(chapter)].map(x=>({value:x,label:x==='All'?'All characters':who(x),icon:x==='All'||x==='Player'?undefined:`var(--${x.toLowerCase()})`}))} onChange={v=>{setCharacter(v);if(chapter!=='All'&&!questions.some(q=>(v==='All'||q.character===v)&&String(q.chapter)===chapter))setChapter('All')}}/>

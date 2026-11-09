@@ -79,10 +79,18 @@ export const BROKE=new Set(['amandaTrust']);
 // it would pass `maxX` (the right-hand labels, or the plot's edge on phones). More than FAN_MAX markers draw as one
 // glyph with a count instead. `items` are {id, x, y}; the result maps id → {dx, count} (count only on the glyph that
 // stands for a whole group, 0 on the ones it hides).
-const FAN=7,FAN_MAX=5;
+const FAN=12,FAN_MAX=5;
 export function fanEndMarks(items,maxX=Infinity){const out=new Map,groups=groupBy(items,it=>Math.round(it.x)+','+Math.round(it.y));
  for(const list of Object.values(groups)){const n=list.length;
   if(n>FAN_MAX){list.forEach((it,i)=>out.set(it.id,{dx:Math.min(0,maxX-12-it.x),count:i===0?n:0}));continue}
   const off=list.map((_,i)=>i===0?0:(i%2?1:-1)*Math.ceil(i/2)*FAN),shift=Math.min(0,maxX-(list[0].x+Math.max(...off)));
   list.forEach((it,i)=>out.set(it.id,{dx:off[i]+shift,count:1}))}
+ // Reserve the glyph and count-label boxes after fanning, including nearby groups.
+ const placed=[];
+ for(const it of [...items].sort((a,b)=>b.x-a.x||a.y-b.y)){
+  const mark=out.get(it.id);if(!mark.count)continue;
+  const right=mark.count>1?20:6;let x=Math.min(it.x+mark.dx,maxX-right);
+  let hit;while((hit=placed.find(p=>Math.abs(p.y-(it.renderY??it.y))<20&&x+right>p.left&&x-6<p.right)))x=hit.left-right-2;
+  mark.dx=x-it.x;placed.push({left:x-6,right:x+right,y:it.renderY??it.y});
+ }
  return out}

@@ -49,7 +49,7 @@ function ToneIcon({tone,className}){const I=TONE_ICON[tone]??TONE_ICON.mid;retur
 function Marker({r,n,color,row,named,dim,onTip}){
  return <a href={href('runs/'+r.id+'/report')} aria-label={`${n}. ${r.displayName}: ${row.full}. Open the full report`}
   onPointerEnter={e=>onTip(r,row,e.currentTarget)} onPointerLeave={()=>onTip(null)} onFocus={e=>onTip(r,row,e.currentTarget)} onBlur={()=>onTip(null)}
-  className={cx('group relative flex min-h-10 min-w-0 max-w-full shrink-0 items-center gap-2.5 rounded-full pl-1 pr-2 transition-opacity duration-200 focus-visible:outline-2 outline-accent',dim&&'opacity-15')}>
+  className={cx('group relative max-md:after:absolute max-md:after:-inset-2 max-md:after:content-[""] flex min-h-10 min-w-0 max-w-full shrink-0 items-center gap-2.5 rounded-full pl-1 pr-2 transition-opacity duration-200 focus-visible:outline-2 outline-accent',dim&&'opacity-15')}>
   <span className="relative flex size-8 shrink-0 items-center justify-center">
    <span aria-hidden="true" className="block size-[18px] rounded-full ring-2 ring-[var(--plot-bg)] transition-transform duration-200 group-hover:scale-125 group-focus-visible:scale-125" style={{background:color,boxShadow:`0 0 0 6px color-mix(in oklab, ${color} 18%, transparent)`}}/>
    <span aria-hidden="true" className="absolute left-[calc(50%+6px)] -top-1 inline-flex h-[18px] min-w-[18px] items-center justify-center whitespace-nowrap rounded-full border border-[var(--plot-rule-2)] bg-[var(--plot-bg)] px-1 font-mono text-[11px] font-semibold leading-none text-ink-2 tnum">{n}</span>

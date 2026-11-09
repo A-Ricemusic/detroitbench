@@ -124,7 +124,7 @@ export default function Runs(){
  const byModel=useMemo(()=>[...shown].sort(compareRuns),[shown]);
  if(error)return <><PageHeader title="DetroitBench"/><Notice tone="bad">{error}. <Button size="sm" variant="link" onClick={()=>{retry();document.querySelector('main h1')?.focus()}}>Try again</Button></Notice></>;
  if(!runs)return <><PageHeader title="DetroitBench"/><div className="grid gap-4" aria-busy="true">{Array.from({length:3}).map((_,i)=><Skeleton key={i} className="h-72"/>)}</div><p className="sr-only" role="status">Loading runs…</p></>;
- const empty=!sel.visible.length&&runs.length>0&&<div className="grid place-items-center gap-2 rounded-xl border border-dashed border-line-2 px-4 py-14 text-center"><p className="text-[17px] font-medium">{sel.selected.size?'No reasoning levels enabled':'No models selected'}</p><button type="button" onClick={onReset} className="text-sm text-ink underline underline-offset-4">Reset filters</button></div>;
+ const empty=!sel.visible.length&&runs.length>0&&<div className="grid place-items-center gap-2 rounded-xl border border-dashed border-line-2 px-4 py-14 text-center"><p className="text-[17px] font-medium">{sel.selected.size?'No reasoning levels enabled':'No models selected'}</p><Button variant="link" size="sm" className="min-h-10" onClick={onReset}>Reset filters</Button></div>;
  return <>
   <Hero/>
   {!runs.length?<Empty title="No completed runs yet">Fresh results appear here after their sessions finish.</Empty>:
