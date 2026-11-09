@@ -1,9 +1,11 @@
 # Documentation map
 
-Start here to find documentation; see [AGENTS.md](../AGENTS.md) for administering runs, changing the benchmark and validation commands.
+Start here to find documentation; see [ADMINISTRATION.md](ADMINISTRATION.md) for administering runs and [AGENTS.md](../AGENTS.md) for changing the benchmark and validation commands.
 
 | Location | Contents and ownership | Readers |
 |---|---|---|
+| [ADMINISTRATION.md](ADMINISTRATION.md) | Blinded session protocol, exact participant task, interviews, recognition audits and publication | Operator or agents explicitly administering runs |
+| [scripts/](../scripts/README.md) | Script inventory, generation pipeline and validation commands | Operators and implementation agents |
 | [chapters/](chapters/README.md) | Hand-written HTML implementation recaps, one per chapter; update with chapter sources | Operators and implementation agents |
 | [atlas/](atlas/README.md) | Hand-edited `chapters/` and `meta.json`; `generated/` holds the standalone HTML with generated data blocks | Agents and site build |
 | [detroit-decisions.json](detroit-decisions.json) | Generated atlas from `scripts/atlas-assemble.mjs`; retained here because `src/` references this path | Scripts, tests and site build |

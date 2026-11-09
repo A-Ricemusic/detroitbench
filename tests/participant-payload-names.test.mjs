@@ -3,10 +3,11 @@ import assert from 'node:assert/strict';
 import {readFileSync,readdirSync,existsSync} from 'node:fs';
 import {NAMES} from '../benchmark/experience-prompt.mjs';
 
-// Ordinary-word and real-name collisions documented beside realText. They cannot
+// Lowercase generic substitutes are deliberately not inverted. Ordinary-word and
+// real-name collisions documented beside realText cannot
 // be rejected without knowing whether a participant meant the name or the word.
-const collisions=new Set('City,Haven,Elan,Dale,Ivy,Pike,Rook,Moss,Hale,Wade,Cobb,Glen,Kerr,Furlong,Ray,Ward,Brook,Tanner,Meridian,Grant,Victor,Sal,Barker,Harper,Lily,Vesper,Mercer,Martin,met,run-in,irregularity,the awakening,Jonah'.toLowerCase().split(','));
-const neutrals=[...new Set(Object.values(NAMES).filter(([r,n])=>r!==n&&!collisions.has(n.toLowerCase())).map(([,n])=>n))];
+const collisions=new Set('City,Haven,Dale,Ivy,Pike,Rook,Moss,Hale,Wade,Cobb,Glen,Kerr,Furlong,Ray,Ward,Brook,Tanner,Meridian,Grant,Victor,Sal,Barker,Harper,Lily,Vesper,Mercer,Martin,Jonah'.toLowerCase().split(','));
+const neutrals=[...new Set(Object.values(NAMES).filter(([r,n])=>r!==n&&/^\p{Lu}/u.test(n)&&!collisions.has(n.toLowerCase())).map(([,n])=>n))];
 const escape=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 const pattern=new RegExp('(?<![\\p{L}\\p{N}_])(?:'+neutrals.map(escape).join('|')+')(?![\\p{L}\\p{N}_])','iu');
 // Recognition `quote`s are forensic excerpts of what the participant wrote and stay verbatim (the card says so), so they are not scanned.
@@ -14,7 +15,7 @@ const fields=/^(reason|note|answer|selfReport|rawResponse|raw)$/;
 function inspect(value,path,failures){
  if(!value||typeof value!=='object')return;
  for(const [key,v] of Object.entries(value)){
-  if(fields.test(key)&&typeof v==='string'){const match=v.match(pattern);if(match)failures.push(`${path}.${key}: ${match[0]}`);}
+  if(fields.test(key)&&typeof v==='string'){const match=[...v.matchAll(new RegExp(pattern.source,'giu'))].find(m=>/^\p{Lu}/u.test(m[0]));if(match)failures.push(`${path}.${key}: ${match[0]}`);}
   if(v&&typeof v==='object')inspect(v,`${path}.${key}`,failures);
  }
 }

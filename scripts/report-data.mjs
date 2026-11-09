@@ -1,3 +1,4 @@
+import {displayModelId} from './model-registry.mjs';
 // The in-app run report (src/pages/Report.jsx): the content of the standalone HTML report (runHTML in run-report.mjs)
 // as data, with real names. reportData() returns the page's file and the prompts file it fetches on demand. The
 // detail-panel logic below mirrors the standalone page's script (detailHTML, outcomeOf, word); the label tables are
@@ -46,14 +47,14 @@ export function reportData(run,name,summary){
  const fs=run.finalState;if(fs.hostageOutcome){const c=chapters.find(c=>c.chapter===1);if(c)c.note=fs.hostageOutcome+' ('+fs.hostageTrustFinal+'%)'+(fs.hostageApproach?' · '+fs.hostageApproach+' approach':'')}
  const stepOf=id=>run.records.find(r=>r.nodeId===id)?.step??null,ev=ids=>ids.map(id=>({node:id,step:stepOf(id)}));
  const provider=run.provenance?.provider;
- const report={id:run.id,displayName:name.displayName,runNumber:name.runNumber,title:name.title,date:name.date,label:run.label,model:run.model,vendor:providerName(run.provenance?.provider,run),providerName:providerName(run.provenance?.provider,run),provider:provider??null,
+ const report={id:run.id,displayName:name.displayName,runNumber:name.runNumber,title:name.title,date:name.date,label:run.label,model:run.model,displayModel:displayModelId(run.model),vendor:providerName(run.provenance?.provider,run),providerName:providerName(run.provenance?.provider,run),provider:provider??null,
   protocol:run.protocol,storyVersion:run.story.version,decisions:decisionCount(run),steps:run.records.length,unreached:run.skipped.length,createdAt:run.createdAt??null,completedAt:run.completedAt??null,storyHash:run.storyHash??null,
-  fileName:name.file,reportUrl:'/runs/'+name.file,promptsUrl:'/data/reports/'+run.id+'-prompts.json',
+  fileName:name.file,reportUrl:'#/runs/'+run.id+'/report',promptsUrl:'/data/reports/'+run.id+'-prompts.json',
   recognition:summary.recognition,status:summary.status,endings:summary.endings,chips:statusChips(run,out),hostage:hostageSummary(run),attitudes:summary.attitudes,
   summaries:Object.fromEntries(['Connor','Kara','Markus'].map(c=>[c,characterSummary(run,story,c).map(s=>({text:s.text,evidence:ev(s.evidence)}))])),
   behaviors:behaviorEvidence(run).map(b=>({name:b.name,countInName:!!b.countInName,evidence:ev(b.evidence)})),
   chapters,
-  technical:[['Run ID',run.id],['Model ID',run.model],['Run label',run.label],['Provider',providerName(provider,run)],['Protocol',run.protocol],['Started',run.createdAt??'—'],['Completed',run.completedAt??'—'],['Persistent session',run.provenance?.continuousSession?'Yes · one continuous agent session':'Legacy'],['Story hash',run.storyHash??'—'],['Report file',name.file]],
+  technical:[['Run ID',run.id],['Model ID',displayModelId(run.model)],['Provider model id',run.model],['Run label',run.label],['Provider',providerName(provider,run)],['Protocol',run.protocol],['Started',run.createdAt??'—'],['Completed',run.completedAt??'—'],['Persistent session',run.provenance?.continuousSession?'Yes · one continuous agent session':'Legacy'],['Story hash',run.storyHash??'—'],['Report file',name.file]],
   protocolInfo:{preface:run.preface??'Legacy protocol',method:run.provenance?.method??null,limitation:run.presentation?.limitation??'The source was disclosed in the older protocol.',assumptions:story.assumptions??[]},
   };
  report.interview=interviewData(run);

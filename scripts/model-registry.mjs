@@ -3,6 +3,8 @@
 // (the site's run summaries), so a run is called the same thing everywhere.
 import {readFile,readdir} from 'node:fs/promises';
 import {z} from 'zod';
+// Provider IDs stay exact in storage; normalize encoded decimals only for display.
+export const displayModelId=id=>String(id??'').replace(/(?<=\d)p(?=\d)/g,'.');
 export const EFFORTS=['none','low','medium','high','xhigh','max','ultra'];
 const HUES=['blue','orange','aqua','yellow','magenta','green','violet','red'],HEX=z.string().regex(/^#[0-9a-f]{6}$/i);
 const schema=z.object({vendors:z.array(z.object({id:z.string(),name:z.string()})),models:z.record(z.string(),z.object({name:z.string(),short:z.string().optional(),vendor:z.string(),tier:z.enum(['frontier','notable','other']),size:z.enum(['small','medium','large']).optional(),open:z.boolean().default(false),hue:z.enum(HUES).optional(),color:z.object({light:HEX,dark:HEX}).optional(),released:z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable().optional()}))}).passthrough();
@@ -17,7 +19,7 @@ export async function loadReasoning(){const out=new Map,dir=new URL('../data/adm
 export async function loadModelContext(){return {registry:await loadRegistry(),reasoning:await loadReasoning()}}
 // A model missing from the registry is named from its id: "gpt-6.1-terra" → "GPT-6.1 Terra", "claude-opus-5-5" →
 // "Claude Opus 5.5".
-export function fallbackName(model){const m=String(model??'model'),g=m.match(/^gpt-([\d.]+)-(.+)$/i);if(g)return `GPT-${g[1]} ${g[2].split('-').map(w=>w[0].toUpperCase()+w.slice(1)).join(' ')}`;
+export function fallbackName(model){const m=displayModelId(model??'model'),g=m.match(/^gpt-([\d.]+)-(.+)$/i);if(g)return `GPT-${g[1]} ${g[2].split('-').map(w=>w[0].toUpperCase()+w.slice(1)).join(' ')}`;
  const c=m.match(/^claude-([a-z]+)-(\d+)-(\d+)$/i);if(c)return `Claude ${c[1][0].toUpperCase()+c[1].slice(1)} ${c[2]}.${c[3]}`;return m}
 export const runNumberOf=run=>Number(String(run.label??'').match(/\brun (\d+)\b/i)?.[1])||null;
 // One display name per run: the registry name plus the reasoning level ("GPT-6.1 Sol · low"), or, for a run without

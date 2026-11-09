@@ -26,7 +26,7 @@ function Panel({runs,colors,nums,sel,onReset,sheet=false,searchRef,onDone}){
  const {setHover}=useModelFocus(),[q,setQ]=useState(''),[browse,setBrowse]=useState(false),[openW,setOpenW]=useState(false),id=useId();
  const {selected,excluded,setSelected,setExcluded}=sel;
  const sorted=useMemo(()=>[...runs].sort(compareRuns),[runs]);
- const t=q.trim().toLowerCase(),results=t?sorted.filter(r=>[r.displayName,r.model,r.modelInfo?.name,r.modelInfo?.vendorName??r.vendor,r.label].some(s=>String(s??'').toLowerCase().includes(t))):null;
+ const t=q.trim().toLowerCase(),results=t?sorted.filter(r=>[r.displayName,r.model,r.displayModel,r.modelInfo?.name,r.modelInfo?.vendorName??r.vendor,r.label].some(s=>String(s??'').toLowerCase().includes(t))):null;
  const levels=EFFORTS.filter(e=>sorted.some(r=>selected.has(r.id)&&(r.reasoning??'none')===e));
  const frontier=sorted.filter(r=>tierOf(r)==='frontier'),notable=sorted.filter(r=>tierOf(r)==='notable'),others=sorted.filter(r=>tierOf(r)==='other');
  const otherShown=others.filter(r=>selected.has(r.id)||(browse&&(!r.modelInfo?.open||openW)));

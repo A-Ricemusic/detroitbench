@@ -69,7 +69,7 @@ function RunTable({rows,sort,by,nums,colors}){
     <th scope="row" className="px-2 py-2.5 text-left font-medium"><span className="flex min-w-0 items-start gap-2.5"><NumChip n={nums[r.displayName]} color={colors[r.displayName]} className="mt-0.5"/><span className="min-w-0 grow">
      <a href={href('runs/'+r.id+'/report')} title="Open the full report" className="group/name link block min-w-0 text-left [overflow-wrap:anywhere]">{r.displayName.replace(/\s*(\S+)$/,'')} <span className="whitespace-nowrap [overflow-wrap:normal]">{r.displayName.match(/\S+$/)?.[0]}<span className="sr-only">: full report</span><FileText aria-hidden="true" className="ml-1.5 inline-block size-3.5 -translate-y-px align-middle text-ink-3 group-hover/name:text-ink"/></span></a>
      <span className="flex flex-wrap gap-x-3 text-xs font-normal"><a className="link inline-flex min-h-8 items-center" href={href('runs/'+r.id+'/report')}>Full report</a>{r.hasInterview&&<a href={href('runs/'+r.id+'/interview')} className="link inline-flex min-h-8 items-center">Interview</a>}</span>
-     <span className="block truncate font-mono text-[11px] text-ink-3 font-normal" title={`${r.vendor} · ${r.model}`}><span className="2xl:hidden">{r.vendor} · </span>{r.model}</span><RecognitionBadge audit={r.recognition} compact/></span></span></th>
+     <span className="block truncate font-mono text-[11px] text-ink-3 font-normal" title={`${r.vendor} · ${r.displayModel}`}><span className="2xl:hidden">{r.vendor} · </span>{r.displayModel}</span><a href={href('runs/'+r.id+'/interview')} aria-label={`Recognition audit: ${r.displayName}`}><RecognitionBadge audit={r.recognition} compact/></a></span></span></th>
     <td className="hidden 2xl:table-cell px-1.5 py-2.5 text-ink-2 truncate">{r.vendor}</td>
     <td className="px-1.5 py-2.5 text-right tnum">{r.decisions}</td>
     <td className="px-1.5 py-2.5 text-right tnum whitespace-nowrap">{r.media.read}<span className="text-ink-3">/{r.media.offered}</span></td>
@@ -85,9 +85,9 @@ function RunList({rows,nums,colors}){
  return <div className="lg:hidden grid gap-3">
   <ul className="divide-y divide-line rounded-2xl border border-line bg-surface shadow-sm" aria-label="Every run">
    {rows.map(r=><li key={r.id} className={cx('grid gap-2 px-4 py-3.5 transition-opacity',focus.dim(r.id)&&'opacity-30')}>
-    <div className="flex items-start gap-2.5 min-w-0"><NumChip n={nums[r.displayName]} color={colors[r.displayName]} className="mt-px"/><div className="min-w-0 grow"><a href={href('runs/'+r.id+'/report')} className="link text-left font-semibold leading-snug">{r.displayName}</a><span className="block font-mono text-[11px] text-ink-3">{r.vendor} · {r.model}</span></div></div>
+    <div className="flex items-start gap-2.5 min-w-0"><NumChip n={nums[r.displayName]} color={colors[r.displayName]} className="mt-px"/><div className="min-w-0 grow"><a href={href('runs/'+r.id+'/report')} className="link text-left font-semibold leading-snug">{r.displayName}</a><span className="block font-mono text-[11px] text-ink-3">{r.vendor} · {r.displayModel}</span></div></div>
     <p className="font-mono text-[11.5px] text-ink-2 tnum flex flex-wrap gap-x-3"><span><b className="font-semibold text-ink">{r.decisions}</b> decisions</span><span><b className="font-semibold text-ink">{r.media.read}</b>/{r.media.offered} read</span><span><b className="font-semibold text-ink">{r.risk.failed}</b>/{r.risk.taken} risks failed</span></p>
-    <div><RecognitionBadge audit={r.recognition} compact/></div>
+    <div><a href={href('runs/'+r.id+'/interview')} aria-label={`Recognition audit: ${r.displayName}`}><RecognitionBadge audit={r.recognition} compact/></a></div>
     <OutcomeChips r={r} size="sm"/>
     <div className="flex flex-wrap items-center gap-2"><Button as="a" href={href('runs/'+r.id+'/report')} variant="ghost" size="sm" icon={FileText} className="justify-self-start -ml-3" aria-label={`Full report: ${r.displayName}`}>Full report</Button>{r.hasInterview&&<a className="link inline-flex min-h-10 items-center text-sm" href={href('runs/'+r.id+'/interview')}>Interview</a>}</div>
    </li>)}
@@ -117,7 +117,7 @@ export default function Runs(){
  const colors=useMemo(()=>runs?modelColors(runs):{},[runs]),nums=useMemo(()=>runs?modelNumbers(runs):{},[runs]);
  const query=useQueryParam('search')??'',searchRef=useRef(null);
  const terms=query.toLowerCase().trim().split(/\s+/).filter(Boolean);
- const shown=useMemo(()=>sel.visible.filter(r=>{const text=[r.displayName,r.model,r.provider,r.providerName,r.vendor,r.modelInfo?.vendorName,r.reasoning,runNo(r)].join(' ').toLowerCase();return terms.every(t=>text.includes(t))}),[sel.visible,query]);
+ const shown=useMemo(()=>sel.visible.filter(r=>{const text=[r.displayName,r.model,r.displayModel,r.provider,r.providerName,r.vendor,r.modelInfo?.vendorName,r.reasoning,runNo(r)].join(' ').toLowerCase();return terms.every(t=>text.includes(t))}),[sel.visible,query]);
  const onSearch=value=>setQuery({search:value||null});
  const onReset=()=>{setQuery({models:null,'hide-reasoning':null,chart:null});focus.clear()};
  const {rows,sort,by}=useSorted(shown);

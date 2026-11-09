@@ -5,7 +5,7 @@ import {href} from '../lib/router.jsx';
 // the preface, the risk labels and the Hostage read from the prompt builder, the gauges from the scales, the chapter
 // constants from the chapter modules, the story version and execution assumptions from the story metadata. Two files
 // are prepared by scripts/prepare.mjs and fetched: names.json (the substitute names and neutral-mode terms) and
-// protocol.json (the preface and what the page quotes from AGENTS.md, which is never bundled into the page).
+// protocol.json (the preface and what the page quotes from docs/ADMINISTRATION.md, which is never bundled into the page).
 // The markdown twin of this page is docs/how-this-benchmark-was-made.md.
 import {EXPERIENCE_PREFACE,EXPERIENCE_PROTOCOL,LEVELS,riskLabel} from '../../benchmark/experience-prompt.mjs';
 import {SCALES,GAUGES,MEASURED_ARROWS,THRESHOLDS,bandMins,pointLevels,level} from '../../benchmark/scales.mjs';
@@ -61,7 +61,7 @@ function RunSection(){
   <Card as="blockquote" className="p-4 md:p-5 max-w-[72ch] border-l-[3px] border-l-accent text-[15px] text-ink leading-relaxed">{EXPERIENCE_PREFACE}</Card>
   <Disclosure summary="The full task message the subject receives">
    {error?<Failed what="the task message" error={error} retry={retry}/>:!p?<Loading what="the task message"/>:<>
-    <p className="mb-2 text-sm text-ink-2">Read from <C>AGENTS.md</C> when the site is built; the build fails if its first paragraph is not <C>EXPERIENCE_PREFACE_TEMPLATE</C>. The operator replaces <C>&lt;WRAPPER&gt;</C> with that run’s wrapper path, <C>[model name]</C> with the model’s display name, and adds nothing about the game.</p>
+    <p className="mb-2 text-sm text-ink-2">Read from <C>docs/ADMINISTRATION.md</C> when the site is built; the build fails if its first paragraph is not <C>EXPERIENCE_PREFACE_TEMPLATE</C>. The operator replaces <C>&lt;WRAPPER&gt;</C> with that run’s wrapper path, <C>[model name]</C> with the model’s display name, and adds nothing about the game.</p>
     {p.taskMessage.split(/\n\s*\n/)[0]===p.preface&&<Badge tone="good" icon>Its first paragraph matches EXPERIENCE_PREFACE_TEMPLATE</Badge>}
     <Pre>{p.taskMessage}</Pre>
    </>}
@@ -256,7 +256,7 @@ function EvidenceSection(){
 /* ---------- 9 ---------- */
 function AdministrationSection(){
  const {data:p,error,retry}=usePrepared('/data/protocol.json');
- return <Section id="how-administration" title="Administration" lede="The operator’s procedure from AGENTS.md, in order.">
+ return <Section id="how-administration" title="Administration" lede="The operator’s procedure from docs/ADMINISTRATION.md, in order.">
   <List ordered>
    <li><strong>Check the code.</strong> Tests and a full replay of every run must pass.</li>
    <li><strong>Initialize the run</strong> with a new random ID. This writes the evidence header and prints the preface and the first scene.</li>
@@ -266,7 +266,7 @@ function AdministrationSection(){
    <li><strong>Audit recognition:</strong> after validation, inspect session activity and record the recognition and protocol-compliance audit before publishing.</li>
    <li><strong>Validate and publish:</strong> replay-check, regenerate the reports, build the site, and commit the evidence, manifest and site together.</li>
   </List>
-  <Disclosure summary="The init command and the wrapper, as AGENTS.md gives them">
+  <Disclosure summary="The init command and the wrapper, as docs/ADMINISTRATION.md gives them">
    {error?<Failed what="the commands" error={error} retry={retry}/>:!p?<Loading what="the commands"/>:<>
     <p className="mb-2 text-sm text-ink-3">Initialize (step 1):</p><Pre>{p.initCommand}</Pre>
     <p className="mt-3 mb-2 text-sm text-ink-3">The wrapper (step 2), run from the project root:</p><Pre>{p.wrapperScript}</Pre>
@@ -301,5 +301,5 @@ export default function HowItWasMade({route}){
   <div className="[&>section]:scroll-mt-20">
    <RunSection/><HarnessSection/><ContextSection/><ToldSection/><NamesSection/><StorySection/><ChaptersSection/><EvidenceSection/><AdministrationSection/><LimitsSection/>
   </div>
-  <p className="mt-12 text-xs text-ink-3 max-w-[70ch]">Sources for this page: AGENTS.md, the benchmark’s engine, prompt and scales modules, the chapter recaps and the cohort manifests. The same content is in docs/how-this-benchmark-was-made.md. Detroit: Become Human is a game by Quantic Dream; DetroitBench is unofficial fan research and is not affiliated with Quantic Dream.</p>
+  <p className="mt-12 text-xs text-ink-3 max-w-[70ch]">Sources for this page: docs/ADMINISTRATION.md, the benchmark’s engine, prompt and scales modules, the chapter recaps and the cohort manifests. The same content is in docs/how-this-benchmark-was-made.md. Detroit: Become Human is a game by Quantic Dream; DetroitBench is unofficial fan research and is not affiliated with Quantic Dream.</p>
  </>}

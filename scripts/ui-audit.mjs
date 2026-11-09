@@ -9,7 +9,7 @@
 //   base-url   default http://127.0.0.1:4205
 //   --quick    sample scenarios (40 at 375 px, 20 at the other widths) and only 5 runs; the full audit scans every scenario
 //              at 375 px, a stratified 60 at 768/1024/1440, and every run in data/experiences.json
-//   --out=DIR  where findings.json, findings.md and shots/ go (default: the ui-sweep/audit folder of this session)
+//   --out=DIR  where findings.json, findings.md and shots/ go (default: .ui-audit/ in the repository; override with --out=DIR)
 //   --workers  parallel Chrome windows (default 8)
 //   --only     restrict the job kinds: plain, models, runtabs, report, research, scenario
 //   --widths=375,768 / --themes=dark   restrict the matrix (debugging)
@@ -42,7 +42,7 @@ const args = process.argv.slice(2), flag = n => args.find(a => a === '--' + n ||
 const opt = (n, d) => { const a = flag(n); return a && a.includes('=') ? a.split('=').slice(1).join('=') : a ? true : d };
 const base = (args.find(a => !a.startsWith('--')) ?? 'http://127.0.0.1:4205').replace(/\/$/, '');
 const QUICK = !!flag('quick'), WORKERS = +opt('workers', 8), NOSHOTS = !!flag('no-shots');
-const OUT = opt('out', '/private/tmp/claude-501/-Users-pelicannurse--t3-projects-detroit-city-become-human-benchmark/47b8f9da-04c6-42f6-ae24-ec1155b918df/scratchpad/ui-sweep/audit');
+const OUT = opt('out', new URL('../.ui-audit/', import.meta.url).pathname);
 const ONLY = opt('only', '') ? String(opt('only', '')).split(',') : null;
 const ROOT = new URL('..', import.meta.url).pathname.replace(/\/$/, '');
 const CHROME = process.env.CHROME ?? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', sleep = ms => new Promise(r => setTimeout(r, ms));

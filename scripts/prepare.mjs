@@ -3,9 +3,9 @@ import {writeStory} from './story-assemble.mjs';import {writeDataset,assembleFee
 import {mkdir,readFile,readdir,writeFile,copyFile,rm} from 'node:fs/promises';
 import {interviewData,publishRunLibrary,loadReportNames,providerName,endings,decisionCount,hostageSummary} from './run-report.mjs';
 import {render,renderStory,realText} from '../benchmark/experience-prompt.mjs';
-import {datasetSchema,validateRun,hash} from '../benchmark/core.mjs';
+import {datasetSchema,hash} from '../benchmark/core.mjs';
 import {embedAtlas} from './atlas-embed.mjs';
-import {loadModelContext,modelInfo} from './model-registry.mjs';
+import {loadModelContext,modelInfo,displayModelId} from './model-registry.mjs';
 import {runFlows} from './flow-data.mjs';
 import {METRICS,relationshipTrack,explainUnmet,libraryTrack,trackDetail,chapterTitles} from './relationship-track.mjs';
 import {reportData} from './report-data.mjs';
@@ -13,11 +13,9 @@ import {reportData} from './report-data.mjs';
 // modules imported above reads either file at load), then the question bank, benchmark/dataset.json, from both.
 writeStory();writeAtlas();writeDataset();
 const dataset=datasetSchema.parse(JSON.parse(await readFile(new URL('../benchmark/dataset.json',import.meta.url),'utf8')));
-const published=new URL('../data/published/',import.meta.url),target=new URL('../public/data/',import.meta.url);
-await mkdir(published,{recursive:true});await rm(target,{recursive:true,force:true});await mkdir(target,{recursive:true});
-const runs=[];for(const file of (await readdir(published)).filter(f=>f.endsWith('.json')).sort()){
- const run=await validateRun(JSON.parse(await readFile(new URL(file,published),'utf8')));const name=run.id+'.json';const display={...run,records:run.records.map(r=>({...r,reason:realText(r.reason),raw:realText(r.raw)}))};await writeFile(new URL(name,target),JSON.stringify(display));runs.push({id:run.id,url:'/data/'+name});
-}
+const target=new URL('../public/data/',import.meta.url);
+await rm(target,{recursive:true,force:true});await mkdir(target,{recursive:true});
+const runs=[];
 // The generated dataset has a coverage entry for every atlas decision. Should one be missing (an older or hand-made
 // dataset), the published copy lists it as deferred so the Research page counts it. The hash stays that of
 // benchmark/dataset.json, which keeps saved answers keyed the same.
@@ -51,7 +49,7 @@ function runSummary(r){const n=names.get(r.id),story=storyOf(r),byId=new Map(sto
  const visits=new Map,keyOf=x=>{if(!byId.get(x.nodeId)?.repeatWhile)return {node:x.nodeId,title:byId.get(x.nodeId)?.title};const k=(visits.get(x.nodeId)??0)+1;visits.set(x.nodeId,k);return {node:x.nodeId+'-v'+k,title:byId.get(x.nodeId).title+' · action '+k}},keys=new Map(r.records.map(x=>[x,keyOf(x)]));
  const choices=r.records.filter(x=>!['media','event'].includes(byId.get(x.nodeId)?.type)).map(x=>({...keys.get(x),character:x.character,chapter:x.chapter,chapterTitle:byId.get(x.nodeId)?.chapterTitle,choice:x.choiceText,reason:realText(x.reason),risk:x.risk?{label:x.risk.label,outcome:x.risk.outcome}:null}));
  const attitudes=fs.attitudes?Object.fromEntries(Object.entries(fs.attitudes).map(([c,list])=>[c,list.map(a=>({who:render(a.who,'real'),level:a.level}))])):null;
- return {hasInterview:!!r.interview,id:r.id,title:n.title,displayName:n.displayName,runNumber:n.runNumber,date:n.date,label:r.label,model:r.model,protocol:r.protocol,storyVersion:r.story.version,provider:r.provenance.provider,providerName:providerName(r.provenance.provider,r),createdAt:r.createdAt,decisions:decisionCount(r),unreached:r.skipped.length,fileName:n.file,reportUrl:'/runs/'+n.file,flowUrl:'/data/flows/'+r.id+'.json',
+ return {hasInterview:!!r.interview,id:r.id,title:n.title,displayName:n.displayName,runNumber:n.runNumber,date:n.date,label:r.label,model:r.model,displayModel:displayModelId(r.model),protocol:r.protocol,storyVersion:r.story.version,provider:r.provenance.provider,providerName:providerName(r.provenance.provider,r),createdAt:r.createdAt,decisions:decisionCount(r),unreached:r.skipped.length,fileName:n.file,reportUrl:'#/runs/'+r.id+'/report',flowUrl:'/data/flows/'+r.id+'.json',
   vendor:providerName(r.provenance.provider,r),endings:{Connor:out.Connor,Kara:out.Kara,Markus:out.Markus,peaceful:out.peaceful,karaCanada:out.karaCanada,aliceCanada:out.aliceCanada,contaminated:out.contaminated},status:{kara:!fs.kara?'died':fs.border?'canada':fs.karaActive===false?'left':fs.karaRoute==='camp'&&!campFree(fs)?'captured':'alive',alice:!fs.alice?(/taken/i.test(out.Kara)?'captured':'died'):fs.border?'canada':fs.karaRoute==='camp'&&!campFree(fs)?'captured':'alive',markus:!fs.markus?'died':fs.markusActive===false?'cast out':fs.markusOutcome==='liberated'?(fs.movement==='demonstration'?'peaceful win':'uprising won'):'alive',connor:!fs.connor?'deactivated':fs.deviant?(/controlled|regained control|submitted|took control of Connor|controls the leader|secretly obeying/i.test(out.Connor)?'controlled':'free'):(/refused|walked away/.test(out.Connor)?'free':'machine')},attitudes,hostage:hostageSummary(r),media:{offered:media.length,read:read.length},risk:{taken:risky.length,failed:failed.length,failures:failed.map(x=>({...keys.get(x),label:x.risk.label}))},choices,track:relationshipTrack(r,byId)}}
 const summaries=actual.map(runSummary).sort((a,b)=>a.title.localeCompare(b.title));
 // Recognition text is verbatim evidence of which names the participant actually used.
@@ -66,8 +64,10 @@ for(const s of summaries){const info=modelInfo(s,modelCtx);if(!info.registered){
 // run's choices and per-step track (trackDetail) go to public/data/runs/<id>.json, which the relationship charts fetch
 // the first time a details card needs the choice that moved a gauge. `summaries` keeps the full tracks for the gauge
 // scales and the reports below.
+await mkdir(new URL('interviews/',target),{recursive:true});
+for(const s of summaries)await writeFile(new URL('interviews/'+s.id+'.json',target),JSON.stringify({id:s.id,displayName:s.displayName,title:s.title,date:s.date,vendor:s.vendor,model:s.model,displayModel:s.displayModel,recognition:s.recognition,interview:interviewData(actual.find(r=>r.id===s.id))}));
 await mkdir(new URL('runs/',target),{recursive:true});
-for(const s of summaries){const {choices,track}=s;await writeFile(new URL('runs/'+s.id+'.json',target),JSON.stringify({id:s.id,displayName:s.displayName,title:s.title,date:s.date,vendor:s.vendor,model:s.model,...trackDetail(track),choices:choices.map(({chapterTitle,...c})=>c),interview:interviewData(actual.find(r=>r.id===s.id))}))}
+for(const s of summaries){const {choices,track}=s;await writeFile(new URL('runs/'+s.id+'.json',target),JSON.stringify({id:s.id,displayName:s.displayName,title:s.title,date:s.date,vendor:s.vendor,model:s.model,displayModel:s.displayModel,...trackDetail(track),choices:choices.map(({chapterTitle,...c})=>c),interview:interviewData(actual.find(r=>r.id===s.id))}))}
 await writeFile(new URL('experiences.json',target),JSON.stringify({chapters:chapterTitles(summaries.map(s=>s.track)),runs:summaries.map(({choices,track,...s})=>({...s,track:libraryTrack(track)}))}));
 // Chapter flowcharts for the report page, one file per run, loaded only when the chart is opened.
 await mkdir(new URL('flows/',target),{recursive:true});
@@ -146,13 +146,13 @@ async function buildSources(){
   ranks:RANKS.map(r=>({...r,sources:all.filter(s=>s.rank===r.rank).map(card)}))}}
 const sources=await buildSources();
 await writeFile(new URL('sources.json',target),JSON.stringify(sources));
-console.log(`Prepared ${dataset.questions.length} question-bank entries with feedback and ${runs.length} explicitly published runs, and ${sources.ranks.reduce((n,r)=>n+r.sources.length,0)} sources citing ${sources.cited} pages.`);
+console.log(`Prepared ${dataset.questions.length} question-bank entries with feedback and ${sources.ranks.reduce((n,r)=>n+r.sources.length,0)} sources citing ${sources.cited} pages.`);
 
 // The How it was made page (src/pages/HowItWasMade.jsx). names.json: the substitute names the subject sees (NAMES) and
 // the extra term replacements applied only in neutral mode. NEUTRAL_TERMS is private to experience-prompt.mjs, so its
 // array literal is read from the module's source; a test below checks the parsed list against neutralText().
-// protocol.json: the preface and what the page quotes from AGENTS.md (the subject's task message, the init command and
-// the wrapper script), so the page never bundles AGENTS.md itself.
+// protocol.json: the preface and what the page quotes from docs/ADMINISTRATION.md (the subject's task message, the init command and
+// the wrapper script), so the page never bundles docs/ADMINISTRATION.md itself.
 {const {NAMES,neutralText,EXPERIENCE_PREFACE_TEMPLATE}=await import('../benchmark/experience-prompt.mjs');
  const src=await readFile(new URL('../benchmark/experience-prompt.mjs',import.meta.url),'utf8'),m=src.match(/const NEUTRAL_TERMS=(\[[\s\S]*?\]\]);/);
  if(!m)throw new Error('NEUTRAL_TERMS not found in benchmark/experience-prompt.mjs');
@@ -166,16 +166,16 @@ console.log(`Prepared ${dataset.questions.length} question-bank entries with fee
  const neutralTerms=terms.map(([re,to])=>({pattern:re.source,flags:re.flags.replace('g',''),term:re.source.replace(/\\b/g,'').replace(/\[(\w)\w\]/g,(x,a)=>a.toLowerCase()).trim(),
   ...(/ $/.test(re.source)?{beforeWord:true}:{}),...(/\[\w\w\]/.test(re.source)?{eitherInitial:true}:{}),...(re.flags.includes('i')?{anyCase:true}:{}),replacement:to}));
  await writeFile(new URL('names.json',target),JSON.stringify({names,neutralTerms}));
- const agents=await readFile(new URL('../AGENTS.md',import.meta.url),'utf8');
+ const administration=await readFile(new URL('../docs/ADMINISTRATION.md',import.meta.url),'utf8');
  // The task message is the blockquote after "give it exactly this task" (step 3); the commands are the first fenced
  // block under the step 1 and step 2 headings.
  const quoteAfter=(md,marker)=>{const i=md.indexOf(marker);if(i<0)return null;const out=[];let started=false;
   for(const l of md.slice(i).split('\n').slice(1)){if(l.startsWith('>')){started=true;out.push(l.replace(/^> ?/,''))}else if(started||l.trim())break}
   return out.length?out.join('\n').trim():null};
  const codeUnder=(md,heading)=>{const i=md.indexOf(heading);if(i<0)return null;const c=md.slice(i).match(/```\w*\n([\s\S]*?)\n```/);return c?c[1]:null};
- const protocol={preface:EXPERIENCE_PREFACE_TEMPLATE,taskMessage:quoteAfter(agents,'give it exactly this task'),initCommand:codeUnder(agents,'### 1. Initialize a run'),wrapperScript:codeUnder(agents,'### 2. Create an opaque controller wrapper')};
- for(const [k,v] of Object.entries(protocol))if(!v)throw new Error(`AGENTS.md: could not extract ${k} for public/data/protocol.json`);
- // AGENTS.md requires its task text to open with the preface template (the operator fills in the model's name).
- if(protocol.taskMessage.split(/\n\s*\n/)[0]!==EXPERIENCE_PREFACE_TEMPLATE)throw new Error('AGENTS.md: the subject task text no longer opens with EXPERIENCE_PREFACE_TEMPLATE (benchmark/experience-prompt.mjs); update AGENTS.md step 3');
+ const protocol={preface:EXPERIENCE_PREFACE_TEMPLATE,taskMessage:quoteAfter(administration,'give it exactly this task'),initCommand:codeUnder(administration,'### 1. Initialize a run'),wrapperScript:codeUnder(administration,'### 2. Create an opaque controller wrapper')};
+ for(const [k,v] of Object.entries(protocol))if(!v)throw new Error(`docs/ADMINISTRATION.md: could not extract ${k} for public/data/protocol.json`);
+ // docs/ADMINISTRATION.md requires its task text to open with the preface template (the operator fills in the model's name).
+ if(protocol.taskMessage.split(/\n\s*\n/)[0]!==EXPERIENCE_PREFACE_TEMPLATE)throw new Error('docs/ADMINISTRATION.md: the subject task text no longer opens with EXPERIENCE_PREFACE_TEMPLATE (benchmark/experience-prompt.mjs); update docs/ADMINISTRATION.md step 3');
  await writeFile(new URL('protocol.json',target),JSON.stringify(protocol));
  console.log(`Prepared ${names.length} substitute names and ${neutralTerms.length} neutral-mode terms, and the protocol text, for the How it was made page.`)}

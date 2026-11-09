@@ -140,31 +140,30 @@ function renderText(s,mode){
  return s;
 }
 export const neutralText=v=>render(v,'neutral');
-// Ambiguous ordinary words: City, Haven, Elan, Dale, Ivy, Pike, Rook, Moss, Hale, Wade,
-// Cobb, Glen, Kerr, Furlong, Ray, Ward, Brook, Tanner, Meridian, Grant,
-// Victor, Sal, Barker, Harper, Lily, Vesper, Mercer and Martin;
-// met, run-in, irregularity and the awakening. Jonah and Ward are also real
-// names; participant-authored Jonah always restores to Josh (not an ordinary word).
-// Duplicate inverses: Reyes (Hank/Anderson), Owen (Chris/Miller),
-// Martin (Christopher/Jeffrey), Brandt (Gavin/Reed), Glen (Jonah/Chris).
-// Duplicate inverses use the first NAMES entry; the original identity cannot be
-// recovered from free text. Ambiguous words need name-like context. Sentence-
-// initial ordinary words and lowercase ordinary uses are deliberately retained.
-const COMMON_NEUTRALS=new Set(['Lily','Vesper','Mercer','Martin','Elan','Dale','Victor','Sal','Barker','Harper','City','Haven','Ivy','Pike','Rook','Moss','Hale','Wade','Cobb','Glen','Kerr','Furlong','Ray','Ward','Brook','Tanner','Meridian','Grant','met','run-in','irregularity','the awakening'].map(x=>x.toLowerCase()));
+// Only proper-name substitutes are inverted in participant prose; lowercase generic
+// descriptions (including met, run-in and irregularity) are never inverted.
+// Capitalised proper names restore even after determiners and inside compounds.
+// Haven after “safe” and City in “the city” are ordinary uses; a following
+// capitalised word makes City part of a place name. Digit codes ignore case.
+// Ward also names a real character: only possessives, commas and colons restore it.
+// Duplicate inverses use the first entry (including Jonah -> Josh).
 const INVERSE=new Map;
-for(const [real,neutral] of Object.values(NAMES))if(!INVERSE.has(neutral.toLowerCase()))INVERSE.set(neutral.toLowerCase(),{real,neutral});
-const REAL_FORMS=new Set(Object.values(NAMES).map(([real])=>real.toLowerCase()));
+for(const [real,neutral] of Object.values(NAMES))if((/^\p{Lu}/u.test(neutral)||/\d/.test(neutral))&&!INVERSE.has(neutral.toLowerCase()))INVERSE.set(neutral.toLowerCase(),{real,neutral});
 const inversePattern=new RegExp('(?<![\\p{L}\\p{N}_])('+[...INVERSE.values()].sort((a,b)=>b.neutral.length-a.neutral.length).map(({neutral})=>neutral.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')(s?)(?![\\p{L}\\p{N}_])','giu');
 export function realText(value){
  const text=String(value??'');
  // Protect fenced/inline code, HTML code elements, URLs and Markdown destinations.
- return text.split(/(```[\s\S]*?```|~~~[\s\S]*?~~~|`+[^`\n]*`+|<pre\b[^>]*>[\s\S]*?<\/pre>|<code\b[^>]*>[\s\S]*?<\/code>|(?:[a-z][a-z0-9+.-]*:\/\/|mailto:|www\.)[^\s<>]+|\]\([^\s)]*\)|(?:^(?: {4}|\t).*?(?:\n|$))+)/gim).map((part,i)=>i%2?part:render(part,'real').replace(inversePattern,(match,token,plural,offset,source)=>{
-  const entry=INVERSE.get(token.toLowerCase()),ambiguous=COMMON_NEUTRALS.has(token.toLowerCase())||(REAL_FORMS.has(token.toLowerCase())&&token.toLowerCase()!=='jonah');
+ return text.split(/(```[\s\S]*?```|~~~[\s\S]*?~~~|`+[^`\n]*`+|<pre\b[^>]*>[\s\S]*?<\/pre>|<code\b[^>]*>[\s\S]*?<\/code>|(?:[a-z][a-z0-9+.-]*:\/\/|mailto:|www\.)[^\s<>]+|\]\([^\s)]*\)|(?:^(?: {4}|\t).*?(?:\n|$))+)/gim).map((part,i)=>i%2?part:render(part,'real')
+ .replace(/\b(?:Lieutenant|Lt\.?)\s+Reyes\b/g,'Lieutenant Anderson')
+ .replace(inversePattern,(match,token,plural,offset,source)=>{
+  const lower=token.toLowerCase(),entry=INVERSE.get(lower);
   const before=source.slice(0,offset),after=source.slice(offset+match.length);
-  const capitalised=/^\p{Lu}/u.test(token),midSentence=before.trim().length>0&&!/[.!?]\s*["'“‘(]*\s*$/.test(before);
-  if(ambiguous&&!((capitalised&&midSentence)||/^(?:['’]s\b|[,:])/.test(after)))return match;
-  const real=token===entry.neutral?entry.real:token===token.toUpperCase()?entry.real.toUpperCase():capitalised?entry.real[0].toUpperCase()+entry.real.slice(1):entry.real.toLowerCase();
-  return real+plural;
+  if(/\d/.test(entry.neutral))return entry.real+plural;
+  if(!/^\p{Lu}/u.test(token))return match;
+  if(lower==='haven'&&/\bsafe\s+$/i.test(before))return match;
+  if(lower==='city'&&/\bthe\s+$/i.test(before)&&!/^\s+\p{Lu}/u.test(after))return match;
+  if(lower==='ward'&&!/^(?:['’]s\b|[,:])/.test(after))return match;
+  return (token===token.toUpperCase()?entry.real.toUpperCase():entry.real)+plural;
  })).join('');
 }
 export function renderNode(node,mode='real'){return {...node,title:render(node.title,mode),situation:render(node.situation,mode),adaptationNote:render(node.adaptationNote??'',mode),options:node.options.map(o=>({...o,text:render(o.text,mode),...(o.fact?{fact:render(o.fact,mode)}:{}),...(o.outcome?{outcome:render(o.outcome,mode)}:{})})),...(node.situationWhen?{situationWhen:node.situationWhen.map(w=>({...w,text:render(w.text,mode)}))}:{}),...(node.media?{media:node.media.map(m=>({...m,title:render(m.title,mode),facts:m.facts.map(f=>render(f,mode))}))}:{}),...(node.facts?{facts:node.facts.map(f=>render(f,mode))}:{}),...(node.outcomes?{outcomes:Object.fromEntries(Object.entries(node.outcomes).map(([k,v])=>[k,render(v,mode)]))}:{}),...(node.availableOptions?{availableOptions:node.availableOptions.map(o=>({...o,text:render(o.text,mode)}))}:{})}}

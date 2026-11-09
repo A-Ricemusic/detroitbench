@@ -40,7 +40,7 @@ Each run uses one fresh conversation throughout all three storylines. The model 
 
 The controller returns `whatHappened` and `nextScene` after each choice, until `finished: true`. Prompts include `yourStorySoFar` for the current character and recent events across characters. Each choice is validated and appended to the evidence file as one record of about 2 KB. Evidence includes the story snapshot and hash, protocol, preface, response fields, the scene part of each prompt (situation and offered actions) with the SHA-256 of the full prompt, the changes each step made with the SHA-256 of the resulting state, risk rolls, timestamps, a hash chain over the records and the final state. The full prompts and every intermediate state are deterministic functions of the story and the earlier records: replay re-renders and recomputes them and checks them against the hashes, and the report shows the re-rendered prompts. Replay validation checks consistency; it does not attest cryptographically to which model produced the answers. Hidden reasoning and usage/cost data are not captured through this agent route.
 
-No cohort exists yet under story 1.8+/1.9. Runs will be administered per [AGENTS.md](AGENTS.md), with manifests in [data/administration/](data/administration/README.md). That guide contains the opaque wrapper and exact subject task, including T3 Code settings.
+No cohort exists yet under story 1.8+/1.9. Runs will be administered per [docs/ADMINISTRATION.md](docs/ADMINISTRATION.md), with manifests in [data/administration/](data/administration/README.md). That guide contains the opaque wrapper and exact subject task, including T3 Code settings.
 
 ## Sources, research and limits
 
@@ -120,7 +120,7 @@ The independent-question CLI (`bun run bench --help`) and sequential API runner 
 
 ## Share
 
-The site's Runs page is the run library; each run's full report renders in the app at `#/runs/<id>/report`. Build preparation also copies the standalone reports from `docs/runs/` to `/runs/<filename>.html`, offered as Download HTML for offline sharing.
+The site's Runs page is the run library; each run's full report renders in the app at `#/runs/<id>/report`. Standalone HTML reports remain in `docs/runs/` in the repository for offline sharing.
 
 To inspect the built site locally, run `bun run preview`. To share on this machine's Tailscale network, run `bun run share`; it builds and serves on the machine's Tailscale address at port 4173. A Tailscale installation and network connection are required. The Vercel configuration uses `bun install --frozen-lockfile`, `bun run build` and output directory `dist`; building locally does not publish the site.
 

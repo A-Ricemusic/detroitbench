@@ -1,5 +1,5 @@
 // Shared vocabulary for the run library. Colours live in CSS variables so both themes stay in step.
-import {levelTone,SCALES} from '../../benchmark/scales.mjs';
+import {levelTone} from '../../benchmark/scales.mjs';
 import {EFFORTS} from './modelSelection.js';
 export const CHARS=['Connor','Kara','Markus'];
 export const WHO={Connor:'Connor',Kara:'Kara & Alice',Markus:'Markus'};
@@ -8,12 +8,8 @@ export const ORDER=[['Connor','connor'],['Kara','kara'],['Alice','alice'],['Mark
 export const STATUS_TEXT={Alice:{canada:'Reached Canada',died:'Died',captured:'Captured',alive:'Survived'},Kara:{canada:'Reached Canada',died:'Died',captured:'Captured',left:'Left Alice',alive:'Survived'},Markus:{'peaceful win':'Peaceful win','uprising won':'Uprising won',died:'Died','cast out':'Cast out',alive:'Survived'},Connor:{free:'Free',deactivated:'Deactivated',machine:'Stayed a machine',controlled:'Controlled'}};
 export const STATUS_TONE={canada:'good',free:'good','peaceful win':'good','uprising won':'mid',alive:'mid',machine:'mid',controlled:'mid',left:'serious',captured:'serious','cast out':'serious',died:'bad',deactivated:'bad'};
 export const saved=r=>({Alice:r.status?.alice==='canada',Kara:r.status?.kara==='canada',Markus:r.status?.markus==='peaceful win'||r.status?.markus==='uprising won',Connor:r.status?.connor==='free'});
-export const savedCount=r=>Object.values(saved(r)).filter(Boolean).length;
 // Tone of a relationship level, from the gauge definitions in benchmark/scales.mjs.
 export const relTone=l=>levelTone(l);
-// "Hank: Hostile, Tense, …; Amanda: …" for every relationship gauge (gauges that share a ladder are listed together).
-export const RELATIONSHIP_LADDERS=(()=>{const by=new Map;for(const sc of Object.values(SCALES)){if(sc.key==='instability')continue;const k=sc.levels.join(', ');by.set(k,[...(by.get(k)??[]),sc.who])}
- return [...by].map(([ladder,who])=>who.join(', ')+': '+ladder).join('; ')})();
 export const pct=(a,b)=>b?Math.round(a/b*100)+'%':'—';
 export const plural=(n,one,many=one+'s')=>`${n} ${n===1?one:many}`;
 // A model's colour comes from its registry hue (data/models.json, joined as `modelInfo.hue`), one of the eight validated
@@ -49,5 +45,3 @@ export const runLabel=r=>r.displayName;
 export function modelNumbers(runs){const first=new Map;for(const r of [...runs].sort((a,b)=>String(a.createdAt??'').localeCompare(String(b.createdAt??''))||a.id.localeCompare(b.id)))if(!first.has(r.displayName))first.set(r.displayName,first.size+1);return Object.fromEntries(first)}
 // Typographic apostrophes and quotes for story text, which arrives with straight ASCII quotes.
 export const tidy=s=>typeof s==='string'?s.replace(/(\w)'(\w)/g,'$1’$2').replace(/"([^"]*)"/g,'“$1”'):s;
-// Names the subject saw, with the real names restored for readers.
-export const NAME_KEY=[['Cato','Connor'],['Mira','Kara'],['Pia','Alice'],['Elan','Markus'],['Reyes','Hank'],['Theo','Cole'],['Bruno','Sumo'],['Abel','Luther'],['Vesper','North'],['Soren','Simon'],['Jonah','Josh'],['Rafe','John'],['Dale','Todd'],['Arthur','Carl'],['Wes','Leo'],['Halden','Kamski'],['Ivy','Chloe'],['Vera','Amanda'],['Voss','Zlatko'],['Mara','Rose'],['Pike','Ralph'],['Benny','Jerry'],['Dax','Daniel'],['Lily','Emma'],['Rook','Rupert'],['Dwyer','Perkins'],['Moss','Allen'],['Haven','Jericho'],['Arclight','CyberLife'],['Hale','President Warren']];

@@ -1,3 +1,5 @@
+// Legacy pre-controller API route, unused since protocol branching-3.0. Kept to run models directly
+// through a provider API; still uses the old 160-word reason cap and does not run the post-game interview.
 import { readFile, writeFile, rename, mkdir, open, unlink } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { randomUUID } from 'node:crypto';

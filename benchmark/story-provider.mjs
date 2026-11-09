@@ -1,3 +1,5 @@
+// Legacy pre-controller API route, unused since protocol branching-3.0. Kept to run models directly
+// through a provider API; still uses the old 160-word reason cap and does not run the post-game interview.
 import {readFile,writeFile,mkdir,open,unlink} from 'node:fs/promises';
 import {dirname,resolve} from 'node:path';import {parseArgs} from 'node:util';
 import {callProvider} from './runner.mjs';import {writeRun} from './evidence-file.mjs';import {promptFor,validatePlaythrough} from './story-engine.mjs';import {prefaceFor,neutralText} from './experience-prompt.mjs';
