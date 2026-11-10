@@ -2,7 +2,7 @@ import { z } from 'zod';
 export const PROTOCOL = '1.0.0';
 const text = z.string().min(1);
 const sourceUrl=z.url().refine(s=>['https:','http:'].includes(new URL(s).protocol),'Sources must use HTTP(S).');
-const optionSchema=z.object({id:text,text});
+const optionSchema=z.object({id:text,text,participantText:text.optional()});
 // Entry kinds. The bank mirrors the playthrough scene by scene: `decision` and `media` entries are asked; `event`
 // (scripted beat, Continue only) and `forced` (a single action) are shown but never sent to a model. An entry without
 // `kind` is a decision (hand-authored datasets); no default is applied at parse time, so old run snapshots hash the same.

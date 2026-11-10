@@ -50,7 +50,7 @@ test('The Pirates’ Cove: the fire report needs the news on and the house burne
  assert.ok(!play({},{fire:true}).offered['K14b#1'].includes('1'),'the fourth report needs the news on first');
  const r=play({K14b:['0','1']},{fire:true});assert.match(render(r.events['K14b#2'].event,'real'),/house fire on the outskirts/);
  assert.ok(r.s.knowledge.Kara.some(f=>/dozens of androids were found in the ruins/.test(f)));
- assert.ok(r.s.knowledge.Kara.some(f=>/AX400 android that attacked its owner/.test(f)));
+ assert.ok(r.s.knowledge.Kara.some(f=>/AX400 android that attacked its owner/.test(render(f,'real'))));
 });
 
 test('The Pirates’ Cove: true repeatable hubs drop completed actions and exit cleanly',()=>{

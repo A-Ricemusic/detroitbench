@@ -14,7 +14,7 @@ const ordinaryVocabulary=new Set(['encounter','encountered','instability','devia
 export function commandParts(text){let quote=null,escaped=false;for(let i=0;i<text.length;i++){const c=text[i];if(escaped){escaped=false;continue}if(c==='\\'&&quote!=="'"){escaped=true;continue}if(quote){if(c===quote)quote=null}else if(c==='"'||c==="'")quote=c;else if(c==='\n')return {command:text.slice(0,i).replace(/^\$\s*/,''),output:text.slice(i+1)}}return {command:text.replace(/^\$\s*/,''),output:''}}
 function shellSegments(text){let quote=null,escaped=false,start=0;const out=[];for(let i=0;i<text.length;i++){const c=text[i];if(escaped){escaped=false;continue}if(c==='\\'&&quote!=="'"){escaped=true;continue}if(quote){if(c===quote)quote=null}else if(c==='"'||c==="'")quote=c;else if('|;&\n'.includes(c)){out.push(text.slice(start,i).trim());start=i+1}}out.push(text.slice(start).trim());return out}
 export function auditRun(run,items,{auditedAt=new Date().toISOString()}={}){
- return auditActivity(run,items,{auditedAt,shown:JSON.stringify([...promptsOf(run.story,run),...run.records.map(whatHappenedFor)])});
+ return auditActivity(run,items,{auditedAt,shown:JSON.stringify([...promptsOf(run.story,run),...run.records.map(r=>whatHappenedFor(r,run.promptVersion??1))])});
 }
 // Pure activity classifier; replay-derived displayed text is supplied by auditRun.
 export function auditActivity(run,items,{auditedAt=new Date().toISOString(),shown=''}={}){

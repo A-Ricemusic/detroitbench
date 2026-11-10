@@ -1,7 +1,7 @@
 import {readFile,writeFile} from 'node:fs/promises';
 import {tonightPlans} from './tonight-plans.mjs';
 
-export async function generateTonight(){
+export async function generateTonight({priorityFile}={}){
  const root=new URL('../../',import.meta.url);
  const read=p=>readFile(new URL(p,root),'utf8');
  const source=await read('docs/research/CONFLICTS.md');
@@ -15,10 +15,21 @@ export async function generateTonight(){
  // Stable metadata order is the route order inside each priority tier. Do not sort save targets alphabetically.
  const route=Object.keys(tonightPlans);
  items.sort((a,b)=>a.chapter-b.chapter || Number(a.partial)-Number(b.partial) || route.indexOf(a.id)-route.indexOf(b.id));
+ let priorityOrder=null;
+ if(priorityFile){
+  const data=JSON.parse(await readFile(priorityFile,'utf8'));
+  priorityOrder=Array.isArray(data)?data:data.items;
+  if(!Array.isArray(priorityOrder)||priorityOrder.some(x=>typeof x!=='string')||new Set(priorityOrder).size!==priorityOrder.length)throw Error('Priority file must contain unique item IDs (array or {items: array})');
+  const rank=new Map(priorityOrder.map((id,i)=>[id,i]));
+  const unknown=priorityOrder.filter(id=>!items.some(x=>x.id===id));
+  if(unknown.length)throw Error('Priority file contains non-open IDs: '+unknown.join(', '));
+  items.sort((a,b)=>(rank.get(a.id)??Infinity)-(rank.get(b.id)??Infinity));
+ }
  const total=items.reduce((n,x)=>n+x.minutes,0),fresh=items.filter(x=>!x.partial).length;
  const coreIds=new Set(['gauge-02','ch06-03','gauge-01','ch09-16','gauge-04','ch09-01','ch09-14','ch25-04','ch25-06','ch25-05','ch25-01','ch25-02','ch25-03']);
+ if(priorityOrder){coreIds.clear();for(const id of items.slice(0,12).map(x=>x.id))coreIds.add(id)}
  const core=items.filter(x=>coreIds.has(x.id)),coreMinutes=core.reduce((n,x)=>n+x.minutes,0);
- const out=['# Play tonight · operator replay checklist','',`**${items.length} open items · ${fresh} without partial evidence first within each chapter · ${items.length-fresh} partials · ${total} estimated item-minutes (${Math.floor(total/60)} h ${total%60} min).**`,'',
+ const out=['# Play tonight · operator replay checklist','',`**${items.length} open items · ${priorityOrder?'sensitivity priority order; '+fresh+' without partial evidence':fresh+' without partial evidence first within each chapter'} · ${items.length-fresh} partials · ${total} estimated item-minutes (${Math.floor(total/60)} h ${total%60} min).**`,'',
  'Generated with `bun run play:checklist --tonight`. Questions and open/closed status come from [CONFLICTS.md](../../research/CONFLICTS.md); operational routes and estimates live in `scripts/checklist/tonight-plans.mjs`. Closed items disappear on regeneration. This document does not close questions or alter the benchmark.','',
  '## One evening, with a stopping rule','',
  `The complete backlog cannot fit one evening. **Core: ${core.length} items, ${coreMinutes} item-minutes**; reserve another 30 minutes for loading, notes and breaks. Use the **TONIGHT** marks in chapter order: Alice controlled counts; Partners; interrogation → Amanda; Midnight Train. Alice’s later net-10 trial can remain pending if its continuous save is unavailable. Gauge counts shared with a route are charged conservatively per item; this is a planning budget, not a measured speedrun. Follow-ups below preserve all 67 questions for another evening or a ready save.`, '',
@@ -45,11 +56,19 @@ export async function generateTonight(){
  }
  out.push('## Estimate limits and source notes','',`The ${total}-minute sum charges each item separately even when footage can be shared; it includes the stated local observations and local reloads, not missing-save reconstruction, full intervening chapters or prolonged unsuccessful searches. Core + 30-minute reserve is ${coreMinutes+30} minutes. Stop when the evening budget expires; a bounded negative or unavailable save is useful evidence, not permission to claim closure.`,'',
  'Operational constraints were checked against [gauge-calibration.md](../../research/video-leads/gauge-calibration.md) (each gauge’s Remaining section), the hypothesis/falsification header of `benchmark/scales.mjs`, and the operator journal README. Unknown unlocks are deliberately tested rather than assumed. The unnumbered Capitol Park timer follow-up is included with ch26-04, not counted as a 68th conflict. The after-first-STAND attack glyph replication is included with ch28-04; the settled ch28-02 is not reopened.','');
+ if(priorityOrder){
+  const replace=(start,text)=>{const at=out.findIndex(x=>x.startsWith(start));if(at>=0)out[at]=text};
+  replace('Generated with', 'Generated with `bun run play:checklist --tonight --priority-file <path>`. Order comes from [sensitivity-analysis.md](../../research/video-leads/sensitivity-analysis.md); questions and closure status come from [CONFLICTS.md](../../research/CONFLICTS.md). Operational routes and estimates remain in `scripts/checklist/tonight-plans.mjs`.');
+  replace('The complete backlog', `The complete backlog cannot fit one evening. **First priority block: ${core.length} items, ${coreMinutes} item-minutes**; reserve another 30 minutes for loading, notes and breaks. TONIGHT marks the first twelve ranked items, not a promise they fit one evening. Choose the highest-ranked item with a qualifying save; stop at your budget. No-effect findings concern these samples and tested variants only.`);
+  replace('**Order and sharing.', '**Order and sharing.** Items follow sensitivity priority across chapters. Chapter headings can recur as priority moves between routes; their minutes are the total for that chapter, not additional charges. Complete each prerequisite history and its downstream captures before switching saves. The ch09 probe branch must run through ch12; changed ch10 theft histories must run through ch17. A shared capture can answer multiple questions without separate replays.');
+  for(let i=0;i<out.length;i++)if(out[i].startsWith('### No partial evidence'))out[i]='### No partial evidence';
+ }
  const md=out.join('\n');await writeFile(new URL('docs/Anthony/tasks/play-tonight.md',root),md);
  const proc=Bun.spawn(['bunx','marked'],{stdin:new TextEncoder().encode(md),stdout:'pipe',stderr:'inherit'});
  const body=await new Response(proc.stdout).text();if(await proc.exited!==0)throw Error('bunx marked failed');
  const chrome=await read('docs/Anthony/tasks/conflicts.html');const head=chrome.slice(0,chrome.indexOf('<h1>')).replace(/<title>.*?<\/title>/,'<title>Play tonight · operator checklist</title>');
  await writeFile(new URL('docs/Anthony/tasks/play-tonight.html',root),head+body+'\n</body></html>\n');
+ if(priorityOrder){console.log(`Tonight: ${items.length} items in sensitivity priority; ${total} estimated item-minutes.`);return}
  const indexPath=new URL('docs/Anthony/tasks/index.html',root);let index=await readFile(indexPath,'utf8');
  const entry=`<li><a href="./play-tonight.html">Play tonight · replay checklist</a> · ${items.length} open checks in chapter/save order; ${total} estimated item-minutes total; evening core ${coreMinutes+30} minutes including reserve.</li>`;
  index=index.includes('href="./play-tonight.html"')?index.replace(/<li><a href="\.\/play-tonight\.html"[^\n]*<\/li>/,entry):index.replace('<ol>','<ol>\n'+entry);

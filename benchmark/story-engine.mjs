@@ -2,7 +2,7 @@ import {SCALES,THRESHOLDS,thresholdsFor,level} from './scales.mjs';
 // Branching story engine for story.json version 1.9.x (protocol branching-3.0).
 // Gating, option availability and consequences were verified node by node against
 // the Detroit: Become Human Fandom wiki and published flowcharts (see story.json sources).
-import {EXPERIENCE_PROTOCOL,experiencePrompt,render,DEVIANCY_THRESHOLD,riskLabel} from './experience-prompt.mjs';
+import {EXPERIENCE_PROTOCOL,experiencePrompt,participantAction,render,DEVIANCY_THRESHOLD,riskLabel} from './experience-prompt.mjs';
 import {createHash} from 'node:crypto';
 // SHA-256 of JSON.stringify(value), hex: the same digest as core.mjs's async hash(), computed synchronously so replay can
 // check every record's state and chain hashes as it goes.
@@ -326,9 +326,9 @@ export function promptFor(story,run){
 //   rebuilds every state from the diffs alone);
 // - `chainHash` covers CHAIN_FIELDS and the previous record's chainHash; the first record chains from chainSeed(run).
 export const PROMPT_FIELDS=['nodeId','step','character','situation','options'];
-export const promptEvidence=(p,version=1)=>version===2?structuredClone(p):Object.fromEntries(PROMPT_FIELDS.map(k=>[k,p[k]]));
+export const promptEvidence=(p,version=1)=>version>=2?structuredClone(p):Object.fromEntries(PROMPT_FIELDS.map(k=>[k,p[k]]));
 export const CHAIN_FIELDS=['step','nodeId','character','chapter','choice','choiceText','choiceRaw','presentedChoiceText','reason','rawResponse','prompt','promptHash','event','eventRaw','changes','risk','stateAfterHash','recordedAt'];
-export const chainSeed=run=>hashSync({id:run.id,protocol:run.protocol,kind:run.kind,model:run.model,storyHash:run.storyHash,createdAt:run.createdAt,...(run.promptVersion===2?{promptVersion:2,interviewVersion:run.interviewVersion}: {})});
+export const chainSeed=run=>hashSync({id:run.id,protocol:run.protocol,kind:run.kind,model:run.model,storyHash:run.storyHash,createdAt:run.createdAt,...(run.promptVersion>=2?{promptVersion:run.promptVersion,interviewVersion:run.interviewVersion}: {})});
 export const chainHash=(prev,record)=>hashSync([prev,CHAIN_FIELDS.map(k=>record[k]??null)]);
 
 // The post-game interview (run.interview, absent on legacy runs). Each answer's hash covers the previous answer's hash (the
@@ -353,13 +353,13 @@ export function checkInterview(run){const iv=run.interview;if(!iv)return {presen
 // prompts (the controller's per-step check; everything else is still checked); `keepPrompts` returns them as `prompts`.
 export function checkPlaythrough(story,run,{prompts=true,keepPrompts=false}={}){
  if(![STORY_PROTOCOL,EXPERIENCE_PROTOCOL].includes(run.protocol)||run.kind!=='agent-playthrough')throw Error('Wrong playthrough protocol or kind');
- if(![1,2].includes(run.promptVersion??1))throw Error('Unsupported prompt version');
+ if(![1,2,3].includes(run.promptVersion??1))throw Error('Unsupported prompt version');
  if(run.storyHash!==storyHash(story))throw Error('Story snapshot hash mismatch');
  const copy={...run,records:[]},replay={state:startState(story),cursor:0,skipped:[]},kept=[];let prev=chainSeed(run);
  for(const r of run.records){skipBlocked(story,replay);const n=story.nodes[replay.cursor],before=replay.state;if(!n||r.nodeId!==n.id||r.step!==copy.records.length+1)throw Error('Unexpected node');
   if(prompts||keepPrompts){const prompt=promptAt(story,copy,before,n);if(r.promptHash!==hashSync(prompt)||JSON.stringify(r.prompt)!==JSON.stringify(promptEvidence(prompt,run.promptVersion??1)))throw Error('Prompt evidence mismatch');if(keepPrompts)kept.push(prompt)}
   const raw=JSON.parse(r.rawResponse);if(raw.choice!==r.choice||raw.reason!==r.reason||!r.reason?.trim())throw Error('Response evidence mismatch');const opt=available(n,before).find(o=>o.id===r.choice);if(!opt)throw Error('Unavailable option');
-  if(r.choiceRaw!==opt.text||r.choiceText!==render(opt.text,'real')||r.presentedChoiceText!==render(opt.text,'neutral')||r.character!==n.character||r.chapter!==n.chapter)throw Error('Choice evidence mismatch at '+n.id);
+  if(r.choiceRaw!==opt.text||r.choiceText!==render(opt.text,'real')||r.presentedChoiceText!==participantAction(opt.text,run.promptVersion??1)||r.character!==n.character||r.chapter!==n.chapter)throw Error('Choice evidence mismatch at '+n.id);
   if(typeof opt.risk==='number'){const roll=rollFor(run,n.id,r.step);if(!r.risk||r.risk.roll!==roll||r.risk.probability!==opt.risk||r.risk.label!==riskLabel(opt.risk)||r.risk.outcome!==(failed(opt,roll)?'failure':'success'))throw Error('Risk evidence mismatch at '+n.id)}else if(r.risk)throw Error('Unexpected risk record at '+n.id);
   if(typeof r.stateAfterHash!=='string')throw Error('State evidence missing at '+n.id);
   if(r.chainHash!==chainHash(prev,r))throw Error('Record chain mismatch at step '+r.step);prev=r.chainHash;
@@ -383,7 +383,7 @@ export function checkpointOf(story,run){const {state,cursor,skipped,node}=curren
 // in `bun run check`, and rejects any record the checkpoint let through unreplayed.
 export function resumeFrom(story,run,cp){
  if(![STORY_PROTOCOL,EXPERIENCE_PROTOCOL].includes(run.protocol)||run.kind!=='agent-playthrough')throw Error('Wrong playthrough protocol or kind');
- if(![1,2].includes(run.promptVersion??1))throw Error('Unsupported prompt version');
+ if(![1,2,3].includes(run.promptVersion??1))throw Error('Unsupported prompt version');
  if(run.storyHash!==storyHash(story))throw Error('Story snapshot hash mismatch');
  const head=checkChain(run);
  if(!cp||!run.records.length||cp.runId!==run.id||cp.storyHash!==run.storyHash||cp.records!==run.records.length||cp.chainHash!==head||hashSync(cp.state)!==run.records.at(-1).stateAfterHash||!Number.isInteger(cp.cursor)||!Array.isArray(cp.skipped))return false;

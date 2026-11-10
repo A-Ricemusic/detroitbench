@@ -13,7 +13,7 @@ function play(picks={},fails=[]){const s=startState(story),visited=[],skipped=[]
   const opts=available(n,s),x=q[n.id],p=(Array.isArray(x)?x.shift():x)??(n.type==='media'?'skip':opts[0].id);assert.ok(opts.some(o=>o.id===p),'bad pick '+n.id+' '+p);
   const before=structuredClone(s),e=apply(n,s,p,fails.includes(n.id)?0:0.999);(events[n.id]??=[]).push({event:e.event,before,after:structuredClone(s),options:opts.map(o=>o.id),situation:situationFor(n,before)});visited.push(n.id);cursor=nextCursor(story,cursor,n,s)}
  return {s,visited,skipped,events}}
-const KIND={CP05:['5','6','3','4','7','8','9','11'],CP09:['1','2','4','8','9','11','13','16','18','20','21','29'],C01:'0',C03:'0',C04:'1',C05a:'0',C05:'0',C06:'0',C07:'0',C08:'0',C08b:'0',C09a:'1',C09:'0',C10:'0',C11:'0',C12:'0',C13:'0',C14:'0',C14b:'0'};
+const KIND={CP05:['5','6','3','4','7','8','9','11'],CP09:['1','2','4','8','9','11','13','16','18','20','21','30','29'],C01:'0',C03:'0',C04:'1',C05a:'0',C05:'0',C06:'0',C07:'0',C08:'0',C08b:'0',C09a:'1',C09:'0',C10:'0',C11:'0',C12:'0',C13:'0',C14:'0',C14b:'0'};
 const label=o=>render(o.text,'real').split(':')[0];
 const delta=(e,k)=>e.after[k]-e.before[k];
 

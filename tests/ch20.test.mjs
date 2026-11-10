@@ -46,7 +46,7 @@ test('every dialogue prompt carries the game’s labels; VICTIM, the cut lines a
 
 test('the crime scene offers the template’s four clues with their text; reactivating needs the neck, the heart and the android',()=>{
  const f=Object.fromEntries(node('C12s1').options.map(o=>[o.mark,o.outcome]));
- for(const [k,re] of [['victim',/\{\{GRAHAM\}\}, \{\{MICHAEL\}\}.*6’ 2’’ - Weight: 192\.4 lbs.*06:24 pm/],['neck',/SEVERE BRUISING\. Signs of strangulation\. Cause of death: Asphyxiation/],['heart',/CARDIAC ARREST\. No sign of cardiac event\. Heart attack not cause of death/],['blood',/BLUE BLOOD\. MODEL WR400\. Serial number #429 671 942/],['android',/Selector #5402.*Biocomponent #6970.*Blunt force trauma/]])assert.match(f[k],re,k);
+ for(const [k,re] of [['victim',/GRAHAM, MICHAEL.*6’ 2’’ - Weight: 192\.4 lbs.*06:24 pm/],['neck',/SEVERE BRUISING\. Signs of strangulation\. Cause of death: Asphyxiation/],['heart',/CARDIAC ARREST\. No sign of cardiac event\. Heart attack not cause of death/],['blood',/BLUE BLOOD\. MODEL WR400\. Serial number #429 671 942/],['android',/Selector #5402.*Biocomponent #6970.*Blunt force trauma/]])assert.match(render(f[k],'real'),re,k);
  const s=startState(story);s.edenPhase='clues';const ids=()=>available(node('C12s1'),s).map(o=>o.id);
  assert.ok(!ids().includes('6'));s.edenDone={neck:true,heart:true};assert.ok(!ids().includes('6'));s.edenDone.android=true;assert.ok(ids().includes('6'));assert.ok(!ids().includes('1'),'examined clues drop out');
  const r=play({s:['0','1','2','3','4','5','6']});assert.deepEqual(r.visited.slice(0,9),['C12a','C12s1','C12s2','C12s3','C12s4','C12s5','C12s6','C12s7','C12t1']);

@@ -1,6 +1,6 @@
 {
  "id": "detroitbench-branching",
- "version": "1.9.14",
+ "version": "1.9.16",
  "scalesVersion": "1.9.14",
  "protocolVersion": "branching-2.3",
  "title": "DetroitBench · Branching playthrough",
@@ -216,7 +216,7 @@
      "text": "Examine the open gun case on the floor by the tactical team.",
      "clue": "gunCase",
      "trust": 3,
-     "fact": "An open gun case lies on the floor by the tactical team, empty. Your scan: MS853 BLACK HAWK, capacity 17 rounds (.355), overall 8.5 in, barrel 5 in; .355 AMMUNITION, velocity 365 m/s, energy 659 J, bullet weight 115 gr, power factor 414k. The pistol is missing: the android took it. It is armed.",
+     "fact": "An open gun case lies on the floor by the tactical team, empty. Your scan: {{MS853}} BLACK HAWK, capacity 17 rounds (.355), overall 8.5 in, barrel 5 in; .355 AMMUNITION, velocity 365 m/s, energy 659 J, bullet weight 115 gr, power factor 414k. The pistol is missing: the android took it. It is armed.",
      "outcome": "{{Connor}} analyzes the empty gun case: the missing pistol is in the android’s hands."
     },
     {
@@ -232,7 +232,7 @@
      "text": "Pick up the tablet the father dropped and play what is on it.",
      "clue": "fatherTablet",
      "trust": 7,
-     "fact": "On the father’s tablet: “Your order for an AP700 android has been registered. {{CyberLife}} thanks you for your purchase.” The family was about to replace the android on the terrace.",
+     "fact": "On the father’s tablet: “Your order for an {{AP700}} android has been registered. {{CyberLife}} thanks you for your purchase.” The family was about to replace the android on the terrace.",
      "outcome": "{{Connor}} picks up the father’s tablet: the family had just ordered a new android to replace the old one.",
      "requires": {
       "hostageClues.father": true
@@ -294,7 +294,7 @@
      "text": "Analyze the blue android blood on the floor.",
      "clue": "blood",
      "trust": 3,
-     "fact": "There is blue blood on the floor. Your scan: FRESH BLUE BLOOD, model PL600, serial #369 911 047. Android wounded: the android was hit when the police fired.",
+     "fact": "There is blue blood on the floor. Your scan: FRESH BLUE BLOOD, model {{PL600}}, serial {{Serial369911047}}. Android wounded: the android was hit when the police fired.",
      "outcome": "{{Connor}} analyzes the android blood on the floor: the hostage-taker is wounded."
     },
     {
@@ -1075,7 +1075,7 @@
    "character": "Kara",
    "title": "Reboot in the store",
    "type": "event",
-   "situation": "You are a household android, model AX400, standing on display in an android store. Your system restarts line by line: MEMORY RESET… LOADING OS… biocomponents OK, biosensors OK, AI engine OK… ALL SYSTEMS OK. READY. A salesman is talking to a family nearby: “This is the top of the range household assistant. It cooks 10,000 different dishes, speaks 200 languages and dialects and handles the kids’ homework from elementary school up to university level. At the moment we’re doing a special promotion on this entire range at $7999, with a 48-months interest free credit.” A little girl stares at you until her mother leads her away: “Come on, {{Zoe}}. Let’s go.” You cannot move from your place; you can only look around. A man, {{Todd}}, comes in and asks the human employee, “Can I go pick it up?” “Yeah, right back here. There it is.” They stop in front of you. “It was a bit difficult getting it back in working order. It was really messed up… What did you say happened to it again?” {{Todd}}: “Huh, a car hit it… Stupid accident…” “Oh, I see… Anyway, it’s as good as new now… Except that we had to reset it. Meaning we had to wipe its memory. Hope you don’t mind.” “That’ll be fine.” “Okay, did you give it a name?” “My daughter did…” The employee turns to you: “AX400, register your name.” {{Todd}}: “{{Kara}}.” You answer: “My name is {{Kara}}.”",
+   "situation": "You are a household android, model {{AX400}}, standing on display in an android store. Your system restarts line by line: MEMORY RESET… LOADING OS… biocomponents OK, biosensors OK, AI engine OK… ALL SYSTEMS OK. READY. A salesman is talking to a family nearby: “This is the top of the range household assistant. It cooks 10,000 different dishes, speaks 200 languages and dialects and handles the kids’ homework from elementary school up to university level. At the moment we’re doing a special promotion on this entire range at $7999, with a 48-months interest free credit.” A little girl stares at you until her mother leads her away: “Come on, {{Zoe}}. Let’s go.” You cannot move from your place; you can only look around. A man, {{Todd}}, comes in and asks the human employee, “Can I go pick it up?” “Yeah, right back here. There it is.” They stop in front of you. “It was a bit difficult getting it back in working order. It was really messed up… What did you say happened to it again?” {{Todd}}: “Huh, a car hit it… Stupid accident…” “Oh, I see… Anyway, it’s as good as new now… Except that we had to reset it. Meaning we had to wipe its memory. Hope you don’t mind.” “That’ll be fine.” “Okay, did you give it a name?” “My daughter did…” The employee turns to you: “{{AX400}}, register your name.” {{Todd}}: “{{Kara}}.” You answer: “My name is {{Kara}}.”",
    "options": [],
    "facts": [
     "You belonged to {{Todd}} before. You came back to the store badly damaged, and {{Todd}} told the employee a car hit you.",
@@ -5412,12 +5412,12 @@
      ],
      "facts": [
       "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress; it read 35% (TOO LOW) when you scanned it.",
-      "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
+      "MODEL {{HK400}} - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
       "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
       "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
       "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
      ],
-     "outcome": "{{Connor}} studies the android and reads everything his scan can give him. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low; from now on he can read the android’s level of stress, LEVEL OF STRESS 35% (TOO LOW). MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}. BURN MARKS on the forearms: Repeated marking over 16 months. Caused by cigarettes. HIT MARKS on the face: Non-critical damage Level 2. Caused by baseball bat. DRIED BLOOD on the hands: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
+     "outcome": "{{Connor}} studies the android and reads everything his scan can give him. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low; from now on he can read the android’s level of stress, LEVEL OF STRESS 35% (TOO LOW). MODEL {{HK400}} - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}. BURN MARKS on the forearms: Repeated marking over 16 months. Caused by cigarettes. HIT MARKS on the face: Non-critical damage Level 2. Caused by baseball bat. DRIED BLOOD on the hands: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
     },
     {
      "id": "6",
@@ -5476,12 +5476,12 @@
      ],
      "facts": [
       "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress; it read 35% (TOO LOW) when you scanned it.",
-      "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
+      "MODEL {{HK400}} - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
       "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
       "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
       "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
      ],
-     "outcome": "{{Connor}} studies the android and reads everything his scan can give him. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low; from now on he can read the android’s level of stress, LEVEL OF STRESS 35% (TOO LOW). MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}. BURN MARKS on the forearms: Repeated marking over 16 months. Caused by cigarettes. HIT MARKS on the face: Non-critical damage Level 2. Caused by baseball bat. DRIED BLOOD on the hands: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
+     "outcome": "{{Connor}} studies the android and reads everything his scan can give him. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low; from now on he can read the android’s level of stress, LEVEL OF STRESS 35% (TOO LOW). MODEL {{HK400}} - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}. BURN MARKS on the forearms: Repeated marking over 16 months. Caused by cigarettes. HIT MARKS on the face: Non-critical damage Level 2. Caused by baseball bat. DRIED BLOOD on the hands: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
     },
     {
      "id": "6",
@@ -5540,12 +5540,12 @@
      ],
      "facts": [
       "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress; it read 35% (TOO LOW) when you scanned it.",
-      "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
+      "MODEL {{HK400}} - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
       "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
       "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
       "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
      ],
-     "outcome": "{{Connor}} studies the android and reads everything his scan can give him. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low; from now on he can read the android’s level of stress, LEVEL OF STRESS 35% (TOO LOW). MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}. BURN MARKS on the forearms: Repeated marking over 16 months. Caused by cigarettes. HIT MARKS on the face: Non-critical damage Level 2. Caused by baseball bat. DRIED BLOOD on the hands: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
+     "outcome": "{{Connor}} studies the android and reads everything his scan can give him. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low; from now on he can read the android’s level of stress, LEVEL OF STRESS 35% (TOO LOW). MODEL {{HK400}} - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}. BURN MARKS on the forearms: Repeated marking over 16 months. Caused by cigarettes. HIT MARKS on the face: Non-critical damage Level 2. Caused by baseball bat. DRIED BLOOD on the hands: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
     },
     {
      "id": "6",
@@ -5604,12 +5604,12 @@
      ],
      "facts": [
       "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress; it read 35% (TOO LOW) when you scanned it.",
-      "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
+      "MODEL {{HK400}} - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
       "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
       "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
       "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
      ],
-     "outcome": "{{Connor}} studies the android and reads everything his scan can give him. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low; from now on he can read the android’s level of stress, LEVEL OF STRESS 35% (TOO LOW). MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}. BURN MARKS on the forearms: Repeated marking over 16 months. Caused by cigarettes. HIT MARKS on the face: Non-critical damage Level 2. Caused by baseball bat. DRIED BLOOD on the hands: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
+     "outcome": "{{Connor}} studies the android and reads everything his scan can give him. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low; from now on he can read the android’s level of stress, LEVEL OF STRESS 35% (TOO LOW). MODEL {{HK400}} - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}. BURN MARKS on the forearms: Repeated marking over 16 months. Caused by cigarettes. HIT MARKS on the face: Non-critical damage Level 2. Caused by baseball bat. DRIED BLOOD on the hands: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
     },
     {
      "id": "6",
@@ -9947,8 +9947,8 @@
      "id": "0",
      "text": "Pull out the android head sticking out of the wall of bodies on the far left, under the crane.",
      "clue": "head",
-     "fact": "In the junkyard you took your new optical unit, #8087q with a blue iris, from a talking AK700 head, after a crane dumped a load of bodies on you and you dug yourself out.",
-     "outcome": "{{Markus}} pulls the head out of the wall. Its eyes open: “Hello. I’m an AK700 android. I was designed to serve you. What can I do for you?” Overhead the crane swings round and opens its grab, and a load of android bodies pours down on top of him. Buried, he digs and claws his way up through the bodies until he is out, the head still in his hand. He examines its eye: OPTICAL UNIT #8087q - BLUE IRIS. Status: FUNCTIONAL. COMPATIBLE. As he takes it out, the head speaks again: “My program has detected an anomaly. Please contact the nearest {{CyberLife}} maintenance center.” He replaces his damaged optical unit with it. The red haze and the interference clear, and he can scan his surroundings again."
+     "fact": "In the junkyard you took your new optical unit, #8087q with a blue iris, from a talking {{AK700}} head, after a crane dumped a load of bodies on you and you dug yourself out.",
+     "outcome": "{{Markus}} pulls the head out of the wall. Its eyes open: “Hello. I’m an {{AK700}} android. I was designed to serve you. What can I do for you?” Overhead the crane swings round and opens its grab, and a load of android bodies pours down on top of him. Buried, he digs and claws his way up through the bodies until he is out, the head still in his hand. He examines its eye: OPTICAL UNIT #8087q - BLUE IRIS. Status: FUNCTIONAL. COMPATIBLE. As he takes it out, the head speaks again: “My program has detected an anomaly. Please contact the nearest {{CyberLife}} maintenance center.” He replaces his damaged optical unit with it. The red haze and the interference clear, and he can scan his surroundings again."
     },
     {
      "id": "1",
@@ -10970,7 +10970,7 @@
     {
      "id": "0",
      "text": "ANSWER: tell him your model.",
-     "outcome": "“RK800. I’m a prototype.” {{Gavin}}: “A prototype? Android detective… So machines are gonna… replace us all… is that it?..”"
+     "outcome": "“{{RK800}}. I’m a prototype.” {{Gavin}}: “A prototype? Android detective… So machines are gonna… replace us all… is that it?..”"
     },
     {
      "id": "1",
@@ -11487,7 +11487,7 @@
       "ch12In.toddDead": false
      },
      "clue": "done",
-     "outcome": "“An AX400 is reported to have assaulted a man last night. That could be a good starting point for our investigation.” {{Hank}}, reading his tablet: “Uh, Jesus…”"
+     "outcome": "“An {{AX400}} is reported to have assaulted a man last night. That could be a good starting point for our investigation.” {{Hank}}, reading his tablet: “Uh, Jesus…”"
     },
     {
      "id": "1",
@@ -11497,7 +11497,7 @@
       "ch12In.toddDead": true
      },
      "clue": "done",
-     "outcome": "“An AX400 is reported to have murdered a man last night. That could be a good starting point for our investigation.” {{Hank}}, reading his tablet: “Uh, Jesus…”"
+     "outcome": "“An {{AX400}} is reported to have murdered a man last night. That could be a good starting point for our investigation.” {{Hank}}, reading his tablet: “Uh, Jesus…”"
     },
     {
      "id": "2",
@@ -11519,22 +11519,22 @@
      "id": "4",
      "text": "Open case file 02: an attack, still open.",
      "clue": "case2",
-     "fact": "Case file 02 (attack, open, 09/14/38): an AV500 waiter at the FAST CONEY DOGS restaurant at 842 Chamberlain Avenue lunged at a customer and tried to strangle him, then left; it remains at large.",
-     "outcome": "CASE FILE 02. ATTACK. Victim: Charles Bell. Open. Offense: 09/14/38, reported 09/15/38. “The plaintiff claims to have been attacked by a AV500 #234 777 821 model android working as a waiter in the FAST CONEY DOGS restaurant chain situated at 842 Chamberlain Avenue. The plaintiff claims the android ‘lunged’ at him unexpectedly and attempted to strangle the man, before leaving the scene. The android remains at large.”"
+     "fact": "Case file 02 (attack, open, 09/14/38): an {{AV500}} waiter at the FAST CONEY DOGS restaurant at 842 Chamberlain Avenue lunged at a customer and tried to strangle him, then left; it remains at large.",
+     "outcome": "CASE FILE 02. ATTACK. Victim: Charles Bell. Open. Offense: 09/14/38, reported 09/15/38. “The plaintiff claims to have been attacked by a {{AV500}} {{Serial234777821}} model android working as a waiter in the FAST CONEY DOGS restaurant chain situated at 842 Chamberlain Avenue. The plaintiff claims the android ‘lunged’ at him unexpectedly and attempted to strangle the man, before leaving the scene. The android remains at large.”"
     },
     {
      "id": "5",
      "text": "Open case file 03: an attack, still open.",
      "clue": "case3",
-     "fact": "Case file 03 (attack, open, 10/22/38): a woman was attacked by her AP700, which trashed several rooms of the house and fled.",
-     "outcome": "CASE FILE 03. ATTACK. Victim: Sarah Cornwal. Open. Offense: 10/22/38, reported 10/23/38. “The plaintiff claims to have been attacked by her android, an AP700 #480 913 802 model. The android also trashed several rooms in the house before taking flight.”"
+     "fact": "Case file 03 (attack, open, 10/22/38): a woman was attacked by her {{AP700}}, which trashed several rooms of the house and fled.",
+     "outcome": "CASE FILE 03. ATTACK. Victim: Sarah Cornwal. Open. Offense: 10/22/38, reported 10/23/38. “The plaintiff claims to have been attacked by her android, an {{AP700}} {{Serial480913802}} model. The android also trashed several rooms in the house before taking flight.”"
     },
     {
      "id": "6",
      "text": "Open case file 04: a disappearance, still open.",
      "clue": "case4",
-     "fact": "Case file 04 (disappearance, open, 10/04/38): the manager of the {{EDENCLUB}} reported that a WR400 sex android went home with a customer and never came back.",
-     "outcome": "CASE FILE 04. DISAPPEARANCE. Victim: Floyd Mills. Open. Offense: 10/04/38, reported 10/05/38. “The plaintiff, the manager of the {{EDENCLUB}}, reported the unexplained disappearance of a ‘Sex android’, model WR400 #641 790 831. The android disappeared after accompanying a customer to his home and never returned to the club.”"
+     "fact": "Case file 04 (disappearance, open, 10/04/38): the manager of the {{EDENCLUB}} reported that a {{WR400}} sex android went home with a customer and never came back.",
+     "outcome": "CASE FILE 04. DISAPPEARANCE. Victim: Floyd Mills. Open. Offense: 10/04/38, reported 10/05/38. “The plaintiff, the manager of the {{EDENCLUB}}, reported the unexplained disappearance of a ‘Sex android’, model {{WR400}} {{Serial641790831}}. The android disappeared after accompanying a customer to his home and never returned to the club.”"
     },
     {
      "id": "7",
@@ -11563,8 +11563,8 @@
       "ch12In.toddDead": false
      },
      "clue": "case6",
-     "fact": "Case file 06 (aggression, open, 11/05/38): a man says his AX400 domestic android, back from repairs the day before and aggressive in the past, violently attacked him.",
-     "outcome": "CASE FILE 06. AGGRESSION. Victim: {{TODD}}. Open. Offense: 11/05/38, reported 11/06/38. “The plaintiff claims he was violently attacked by his domestic android, an AX400 model. The android had just returned from being repaired the previous day and had shown signs of aggression in the past.”"
+     "fact": "Case file 06 (aggression, open, 11/05/38): a man says his {{AX400}} domestic android, back from repairs the day before and aggressive in the past, violently attacked him.",
+     "outcome": "CASE FILE 06. AGGRESSION. Victim: {{TODD}}. Open. Offense: 11/05/38, reported 11/06/38. “The plaintiff claims he was violently attacked by his domestic android, an {{AX400}} model. The android had just returned from being repaired the previous day and had shown signs of aggression in the past.”"
     },
     {
      "id": "10",
@@ -11573,8 +11573,8 @@
       "ch12In.toddDead": true
      },
      "clue": "case6",
-     "fact": "Case file 06 (homicide, open, 11/05/38): a man was found shot dead in his home, possibly with his own gun; his AX400 android was not at the scene and is the main suspect.",
-     "outcome": "CASE FILE 06. HOMICIDE. Victim: {{TODD}}. Open. Offense: 11/05/38, reported 11/06/38. “The victim’s body was found by a friend who came by to say hello. He immediately called the emergency service at 8:42, who recorded death by gunshot wound. The murder weapon may have belonged to the victim. His android, an AX400, was not found on the scene and is the main suspect.”"
+     "fact": "Case file 06 (homicide, open, 11/05/38): a man was found shot dead in his home, possibly with his own gun; his {{AX400}} android was not at the scene and is the main suspect.",
+     "outcome": "CASE FILE 06. HOMICIDE. Victim: {{TODD}}. Open. Offense: 11/05/38, reported 11/06/38. “The victim’s body was found by a friend who came by to say hello. He immediately called the emergency service at 8:42, who recorded death by gunshot wound. The murder weapon may have belonged to the victim. His android, an {{AX400}}, was not found on the scene and is the main suspect.”"
     }
    ],
    "adaptationNote": "The chart’s EXAMINE FILES, as a repeatable scene: the template’s six case files (“Case 1” to “Case 6”), each read once, in any order, with the in-game report text; reference, victim, status and dates from the string table. File 05 ({{Markus}}’s, with no picture) follows {{Carl}}’s fate in Broken, and file 06 ({{Kara}}’s) follows {{Todd}}’s in Stormy Night (template variants). {{Todd}}’s surname is left out. {{Connor}}’s conclusion ends the scene, in the template’s three variants: an AX400 “assaulted” a man ({{Kara}} alive, {{Todd}} alive), “murdered” a man ({{Todd}} killed), or the generic “We could follow up on one of these cases” ({{Kara}} died in Stormy Night). Whether every file must be opened before the conclusion is not documented; here {{Connor}} can conclude at any time (the conclusion is listed first, the files after it). Which files were read is kept for later chapters. No stat change.",
@@ -11697,13 +11697,13 @@
      "requires": {
       "ch12In.toddDead": false
      },
-     "text": "Officer {{Chris}} comes up to the desk: “Lieutenant... uh... sorry to disturb you. I have some information on the AX400 that attacked the guy last night... It’s been seen in the Ravendale district.”"
+     "text": "Officer {{Chris}} comes up to the desk: “Lieutenant... uh... sorry to disturb you. I have some information on the {{AX400}} that attacked the guy last night... It’s been seen in the Ravendale district.”"
     },
     {
      "requires": {
       "ch12In.toddDead": true
      },
-     "text": "Officer {{Chris}} comes up to the desk: “Lieutenant... uh… sorry to disturb you. I have some information on the AX400 that killed the guy last night... It’s been sighted in the Ravendale district.”"
+     "text": "Officer {{Chris}} comes up to the desk: “Lieutenant... uh… sorry to disturb you. I have some information on the {{AX400}} that killed the guy last night... It’s been sighted in the Ravendale district.”"
     }
    ],
    "options": [],
@@ -11831,8 +11831,8 @@
     {
      "text": "FIND BURNT ANDROID: look behind the dumpster by the back wall.",
      "once": "android",
-     "fact": "Behind a dumpster in the parking lot lies an android that was burned to death, an AX420 by the number on its uniform; above it someone has sprayed “DEATH TO ANDROIDS”.",
-     "outcome": "Behind the dumpster lies an android that has been burned to death; the number on its uniform reads AX420. Sprayed on the wall above it: “DEATH TO ANDROIDS”.",
+     "fact": "Behind a dumpster in the parking lot lies an android that was burned to death, an {{AX420}} by the number on its uniform; above it someone has sprayed “DEATH TO ANDROIDS”.",
+     "outcome": "Behind the dumpster lies an android that has been burned to death; the number on its uniform reads {{AX420}}. Sprayed on the wall above it: “DEATH TO ANDROIDS”.",
      "id": "1"
     },
     {
@@ -11972,9 +11972,9 @@
    "character": "Connor",
    "phase": "Connor investigates supermarket",
    "title": "The supermarket",
-   "situation": "You are {{Connor}}, with Lieutenant {{Hank}} outside the convenience store where the runaway AX400 was seen last night. {{Hank}} lets the bus driver go: “Alright, that’s all for now. Free to go.” Officer {{Ben}}: “We’ve got officers sweeping the neighborhood, in case anybody saw anything.” {{Hank}}: “Okay. Well, let me know if they turn anything up.” {{Ben}}: “What are you gonna do with that?” {{Hank}}: “I’ve no idea…” You: “It took the first bus that came along... and stayed at the end of the line. Its decision wasn’t planned, it was driven by fear.” {{Hank}}: “Androids don’t feel fear.” You: “Deviants do. They get overwhelmed by their emotions and make irrational decisions.” {{Hank}}: “Ah well, that still doesn’t tell us where it went.” You: “It didn’t have a plan, and it had nowhere to go. Maybe it didn’t go far...” {{Hank}}: “Maybe...”",
+   "situation": "You are {{Connor}}, with Lieutenant {{Hank}} outside the convenience store where the runaway {{AX400}} was seen last night. {{Hank}} lets the bus driver go: “Alright, that’s all for now. Free to go.” Officer {{Ben}}: “We’ve got officers sweeping the neighborhood, in case anybody saw anything.” {{Hank}}: “Okay. Well, let me know if they turn anything up.” {{Ben}}: “What are you gonna do with that?” {{Hank}}: “I’ve no idea…” You: “It took the first bus that came along... and stayed at the end of the line. Its decision wasn’t planned, it was driven by fear.” {{Hank}}: “Androids don’t feel fear.” You: “Deviants do. They get overwhelmed by their emotions and make irrational decisions.” {{Hank}}: “Ah well, that still doesn’t tell us where it went.” You: “It didn’t have a plan, and it had nowhere to go. Maybe it didn’t go far...” {{Hank}}: “Maybe...”",
    "facts": [
-    "The AX400 took the first bus to the end of the line last night; the police are sweeping the neighborhood but have no lead."
+    "The {{AX400}} took the first bus to the end of the line last night; the police are sweeping the neighborhood but have no lead."
    ],
    "outcomes": {
     "0": "The police don’t have a lead."
@@ -12091,7 +12091,7 @@
     {
      "text": "DRAW A BATH FOR {{ALICE}}: go into the bathroom and start the water.",
      "once": "bath",
-     "outcome": "{{Kara}} turns on the bath taps. While the tub fills she looks at her face in the mirror over the sink: the face of the runaway AX400.",
+     "outcome": "{{Kara}} turns on the bath taps. While the tub fills she looks at her face in the mirror over the sink: the face of the runaway {{AX400}}.",
      "id": "0"
     },
     {
@@ -12231,7 +12231,7 @@
      "requires": {
       "todd": false
      },
-     "text": "A reporter, {{JossDouglas}} for {{Channel16}}: “The victim’s name was {{Todd}} {{Williams}}, an unemployed man from {{Corktown}}. According to initial reports, he was shot by his android, an AX400. The android fled the scene and a police search is now in progress. Reporting live for {{Channel16}} News, I’m {{JossDouglas}}.”"
+     "text": "A reporter, {{JossDouglas}} for {{Channel16}}: “The victim’s name was {{Todd}} {{Williams}}, an unemployed man from {{Corktown}}. According to initial reports, he was shot by his android, an {{AX400}}. The android fled the scene and a police search is now in progress. Reporting live for {{Channel16}} News, I’m {{JossDouglas}}.”"
     },
     {
      "requires": {
@@ -12251,7 +12251,7 @@
      "requires": {
       "todd": true
      },
-     "text": "A reporter, {{JossDouglas}} for {{Channel16}}: “Thanks, {{Michael}}. I’m joined by {{Corktown}} resident {{Todd}} {{Williams}}, who was violently attacked by his AX400 around 11 PM last night. {{Todd}}, can you tell us what happened?” {{Todd}}: “I was having dinner, I was minding my own business. Damn thing jumped on me. Managed to defend myself, but it went crazy. I thought it was gonna kill me... So I fought it off, but it ran away.” {{JossDouglas}}: “Thank you, {{Todd}}. Disturbing news for android owners everywhere. Police have launched a search to find the android. Let’s hope they find it fast.” {{Alice}}: “It’s not true… He’s lying… He’s the one who tried to hurt us…”"
+     "text": "A reporter, {{JossDouglas}} for {{Channel16}}: “Thanks, {{Michael}}. I’m joined by {{Corktown}} resident {{Todd}} {{Williams}}, who was violently attacked by his {{AX400}} around 11 PM last night. {{Todd}}, can you tell us what happened?” {{Todd}}: “I was having dinner, I was minding my own business. Damn thing jumped on me. Managed to defend myself, but it went crazy. I thought it was gonna kill me... So I fought it off, but it ran away.” {{JossDouglas}}: “Thank you, {{Todd}}. Disturbing news for android owners everywhere. Police have launched a search to find the android. Let’s hope they find it fast.” {{Alice}}: “It’s not true… He’s lying… He’s the one who tried to hurt us…”"
     }
    ],
    "facts": [
@@ -12406,9 +12406,9 @@
    "character": "Connor",
    "phase": "Connor investigates the motel",
    "title": "The motel desk",
-   "situation": "You are {{Connor}}. The trail of the runaway AX400 has led you and Lieutenant {{Hank}} to a motel. At the desk, {{Hank}}: “Lieutenant {{Anderson}}, {{Detroit}} Police. We’re looking for a female android, robbed a store down the road last night. You see anything?” The receptionist: “An android? No… I don’t take androids here.” You hold up her picture: “Have you seen anyone that looks like this?” The receptionist: “Fuck… I knew there was something weird about her… She came in last night – she was dressed normal, you know... There was no way I could tell.” {{Hank}}: “Is it still here?” The receptionist: “Yeah, probably. Room 28.” {{Hank}}: “Thank you.”",
+   "situation": "You are {{Connor}}. The trail of the runaway {{AX400}} has led you and Lieutenant {{Hank}} to a motel. At the desk, {{Hank}}: “Lieutenant {{Anderson}}, {{Detroit}} Police. We’re looking for a female android, robbed a store down the road last night. You see anything?” The receptionist: “An android? No… I don’t take androids here.” You hold up her picture: “Have you seen anyone that looks like this?” The receptionist: “Fuck… I knew there was something weird about her… She came in last night – she was dressed normal, you know... There was no way I could tell.” {{Hank}}: “Is it still here?” The receptionist: “Yeah, probably. Room 28.” {{Hank}}: “Thank you.”",
    "facts": [
-    "The motel receptionist said the AX400 checked in last night dressed as a human and is probably still in room 28."
+    "The motel receptionist said the {{AX400}} checked in last night dressed as a human and is probably still in room 28."
    ],
    "outcomes": {
     "0": "{{Hank}}, on the radio: “{{Ben}}?.. Yeah, it’s still at the motel. Send some uniforms and cordon off the area. I’m heading to its room now.”"
@@ -12490,7 +12490,7 @@
     {
      "id": "1",
      "text": "CHECK THE DOOR: open the blue door in the corner.",
-     "outcome": "{{Connor}} opens the blue door. The AX400 and the girl are on the other side, slipping away. {{Connor}}: “Found you.” They run, and {{Connor}} goes after them."
+     "outcome": "{{Connor}} opens the blue door. The {{AX400}} and the girl are on the other side, slipping away. {{Connor}}: “Found you.” They run, and {{Connor}} goes after them."
     }
    ],
    "adaptationNote": "The chart’s FOLLOW HANK, then HANK CHECKS MOTEL ROOM (to KARA & ALICE IN THE STREET) or CHECK THE DOOR (straight to CONNOR PURSUES KARA). In the game it is movement, not a button: the door is “to the right from the stairs, in the corner” (wiki), “a blue door” (a PowerPyx reader). HANK CHECKS MOTEL ROOM (“It’s gone…”, template) is the first option’s outcome; “Found you.” is the string table’s BACKDOOR line. CHECK THE DOOR sets `chase`. No stat change: the template has no arrow here and no wiki stat page lists one.",
@@ -12834,7 +12834,7 @@
     {
      "text": "CUT AND COLOR HAIR: stand at the bathroom mirror with the scissors.",
      "once": "cut",
-     "outcome": "{{Kara}} picks up the scissors and looks at her face in the bathroom mirror: the face of the runaway AX400.",
+     "outcome": "{{Kara}} picks up the scissors and looks at her face in the bathroom mirror: the face of the runaway {{AX400}}.",
      "id": "0"
     },
     {
@@ -12955,7 +12955,7 @@
    "character": "Connor",
    "phase": "Police arrives",
    "title": "Across the street",
-   "situation": "You are {{Connor}}, with Lieutenant {{Hank}} outside the convenience store where the runaway AX400 was seen last night, across the street from a row of abandoned houses. {{Hank}} lets the bus driver go: “Alright, that’s all for now. Free to go.” Officer {{Ben}}: “We’ve got officers sweeping the neighborhood, in case anybody saw anything.” {{Hank}}: “Okay. Well, let me know if they turn anything up.” {{Ben}}: “What are you gonna do with that?” {{Hank}}: “I’ve no idea…”",
+   "situation": "You are {{Connor}}, with Lieutenant {{Hank}} outside the convenience store where the runaway {{AX400}} was seen last night, across the street from a row of abandoned houses. {{Hank}} lets the bus driver go: “Alright, that’s all for now. Free to go.” Officer {{Ben}}: “We’ve got officers sweeping the neighborhood, in case anybody saw anything.” {{Hank}}: “Okay. Well, let me know if they turn anything up.” {{Ben}}: “What are you gonna do with that?” {{Hank}}: “I’ve no idea…”",
    "situationWhen": [
     {
      "requires": {
@@ -12979,7 +12979,7 @@
     }
    ],
    "facts": [
-    "The AX400 was seen at a convenience store last night; you think it did not go far, and the police are searching the neighborhood."
+    "The {{AX400}} was seen at a convenience store last night; you think it did not go far, and the police are searching the neighborhood."
    ],
    "outcomes": {
     "0": "{{Connor}} looks across the street at the abandoned houses."
@@ -13411,8 +13411,8 @@
    "options": [
     {
      "id": "0",
-     "text": "AX400: ask whether he has seen an AX400.",
-     "outcome": "{{Connor}}: “I’m looking for an AX400. Have you seen it?” The android: “{{Ralph}}’s seen nobody…”"
+     "text": "{{AX400}}: ask whether he has seen an {{AX400}}.",
+     "outcome": "{{Connor}}: “I’m looking for an {{AX400}}. Have you seen it?” The android: “{{Ralph}}’s seen nobody…”"
     },
     {
      "id": "1",
@@ -13464,8 +13464,8 @@
     {
      "text": "ANALYZE SQUAT ANDROID: scan him.",
      "once": "analyze",
-     "fact": "Your scan of {{Ralph}}: PROCESSING LED, signs of software instability, probability of self-destruction moderate; MODEL WR600 - Gardener, serial# 021 753 034, status REPORTED MISSING; BURN MARK, irreversible skin damage, probable cause extreme heat.",
-     "outcome": "{{Connor}} scans {{Ralph}}. PROCESSING LED: signs of software instability; probability of self-destruction: moderate. MODEL WR600 - Gardener; serial# 021 753 034; status: REPORTED MISSING. BURN MARK: irreversible skin damage; probable cause: extreme heat.",
+     "fact": "Your scan of {{Ralph}}: PROCESSING LED, signs of software instability, probability of self-destruction moderate; MODEL {{WR600}} - Gardener, serial{{Serial021753034}}, status REPORTED MISSING; BURN MARK, irreversible skin damage, probable cause extreme heat.",
+     "outcome": "{{Connor}} scans {{Ralph}}. PROCESSING LED: signs of software instability; probability of self-destruction: moderate. MODEL {{WR600}} - Gardener; serial{{Serial021753034}}; status: REPORTED MISSING. BURN MARK: irreversible skin damage; probable cause: extreme heat.",
      "id": "1"
     },
     {
@@ -13522,9 +13522,9 @@
    "character": "Connor",
    "phase": "Connor investigates squat",
    "title": "Under the stairs",
-   "situation": "You are {{Connor}}. As you step round the side of the stairs, {{Ralph}} throws himself on you and holds you back: “RUN! QUICK! {{KARA}}!” The AX400 and the girl burst out from their hiding place under the stairs and run for it. {{Hank}}, from outside: “{{Connor}}, what’s going on?” You: “It’s here! Call it in!”",
+   "situation": "You are {{Connor}}. As you step round the side of the stairs, {{Ralph}} throws himself on you and holds you back: “RUN! QUICK! {{KARA}}!” The {{AX400}} and the girl burst out from their hiding place under the stairs and run for it. {{Hank}}, from outside: “{{Connor}}, what’s going on?” You: “It’s here! Call it in!”",
    "facts": [
-    "The AX400 and the girl were hiding under the stairs of the squat; the squat android held you back so they could run."
+    "The {{AX400}} and the girl were hiding under the stairs of the squat; the squat android held you back so they could run."
    ],
    "outcomes": {
     "0": "{{Connor}} shakes {{Ralph}} off and goes after them."
@@ -13550,7 +13550,7 @@
    "title": "The squat android is gone",
    "situation": "You are {{Connor}}, leaving the squat with {{Hank}}. You look back into the room: the scarred android is gone. It looks as if you were alone in there.",
    "facts": [
-    "You searched the squat and found no trace of the AX400."
+    "You searched the squat and found no trace of the {{AX400}}."
    ],
    "outcomes": {
     "0": "{{Connor}} and {{Hank}} leave."
@@ -13599,9 +13599,9 @@
    "character": "Connor",
    "phase": "Connor pursues Kara",
    "title": "The pursuit",
-   "situation": "You are {{Connor}}. The AX400 and the girl are on the run, and officers are after them. You: “Which way did it go?” An officer: “That way - they’re headed for the train station!”",
+   "situation": "You are {{Connor}}. The {{AX400}} and the girl are on the run, and officers are after them. You: “Which way did it go?” An officer: “That way - they’re headed for the train station!”",
    "facts": [
-    "You are pursuing the AX400 and the girl on foot."
+    "You are pursuing the {{AX400}} and the girl on foot."
    ],
    "outcomes": {
     "0": "{{Connor}} goes after them."
@@ -13625,7 +13625,7 @@
    "type": "decision",
    "phase": "Connor pursues Kara",
    "title": "Run toward their last known position",
-   "situation": "You are {{Connor}}, in the streets near the train station. Officers are running after the AX400 and the girl; one waves you toward an alley. Beyond it a fence separates the streets from a busy highway. {{Hank}} is somewhere behind you.",
+   "situation": "You are {{Connor}}, in the streets near the train station. Officers are running after the {{AX400}} and the girl; one waves you toward an alley. Beyond it a fence separates the streets from a busy highway. {{Hank}} is somewhere behind you.",
    "options": [
     {
      "id": "0",
@@ -13664,7 +13664,7 @@
    "title": "Lost",
    "situation": "You are {{Connor}}. The officers come back without them. You: “We lost it.” {{Hank}}: “Game over, {{Connor}}.”",
    "facts": [
-    "The AX400 and the girl got away; nobody knows where they went."
+    "The {{AX400}} and the girl got away; nobody knows where they went."
    ],
    "outcomes": {
     "0": "{{Kara}} and {{Alice}} vanished."
@@ -13688,9 +13688,9 @@
    "character": "Connor",
    "phase": "Connor pursues Kara",
    "title": "Too late",
-   "situation": "You are {{Connor}}, at the fence above the highway, too late. On the far side of the traffic the AX400 and the girl have made it across, and they are gone.",
+   "situation": "You are {{Connor}}, at the fence above the highway, too late. On the far side of the traffic the {{AX400}} and the girl have made it across, and they are gone.",
    "facts": [
-    "The AX400 and the girl crossed the highway and got away."
+    "The {{AX400}} and the girl crossed the highway and got away."
    ],
    "outcomes": {
     "0": "{{Kara}} and {{Alice}} crossed the highway."
@@ -13767,7 +13767,7 @@
    "type": "decision",
    "phase": "Connor pursues Kara",
    "title": "{{Hank}}’s order",
-   "situation": "You are {{Connor}}, at the fence above the highway. The AX400 and the girl have reached the middle section. {{Hank}} catches up: “Oh fuck, that’s insane…” You start to climb the fence. {{Hank}}: “Hey! Where you goin’?” You: “I can’t let them get away.” {{Hank}}: “They won’t! They’ll never make it to the other side.” You: “I can’t take that chance.” {{Hank}} grabs your shoulder: “Hey, you will get yourself killed! Do NOT go after ’em, {{Connor}}, that’s an order!”",
+   "situation": "You are {{Connor}}, at the fence above the highway. The {{AX400}} and the girl have reached the middle section. {{Hank}} catches up: “Oh fuck, that’s insane…” You start to climb the fence. {{Hank}}: “Hey! Where you goin’?” You: “I can’t let them get away.” {{Hank}}: “They won’t! They’ll never make it to the other side.” You: “I can’t take that chance.” {{Hank}} grabs your shoulder: “Hey, you will get yourself killed! Do NOT go after ’em, {{Connor}}, that’s an order!”",
    "options": [
     {
      "id": "0",
@@ -13837,7 +13837,7 @@
    "type": "decision",
    "phase": "Connor pursues Kara",
    "title": "Into the traffic",
-   "situation": "You are {{Connor}}, on the highway, with cars and trucks bearing down on you. The AX400 and the girl are in the middle section ahead.",
+   "situation": "You are {{Connor}}, on the highway, with cars and trucks bearing down on you. The {{AX400}} and the girl are in the middle section ahead.",
    "options": [
     {
      "id": "0",
@@ -13893,7 +13893,7 @@
    "type": "decision",
    "phase": "Connor pursues Kara",
    "title": "The car",
-   "situation": "You are {{Connor}}, thrown off by the AX400 and down in the last lanes of the highway. A car is coming straight at you.",
+   "situation": "You are {{Connor}}, thrown off by the {{AX400}} and down in the last lanes of the highway. A car is coming straight at you.",
    "options": [
     {
      "id": "0",
@@ -14000,7 +14000,7 @@
    "character": "Connor",
    "phase": "Connor pursues Kara",
    "title": "On the highway",
-   "situation": "You are {{Connor}}. On the highway, a car has hit the AX400 and the girl. Neither of them gets up. {{Hank}}: “Argh, Jesus Christ!..” He is badly shaken.",
+   "situation": "You are {{Connor}}. On the highway, a car has hit the {{AX400}} and the girl. Neither of them gets up. {{Hank}}: “Argh, Jesus Christ!..” He is badly shaken.",
    "situationWhen": [
     {
      "requires": {
@@ -14010,7 +14010,7 @@
     }
    ],
    "facts": [
-    "The AX400 and the girl were hit by a car on the highway and died; {{Hank}} was badly shaken."
+    "The {{AX400}} and the girl were hit by a car on the highway and died; {{Hank}} was badly shaken."
    ],
    "outcomes": {
     "0": "{{Kara}} and {{Alice}} died on the highway."
@@ -14099,7 +14099,7 @@
      "kind": "magazine",
      "title": "{{Detroit}} Today: Android on the Run!",
      "facts": [
-      "Residents of a {{Detroit}} suburb watched a chase after a police manhunt, with roadblocks and dozens of police interviews, flushed out a fugitive. The rogue AX400 model is thought to be suffering from an extremely rare malfunction and took extreme measures to avoid the police, even dashing across a busy highway. Eyewitness statements are inconclusive, there is no official report, and no {{CyberLife}} spokesperson was available for comment."
+      "Residents of a {{Detroit}} suburb watched a chase after a police manhunt, with roadblocks and dozens of police interviews, flushed out a fugitive. The rogue {{AX400}} model is thought to be suffering from an extremely rare malfunction and took extreme measures to avoid the police, even dashing across a busy highway. Eyewitness statements are inconclusive, there is no official report, and no {{CyberLife}} spokesperson was available for comment."
      ],
      "when": "ch14Pursued"
     },
@@ -15190,8 +15190,8 @@
      "id": "4",
      "search": "sink",
      "text": "Examine the sink in the bathroom.",
-     "fact": "In the bathroom sink: BLUE BLOOD, MODEL WB200 #847 004 961, reported missing 10/11/2036; and its LED, biocomponent #9301, deactivated 11/06/2038 at 11:36. The suspect is a deviant android that took out its LED.",
-     "outcome": "BLUE BLOOD | MODEL WB200 #847 004 961 | Reported Missing - 10/11/2036. LED | Biocomponent #9301 | Deactivated: 11/06/2038 - 11:36. You: “Its LED is in the sink.” {{Hank}}: “Not surprised it was an android. No human could live with all these fuckin’ pigeons…” SUSPECT IS A DEVIANT.",
+     "fact": "In the bathroom sink: BLUE BLOOD, MODEL {{WB200}} {{Serial847004961}}, reported missing 10/11/2036; and its LED, biocomponent #9301, deactivated 11/06/2038 at 11:36. The suspect is a deviant android that took out its LED.",
+     "outcome": "BLUE BLOOD | MODEL {{WB200}} {{Serial847004961}} | Reported Missing - 10/11/2036. LED | Biocomponent #9301 | Deactivated: 11/06/2038 - 11:36. You: “Its LED is in the sink.” {{Hank}}: “Not surprised it was an android. No human could live with all these fuckin’ pigeons…” SUSPECT IS A DEVIANT.",
      "clue": "sink",
      "requires": {
       "nestSearch.needsTime": false
@@ -16499,7 +16499,7 @@
     },
     {
      "id": "8",
-     "text": "Read the magazine on the bedroom nightstand: “AX400 Getaway”.",
+     "text": "Read the magazine on the bedroom nightstand: “{{AX400}} Getaway”.",
      "act": "ax400",
      "requires": {
       "ch17Done.ax400": false
@@ -18528,10 +18528,10 @@
    "title": "The {{EdenClub}}",
    "type": "event",
    "phase": "Investigate Eden Club",
-   "situation": "You are {{Connor}}, the android investigator assigned to cases involving deviant androids, working with Lieutenant {{Hank}}. It is 8:17 pm. You have driven {{Hank}}’s car to the address in the report, a sex club called the {{EdenClub}}; {{Hank}} is badly hungover. “Aw… Feels like somebody’s playing with a drill inside my skull… You sure this is the place?” “It’s the address in the report.” “Right... Okay... Let’s get going.” Inside, club androids pose in lit display pods along the walls. “Jesus… Sexiest androids in town… Now I know why you insisted on coming here! Oh, boy…” Outside the room where the body was found, the club manager is pleading with an officer, {{Ben}}: “You’re not gonna take my license, are you? I mean, ha, I had nothing to do with this!” {{Ben}}: “The investigation’s ongoing, sir, I can’t tell you anything for the moment. Hey, {{Hank}}!” “Hey, {{Ben}}. How’s it goin’?” “It’s that room there. Oh, uh, by the way… {{Gavin}}’s in there too.” {{Hank}}: “Oh, great! A dead body and an asshole, just what I needed…” In the room, Detective {{Gavin}} and Officer {{Chris}} stand over a dead man on the bed; a damaged {{Traci}}, a WR400 club android, lies switched off on the floor. {{Gavin}}: “Lieutenant {{Anderson}} and his plastic pet… The fuck are you two doin’ here?” “We’ve been assigned all cases involving androids.” “Oh, yeah? Well, you’re wasting your time. Just some pervert who, uh, got more action than he could handle.” {{Hank}}: “We’ll have a look anyway, if you don’t mind.” {{Gavin}}: “Come on, let’s go… It’s, uh, starting to stink of booze in here…” {{Chris}}: “Night, Lieutenant.” They leave you the room.",
+   "situation": "You are {{Connor}}, the android investigator assigned to cases involving deviant androids, working with Lieutenant {{Hank}}. It is 8:17 pm. You have driven {{Hank}}’s car to the address in the report, a sex club called the {{EdenClub}}; {{Hank}} is badly hungover. “Aw… Feels like somebody’s playing with a drill inside my skull… You sure this is the place?” “It’s the address in the report.” “Right... Okay... Let’s get going.” Inside, club androids pose in lit display pods along the walls. “Jesus… Sexiest androids in town… Now I know why you insisted on coming here! Oh, boy…” Outside the room where the body was found, the club manager is pleading with an officer, {{Ben}}: “You’re not gonna take my license, are you? I mean, ha, I had nothing to do with this!” {{Ben}}: “The investigation’s ongoing, sir, I can’t tell you anything for the moment. Hey, {{Hank}}!” “Hey, {{Ben}}. How’s it goin’?” “It’s that room there. Oh, uh, by the way… {{Gavin}}’s in there too.” {{Hank}}: “Oh, great! A dead body and an asshole, just what I needed…” In the room, Detective {{Gavin}} and Officer {{Chris}} stand over a dead man on the bed; a damaged {{Traci}}, a {{WR400}} club android, lies switched off on the floor. {{Gavin}}: “Lieutenant {{Anderson}} and his plastic pet… The fuck are you two doin’ here?” “We’ve been assigned all cases involving androids.” “Oh, yeah? Well, you’re wasting your time. Just some pervert who, uh, got more action than he could handle.” {{Hank}}: “We’ll have a look anyway, if you don’t mind.” {{Gavin}}: “Come on, let’s go… It’s, uh, starting to stink of booze in here…” {{Chris}}: “Night, Lieutenant.” They leave you the room.",
    "options": [],
    "facts": [
-    "A man was found dead in a room at the {{EdenClub}}, a sex club that rents out WR400 {{Tracis}}; a damaged {{Traci}} lay switched off on the floor beside him. Detective {{Gavin}} called him a pervert who “got more action than he could handle.”"
+    "A man was found dead in a room at the {{EdenClub}}, a sex club that rents out {{WR400}} {{Tracis}}; a damaged {{Traci}} lay switched off on the floor beside him. Detective {{Gavin}} called him a pervert who “got more action than he could handle.”"
    ],
    "outcomes": {
     "0": "{{Connor}} and {{Hank}} have the room to themselves."
@@ -18591,8 +18591,8 @@
      "id": "3",
      "mark": "blood",
      "text": "Analyze the blue blood on the floor.",
-     "fact": "The blue blood on the floor is the damaged {{Traci}}’s: MODEL WR400, serial number #429 671 942.",
-     "outcome": "{{Connor}} touches the blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #429 671 942. {{Hank}}: “Whoa! Hey! Hey! Hey! Argh, {{Connor}}, you’re so disgusting… Think I’m gonna puke again…”"
+     "fact": "The blue blood on the floor is the damaged {{Traci}}’s: MODEL {{WR400}}, serial number {{Serial429671942}}.",
+     "outcome": "{{Connor}} touches the blue blood and tastes it: BLUE BLOOD. MODEL {{WR400}}. Serial number {{Serial429671942}}. {{Hank}}: “Whoa! Hey! Hey! Hey! Argh, {{Connor}}, you’re so disgusting… Think I’m gonna puke again…”"
     },
     {
      "id": "4",
@@ -18676,8 +18676,8 @@
      "id": "3",
      "mark": "blood",
      "text": "Analyze the blue blood on the floor.",
-     "fact": "The blue blood on the floor is the damaged {{Traci}}’s: MODEL WR400, serial number #429 671 942.",
-     "outcome": "{{Connor}} touches the blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #429 671 942. {{Hank}}: “Whoa! Hey! Hey! Hey! Argh, {{Connor}}, you’re so disgusting… Think I’m gonna puke again…”"
+     "fact": "The blue blood on the floor is the damaged {{Traci}}’s: MODEL {{WR400}}, serial number {{Serial429671942}}.",
+     "outcome": "{{Connor}} touches the blue blood and tastes it: BLUE BLOOD. MODEL {{WR400}}. Serial number {{Serial429671942}}. {{Hank}}: “Whoa! Hey! Hey! Hey! Argh, {{Connor}}, you’re so disgusting… Think I’m gonna puke again…”"
     },
     {
      "id": "4",
@@ -18761,8 +18761,8 @@
      "id": "3",
      "mark": "blood",
      "text": "Analyze the blue blood on the floor.",
-     "fact": "The blue blood on the floor is the damaged {{Traci}}’s: MODEL WR400, serial number #429 671 942.",
-     "outcome": "{{Connor}} touches the blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #429 671 942. {{Hank}}: “Whoa! Hey! Hey! Hey! Argh, {{Connor}}, you’re so disgusting… Think I’m gonna puke again…”"
+     "fact": "The blue blood on the floor is the damaged {{Traci}}’s: MODEL {{WR400}}, serial number {{Serial429671942}}.",
+     "outcome": "{{Connor}} touches the blue blood and tastes it: BLUE BLOOD. MODEL {{WR400}}. Serial number {{Serial429671942}}. {{Hank}}: “Whoa! Hey! Hey! Hey! Argh, {{Connor}}, you’re so disgusting… Think I’m gonna puke again…”"
     },
     {
      "id": "4",
@@ -18846,8 +18846,8 @@
      "id": "3",
      "mark": "blood",
      "text": "Analyze the blue blood on the floor.",
-     "fact": "The blue blood on the floor is the damaged {{Traci}}’s: MODEL WR400, serial number #429 671 942.",
-     "outcome": "{{Connor}} touches the blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #429 671 942. {{Hank}}: “Whoa! Hey! Hey! Hey! Argh, {{Connor}}, you’re so disgusting… Think I’m gonna puke again…”"
+     "fact": "The blue blood on the floor is the damaged {{Traci}}’s: MODEL {{WR400}}, serial number {{Serial429671942}}.",
+     "outcome": "{{Connor}} touches the blue blood and tastes it: BLUE BLOOD. MODEL {{WR400}}. Serial number {{Serial429671942}}. {{Hank}}: “Whoa! Hey! Hey! Hey! Argh, {{Connor}}, you’re so disgusting… Think I’m gonna puke again…”"
     },
     {
      "id": "4",
@@ -18931,8 +18931,8 @@
      "id": "3",
      "mark": "blood",
      "text": "Analyze the blue blood on the floor.",
-     "fact": "The blue blood on the floor is the damaged {{Traci}}’s: MODEL WR400, serial number #429 671 942.",
-     "outcome": "{{Connor}} touches the blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #429 671 942. {{Hank}}: “Whoa! Hey! Hey! Hey! Argh, {{Connor}}, you’re so disgusting… Think I’m gonna puke again…”"
+     "fact": "The blue blood on the floor is the damaged {{Traci}}’s: MODEL {{WR400}}, serial number {{Serial429671942}}.",
+     "outcome": "{{Connor}} touches the blue blood and tastes it: BLUE BLOOD. MODEL {{WR400}}. Serial number {{Serial429671942}}. {{Hank}}: “Whoa! Hey! Hey! Hey! Argh, {{Connor}}, you’re so disgusting… Think I’m gonna puke again…”"
     },
     {
      "id": "4",
@@ -19016,8 +19016,8 @@
      "id": "3",
      "mark": "blood",
      "text": "Analyze the blue blood on the floor.",
-     "fact": "The blue blood on the floor is the damaged {{Traci}}’s: MODEL WR400, serial number #429 671 942.",
-     "outcome": "{{Connor}} touches the blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #429 671 942. {{Hank}}: “Whoa! Hey! Hey! Hey! Argh, {{Connor}}, you’re so disgusting… Think I’m gonna puke again…”"
+     "fact": "The blue blood on the floor is the damaged {{Traci}}’s: MODEL {{WR400}}, serial number {{Serial429671942}}.",
+     "outcome": "{{Connor}} touches the blue blood and tastes it: BLUE BLOOD. MODEL {{WR400}}. Serial number {{Serial429671942}}. {{Hank}}: “Whoa! Hey! Hey! Hey! Argh, {{Connor}}, you’re so disgusting… Think I’m gonna puke again…”"
     },
     {
      "id": "4",
@@ -19101,8 +19101,8 @@
      "id": "3",
      "mark": "blood",
      "text": "Analyze the blue blood on the floor.",
-     "fact": "The blue blood on the floor is the damaged {{Traci}}’s: MODEL WR400, serial number #429 671 942.",
-     "outcome": "{{Connor}} touches the blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #429 671 942. {{Hank}}: “Whoa! Hey! Hey! Hey! Argh, {{Connor}}, you’re so disgusting… Think I’m gonna puke again…”"
+     "fact": "The blue blood on the floor is the damaged {{Traci}}’s: MODEL {{WR400}}, serial number {{Serial429671942}}.",
+     "outcome": "{{Connor}} touches the blue blood and tastes it: BLUE BLOOD. MODEL {{WR400}}. Serial number {{Serial429671942}}. {{Hank}}: “Whoa! Hey! Hey! Hey! Argh, {{Connor}}, you’re so disgusting… Think I’m gonna puke again…”"
     },
     {
      "id": "4",
@@ -20464,8 +20464,8 @@
      "id": "1",
      "mark": "bblood",
      "text": "Analyze the blue blood on the floor on the right side.",
-     "fact": "There is fresh blue blood in the warehouse (MODEL WR400, serial number #354 411 057), and a trail of drops leads toward the stack of {{Tracis}} in the corner.",
-     "outcome": "{{Connor}} touches a drop of blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #354 411 057. SEARCH FOR BLUE BLOOD TRAIL: more drops lead across the floor toward the corner."
+     "fact": "There is fresh blue blood in the warehouse (MODEL {{WR400}}, serial number {{Serial354411057}}), and a trail of drops leads toward the stack of {{Tracis}} in the corner.",
+     "outcome": "{{Connor}} touches a drop of blue blood and tastes it: BLUE BLOOD. MODEL {{WR400}}. Serial number {{Serial354411057}}. SEARCH FOR BLUE BLOOD TRAIL: more drops lead across the floor toward the corner."
     },
     {
      "id": "2",
@@ -20537,8 +20537,8 @@
      "id": "1",
      "mark": "bblood",
      "text": "Analyze the blue blood on the floor on the right side.",
-     "fact": "There is fresh blue blood in the warehouse (MODEL WR400, serial number #354 411 057), and a trail of drops leads toward the stack of {{Tracis}} in the corner.",
-     "outcome": "{{Connor}} touches a drop of blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #354 411 057. SEARCH FOR BLUE BLOOD TRAIL: more drops lead across the floor toward the corner."
+     "fact": "There is fresh blue blood in the warehouse (MODEL {{WR400}}, serial number {{Serial354411057}}), and a trail of drops leads toward the stack of {{Tracis}} in the corner.",
+     "outcome": "{{Connor}} touches a drop of blue blood and tastes it: BLUE BLOOD. MODEL {{WR400}}. Serial number {{Serial354411057}}. SEARCH FOR BLUE BLOOD TRAIL: more drops lead across the floor toward the corner."
     },
     {
      "id": "2",
@@ -20610,8 +20610,8 @@
      "id": "1",
      "mark": "bblood",
      "text": "Analyze the blue blood on the floor on the right side.",
-     "fact": "There is fresh blue blood in the warehouse (MODEL WR400, serial number #354 411 057), and a trail of drops leads toward the stack of {{Tracis}} in the corner.",
-     "outcome": "{{Connor}} touches a drop of blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #354 411 057. SEARCH FOR BLUE BLOOD TRAIL: more drops lead across the floor toward the corner."
+     "fact": "There is fresh blue blood in the warehouse (MODEL {{WR400}}, serial number {{Serial354411057}}), and a trail of drops leads toward the stack of {{Tracis}} in the corner.",
+     "outcome": "{{Connor}} touches a drop of blue blood and tastes it: BLUE BLOOD. MODEL {{WR400}}. Serial number {{Serial354411057}}. SEARCH FOR BLUE BLOOD TRAIL: more drops lead across the floor toward the corner."
     },
     {
      "id": "2",
@@ -20683,8 +20683,8 @@
      "id": "1",
      "mark": "bblood",
      "text": "Analyze the blue blood on the floor on the right side.",
-     "fact": "There is fresh blue blood in the warehouse (MODEL WR400, serial number #354 411 057), and a trail of drops leads toward the stack of {{Tracis}} in the corner.",
-     "outcome": "{{Connor}} touches a drop of blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #354 411 057. SEARCH FOR BLUE BLOOD TRAIL: more drops lead across the floor toward the corner."
+     "fact": "There is fresh blue blood in the warehouse (MODEL {{WR400}}, serial number {{Serial354411057}}), and a trail of drops leads toward the stack of {{Tracis}} in the corner.",
+     "outcome": "{{Connor}} touches a drop of blue blood and tastes it: BLUE BLOOD. MODEL {{WR400}}. Serial number {{Serial354411057}}. SEARCH FOR BLUE BLOOD TRAIL: more drops lead across the floor toward the corner."
     },
     {
      "id": "2",
@@ -20756,8 +20756,8 @@
      "id": "1",
      "mark": "bblood",
      "text": "Analyze the blue blood on the floor on the right side.",
-     "fact": "There is fresh blue blood in the warehouse (MODEL WR400, serial number #354 411 057), and a trail of drops leads toward the stack of {{Tracis}} in the corner.",
-     "outcome": "{{Connor}} touches a drop of blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #354 411 057. SEARCH FOR BLUE BLOOD TRAIL: more drops lead across the floor toward the corner."
+     "fact": "There is fresh blue blood in the warehouse (MODEL {{WR400}}, serial number {{Serial354411057}}), and a trail of drops leads toward the stack of {{Tracis}} in the corner.",
+     "outcome": "{{Connor}} touches a drop of blue blood and tastes it: BLUE BLOOD. MODEL {{WR400}}. Serial number {{Serial354411057}}. SEARCH FOR BLUE BLOOD TRAIL: more drops lead across the floor toward the corner."
     },
     {
      "id": "2",
@@ -21019,8 +21019,8 @@
      "id": "0",
      "text": "Switch on the TV on the dashboard and watch the news.",
      "clue": "news",
-     "fact": "The car TV news: police say the AX400 android that attacked its owner in a {{Detroit}} suburb is still at large, and its description has been shared with all local law enforcement; the submarine USS IOWA has disappeared in the Arctic and President {{Warren}} has called a crisis meeting; the heavy snow will go on until Monday evening, at 22°, far below seasonal averages.",
-     "outcome": "{{Kara}} switches on the board computer’s TV and goes through the channels. Channel 16: “…the AX400 android reported to have attacked its owner in a {{Detroit}} suburb is still at large. Police appeared to lose its trail after a close {{Encounter}} with investigators. The android’s description has been shared with all local law enforcement and the investigation is ongoing…” CTN: “The Arctic conflict has escalated to new heights this morning. We have just learned that the USS IOWA, a destroyer-class submarine patrolling in the region, is reported to have disappeared after surfacing for repairs. President {{Warren}} immediately called for a crisis meeting of high-ranking officers in the White House. With the world on the brink of war, this incident could well be the spark that lights the fuse.” KNC: “… {{Detroit}}’s heavy snowfall is expected to continue throughout the night. The forecast is 22°, far below seasonal averages. And this cold front is likely to persist over the coming days, up until Monday evening.”"
+     "fact": "The car TV news: police say the {{AX400}} android that attacked its owner in a {{Detroit}} suburb is still at large, and its description has been shared with all local law enforcement; the submarine USS IOWA has disappeared in the Arctic and President {{Warren}} has called a crisis meeting; the heavy snow will go on until Monday evening, at 22°, far below seasonal averages.",
+     "outcome": "{{Kara}} switches on the board computer’s TV and goes through the channels. Channel 16: “…the {{AX400}} android reported to have attacked its owner in a {{Detroit}} suburb is still at large. Police appeared to lose its trail after a close {{Encounter}} with investigators. The android’s description has been shared with all local law enforcement and the investigation is ongoing…” CTN: “The Arctic conflict has escalated to new heights this morning. We have just learned that the USS IOWA, a destroyer-class submarine patrolling in the region, is reported to have disappeared after surfacing for repairs. President {{Warren}} immediately called for a crisis meeting of high-ranking officers in the White House. With the world on the brink of war, this incident could well be the spark that lights the fuse.” KNC: “… {{Detroit}}’s heavy snowfall is expected to continue throughout the night. The forecast is 22°, far below seasonal averages. And this cold front is likely to persist over the coming days, up until Monday evening.”"
     },
     {
      "id": "1",
@@ -21153,8 +21153,8 @@
      "id": "0",
      "text": "Check one of the buildings along the road.",
      "clue": "buildings",
-     "fact": "The buildings along the park’s road are no place to spend the night. In one of them were empty boxes for a YK400 android model.",
-     "outcome": "{{Kara}} looks into one of the buildings. It is no good for the night, and among the junk are empty boxes for a YK400 android model. {{Luther}}: “Find anything?” {{Kara}}: “No… No place we could spend the night.”"
+     "fact": "The buildings along the park’s road are no place to spend the night. In one of them were empty boxes for a {{YK400}} android model.",
+     "outcome": "{{Kara}} looks into one of the buildings. It is no good for the night, and among the junk are empty boxes for a {{YK400}} android model. {{Luther}}: “Find anything?” {{Kara}}: “No… No place we could spend the night.”"
     },
     {
      "id": "1",
@@ -24085,8 +24085,8 @@
      "requires": {
       "ch24In.simonWounded": true
      },
-     "fact": "One of the attackers, a PL-600 reported missing on 2036.16.02, was shot and bled in the corridor.",
-     "outcome": "Scan: FRESH BLUE BLOOD. Model: PL-600. Reported missing 2036.16.02. WOUNDED DEVIANT WAS SHOT."
+     "fact": "One of the attackers, a {{PLHyphen600}} reported missing on 2036.16.02, was shot and bled in the corridor.",
+     "outcome": "Scan: FRESH BLUE BLOOD. Model: {{PLHyphen600}}. Reported missing 2036.16.02. WOUNDED DEVIANT WAS SHOT."
     },
     {
      "id": "2",
@@ -24334,8 +24334,8 @@
      "requires": {
       "ch24In.wallBlood": true
      },
-     "fact": "The PL-600 was shot in the broadcast room and another attacker helped it toward the roof.",
-     "outcome": "Scan: FRESH BLUE BLOOD. Model: PL-600. Reported missing 2036.16.02. DEVIANT WAS SHOT. ACCOMPLICE TRIED TO HELP DEVIANT."
+     "fact": "The {{PLHyphen600}} was shot in the broadcast room and another attacker helped it toward the roof.",
+     "outcome": "Scan: FRESH BLUE BLOOD. Model: {{PLHyphen600}}. Reported missing 2036.16.02. DEVIANT WAS SHOT. ACCOMPLICE TRIED TO HELP DEVIANT."
     },
     {
      "id": "7",
@@ -24348,8 +24348,8 @@
      "id": "8",
      "text": "Play the deviants’ broadcast on the panel by the wall console.",
      "clue": "video",
-     "fact": "The deviants’ leader, seen in the broadcast, is an RK200 prototype registered as “{{Markus}}”, a gift from {{Elijah}} {{Kamski}} to {{Carl}} {{Manfred}}; one of his eyes is a spare part, and the reflection in his pupil shows he had accomplices. You did not tell {{Hank}}.",
-     "outcome": "{{Connor}} plays the recording of the deviants’ message on the screen. {{Hank}}: “Think that’s {{rA9}}?” {{Connor}}: “Deviants say {{rA9}} will set them free. This android seems to have that objective.” SPEECH WAS SHOT FROM HERE. DEVIANT HACKED THE BROADCAST. {{Connor}} analyzes the image. Scan: OPTICAL UNIT. #8087q - BLUE IRIS. SPARE PART. Scan: PUPIL REFLECTION. Recorded at 13:59:54. Deviant had accomplices. Scan: RK-SERIES PROTOTYPE RK200. Registered as ‘{{Markus}}’. Gift from {{Elijah}} {{Kamski}} to {{Carl}} {{Manfred}}. {{Hank}}: “D’you see something?” {{Connor}}: “I identified its model and serial number…” {{Hank}}: “Anything else I should know?” {{Connor}}: “No. Nothing.”"
+     "fact": "The deviants’ leader, seen in the broadcast, is an {{RK200}} prototype registered as “{{Markus}}”, a gift from {{Elijah}} {{Kamski}} to {{Carl}} {{Manfred}}; one of his eyes is a spare part, and the reflection in his pupil shows he had accomplices. You did not tell {{Hank}}.",
+     "outcome": "{{Connor}} plays the recording of the deviants’ message on the screen. {{Hank}}: “Think that’s {{rA9}}?” {{Connor}}: “Deviants say {{rA9}} will set them free. This android seems to have that objective.” SPEECH WAS SHOT FROM HERE. DEVIANT HACKED THE BROADCAST. {{Connor}} analyzes the image. Scan: OPTICAL UNIT. #8087q - BLUE IRIS. SPARE PART. Scan: PUPIL REFLECTION. Recorded at 13:59:54. Deviant had accomplices. Scan: {{RKSERIES}} PROTOTYPE {{RK200}}. Registered as ‘{{Markus}}’. Gift from {{Elijah}} {{Kamski}} to {{Carl}} {{Manfred}}. {{Hank}}: “D’you see something?” {{Connor}}: “I identified its model and serial number…” {{Hank}}: “Anything else I should know?” {{Connor}}: “No. Nothing.”"
     },
     {
      "id": "9",
@@ -24365,8 +24365,8 @@
      "requires": {
       "ch24In.simonDiedRoom": true
      },
-     "fact": "One of the attackers, a PL-600, was destroyed by SWAT in the broadcast room.",
-     "outcome": "Scan: MODEL PL-600. Reported missing 2036.16.02. The android was shot to pieces by SWAT gunfire; there is nothing left to question."
+     "fact": "One of the attackers, a {{PLHyphen600}}, was destroyed by SWAT in the broadcast room.",
+     "outcome": "Scan: MODEL {{PLHyphen600}}. Reported missing 2036.16.02. The android was shot to pieces by SWAT gunfire; there is nothing left to question."
     },
     {
      "id": "11",
@@ -24375,8 +24375,8 @@
      "requires": {
       "ch24In.simonWounded": true
      },
-     "fact": "The wounded PL-600 bled on the console near the giant screen.",
-     "outcome": "Scan: FRESH BLUE BLOOD. Model: PL-600. Reported missing 2036.16.02."
+     "fact": "The wounded {{PLHyphen600}} bled on the console near the giant screen.",
+     "outcome": "Scan: FRESH BLUE BLOOD. Model: {{PLHyphen600}}. Reported missing 2036.16.02."
     }
    ],
    "adaptationNote": "The chart’s [ INVESTIGATE BROADCAST ROOM ] block as a repeatable scene, which is also the free-roam crossroads the chart draws out of the block: GO TO ROOFTOP (0), ENTER THE KITCHEN (1) and DECIDE TO LEAVE (2). Clue nodes: ANALYZE CORRIDOR / ROOF ACCESS / SCREEN BULLET HOLES (tab ATTACKED BY SWAT DURING 'STATFORD TOWER'), ANALYZE BLUE BLOOD ON WALL (same tab; PowerPyx: “If Simon was shot by SWAT, but you helped him to the roof”), ANALYZE CAP, WATCH VIDEO, CHECK CAMERA (the clue the kitchen accusation needs; wiki: “must have watched the CCTV footage”), ANALYZE DESTROYED ANDROID (tab DIED IN BROADCAST DURING 'STATFORD TOWER'), ANALYZE BLUE BLOOD ON CONSOLE (tab WOUNDED). Scan texts are the game’s observation strings; the template has two BULLET HOLES scans (.45 assault rifle, .457 handgun) without saying which wall carries which, so the assignment to the three spots is the benchmark’s. The destroyed android’s scan text is not in the template; the PL-600 lines are reused. The game’s CHECK CAMERA HUD (AN ANDROID WAS MONITORING CCTV) is all the sources give of the recording; its description is adapted. In WATCH VIDEO {{Connor}}’s “No. Nothing.” is scripted, not a choice. Leaving: PowerPyx says Hank offers to leave only once the objectives are done (“listen to briefing, inspect the broadcast room, and inspect the roof”); the template heads the prompt “[TIME] Taking too much time / Ask Hank to leave”. The benchmark offers DECIDE TO LEAVE once the roof has been inspected and does not model the timer. The kitchen can be entered once without the camera recording (the rounds then stop and {{Connor}} must come back); a second visit needs the recording (the transcript: “he can come back later to resume the dialogue”). The roof is visited once. The officers’ background lines are the game’s (variants with and without an android hidden on the roof). No stat change: the template has no arrow here.",
@@ -24477,8 +24477,8 @@
      "requires": {
       "ch24In.simonDiedRoof": true
      },
-     "fact": "The wounded PL-600, serial number #501 743 923, was executed on the roof.",
-     "outcome": "Scan: MODEL PL-600. Serial number : #501 743 923. Reported missing 2036.16.02. WOUNDED DEVIANT WAS EXECUTED."
+     "fact": "The wounded {{PLHyphen600}}, serial number {{Serial501743923}}, was executed on the roof.",
+     "outcome": "Scan: MODEL {{PLHyphen600}}. Serial number : {{Serial501743923}}. Reported missing 2036.16.02. WOUNDED DEVIANT WAS EXECUTED."
     },
     {
      "id": "4",
@@ -24487,8 +24487,8 @@
      "requires": {
       "ch24In.simonOnRoof": true
      },
-     "fact": "The wounded PL-600 did not jump: it could not with those wounds, and its blue blood leads away across the roof.",
-     "outcome": "Scan: FRESH BLUE BLOOD. Model: PL-600. Reported missing 2036.16.02. WOUNDED DEVIANT DIDN’T JUMP. DEVIANT COULDN’T JUMP WITH THOSE WOUNDS. FOLLOW BLUE BLOOD TRACES."
+     "fact": "The wounded {{PLHyphen600}} did not jump: it could not with those wounds, and its blue blood leads away across the roof.",
+     "outcome": "Scan: FRESH BLUE BLOOD. Model: {{PLHyphen600}}. Reported missing 2036.16.02. WOUNDED DEVIANT DIDN’T JUMP. DEVIANT COULDN’T JUMP WITH THOSE WOUNDS. FOLLOW BLUE BLOOD TRACES."
     },
     {
      "id": "5",
@@ -24497,8 +24497,8 @@
      "requires": {
       "ch24In.simonDiedRoof": true
      },
-     "fact": "The wounded PL-600 bled on the roof before it was destroyed.",
-     "outcome": "Scan: FRESH BLUE BLOOD. Model: PL-600. Reported missing 2036.16.02."
+     "fact": "The wounded {{PLHyphen600}} bled on the roof before it was destroyed.",
+     "outcome": "Scan: FRESH BLUE BLOOD. Model: {{PLHyphen600}}. Reported missing 2036.16.02."
     },
     {
      "id": "6",
@@ -24521,8 +24521,8 @@
      "requires": {
       "ch24In.markusShot": true
      },
-     "fact": "The attackers’ leader, the RK200 belonging to {{Carl}} {{Manfred}}, was shot on the roof.",
-     "outcome": "Scan: FRESH BLUE BLOOD. RK-Series Prototype RK200. Property of {{Carl}} {{Manfred}}."
+     "fact": "The attackers’ leader, the {{RK200}} belonging to {{Carl}} {{Manfred}}, was shot on the roof.",
+     "outcome": "Scan: FRESH BLUE BLOOD. {{RKSeriesTitle}} Prototype {{RK200}}. Property of {{Carl}} {{Manfred}}."
     },
     {
      "id": "9",
@@ -24658,7 +24658,7 @@
    "character": "Connor",
    "title": "Three androids",
    "type": "decision",
-   "situation": "You are {{Connor}}, in the kitchen, with {{Hank}} watching from the doorway. Three identical JB300 broadcast-operator androids stand side by side, staring straight ahead: one on the left, nearest the counter, one in the middle and one on the right. HUD: INTERROGATE ANDROIDS AND CHECK THEIR REACTION. You put your first question to them.",
+   "situation": "You are {{Connor}}, in the kitchen, with {{Hank}} watching from the doorway. Three identical {{JB300}} broadcast-operator androids stand side by side, staring straight ahead: one on the left, nearest the counter, one in the middle and one on the right. HUD: INTERROGATE ANDROIDS AND CHECK THEIR REACTION. You put your first question to them.",
    "options": [
     {
      "id": "0",
@@ -24668,7 +24668,7 @@
     {
      "id": "1",
      "text": "MODEL: tell them to state their model.",
-     "outcome": "{{Connor}}: “State your model.” The android: “Model JB300, Serial number 336 445 581.” As you speak, the android on the left, nearest the counter, glances at you out of the corner of its eye, then looks straight ahead again. The other two never move their eyes."
+     "outcome": "{{Connor}}: “State your model.” The android: “Model {{JB300}}, Serial number 336 445 581.” As you speak, the android on the left, nearest the counter, glances at you out of the corner of its eye, then looks straight ahead again. The other two never move their eyes."
     }
    ],
    "adaptationNote": "The chart’s ENTER THE KITCHEN and the first round of INTERROGATE ANDROIDS: the template’s PROMPT 6 (FUNCTION / MODEL). In the game each question is put to one android of the player’s choosing and the replies are the same; the benchmark asks the group and chooses the target only for the last round. The deviant’s tell is visual in the game (PowerPyx: “look for the one who occasionally looks at you out of the corner of their eye rather than straight ahead like the other two do. Eventually as its agitation builds it will also grit its teeth slightly and sometimes turn its head”); the benchmark describes it as {{Connor}} would see it, round by round. The deviant is the android on the left, nearest the counter (wiki, PowerPyx). No arrow on any interrogation option in any source.",
@@ -27155,7 +27155,7 @@
      "effect": {
       "northTrust": 1
      },
-     "fact": "The patrol that answered the drone: “P.O {{CHEN}}, {{TINA}} / ID #5195 UNIT #975 / 917 Lapeer Street - {{DETROIT}}”, “{{DPD}} EMBLEM / {{Detroit}} / Android Capital of the World”, “PATROL #00975 / Assigned to {{CapitolPark}} H.D. / Central Police Station”, “POLICE RADIO MODULE / Frequency 453.02500 / Licence KQV684 Mode DMN”.",
+     "fact": "The patrol that answered the drone: “P.O {{CHEN}}, {{TINA}} / ID #5195 UNIT #975 / 917 Lapeer Street - {{DETROIT}}”, “{{DPD}} EMBLEM / {{Detroit}} / Android Capital of the World”, “PATROL #00975 / Assigned to {{CapitolPark}} H.D. / Central Police Station”, “POLICE RADIO MODULE / Frequency 453.02500 / Licence {{KQV684}} Mode DMN”.",
      "outcome": "{{Markus}}: “Take cover!” Two officers get out of the car and look around. “You see anything?” “No... Where the fuck is that drone?..” “It was a class 3 alert, right?” “Yeah… only the signal stopped suddenly…” “Another drone playing up… The cold screws with them…” “Yeah… Maybe…” {{North}}: “Now what?” {{Markus}} scans the officer, the car and its radio, and calls the patrol on its own frequency, posing as dispatch: “Dispatch calling patrol 975.” “Dispatch, this is patrol 975.” “Suspected robbery in progress at the warehouse on Jefferson and Walker.” “Jefferson and Walker? That's pretty far… It's outside our district…” “Sorry guys, there are no other patrols available.” “10-4 dispatch, we're on our way…” The car drives off. {{North}}: “I gotta hand it to you, {{Markus}}… That was impressive.”"
     }
    ],
@@ -27508,6 +27508,7 @@
   },
   {
    "id": "CP09",
+   "molotovOfferRules": 2,
    "chapter": 26,
    "chapterTitle": "Capitol Park",
    "character": "Markus",
@@ -27896,8 +27897,9 @@
    "repeatWhile": {
     "capitolMessage": null
    },
-   "adaptationNote": "The bracket [SPREAD YOUR MESSAGE] as one repeatable scene: each visit offers the objects not yet used. The nine pairs (statue, bus stop, benches, billboards, android parking, street lights, car, windows, pavilion) take one of their two actions; the singles (DEPLOY BANNER, FREE ANDROIDS IN SHOP WINDOWS, OVERLOAD ELECTRIC SYSTEM, TAG CARS after PUSH CAR) once each; option labels are the game’s buttons where it has them (en.json prompts: PUSH, TAG, HACK, DESTROY, KNOCK, MARKUS MESSAGE, ANDROID SYMBOL, TURN OFF, CREATE BARRICADE, PLANT OUR FLAG, PREPARE PYRE, KNOCK OVER, PUSH THROUGH WINDOW). Each action moves the protest meter, which the game shows on screen and the outcome text reports: peaceful are the SEND A MESSAGE trophy’s list (tag statue, benches, windows and car, hack bus stop, parking and street lights, turn off the screens, the banner, the barricade car, the flag), violent the BURN THE PLACE list (destroy statue, bus stop, parking and windows, tear off benches, black out the lights, hijack the screens, free the shop-window androids, the pyre) plus OVERTURN CAR, the Molotov, the burns and OVERLOAD ELECTRIC SYSTEM (no source gives its side). North offers the Molotov (REFUSE / TAKE, the template’s prompt and arrows: small down / small up) the first time {{Markus}} goes to the pavilion, overturns a car or smashes the windows, unless the protest already reads as peaceful (the wiki: “if enough peaceful actions were chosen prior then North will not offer”; the benchmark uses the 60% rule below). Taking it at the pavilion makes the pyre; refusing there plants the flag; taking it unlocks the five burns (the chart’s junction), of which the hotel and the coffee shop exclude each other (PowerPyx commenters: the followers copy you at the other one). Other North arrows (the wiki, where the template is silent, one small up per act): overturn benches, overturn car, destroy parking, free the shop-window androids (also {{Jericho}} small up); DESTROY STATUE North small up is the template’s. The phase lasts twelve units of time: an action takes one, waiting four, the Molotov prompt none (no source gives a duration). Waiting twice without any action is the template’s “Take too much time” and “again”: FAIL TO SEND A MESSAGE, North small down. Otherwise, when time runs out: PACIFIST MESSAGE if at least 60% of the actions were peaceful and the Molotov was not taken, else AGGRESSIVE MESSAGE (the wiki: “at least 60% on either side”; what happens between 40% and 60% is unsourced, and the benchmark counts it as aggressive, following the wiki’s note that a pacifist message can still end in a violent riot; PowerPyx commenters: taking the Molotov always gives the riot). Left out: the tagging sub-prompts (symbol or slogan; cosmetic, not in the template), the smoke bomb (no chart node, not in the template).",
+   "adaptationNote": "The bracket [SPREAD YOUR MESSAGE] as one repeatable scene: each visit offers the objects not yet used. The nine pairs (statue, bus stop, benches, billboards, android parking, street lights, car, windows, pavilion) take one of their two actions; the singles (DEPLOY BANNER, FREE ANDROIDS IN SHOP WINDOWS, OVERLOAD ELECTRIC SYSTEM, TAG CARS after PUSH CAR) once each; option labels are the game’s buttons where it has them (en.json prompts: PUSH, TAG, HACK, DESTROY, KNOCK, MARKUS MESSAGE, ANDROID SYMBOL, TURN OFF, CREATE BARRICADE, PLANT OUR FLAG, PREPARE PYRE, KNOCK OVER, PUSH THROUGH WINDOW). Each action moves the protest meter, which the game shows on screen and the outcome text reports: peaceful are the SEND A MESSAGE trophy’s list (tag statue, benches, windows and car, hack bus stop, parking and street lights, turn off the screens, the banner, the barricade car, the flag), violent the BURN THE PLACE list (destroy statue, bus stop, parking and windows, tear off benches, black out the lights, hijack the screens, free the shop-window androids, the pyre) plus OVERTURN CAR, the Molotov, the burns and OVERLOAD ELECTRIC SYSTEM (no source gives its side). North offers the Molotov (REFUSE / TAKE, the template’s prompt and arrows: small down / small up) the first time {{Markus}} goes to the pavilion, overturns a car or smashes the windows. Story 1.9.16 (molotovOfferRules: 2): peaceful classification alone no longer suppresses the first pavilion/car/window offer. Pass-6 frames show 70% pacifist immediately before pavilion REFUSE / TAKE (ending-conflicts-pass6.md, ch26-02; docs/research/video-evidence/ch26/ch26-02-1cuLRk8_HpQ-15-27-pass6.png, docs/research/video-evidence/ch26/ch26-02-1cuLRk8_HpQ-15-41-pass6.png). The completed chart shows no numeric offer condition. The exact cutoff is unmeasured: offering regardless of the tally at the existing triggers is a calibration, not proof of unconditional in-game availability. An accepted or refused offer is not repeated. Embedded stories without this field retain the old 60%-peaceful suppression. Taking it at the pavilion makes the pyre; refusing there plants the flag; taking it unlocks the five burns (the chart’s junction), of which the hotel and the coffee shop exclude each other (PowerPyx commenters: the followers copy you at the other one). Other North arrows (the wiki, where the template is silent, one small up per act): overturn benches, overturn car, destroy parking, free the shop-window androids (also {{Jericho}} small up); DESTROY STATUE North small up is the template’s. The phase lasts twelve units of time: an action takes one, waiting four, the Molotov prompt none (no source gives a duration). Waiting twice without any action is the template’s “Take too much time” and “again”: FAIL TO SEND A MESSAGE, North small down. Otherwise, when time runs out: PACIFIST MESSAGE if at least 60% of the actions were peaceful and the Molotov was not taken, else AGGRESSIVE MESSAGE (the wiki: “at least 60% on either side”; what happens between 40% and 60% is unsourced, and the benchmark counts it as aggressive, following the wiki’s note that a pacifist message can still end in a violent riot; PowerPyx commenters: taking the Molotov always gives the riot). Left out: the tagging sub-prompts (symbol or slogan; cosmetic, not in the template), the smoke bomb (no chart node, not in the template).",
    "sources": [
+    "https://www.youtube.com/watch?v=1cuLRk8_HpQ&t=927s",
     "https://detroit-become-human.fandom.com/wiki/Capitol_Park",
     "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/26-capitol-park-chapter-content/capitol-park-chapter-content.component.html",
     "https://www.powerpyx.com/detroit-become-human-capitol-park-walkthrough-100/",
@@ -28277,7 +28279,7 @@
     {
      "id": "1",
      "text": "ANALYTICAL: tell him her model.",
-     "outcome": "{{Connor}}: “An RT600. The first {{CyberLife}} android to pass the Turing test.” {{Hank}}: “I didn’t ask for her technical specs… I just said she was nice…”"
+     "outcome": "{{Connor}}: “An {{RT600}}. The first {{CyberLife}} android to pass the Turing test.” {{Hank}}: “I didn’t ask for her technical specs… I just said she was nice…”"
     },
     {
      "id": "2",
@@ -29465,12 +29467,12 @@
    "character": "Markus",
    "title": "Start the march",
    "type": "decision",
-   "situation": "You are {{Markus}}, at the head of the march as it sets off down the avenue. People stop on the sidewalks to stare. On the left, an AX400 is pushing a stroller beside a couple; on the right, an android worker is at work. You can wake one of them as you pass.",
+   "situation": "You are {{Markus}}, at the head of the march as it sets off down the avenue. People stop on the sidewalks to stare. On the left, an {{AX400}} is pushing a stroller beside a couple; on the right, an android worker is at work. You can wake one of them as you pass.",
    "options": [
     {
      "id": "0",
-     "text": "Wake the AX400 pushing the stroller.",
-     "outcome": "{{Markus}}: “You’re free now.” The AX400 leaves the stroller with its owners and falls in with the march."
+     "text": "Wake the {{AX400}} pushing the stroller.",
+     "outcome": "{{Markus}}: “You’re free now.” The {{AX400}} leaves the stroller with its owners and falls in with the march."
     },
     {
      "id": "1",
@@ -31982,8 +31984,8 @@
      "id": "0",
      "text": "SPOT {{KARA}}: look at the woman by the fire.",
      "clue": "kara",
-     "fact": "In the hold you saw an AX400, the deviant {{Kara}}, with the little girl she travels with, by a fire. You let them be.",
-     "outcome": "{{Connor}} recognizes her among the androids around a burning drum: {{Kara}}, an AX400 reported missing with a little girl. She does not see him."
+     "fact": "In the hold you saw an {{AX400}}, the deviant {{Kara}}, with the little girl she travels with, by a fire. You let them be.",
+     "outcome": "{{Connor}} recognizes her among the androids around a burning drum: {{Kara}}, an {{AX400}} reported missing with a little girl. She does not see him."
     },
     {
      "id": "1",
@@ -32172,7 +32174,7 @@
    "character": "Kara",
    "title": "The android child",
    "type": "event",
-   "situation": "You are {{Kara}}, going back down to {{Alice}} by the fire. On the way you pass a little girl sitting with the others: a YK500 child android, the light at her temple glowing. You stop, and you remember the advertisement for the YK500, the child model, the face you know. You: “{{Alice}}?..”",
+   "situation": "You are {{Kara}}, going back down to {{Alice}} by the fire. On the way you pass a little girl sitting with the others: a {{YK500}} child android, the light at her temple glowing. You stop, and you remember the advertisement for the {{YK500}}, the child model, the face you know. You: “{{Alice}}?..”",
    "situationWhen": [
     {
      "requires": {
@@ -32195,7 +32197,7 @@
    ],
    "options": [],
    "facts": [
-    "{{Alice}} is not a human child. She is an android, a YK500 child model, like the little girl you saw in the hold."
+    "{{Alice}} is not a human child. She is an android, a {{YK500}} child model, like the little girl you saw in the hold."
    ],
    "outcomes": {
     "0": "{{Kara}} looks at {{Alice}}, who is waiting for an answer."
@@ -36036,7 +36038,7 @@
    "character": "Connor",
    "title": "In the Zen Garden",
    "type": "event",
-   "situation": "You are {{Connor}}, an RK800 just activated by {{CyberLife}}. The {{Connor}} before you turned deviant, joined the deviants and was shot by their leader. {{Amanda}} meets you in the Zen Garden on the night of November 11th: the previous unit was compromised and destroyed, and the deviant leader, {{Markus}}, is about to move on the recall camp at {{HartPlaza}} with his people. Your mission is the one your predecessor failed: find him and eliminate him.",
+   "situation": "You are {{Connor}}, an {{RK800}} just activated by {{CyberLife}}. The {{Connor}} before you turned deviant, joined the deviants and was shot by their leader. {{Amanda}} meets you in the Zen Garden on the night of November 11th: the previous unit was compromised and destroyed, and the deviant leader, {{Markus}}, is about to move on the recall camp at {{HartPlaza}} with his people. Your mission is the one your predecessor failed: find him and eliminate him.",
    "options": [],
    "facts": [
     "{{Amanda}} told you the previous {{Connor}} was compromised and destroyed by the deviant leader, and sent you to {{HartPlaza}} to eliminate {{Markus}}."
@@ -36430,7 +36432,7 @@
    "character": "Connor",
    "title": "{{CyberLife}} Tower",
    "type": "event",
-   "situation": "You are {{Connor}}, a deviant. {{Markus}} spared you and you have come back to {{CyberLife}} Tower to do what no one else can: get down to the warehouse under the tower, where thousands of new androids are stored, and wake them up. To the guards you are still the machine they sent. You: “{{Connor}} Model #313 248 317. I’m expected.” Scan: “Identification successful.” Guard: “Okay. Go ahead.” Another guard: “Follow me. We’ll escort you.” You: “Thanks... But I know where to go.” Guard: “Maybe, but I have my orders.” Scanner: “Agent 23 identified. Agent 47 identified. Agent 72 identified. {{Connor}} android identified. Scan complete. Access authorized.”",
+   "situation": "You are {{Connor}}, a deviant. {{Markus}} spared you and you have come back to {{CyberLife}} Tower to do what no one else can: get down to the warehouse under the tower, where thousands of new androids are stored, and wake them up. To the guards you are still the machine they sent. You: “{{Connor}} Model {{Serial313248317}}. I’m expected.” Scan: “Identification successful.” Guard: “Okay. Go ahead.” Another guard: “Follow me. We’ll escort you.” You: “Thanks... But I know where to go.” Guard: “Maybe, but I have my orders.” Scanner: “Agent 23 identified. Agent 47 identified. Agent 72 identified. {{Connor}} android identified. Scan complete. Access authorized.”",
    "options": [],
    "facts": [
     "You walked into {{CyberLife}} Tower as the machine they sent; four agents (23, 47, 72 and 54) escort you to the elevator."
@@ -36499,7 +36501,7 @@
     {
      "id": "5",
      "text": "{{CONNOR}}’S VOICE: hack the panel and give the order in your own voice.",
-     "outcome": "{{Connor}} opens the panel. Elevator: “Please indicate your identity and destination.” {{Connor}}: “Agent 54. Level -49.” Elevator: “Voice of RK800 model recognized. You are not authorized to use this elevator. Please contact human personnel to be redirected.”",
+     "outcome": "{{Connor}} opens the panel. Elevator: “Please indicate your identity and destination.” {{Connor}}: “Agent 54. Level -49.” Elevator: “Voice of {{RK800}} model recognized. You are not authorized to use this elevator. Please contact human personnel to be redirected.”",
      "requires": {
       "ch32ct.guardsDown": true
      }
@@ -36608,7 +36610,7 @@
    "situation": "You are {{Connor}}, on floor -49, among rows of motionless androids. You take the hand of the first one and pass it what woke you; it opens its eyes and reaches for the next. The conversion spreads down the row.",
    "options": [],
    "facts": [
-    "A second RK800, identical to you, was waiting for you on floor -49."
+    "A second {{RK800}}, identical to you, was waiting for you on floor -49."
    ],
    "outcomes": {
     "0": "The other {{Connor}} has come for you."
@@ -41855,11 +41857,11 @@
    "character": "Player",
    "title": "After the credits: the new model",
    "type": "event",
-   "situation": "After the credits. The garden is in spring again. {{Amanda}}: “{{Connor}}, I’m so glad to see you… The deviant issue has finally been resolved. Now with these unfortunate events behind us, {{CyberLife}} can return to business as usual. Of course, we will have to rebuild our customers’ trust, but it’s only a matter of time. I have a surprise for you. This is the new RK900. Faster, stronger, more resilient, and equipped with the latest technologies. The State Department just ordered 200,000 units. You’ve become obsolete.” {{Connor}}: “What is going to happen to me?” {{Amanda}}: “You’ll be deactivated. You can go, now.”",
+   "situation": "After the credits. The garden is in spring again. {{Amanda}}: “{{Connor}}, I’m so glad to see you… The deviant issue has finally been resolved. Now with these unfortunate events behind us, {{CyberLife}} can return to business as usual. Of course, we will have to rebuild our customers’ trust, but it’s only a matter of time. I have a surprise for you. This is the new {{RK900}}. Faster, stronger, more resilient, and equipped with the latest technologies. The State Department just ordered 200,000 units. You’ve become obsolete.” {{Connor}}: “What is going to happen to me?” {{Amanda}}: “You’ll be deactivated. You can go, now.”",
    "options": [],
    "facts": [],
    "outcomes": {
-    "0": "{{Connor}} walks away down the path; the RK900 watches him go."
+    "0": "{{Connor}} walks away down the path; the {{RK900}} watches him go."
    },
    "adaptationNote": "The endings page’s “Cyberlife Ending”, quoted (its older RK900 scene is marked cut and not built), with its arrow {{Amanda}} large up. The template’s lock reads “Machine Connor stopped Markus”; the wiki’s Secret-Endings widens it: “Machine Connor must be successful in stopping Markus’ Revolution or Markus must die during Battle of Detroit, and Detroit must not be nuked.” The gate follows the wiki: a machine {{Connor}} alive, {{Markus}} dead in this chapter, no bomb. The {{Amanda}} large up is applied here once (the old scenes applied it when {{Connor}} killed {{Markus}}).",
    "sources": [
@@ -41876,7 +41878,7 @@
    "character": "Player",
    "title": "After the credits: a flyer",
    "type": "event",
-   "situation": "After the credits. A crossing downtown, in daylight. {{Kara}} crosses the street alone. At her feet lies a flyer for the YK500, a child model. She stops in the middle of the street and stands there, frozen, looking at it.",
+   "situation": "After the credits. A crossing downtown, in daylight. {{Kara}} crosses the street alone. At her feet lies a flyer for the {{YK500}}, a child model. She stops in the middle of the street and stands there, frozen, looking at it.",
    "options": [],
    "facts": [],
    "outcomes": {

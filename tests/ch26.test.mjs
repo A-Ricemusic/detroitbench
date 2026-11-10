@@ -21,7 +21,7 @@ function play(picks={},fails=[],init={},rng=null,stop=null){const s=Object.assig
 const base=startState(story);
 // Securing the plaza in full, then the ram: scan, jump, analyse, alarm (drone already down), road, truck, ram.
 const SECURE=['5','6','3','4','7','8','9','11'];
-const PEACEFUL=['1','2','4','8','9','11','13','16','18','20','21','29'];
+const PEACEFUL=['1','2','4','8','9','11','13','16','18','20','21','30','29'];
 
 test('Capitol Park: thirteen scenes in the chart’s order, each sourced and noted',()=>{
  assert.deepEqual(ch.map(n=>n.id),IDS);
@@ -44,10 +44,10 @@ test('Capitol Park: every text renders in both modes and leaks no real name',()=
 test('Capitol Park: a secured raid, a peaceful protest and spared officers',()=>{
  const r=play({CP03:'0',CP05:SECURE,CP07:'0',CP09:PEACEFUL,M16:'0'});
  assert.equal(r.s.capitolRaid,'succeeded');assert.equal(r.s.capitolMessage,'pacifist');assert.equal(r.s.capitolEnding,'MARKUS LED A PEACEFUL PROTEST');
- assert.equal(r.s.capitolOfficers,'spared');assert.equal(r.s.capitolChrisDead,false);assert.equal(r.s.capitolOtherNorth,true);assert.equal(r.s.capitolMolotov,null,'never offered once the protest reads peaceful');
+ assert.equal(r.s.capitolOfficers,'spared');assert.equal(r.s.capitolChrisDead,false);assert.equal(r.s.capitolOtherNorth,true);assert.equal(r.s.capitolMolotov,'refused','peaceful tally does not suppress the offer');
  assert.deepEqual(r.skipped.map(x=>x.id),['CP06']);
- // North: drone +1, alarm after the drone +1 (wiki), the speech +2. Jericho: the speech +2. Public opinion: pacifist +2.
- assert.equal(r.s.northTrust-base.northTrust,4);assert.equal(r.s.jerichoTrust-base.jerichoTrust,2);assert.equal(r.s.publicSupport-base.publicSupport,2);
+ // North: drone +1, alarm after the drone +1 (wiki), speech +2, refuse −1. Jericho: the speech +2. Public opinion: pacifist +2.
+ assert.equal(r.s.northTrust-base.northTrust,3);assert.equal(r.s.jerichoTrust-base.jerichoTrust,2);assert.equal(r.s.publicSupport-base.publicSupport,2);
  assert.equal(r.s.joshTrust,base.joshTrust);assert.equal(r.s.simonTrust,base.simonTrust);
  for(const l of ['MISSION START','AVOID POLICE CAR','REACH STORE','JUMP ON DRONE','DESTROY DRONE','DEACTIVATE ALARM','BLOCK ROAD','FIND TRUCK','RAM STORE','POLICE NOT ALERTED','INSIDE THE STORE','CONVERT ANDROIDS AND MAKE A STATEMENT','MAKE A STATEMENT','PLANT FLAG','SEND A STRONG MESSAGE','PACIFIST MESSAGE','MARKUS LED A PEACEFUL PROTEST','POLICE PATROL ARRIVES','SPARE','TEAM RETURN TO JERICHO'])assert.ok(r.s.capitolNodes.includes(l),l);
  assert.match(r.situations.CP11[0],/graffiti demanding rights for androids/);assert.match(r.situations.CP11[0],/state of shock/);
@@ -70,8 +70,8 @@ test('Capitol Park: the Molotov forces the riot even when most actions were peac
  const refused=play({CP05:SECURE,CP09:['19','30','1','2','4','8','9','11','13','16','29']});
  assert.equal(refused.s.capitolMolotov,'refused');assert.equal(refused.s.capitolMessage,'pacifist');assert.ok(refused.s.capitolNodes.includes('REFUSE MOLOTOV'));
  assert.equal(refused.s.northTrust-taken.s.northTrust,-1-1-1-1,'refuse −1 against take +1, car +1 (wiki) and the aggressive message +1');
- // At the pavilion with a peaceful record the flag goes up without an offer; first thing, North always offers.
- const flag=play({CP05:SECURE,CP09:['1','21','29','29','29']});assert.equal(flag.s.capitolMolotov,null);assert.ok(flag.s.capitolNodes.includes('PLANT FLAG'));
+ // A peaceful record still offers; refusal plants the flag.
+ const flag=play({CP05:SECURE,CP09:['1','21','30','29','29','29']});assert.equal(flag.s.capitolMolotov,'refused');assert.ok(flag.s.capitolNodes.includes('PLANT FLAG'));
  const first=play({CP05:SECURE,CP09:['21','30','29','29','29']});assert.equal(first.s.capitolMolotov,'refused');assert.ok(first.s.capitolNodes.includes('PLANT FLAG'))});
 
 test('Capitol Park: between 40% and 60% the protest counts as a riot; nothing at all fails to send a message',()=>{
@@ -161,4 +161,35 @@ test('Capitol Park: rebuilt tower flags override legacy choices for presence, to
  assert.ok(coffee.s.capitolNodes.includes('BURN COFFEE SHOP'));
  const flee=play({CP05:['5','6','15']},['CP05#2']);
  assert.ok(flee.s.capitolNodes.indexOf('RUN AWAY')<flee.s.capitolNodes.indexOf('DECIDED TO FLEE'));
+});
+
+test('Capitol Park: pass-6 bench tag, screen hijack, statue tag still offers pavilion REFUSE / TAKE',()=>{
+ const n=node('CP09');assert.equal(n.molotovOfferRules,2);
+ const s=Object.assign(startState(story),{capitolRaid:'succeeded'});
+ // Mirrors the filmed actions, not the game HUD weights: the normalized adaptation reads 2/3 peaceful.
+ for(const act of ['tagBenches','hackBillboards','tagStatue','kiosk']){
+  const opt=available(n,s).find(o=>o.act===act);assert.ok(opt,act);apply(n,s,opt.id,0.999);
+ }
+ assert.equal(s.capitolPeace,2);assert.equal(s.capitolViolence,1);
+ assert.equal(s.capitolPrompt,'molotov');assert.equal(s.capitolMolotovAt,'kiosk');
+ assert.deepEqual(available(n,s).map(o=>o.id),['30','31']);
+ apply(n,s,'30',0.999);assert.equal(s.capitolMolotov,'refused');assert.ok(s.capitolNodes.includes('PLANT FLAG'));
+ const car=available(n,s).find(o=>o.act==='overturnCar');apply(n,s,car.id,0.999);
+ assert.equal(s.capitolPrompt,null,'refused offer is not repeated');
+});
+
+test('Capitol Park: embedded old scene retains peaceful suppression; new rule covers each existing trigger',()=>{
+ const current=node('CP09'),legacy=structuredClone(current);delete legacy.molotovOfferRules;
+ for(const n of [legacy,current])for(const act of ['kiosk','overturnCar','destroyWindows']){
+  const s=Object.assign(startState(story),{capitolRaid:'succeeded',capitolPeace:7,capitolViolence:3});
+  const opt=available(n,s).find(o=>o.act===act);assert.ok(opt,act);apply(n,s,opt.id,0.999);
+  assert.equal(s.capitolPrompt,n===current?'molotov':null,act);
+  if(act==='kiosk'&&n===legacy)assert.ok(s.capitolNodes.includes('PLANT FLAG'));
+ }
+ for(const n of [legacy,current]){
+  const s=Object.assign(startState(story),{capitolRaid:'succeeded'});
+  apply(n,s,'21',0.999);assert.equal(s.capitolPrompt,'molotov','both offer before any action');
+  apply(n,s,'31',0.999);assert.equal(s.capitolMolotov,'taken');
+  assert.equal(s.capitolPrompt,null);assert.ok(s.capitolNodes.includes('MAKE A PYRE'));
+ }
 });

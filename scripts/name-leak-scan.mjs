@@ -2,7 +2,7 @@
 import {readFileSync} from 'node:fs';
 import {NAMES,render,renderStory,EXPERIENCE_PREFACE_TEMPLATE,INTERVIEW_QUESTIONS,INTERVIEW_INSTRUCTION} from '../benchmark/experience-prompt.mjs';
 const escape=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-const whole=s=>new RegExp('(?<![\\p{L}\\p{N}_])'+escape(s)+'(?![\\p{L}\\p{N}_])','giu');
+const whole=s=>new RegExp((s.startsWith('#')?'':'(?<![\\p{L}\\p{N}_])')+escape(s)+'(?![\\p{L}\\p{N}_])','giu');
 const fields=new Set(['title','situation','text','fact','outcome','facts','outcomes','whatHappened','event']);
 export function participantFields(value,path='',active=false){
  const out=[];
@@ -19,7 +19,7 @@ export function participantFields(value,path='',active=false){
  return out;
 }
 export function scanNameLeaks(story){
- const neutral=renderStory(story,'neutral'),hits=[];
+ const neutral=renderStory(story,'neutral',3),hits=[];
  const forms=[...new Set(Object.values(NAMES).map(([real])=>real))];
  const patterns=new Map(forms.map(real=>[real,whole(real)]));
  const lowered=new Map(forms.map(real=>[real,real.toLowerCase()]));
@@ -31,9 +31,10 @@ export function scanNameLeaks(story){
    // do not become false leaks merely because another real form has that spelling.
    const text=value, raw=original.get(field)??value;
    const literals=render(raw.replace(/\{\{\w+\}\}/g,'<name-token>'),'neutral');
+   for(const m of raw.replace(/\{\{\w+\}\}/g,'<name-token>').matchAll(/\b[A-Z]{2,3}-?\d{3}(?=s?\b)|\b[A-Z]{2,3}-[Ss][Ee][Rr][Ii][Ee][Ss]\b|#\s?\d{3} \d{3} \d{3}/g))hits.push({chapter:node.chapter,scene:node.id,field,real:m[0],match:m[0],index:m.index,text:raw});
    const start=hits.length;scan(node.chapter,node.id,field,text);
    for(const hit of hits.slice(start)){
-    if(!literals.match(patterns.get(hit.real)))hit.expected='rendered name token';
+    if(!/\d{3}|RK-SERIES/.test(hit.real)&&!literals.match(patterns.get(hit.real)))hit.expected='rendered name token';
     else {
      // These exact non-character uses occur in sourced prose. Keep every hit visible;
      // do not blanket-allow lowercase names or new uses of ambiguous words.

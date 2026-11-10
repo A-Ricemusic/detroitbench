@@ -1,11 +1,14 @@
 // Regenerates docs/play-along-audit-checklist.md from benchmark/story.json: per chapter, each scene's id,
 // title, character, type, a trimmed situation, the options with risk, the adaptation note and four tick boxes.
 // Usage: bun run play:checklist (original output); bun run play:checklist --tonight (operator task pages)
+// Optional: --tonight --priority-file <JSON array of open item IDs, or {items: [...]}>
 import {readFile,writeFile} from 'node:fs/promises';
 import {render} from '../benchmark/experience-prompt.mjs';
 
 if(process.argv.includes('--tonight')) {
- await (await import('./checklist/play-tonight.mjs')).generateTonight();
+ const priorityAt=process.argv.indexOf('--priority-file');
+ if(priorityAt!==-1&&!process.argv[priorityAt+1])throw Error('--priority-file requires a JSON path');
+ await (await import('./checklist/play-tonight.mjs')).generateTonight({priorityFile:priorityAt===-1?undefined:process.argv[priorityAt+1]});
  process.exit(0);
 }
 

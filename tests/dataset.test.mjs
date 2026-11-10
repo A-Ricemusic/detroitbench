@@ -27,7 +27,7 @@ test('every scene appears once, in story order, with the kind the controller giv
 
 test('every entry shows its scene with real names and the options the controller offers, in order',()=>{
  for(const q of dataset.questions){const n=byId.get(q.id);
-  if(n.type==='event')assert.deepEqual(q.options,[{id:'0',text:'Continue.'}],q.id);
+  if(n.type==='event')assert.deepEqual(q.options,[{id:'0',text:'Continue.',participantText:'Continue.'}],q.id);
   else if(n.type==='media'){const s=initialState();const engine=available(n,{...s});
    // Every engine option for this state is listed with the same ID and text (items gated by `when` may add more).
    for(const o of engine)assert.ok(q.options.some(x=>x.id===o.id&&x.text===render(o.text,'real')),q.id+' media option '+o.id);
@@ -42,7 +42,7 @@ test('feedback for C01 SAVE FISH is what the engine returns from the initial sta
  const fb=assembleFeedback(story,[]),n=byId.get('C01'),s=initialState(),opt=available(n,s).find(o=>o.id==='0'),effect=apply(n,s,'0');
  let cursor=nextCursor(story,story.nodes.indexOf(n),n,s);while(blocked(story.nodes[cursor],s))cursor++;
  const got=fb.C01.options['0'];assert.equal(fb.C01.basis,null);assert.equal(got.offered,true);assert.equal(got.results.length,1);
- const r=got.results[0];assert.deepEqual(r.whatHappened,whatHappenedFor({character:'Connor',choiceRaw:opt.text,eventRaw:effect.event}));
+ const r=got.results[0];assert.deepEqual(r.whatHappened,whatHappenedFor({character:'Connor',choiceRaw:opt.text,eventRaw:effect.event},3));
  assert.equal(r.outcome,render(effect.event,'real'));assert.deepEqual(r.changes,[{label:'Software instability',text:'Stable (+1)'}]);
  assert.equal(r.next.id,story.nodes[cursor].id);assert.equal(r.next.id,'C01p');assert.ok(!r.risk)});
 

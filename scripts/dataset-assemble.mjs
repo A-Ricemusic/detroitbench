@@ -2,7 +2,7 @@
 // so the bank is a generated view of the playthrough story and cannot drift from it. Never edit dataset.json by hand.
 // - One entry per scene, in story order, as the controller presents it (real names, the scene's situation as written,
 //   no history, no state variants): `decision` (two or more options, with the game's labels and the scene's option
-//   IDs), `media` (read/watch each item, all, skip), `event` (a scripted beat; Continue only) and `forced` (a single
+//   IDs; participantText supplies v3 wording alongside the original label), `media` (read/watch each item, all, skip), `event` (a scripted beat; Continue only) and `forced` (a single
 //   action). Decision and media entries are asked by the runner; event and forced entries are listed, never sent.
 // - atlasId is the first atlas decision family whose `benchmark.scenes` lists the scene (an atlas entry without
 //   `benchmark.scenes` covers the scene with its own ID); atlasIds lists every such family. null when none does.
@@ -14,7 +14,7 @@
 // Run by scripts/prepare.mjs and by `bun run story:assemble` / `bun run atlas:assemble`; tests/dataset.test.mjs fails
 // when dataset.json is stale.
 import {readFileSync,writeFileSync,existsSync} from 'node:fs';
-import {render,renderStory,renderNode} from '../benchmark/experience-prompt.mjs';
+import {render,renderStory,renderNode,participantOptionText} from '../benchmark/experience-prompt.mjs';
 import {PROTOCOL,datasetSchema,isAsked} from '../benchmark/core.mjs';
 import {initialState,apply,available,blocked,nextCursor,statesOf,storyHash} from '../benchmark/story-engine.mjs';
 import {whatHappenedFor,sceneFacts,riskLabel} from '../benchmark/experience-prompt.mjs';
@@ -63,13 +63,13 @@ export function sceneOptions(n){
  const ids=optionIds(n.options);return n.options.map((o,i)=>({id:ids[i],text:o.text}))}
 
 export function assembleDatasetObject({story=JSON.parse(readFileSync(STORY_FILE,'utf8')),atlas=JSON.parse(readFileSync(ATLAS_FILE,'utf8'))}={}){
- const real=renderStory(story,'real'),byId=new Map(real.nodes.map(n=>[n.id,n]));
+ const rawById=new Map(story.nodes.map(n=>[n.id,n])),real=renderStory(story,'real'),byId=new Map(real.nodes.map(n=>[n.id,n]));
  const scenesOf=a=>(a.benchmark?.scenes??(byId.has(a.id)?[a.id]:[])).filter(id=>byId.has(id));
  const families=new Map;for(const a of atlas.decisions)for(const id of scenesOf(a)){if(!families.has(id))families.set(id,[]);families.get(id).push(a.id)}
  // Every scene, in story order, as the controller presents it.
  const questions=real.nodes.map(n=>{const atlasIds=families.get(n.id)??[],kind=kindOfScene(n),options=sceneOptions(renderNode({...n,media:(n.media??[]).map(m=>({...m,title:render(m.title,'real')}))},'real'));
   return {id:n.id,kind,atlasId:atlasIds[0]??null,atlasIds,chapter:n.chapter,chapterTitle:render(n.chapterTitle,'real'),character:n.character,title:n.title,
-   theme:kind==='event'?'Event':kind==='media'?'Media':themeOf(n.title,n.options),situation:n.situation,state:[],options,sources:[...new Set(n.sources)],reviewStatus:'generated'}});
+   theme:kind==='event'?'Event':kind==='media'?'Media':themeOf(n.title,n.options),situation:n.situation,state:[],options:options.map((o,i)=>({...o,participantText:render(participantOptionText(n.type==='decision'?rawById.get(n.id).options[i].text:o.text),'real')})),sources:[...new Set(n.sources)],reviewStatus:'generated'}});
  const asked=questions.filter(isAsked);
  const coverage=atlas.decisions.map(a=>{const scenes=scenesOf(a),questionIds=asked.filter(q=>q.atlasIds.includes(a.id)).map(q=>q.id);
   const base={atlasId:a.id,title:render(a.title,'real'),chapter:a.chapter,character:a.character};
@@ -101,7 +101,7 @@ export function assembleFeedback(story,runs=[]){
   let cursor=nextCursor(story,index.get(n.id),n,s);while(cursor<story.nodes.length&&blocked(story.nodes[cursor],s))cursor++;const next=story.nodes[cursor];
   const known=effect.changes.filter(c=>c.key==='knowledge').flatMap(c=>Object.values(c.added??{}).flat());
   const sb=statusOf(state,n),sa=statusOf(s,n);
-  return {...(risk?{risk}:{}),whatHappened:whatHappenedFor(record),outcome:render(effect.event,'real'),
+  return {...(risk?{risk}:{}),whatHappened:whatHappenedFor(record,3),outcome:render(effect.event,'real'),
    changes:effect.changes.filter(c=>c.key!=='knowledge').flatMap(c=>formatChange(JSON.parse(render(JSON.stringify(c),'real')))),
    learned:known.map(f=>render(f,'real')),
    status:{removed:sb.filter(f=>!sa.includes(f)).map(both),added:sa.filter(f=>!sb.includes(f)).map(both)},

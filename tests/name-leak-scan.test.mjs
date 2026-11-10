@@ -9,3 +9,9 @@ test('scanner catches uppercase labels and nested participant text, excluding re
  const nodes=[{id:'fixture',chapter:24,title:'{{Amanda}}',situation:'FIND AMANDA',options:[{text:'Continue',facts:['AMANDA'],outcome:'AMANDA'}],event:'AMANDA',outcomes:{0:'AMANDA'},whatHappened:{yourAction:'AMANDA'},adaptationNote:'AMANDA',sources:['AMANDA']}];
  expect(scanNameLeaks({nodes}).filter(h=>!h.expected).map(h=>h.field)).toEqual(['situation','options[0].facts[0]','options[0].outcome','event','outcomes.0','whatHappened.yourAction']);
 });
+
+test('scanner catches model codes, series and attached serials, but accepts registered v3 tokens',()=>{
+ const make=s=>({nodes:[{id:'models',chapter:1,title:'Models',situation:s,options:[]}]});
+ for(const literal of ['AX400','AX400s','RK800','PL-600','RK-Series','serial# 021 753 034','ZZ999'])expect(scanNameLeaks(make(literal)).some(h=>!h.expected)).toBe(true);
+ expect(scanNameLeaks(make('{{AX400}} {{RK800}} {{PLHyphen600}} {{RKSeriesTitle}} serial{{Serial021753034}}')).filter(h=>!h.expected)).toEqual([]);
+});

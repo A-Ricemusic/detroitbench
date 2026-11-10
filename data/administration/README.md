@@ -8,6 +8,7 @@ Shape of a manifest (`<cohort-name>.json`):
 {
   "protocol": "branching-3.0",
   "storyVersion": "<story.json version>",
+  "promptVersion": 3,
   "freshStart": true,
   "createdAt": "YYYY-MM-DD",
   "implementationCommit": "<git commit that administered the runs>",
@@ -28,6 +29,8 @@ Shape of a manifest (`<cohort-name>.json`):
   ]
 }
 ```
+
+`promptVersion` is `3` for new runs; v1/v2 evidence retains its stored rendering and hashes. Version 3 substitutes identifying model/serial codes and renders option wording without redundant game labels.
 
 `interview` is `"v2"` for new eight-question interviews, including the recognition self-report; `"v1"` denotes the older seven-question interview (omit it for runs administered before it). The run's `interview` object holds the questions and the hash-chained answers; a run whose interview is incomplete is still listed, and `bun run check` reports it.
 

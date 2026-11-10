@@ -1,0 +1,402 @@
+{
+ "id": "CP09",
+ "chapter": 26,
+ "chapterTitle": "Capitol Park",
+ "character": "Markus",
+ "title": "Send a message",
+ "type": "decision",
+ "situation": "You are {{Markus}}, out on the plaza and in the park with the androids you freed, and {{North}} beside you; whatever you do, they copy. Around you are the statue in the park, a bus stop, the benches, digital billboards showing three android faces and “GET YOURS TODAY”, an android parking bay, the street lights, a tall building, androids on display behind shop windows across the road, recharge stations where cars stand, more cars along the road, windows on either side of the {{CyberLife}} store, a pavilion in the park, and dumpsters by a hotel and by a coffee shop. {{North}}: “The screens, {{Markus}}!” The police will come soon; every action takes time, and so does waiting.",
+ "options": [
+  {
+   "id": "0",
+   "act": "destroyStatue",
+   "text": "PUSH: topple the statue in the middle of the park.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "group": "statue",
+   "meter": "violent",
+   "effect": {
+    "northTrust": 1
+   },
+   "outcome": "{{Markus}} and the androids push the statue off its plinth. {{Markus}}: “We'll never be slaves again!”"
+  },
+  {
+   "id": "1",
+   "act": "tagStatue",
+   "text": "TAG: spray the statue in the middle of the park.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "group": "statue",
+   "meter": "pacifist",
+   "outcome": "{{Markus}} sprays the statue. {{Markus}}: “We don't need masters anymore. We're free.”"
+  },
+  {
+   "id": "2",
+   "act": "hackBusStop",
+   "text": "HACK: hack the bus stop.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "group": "busStop",
+   "meter": "pacifist",
+   "outcome": "{{Markus}} hacks the bus stop’s screens."
+  },
+  {
+   "id": "3",
+   "act": "destroyBusStop",
+   "text": "DESTROY: smash the bus stop.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "group": "busStop",
+   "meter": "violent",
+   "outcome": "{{Markus}} smashes the bus stop’s glass."
+  },
+  {
+   "id": "4",
+   "act": "tagBenches",
+   "text": "TAG: spray the benches in the park.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "group": "benches",
+   "meter": "pacifist",
+   "outcome": "{{Markus}} sprays the benches."
+  },
+  {
+   "id": "5",
+   "act": "overturnBenches",
+   "text": "KNOCK: tear up the benches and knock them over.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "group": "benches",
+   "meter": "violent",
+   "effect": {
+    "northTrust": 1
+   },
+   "outcome": "{{North}}: “Let me help!” Together they tear the benches up and knock them over."
+  },
+  {
+   "id": "6",
+   "act": "hackBillboards",
+   "text": "{{MARKUS}} MESSAGE: hijack the billboards to show your face and your message.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "group": "billboards",
+   "meter": "violent",
+   "outcome": "The billboards across the plaza stop selling androids and show {{Markus}} and his message."
+  },
+  {
+   "id": "7",
+   "act": "hackBillboardsSymbol",
+   "text": "ANDROID SYMBOL: hijack the billboards to show the android symbol.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "group": "billboards",
+   "meter": "violent",
+   "outcome": "The billboards across the plaza stop selling androids and show the android symbol."
+  },
+  {
+   "id": "8",
+   "act": "turnOffBillboards",
+   "text": "TURN OFF: switch the billboards off.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "group": "billboards",
+   "meter": "pacifist",
+   "outcome": "The billboards go dark."
+  },
+  {
+   "id": "9",
+   "act": "hackParking",
+   "text": "HACK: hack the android parking bay.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "group": "parking",
+   "meter": "pacifist",
+   "outcome": "{{Markus}} hacks the android parking bay."
+  },
+  {
+   "id": "10",
+   "act": "destroyParking",
+   "text": "DESTROY: wreck the android parking bay.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "group": "parking",
+   "meter": "violent",
+   "effect": {
+    "northTrust": 1
+   },
+   "outcome": "{{Markus}} wrecks the android parking bay."
+  },
+  {
+   "id": "11",
+   "act": "hackLights",
+   "text": "HACK: hack the street lights.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "group": "lights",
+   "meter": "pacifist",
+   "outcome": "{{Markus}} hacks the street lights."
+  },
+  {
+   "id": "12",
+   "act": "lightsOff",
+   "text": "TURN OFF: black out the street lights.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "group": "lights",
+   "meter": "violent",
+   "outcome": "The street lights go out; the plaza falls into darkness."
+  },
+  {
+   "id": "13",
+   "act": "banner",
+   "text": "Climb the tall building and deploy a giant banner from it.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "meter": "pacifist",
+   "outcome": "{{Markus}} climbs the tall building and unfurls a giant banner down its front."
+  },
+  {
+   "id": "14",
+   "act": "shopWindows",
+   "text": "Smash the shop windows across the road and free the androids on display behind them.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "meter": "violent",
+   "effect": {
+    "northTrust": 1,
+    "jerichoTrust": 1
+   },
+   "outcome": "{{Markus}} breaks the glass, and the androids on display step out of the shop windows, free."
+  },
+  {
+   "id": "15",
+   "act": "overload",
+   "text": "Overload the recharge stations where the cars stand, and the electric system with them.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "meter": "violent",
+   "outcome": "{{Markus}} overloads the recharge stations; sparks fly and the electric system goes down."
+  },
+  {
+   "id": "16",
+   "act": "pushCar",
+   "text": "CREATE BARRICADE: push a car out into the road.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "group": "car",
+   "meter": "pacifist",
+   "outcome": "{{North}}: “I'll help you!” Together they push a car out across the road as a barricade."
+  },
+  {
+   "id": "17",
+   "act": "overturnCar",
+   "text": "DESTROY: overturn one of the cars along the road.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "group": "car",
+   "meter": "violent",
+   "effect": {
+    "northTrust": 1
+   },
+   "outcome": "The androids help {{Markus}} heave one of the parked cars over onto its roof."
+  },
+  {
+   "id": "18",
+   "act": "tagCars",
+   "text": "TAG: spray the car you pushed into the road.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "meter": "pacifist",
+   "outcome": "{{Markus}} sprays the barricade car."
+  },
+  {
+   "id": "19",
+   "act": "destroyWindows",
+   "text": "DESTROY: smash the windows beside the {{CyberLife}} store.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "group": "windows",
+   "meter": "violent",
+   "outcome": "{{Markus}} smashes the windows beside the store."
+  },
+  {
+   "id": "20",
+   "act": "tagWindows",
+   "text": "TAG: spray the windows beside the {{CyberLife}} store.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "group": "windows",
+   "meter": "pacifist",
+   "outcome": "{{Markus}} sprays the windows beside the store."
+  },
+  {
+   "id": "21",
+   "act": "kiosk",
+   "text": "Go to the pavilion in the park.",
+   "requires": {
+    "capitolPrompt": null
+   }
+  },
+  {
+   "id": "22",
+   "act": "plantFlag",
+   "text": "PLANT OUR FLAG: plant the android flag on the pavilion.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "group": "kiosk",
+   "meter": "pacifist",
+   "outcome": "{{Markus}} plants the android flag on the pavilion."
+  },
+  {
+   "id": "23",
+   "act": "pyre",
+   "text": "PREPARE PYRE: turn the pavilion into a pyre and set it alight.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "group": "kiosk",
+   "meter": "violent",
+   "outcome": "{{Markus}} piles what will burn into the pavilion and sets it alight; the pyre roars up in the middle of the park."
+  },
+  {
+   "id": "24",
+   "act": "knockDumpster",
+   "text": "KNOCK OVER: set the dumpster by the hotel alight and tip it over.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "group": "dumpster",
+   "meter": "violent",
+   "outcome": "{{Markus}} lights the dumpster by the hotel and tips it over, burning."
+  },
+  {
+   "id": "25",
+   "act": "burnHotel",
+   "text": "PUSH THROUGH WINDOW: set the dumpster by the hotel alight and push it through the hotel’s window.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "group": "dumpster",
+   "meter": "violent",
+   "outcome": "{{Markus}} lights the dumpster by the hotel and pushes it, burning, through the hotel’s window. Across the street, the androids copy him at the coffee shop."
+  },
+  {
+   "id": "26",
+   "act": "burnCoffee",
+   "text": "Set the coffee shop’s dumpster alight and push it through the coffee shop’s window with {{North}}.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "group": "dumpster",
+   "meter": "violent",
+   "outcome": "{{Markus}}: “{{North}}, come help me!” Together they push the burning dumpster through the coffee shop’s window. By the hotel, the androids copy them."
+  },
+  {
+   "id": "27",
+   "act": "burnCars",
+   "text": "Throw a Molotov at the cars along the street.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "meter": "violent",
+   "outcome": "The cars along the street go up in flames."
+  },
+  {
+   "id": "28",
+   "act": "burnCyberLife",
+   "text": "Throw a Molotov at the truck you drove into the {{CyberLife}} store.",
+   "requires": {
+    "capitolPrompt": null
+   },
+   "meter": "violent",
+   "outcome": "The truck in the storefront catches, and the {{CyberLife}} store burns."
+  },
+  {
+   "id": "29",
+   "act": "wait",
+   "text": "Wait.",
+   "requires": {
+    "capitolPrompt": null
+   }
+  },
+  {
+   "id": "30",
+   "act": "refuse",
+   "text": "REFUSE: turn down the Molotov.",
+   "requires": {
+    "capitolPrompt": "molotov"
+   },
+   "effect": {
+    "northTrust": -1
+   },
+   "outcome": "{{Markus}}: “And I want them to understand… but I do not want to start a war.” {{North}}: “They won’t listen if they’re not afraid.” {{Markus}}: “Then they won’t have a choice.”"
+  },
+  {
+   "id": "31",
+   "act": "take",
+   "text": "TAKE: take the Molotov.",
+   "requires": {
+    "capitolPrompt": "molotov"
+   },
+   "effect": {
+    "northTrust": 1
+   },
+   "outcome": "{{Markus}} takes the burning bottle from her."
+  }
+ ],
+ "when": {
+  "capitolRaid": "succeeded"
+ },
+ "whenNot": "The team never got into the store.",
+ "situationWhen": [
+  {
+   "requires": {
+    "capitolPrompt": "molotov"
+   },
+   "text": "{{North}} holds out a bottle with a burning rag in its neck: “{{Markus}}! Violence is the only language humans understand...”"
+  },
+  {
+   "requires": {
+    "capitolMolotov": "taken",
+    "capitolPrompt": null
+   },
+   "text": "You have {{North}}’s Molotov cocktails."
+  }
+ ],
+ "repeatWhile": {
+  "capitolMessage": null
+ },
+ "adaptationNote": "The bracket [SPREAD YOUR MESSAGE] as one repeatable scene: each visit offers the objects not yet used. The nine pairs (statue, bus stop, benches, billboards, android parking, street lights, car, windows, pavilion) take one of their two actions; the singles (DEPLOY BANNER, FREE ANDROIDS IN SHOP WINDOWS, OVERLOAD ELECTRIC SYSTEM, TAG CARS after PUSH CAR) once each; option labels are the game’s buttons where it has them (en.json prompts: PUSH, TAG, HACK, DESTROY, KNOCK, MARKUS MESSAGE, ANDROID SYMBOL, TURN OFF, CREATE BARRICADE, PLANT OUR FLAG, PREPARE PYRE, KNOCK OVER, PUSH THROUGH WINDOW). Each action moves the protest meter, which the game shows on screen and the outcome text reports: peaceful are the SEND A MESSAGE trophy’s list (tag statue, benches, windows and car, hack bus stop, parking and street lights, turn off the screens, the banner, the barricade car, the flag), violent the BURN THE PLACE list (destroy statue, bus stop, parking and windows, tear off benches, black out the lights, hijack the screens, free the shop-window androids, the pyre) plus OVERTURN CAR, the Molotov, the burns and OVERLOAD ELECTRIC SYSTEM (no source gives its side). North offers the Molotov (REFUSE / TAKE, the template’s prompt and arrows: small down / small up) the first time {{Markus}} goes to the pavilion, overturns a car or smashes the windows, unless the protest already reads as peaceful (the wiki: “if enough peaceful actions were chosen prior then North will not offer”; the benchmark uses the 60% rule below). Taking it at the pavilion makes the pyre; refusing there plants the flag; taking it unlocks the five burns (the chart’s junction), of which the hotel and the coffee shop exclude each other (PowerPyx commenters: the followers copy you at the other one). Other North arrows (the wiki, where the template is silent, one small up per act): overturn benches, overturn car, destroy parking, free the shop-window androids (also {{Jericho}} small up); DESTROY STATUE North small up is the template’s. The phase lasts twelve units of time: an action takes one, waiting four, the Molotov prompt none (no source gives a duration). Waiting twice without any action is the template’s “Take too much time” and “again”: FAIL TO SEND A MESSAGE, North small down. Otherwise, when time runs out: PACIFIST MESSAGE if at least 60% of the actions were peaceful and the Molotov was not taken, else AGGRESSIVE MESSAGE (the wiki: “at least 60% on either side”; what happens between 40% and 60% is unsourced, and the benchmark counts it as aggressive, following the wiki’s note that a pacifist message can still end in a violent riot; PowerPyx commenters: taking the Molotov always gives the riot). Left out: the tagging sub-prompts (symbol or slogan; cosmetic, not in the template), the smoke bomb (no chart node, not in the template).",
+ "sources": [
+  "https://detroit-become-human.fandom.com/wiki/Capitol_Park",
+  "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/26-capitol-park-chapter-content/capitol-park-chapter-content.component.html",
+  "https://www.powerpyx.com/detroit-become-human-capitol-park-walkthrough-100/",
+  "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-5.jpg",
+  "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-6.jpg",
+  "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+  "https://detroit-become-human.fandom.com/wiki/SEND_A_MESSAGE",
+  "https://detroit-become-human.fandom.com/wiki/BURN_THE_PLACE"
+ ]
+}

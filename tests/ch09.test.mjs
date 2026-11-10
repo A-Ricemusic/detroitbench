@@ -41,7 +41,7 @@ test('every chapter 9 scene has sources, a note, the game’s labels and renders
  assert.deepEqual(labels('C06p1'),['PRESSURE','GIVE UP']);assert.deepEqual(labels('C06v1'),['UNDERSTANDING','THREATEN','ORDER']);assert.deepEqual(labels('C06v2'),['SYMPATHIZE','INDIFFERENT','COMFORT']);assert.deepEqual(labels('C06v3'),['PROTECT','TERRIFY','WARN']);
  assert.deepEqual(labels('C06qr').slice(0,2),['APOLOGETIC','COLD']);assert.deepEqual(labels('C06m1'),['WRITING','STATUETTE','OFFERING','{{rA9}}','INSIST {{rA9}}','ATTIC','TRIGGER?']);
  assert.deepEqual(labels('C06s'),['INTERVENE','GIVE UP']);for(const id of ['C07','C07b','C07c'])assert.deepEqual(labels(id),['GIVE UP','INTERVENE']);
- assert.deepEqual(node('C06a1').options.map(o=>o.clue),['photos','analyze','mirror','done'],'one ANALYZE since story 1.9.6');assert.deepEqual(node('C06a1').options[1].scans,['led','model','burns','hits','blood']);assert.deepEqual(node('C06a1').options[1].facts.map(f=>f.split(' (')[0].split(':')[0]),['PROCESSING LED','MODEL HK400 - Housekeeper','BURN MARKS','HIT MARKS','DRIED BLOOD']);
+ assert.deepEqual(node('C06a1').options.map(o=>o.clue),['photos','analyze','mirror','done'],'one ANALYZE since story 1.9.6');assert.deepEqual(node('C06a1').options[1].scans,['led','model','burns','hits','blood']);assert.deepEqual(node('C06a1').options[1].facts.map(f=>render(f,'real').split(' (')[0].split(':')[0]),['PROCESSING LED','MODEL HK400 - Housekeeper','BURN MARKS','HIT MARKS','DRIED BLOOD']);
  const one=play({C06a1:'1',C06a2:'7'},{});for(const c of ['led','model','burns','hits','blood'])assert.equal(one.s.ch09Room[c],true,'ANALYZE records '+c);assert.ok(one.s.knowledge.Connor.some(f=>/DRIED BLOOD/.test(f)))});
 
 test('stress: starts at 35% and moves by the wiki’s published steps',()=>{

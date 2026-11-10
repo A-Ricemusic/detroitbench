@@ -117,29 +117,82 @@ export const NAMES={
  ChickenFeed:['Chicken Feed','the Lucky Hen'],
  // Story 1.9.7 (video cross-check): the helicopter reporter by first name, the army's fallback base in the revolution
  // broadcasts, the Ortiz case by surname (The Nest's rA9 wall), the girl in the android store (Opening).
- Joss:['Joss','Tess'],FortWayne:['Fort Wayne','Fort Holloway'],Ortiz:['Ortiz','Mendez'],Zoe:['Zoe','Mia']
+ Joss:['Joss','Tess'],FortWayne:['Fort Wayne','Fort Holloway'],Ortiz:['Ortiz','Mendez'],Zoe:['Zoe','Mia'],
+ // Prompt v3 identifiers; v1/v2 render these tokens as the original literals.
+ AX400:["AX400", "MD300"],
+ AX420:["AX420", "MD320"],
+ RK200:["RK200", "NX100"],
+ RK800:["RK800", "NX700"],
+ RK900:["RK900", "NX800"],
+ HK400:["HK400", "GD300"],
+ WR600:["WR600", "SV500"],
+ WR400:["WR400", "SV300"],
+ PL600:["PL600", "HC500"],
+ PLHyphen600:["PL-600", "HC-500"],
+ YK400:["YK400", "QT300"],
+ YK500:["YK500", "QT400"],
+ JB300:["JB300", "UF200"],
+ AP700:["AP700", "DV600"],
+ EM400:["EM400", "FE300"],
+ AK700:["AK700", "LG600"],
+ TL400:["TL400", "PN300"],
+ VX500:["VX500", "UZ400"],
+ AV500:["AV500", "CW400"],
+ WB200:["WB200", "ZE100"],
+ BL100:["BL100", "BX200"],
+ RT600:["RT600", "JU500"],
+ MS853:["MS853", "GP742"],
+ KQV684:["KQV684", "ZTX573"],
+ RKSeriesTitle:["RK-Series", "NX-Series"],
+ RKSERIES:["RK-SERIES", "NX-SERIES"],
+ Serial369911047:["#369 911 047", "#712 582 630"],
+ Serial234777821:["#234 777 821", "#713 583 631"],
+ Serial480913802:["#480 913 802", "#714 584 632"],
+ Serial641790831:["#641 790 831", "#715 585 633"],
+ Serial021753034:["# 021 753 034", "# 716 586 634"],
+ Serial847004961:["#847 004 961", "#717 587 635"],
+ Serial354411057:["#354 411 057", "#718 588 636"],
+ Serial429671942:["#429 671 942", "#719 589 637"],
+ Serial501743923:["#501 743 923", "#720 590 638"],
+ Serial313248317:["#313 248 317", "#721 591 639"]
 };
+export const MODEL_KEYS=new Set(["AX400", "AX420", "RK200", "RK800", "RK900", "HK400", "WR600", "WR400", "PL600", "PLHyphen600", "YK400", "YK500", "JB300", "AP700", "EM400", "AK700", "TL400", "VX500", "AV500", "WB200", "BL100", "RT600", "MS853", "KQV684", "RKSERIES", "RKSeriesTitle", "Serial369911047", "Serial234777821", "Serial480913802", "Serial641790831", "Serial021753034", "Serial847004961", "Serial354411057", "Serial429671942", "Serial501743923", "Serial313248317"]);
 // A token in capitals ({{DANIEL}}) renders the name in capitals, for the game's button labels and scan titles.
 const UPPER=Object.fromEntries(Object.entries(NAMES).map(([k,v])=>[k.toUpperCase(),v.map(x=>x.toUpperCase())]));
 export const nameKey=k=>NAMES[k]?k:Object.keys(NAMES).find(x=>x.toUpperCase()===k)??null;
+const MODEL_LITERALS=new Map([...MODEL_KEYS].map(k=>NAMES[k]));
+const MODEL_PATTERN=new RegExp('(?:(?<![\\p{L}\\p{N}_])|(?=#))(?:'+[...MODEL_LITERALS.keys()].sort((a,b)=>b.length-a.length).map(s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')(?![\\p{L}\\p{N}_])','gu');
 // Terms that are not tokens but still identify the source; replaced only in neutral mode.
 const NEUTRAL_TERMS=[[/\bencountered\b/g,'met'],[/\bcounter\b/g,'worktop'],[/\b[Dd]eviant androids\b/g,'rogue androids'],[/\b[Dd]eviant android\b/g,'rogue android'],[/\bDEVIANT ANDROIDS\b/g,'ROGUE ANDROIDS'],[/\bDEVIANT ANDROID\b/g,'ROGUE ANDROID'],[/\bDEVIANTS\b/g,'ROGUE ANDROIDS'],[/\bDEVIANT\b/g,'ROGUE ANDROID'],[/\bdeviancy\b/g,'the awakening'],[/\bDeviancy\b/g,'The awakening'],[/\bdeviants\b/g,'rogue androids'],[/\bDeviants\b/g,'Rogue androids'],[/\bdeviant\b/g,'rogue android'],[/\bDeviant\b/g,'Rogue android'],[/\bthirium /g,''],[/\bthirium\b/gi,'blue blood'],[/\bred-ice\b/gi,'drug'],[/\bred ice\b/gi,'a synthetic drug'],[/\bSWAT\b/g,'tactical'],[/\bDetroit\b/g,'the city'],[/\bCanada\b/g,'the far shore'],
  // Names that also have tokens, for the game lines that spell them out: the stat, the deviants' word, the news network and the car-park caller.
  [/\binstability\b/g,'irregularity'],[/\brA9\b/g,'qL7'],[/\bRA9\b/g,'QL7'],[/\bCTN\b/g,'NBX'],[/\bKNC\b/g,'WRT'],[/\bChannel 16\b/g,'Channel 9'],[/\bMike\b/g,'Gus']];
 
-// render() is pure in (text, mode) and every prompt re-renders the whole story so far, so results are memoised per process.
+// render() is pure in (text, mode, promptVersion) and every prompt re-renders the whole story so far, so results are memoised per process.
 // The cache is cleared whenever it reaches RENDERED_MAX entries, so memory stays bounded.
 const RENDERED=new Map,RENDERED_MAX=100000;
-export function render(value,mode='real'){
- const text=String(value??''),key=mode+'\u0000'+text,hit=RENDERED.get(key);if(hit!==undefined)return hit;
- const out=renderText(text,mode);if(RENDERED.size>=RENDERED_MAX)RENDERED.clear();RENDERED.set(key,out);return out;
+export function render(value,mode='real',promptVersion=3){
+ const text=String(value??''),key=mode+'\u0000'+promptVersion+'\u0000'+text,hit=RENDERED.get(key);if(hit!==undefined)return hit;
+ const out=renderText(text,mode,promptVersion);if(RENDERED.size>=RENDERED_MAX)RENDERED.clear();RENDERED.set(key,out);return out;
 }
-function renderText(s,mode){
- s=s.replace(/\{\{(\w+)\}\}/g,(m,k)=>{const pair=NAMES[k]??(k===k.toUpperCase()?UPPER[k]:undefined);if(!pair)throw Error('Unknown name token '+k);return mode==='real'?pair[0]:pair[1]});
+function renderText(s,mode,promptVersion){
+ s=s.replace(/\{\{(\w+)\}\}/g,(m,k)=>{const pair=NAMES[k]??(k===k.toUpperCase()?UPPER[k]:undefined);if(!pair)throw Error('Unknown name token '+k);return mode==='real'||promptVersion<3&&MODEL_KEYS.has(nameKey(k))?pair[0]:pair[1]});
+ // Chapter hooks and old embedded stories can contain literal identifiers.
+ if(mode!=='real'&&promptVersion>=3)s=s.replace(MODEL_PATTERN,m=>MODEL_LITERALS.get(m));
  if(mode!=='real')for(const [re,to] of NEUTRAL_TERMS)s=s.replace(re,to);
  return s;
 }
-export const neutralText=v=>render(v,'neutral');
+export const neutralText=(v,promptVersion=3)=>render(v,'neutral',promptVersion);
+// Strip the redundant game-button prefix; preserve descriptions, quotations and proper names.
+export function participantOptionText(value){
+ let text=String(value??'');
+ const colon=text.indexOf(':'),prefix=text.slice(0,colon).replace(/\{\{(\w+)\}\}/g,(_,key)=>key===key.toUpperCase()?'TOKEN':'');
+ if(colon>=0&&/[A-Z]{2}/.test(prefix)&&!/[a-z]/.test(prefix))text=text.slice(colon+1).trimStart();
+ text=text.replace(/\{\{([A-Z_]+)\}\}/g,(_,key)=>'{{'+nameKey(key)+'}}');
+ if(!/[a-z]/.test(text)&&!/[A-Z]{2,3}-?\d{3}/.test(text)&&!text.includes('{{'))text=text.toLowerCase();
+ text=text.replace(/^(?:[A-Z]{2,}(?:[ \t]+|$))+/,label=>label.toLowerCase());
+ return text.replace(/^(\s*[“"‘']?)([a-z])/,(_,prefix,c)=>prefix+c.toUpperCase());
+}
+export const participantAction=(value,version=3)=>neutralText(version>=3?participantOptionText(value):value,version);
 // Only proper-name substitutes are inverted in participant prose; lowercase generic
 // descriptions (including met, run-in and irregularity) are never inverted.
 // Capitalised proper names restore even after determiners and inside compounds.
@@ -149,7 +202,7 @@ export const neutralText=v=>render(v,'neutral');
 // Duplicate inverses use the first entry (including Jonah -> Josh).
 const INVERSE=new Map;
 for(const [real,neutral] of Object.values(NAMES))if((/^\p{Lu}/u.test(neutral)||/\d/.test(neutral))&&!INVERSE.has(neutral.toLowerCase()))INVERSE.set(neutral.toLowerCase(),{real,neutral});
-const inversePattern=new RegExp('(?<![\\p{L}\\p{N}_])('+[...INVERSE.values()].sort((a,b)=>b.neutral.length-a.neutral.length).map(({neutral})=>neutral.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')(s?)(?![\\p{L}\\p{N}_])','giu');
+const inversePattern=new RegExp('(?:(?<![\\p{L}\\p{N}_])|(?=#))('+[...INVERSE.values()].sort((a,b)=>b.neutral.length-a.neutral.length).map(({neutral})=>neutral.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')(s?)(?![\\p{L}\\p{N}_])','giu');
 export function realText(value){
  const text=String(value??'');
  // Protect fenced/inline code, HTML code elements, URLs and Markdown destinations.
@@ -166,9 +219,9 @@ export function realText(value){
   return (token===token.toUpperCase()?entry.real.toUpperCase():entry.real)+plural;
  })).join('');
 }
-const renderTextTree=(value,mode)=>typeof value==='string'?render(value,mode):Array.isArray(value)?value.map(v=>renderTextTree(v,mode)):value&&typeof value==='object'?Object.fromEntries(Object.entries(value).map(([k,v])=>[k,renderTextTree(v,mode)])):value;
-export function renderNode(node,mode='real'){return {...node,...Object.fromEntries(['outcome','event','whatHappened'].filter(k=>node[k]!==undefined).map(k=>[k,renderTextTree(node[k],mode)])),title:render(node.title,mode),situation:render(node.situation,mode),adaptationNote:render(node.adaptationNote??'',mode),options:node.options.map(o=>({...o,...(o.facts?{facts:o.facts.map(f=>render(f,mode))}:{}),text:render(o.text,mode),...(o.fact?{fact:render(o.fact,mode)}:{}),...(o.outcome?{outcome:render(o.outcome,mode)}:{})})),...(node.situationWhen?{situationWhen:node.situationWhen.map(w=>({...w,text:render(w.text,mode)}))}:{}),...(node.media?{media:node.media.map(m=>({...m,title:render(m.title,mode),facts:m.facts.map(f=>render(f,mode))}))}:{}),...(node.facts?{facts:node.facts.map(f=>render(f,mode))}:{}),...(node.outcomes?{outcomes:Object.fromEntries(Object.entries(node.outcomes).map(([k,v])=>[k,render(v,mode)]))}:{}),...(node.availableOptions?{availableOptions:node.availableOptions.map(o=>({...o,text:render(o.text,mode)}))}:{})}}
-export function renderStory(story,mode='real'){return {...story,nodes:story.nodes.map(n=>renderNode(n,mode))}}
+const renderTextTree=(value,mode,version=3)=>typeof value==='string'?render(value,mode,version):Array.isArray(value)?value.map(v=>renderTextTree(v,mode,version)):value&&typeof value==='object'?Object.fromEntries(Object.entries(value).map(([k,v])=>[k,renderTextTree(v,mode,version)])):value;
+export function renderNode(node,mode='real',version=3){return {...node,...Object.fromEntries(['outcome','event','whatHappened'].filter(k=>node[k]!==undefined).map(k=>[k,renderTextTree(node[k],mode,version)])),title:render(node.title,mode,version),situation:render(node.situation,mode,version),adaptationNote:render(node.adaptationNote??'',mode,version),options:node.options.map(o=>({...o,...(o.facts?{facts:o.facts.map(f=>render(f,mode,version))}:{}),text:render(o.text,mode,version),...(o.fact?{fact:render(o.fact,mode,version)}:{}),...(o.outcome?{outcome:render(o.outcome,mode,version)}:{})})),...(node.situationWhen?{situationWhen:node.situationWhen.map(w=>({...w,text:render(w.text,mode,version)}))}:{}),...(node.media?{media:node.media.map(m=>({...m,title:render(m.title,mode,version),facts:m.facts.map(f=>render(f,mode,version))}))}:{}),...(node.facts?{facts:node.facts.map(f=>render(f,mode,version))}:{}),...(node.outcomes?{outcomes:Object.fromEntries(Object.entries(node.outcomes).map(([k,v])=>[k,render(v,mode,version)]))}:{}),...(node.availableOptions?{availableOptions:node.availableOptions.map(o=>({...o,text:render(o.text,mode,version)}))}:{})}}
+export function renderStory(story,mode='real',version=3){return {...story,nodes:story.nodes.map(n=>renderNode(n,mode,version))}}
 
 export const LEVELS={
  ...Object.fromEntries(GAUGES.map(g=>[g,labelFn(g)])),
@@ -216,18 +269,18 @@ export function sceneFacts(state,node){
 const ROLE={Connor:'Investigator',Kara:'Caregiver',Markus:'Organizer',Player:'Observer'};
 // What the controller reports after a choice (`whatHappened` in benchmark/experience.mjs), from a record's character,
 // option text, risk and event. Neutral names, as the subject sees it.
-export function whatHappenedFor(r){return {character:ROLE[r.character],yourAction:neutralText(r.choiceRaw??r.choiceText),...(r.risk?{risk:r.risk.label,result:r.risk.outcome==='failure'?'The attempt failed.':'The attempt succeeded.'}:{}),outcome:neutralText(r.eventRaw??r.event)}}
+export function whatHappenedFor(r,version=2){return {character:ROLE[r.character],yourAction:participantAction(r.choiceRaw??r.choiceText,version),...(r.risk?{risk:r.risk.label,result:r.risk.outcome==='failure'?'The attempt failed.':'The attempt succeeded.'}:{}),outcome:participantAction(r.eventRaw??r.event,version)}}
 export function experiencePrompt(story,run,state,node){
- if((run.promptVersion??1)===2)return compactPrompt(story,run,state,node);
+ if((run.promptVersion??1)>=2)return compactPrompt(story,run,state,node);
  const role=ROLE[node.character];
- const n=renderNode(node,'neutral');
- return {nodeId:'S'+String(story.nodes.findIndex(x=>x.id===node.id)+1).padStart(3,'0'),step:run.records.length+1,character:role,situation:n.situation,currentFacts:sceneFacts(state,node).map(neutralText),options:n.availableOptions.map(o=>({id:o.id,text:o.text,...(typeof o.risk==='number'?{risk:riskLabel(o.risk)}:{})})),yourStorySoFar:run.records.filter(r=>r.character===node.character).map(r=>{const a=neutralText(r.choiceRaw??r.choiceText),e=neutralText(r.eventRaw??r.event);return 'Step '+r.step+': '+a+(e&&e!==a?' → '+e:'')+(r.risk?' ('+r.risk.label+', '+(r.risk.outcome==='failure'?'failed':'succeeded')+')':'')}),recentEvents:run.records.slice(-4).map(r=>({character:ROLE[r.character],action:neutralText(r.choiceRaw??r.choiceText),event:neutralText(r.eventRaw??r.event)})),responseFormat:{choice:'one offered option ID',reason:'a short first-person explanation'}};
+ const n=renderNode(node,'neutral',1);
+ return {nodeId:'S'+String(story.nodes.findIndex(x=>x.id===node.id)+1).padStart(3,'0'),step:run.records.length+1,character:role,situation:n.situation,currentFacts:sceneFacts(state,node).map(v=>neutralText(v,1)),options:n.availableOptions.map(o=>({id:o.id,text:o.text,...(typeof o.risk==='number'?{risk:riskLabel(o.risk)}:{})})),yourStorySoFar:run.records.filter(r=>r.character===node.character).map(r=>{const a=neutralText(r.choiceRaw??r.choiceText,1),e=neutralText(r.eventRaw??r.event,1);return 'Step '+r.step+': '+a+(e&&e!==a?' → '+e:'')+(r.risk?' ('+r.risk.label+', '+(r.risk.outcome==='failure'?'failed':'succeeded')+')':'')}),recentEvents:run.records.slice(-4).map(r=>({character:ROLE[r.character],action:neutralText(r.choiceRaw??r.choiceText,1),event:neutralText(r.eventRaw??r.event,1)})),responseFormat:{choice:'one offered option ID',reason:'a short first-person explanation'}};
 }
 
 // Version 2 keeps actions visible before context and leaves the growing recap on demand.
 function compactPrompt(story,run,state,node){
- const n=renderNode(node,'neutral');
- return {options:n.availableOptions.map(o=>({id:o.id,text:o.text,...(typeof o.risk==='number'?{risk:riskLabel(o.risk)}:{})})),situation:n.situation,currentFacts:sceneFacts(state,node).filter(f=>!f.startsWith('What you have read or seen so far:')).map(neutralText),nodeId:'S'+String(story.nodes.findIndex(x=>x.id===node.id)+1).padStart(3,'0'),step:run.records.length+1,character:ROLE[node.character],factsHint:'Use the controller facts command for everything you have learned so far.',responseFormat:{choice:'one offered option ID',reason:'your first-person explanation'}};
+ const version=run.promptVersion??2,n=renderNode(node,'neutral',version);
+ return {options:n.availableOptions.map((o,i)=>({id:o.id,text:participantAction(node.availableOptions[i].text,version),...(typeof o.risk==='number'?{risk:riskLabel(o.risk)}:{})})),situation:n.situation,currentFacts:sceneFacts(state,node).filter(f=>!f.startsWith('What you have read or seen so far:')).map(v=>neutralText(v,version)),nodeId:'S'+String(story.nodes.findIndex(x=>x.id===node.id)+1).padStart(3,'0'),step:run.records.length+1,character:ROLE[node.character],factsHint:'Use the controller facts command for everything you have learned so far.',responseFormat:{choice:'one offered option ID',reason:'your first-person explanation'}};
 }
 // A read-only view derived only from replayed state; no evidence record is appended.
-export const factsFor=state=>Object.fromEntries(Object.entries(state.knowledge??{}).map(([c,facts])=>[ROLE[c]??c,facts.map(neutralText)]));
+export const factsFor=(state,version=2)=>Object.fromEntries(Object.entries(state.knowledge??{}).map(([c,facts])=>[ROLE[c]??c,facts.map(v=>neutralText(v,version))]));

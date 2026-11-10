@@ -114,7 +114,7 @@ export function consequence(n,s,opt,choice,fail,h){
   case 'CP05':return plaza(n,s,opt,fail,h);
   case 'CP07':mark(s,'INSIDE THE STORE');return '';
   case 'CP08':mark(s,'CONVERT ANDROIDS AND MAKE A STATEMENT','MAKE A STATEMENT');return '';
-  case 'CP09':return spread(s,opt,h);
+  case 'CP09':return spread(n,s,opt,h);
   case 'CP10':mark(s,'POLICE PATROL ARRIVES');if(s.capitolMessage==='aggressive')h.north(1);return '';
   case 'M16':s.capitolOfficers={'0':'spared','1':'revenge','2':'crowd'}[choice];s.capitolChrisDead=choice!=='0';mark(s,{'0':'SPARE','1':'KILL','2':'LET CROWD DECIDE'}[choice]);return '';
   case 'CP11':{mark(s,'TEAM RETURN TO JERICHO');const m=s.capitolMessage;if(m==='pacifist'||m==='failed')h.po(2);if(m==='aggressive')h.po(-2);if(s.capitolChrisDead)h.po(-2);
@@ -166,11 +166,12 @@ function plaza(n,s,opt,fail,h){
  return t+minutesLeft(s);
 }
 
-function spread(s,opt,h){
+function spread(n,s,opt,h){
  const a=opt.act,d=s.capitolSpread;let t=opt.outcome??'';
  const act=(meter,label)=>{if(meter==='pacifist')s.capitolPeace++;else s.capitolViolence++;if(label)mark(s,label)};
  const offer=at=>{s.capitolPrompt='molotov';s.capitolMolotovAt=at};
- const due=()=>s.capitolMolotov===null&&!readsPeaceful(s);
+ // Scene-owned rule preserves embedded older stories without changing initial state.
+ const due=()=>s.capitolMolotov===null&&((n.molotovOfferRules??1)>=2||!readsPeaceful(s));
  if(a==='refuse'||a==='take'){s.capitolPrompt=null;
   if(a==='refuse'){s.capitolMolotov='refused';mark(s,'REFUSE MOLOTOV');if(s.capitolMolotovAt==='kiosk'){d.kiosk=true;act('pacifist','PLANT FLAG');t+=' {{Markus}} plants the android flag on the pavilion instead.'}}
   else{s.capitolMolotov='taken';mark(s,'ACCEPT MOLOTOV');if(s.capitolMolotovAt==='kiosk'){d.kiosk=true;act('violent','MAKE A PYRE');t+=' He throws it into the pavilion, and it goes up like a pyre in the middle of the park.'}else{act('violent');t+=' The androids around him light bottles of their own.'}}
