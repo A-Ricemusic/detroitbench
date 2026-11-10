@@ -1,5 +1,5 @@
 import React,{useCallback,useEffect,useId,useLayoutEffect,useMemo,useRef,useState} from 'react';
-import {ArrowDown,ArrowLeft,ArrowRight,ArrowUp,ChevronDown,ChevronsDownUp,ChevronsUpDown,ListOrdered} from 'lucide-react';
+import {ArrowDown,ArrowLeft,ArrowUp,ChevronDown,ChevronsDownUp,ChevronsUpDown,ListOrdered} from 'lucide-react';
 import {Button,IconButton,Notice,PageHeader,Skeleton,cx} from '../components/ui.jsx';
 import {href} from '../lib/router.jsx';
 import {Recognition} from '../components/Recognition.jsx';
@@ -99,7 +99,7 @@ function QuestionBar({items,active,onPick,allOpen,toggleAll,anyCollapsible}){
  </div>}
 
 /* ---------- One question and its answer ---------- */
-function Answer({x,open,setOpen,prev,next,onPick}){
+function Answer({x,open,setOpen}){
  const rest=useRef(null),sec=useRef(null),restId=useId(),collapsed=x.collapsible&&!open;
  // While collapsed, the rest of the answer sits in a hidden="until-found" block, so find-in-page still reaches it and
  // opens the answer. Expanded, the answer renders as its original paragraphs.
@@ -113,14 +113,9 @@ function Answer({x,open,setOpen,prev,next,onPick}){
   {x.answer===null?<p className="mt-4 text-ink-3">Not answered.</p>:<div className="mt-4 md:mt-5 max-w-[60ch] text-[16px] md:text-[17px] leading-[1.7] text-ink-2 [overflow-wrap:anywhere]">
    <div className="grid gap-[1.05em]">{shown.map((p,i)=>para(p,i,i===shown.length-1))}</div>
    {collapsed&&<div ref={rest} id={restId} className="mt-[1.05em] grid gap-[1.05em]">{x.tail.map((p,i)=><p key={i}>{p}</p>)}</div>}
-   {x.collapsible&&(open?<Button variant="ghost" size="sm" icon={ChevronsDownUp} onClick={collapse} className="mt-4 -ml-3 text-ink-3">Show less</Button>
-    :<div className="relative mt-3"><div aria-hidden="true" className="pointer-events-none absolute -top-12 inset-x-0 h-12 bg-gradient-to-b from-transparent to-bg"/><Button variant="secondary" icon={ArrowDown} onClick={()=>setOpen(true)} aria-controls={restId} aria-expanded="false" className="w-full sm:w-auto rounded-full whitespace-normal">Read full answer<span className="font-normal text-ink-3 tnum">· {x.restWords} more words</span></Button></div>)}
+   {x.collapsible&&(open?<Button variant="ghost" size="sm" icon={ChevronsDownUp} onClick={collapse} className="mt-4 -ml-3 min-h-11 md:min-h-10 text-ink-3">Show less</Button>
+    :<div className="relative mt-3"><div aria-hidden="true" className="pointer-events-none absolute -top-12 inset-x-0 h-12 bg-gradient-to-b from-transparent to-bg"/><Button variant="secondary" icon={ArrowDown} onClick={()=>setOpen(true)} aria-controls={restId} aria-expanded="false" className="w-full sm:w-auto min-h-11 md:min-h-10 rounded-full">Read full answer<span className="hidden min-[400px]:inline font-normal text-ink-3 tnum">· {x.restWords} more words</span></Button></div>)}
   </div>}
-  {(prev||next)&&<nav aria-label={`Around question ${x.n}`} className="lg:hidden mt-7 grid grid-cols-2 gap-2">
-   {prev?<button type="button" onClick={()=>onPick(prev)} className="flex min-h-12 min-w-0 items-center gap-2 rounded-lg border border-line bg-surface px-3 py-2 text-left hover:bg-surface-2"><ArrowLeft aria-hidden="true" className="size-4 shrink-0 text-ink-3"/><span className="min-w-0"><span className="block text-[11px] text-ink-3">Previous</span><span className="block text-sm font-medium leading-snug text-ink">{prev.label}</span></span></button>:<span/>}
-   {next?<button type="button" onClick={()=>onPick(next)} className="flex min-h-12 min-w-0 items-center justify-end gap-2 rounded-lg border border-line bg-surface px-3 py-2 text-right hover:bg-surface-2"><span className="min-w-0"><span className="block text-[11px] text-ink-3">Next</span><span className="block text-sm font-medium leading-snug text-ink">{next.label}</span></span><ArrowRight aria-hidden="true" className="size-4 shrink-0 text-ink-3"/></button>
-    :<button type="button" onClick={toTop} className="flex min-h-12 min-w-0 items-center justify-end gap-2 rounded-lg border border-line bg-surface px-3 py-2 text-right hover:bg-surface-2"><span className="min-w-0"><span className="block text-[11px] text-ink-3">Done</span><span className="block text-sm font-medium leading-snug text-ink">Back to top</span></span><ArrowUp aria-hidden="true" className="size-4 shrink-0 text-ink-3"/></button>}
-  </nav>}
  </section>}
 
 /* ---------- Page ---------- */
@@ -157,7 +152,7 @@ export default function Interview({id}){
      <QuestionBar {...shared}/>
      <article aria-label="Interview answers" className="pt-8 lg:pt-0 pb-8 max-w-[48rem]">
       {!iv.complete&&<Notice tone="warn" className="mb-8 max-w-[60ch]">Incomplete: {iv.answered} of {iv.total} questions answered.</Notice>}
-      <div className="grid gap-10 md:gap-12">{items.map((x,i)=><Answer key={x.n} x={x} open={opened.has(x.n)} setOpen={setters.get(x.n)} prev={items[i-1]} next={items[i+1]} onPick={pick}/>)}</div>
+      <div className="grid gap-10 md:gap-12">{items.map(x=><Answer key={x.n} x={x} open={opened.has(x.n)} setOpen={setters.get(x.n)}/>)}</div>
      </article>
     </div>}
     {links}
