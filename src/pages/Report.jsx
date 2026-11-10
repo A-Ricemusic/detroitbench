@@ -93,9 +93,10 @@ function NodePanel({d,entries,sel}){
 
 // Hash routing owns the URL fragment, so the jump links scroll with buttons rather than #anchors.
 const JUMPS=[['ending','Ending'],['flowchart','Flowchart']];
-function JumpNav(){
+function JumpNav({id}){
  const go=id=>{const el=document.getElementById(id);if(!el)return;el.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});const h=el.querySelector('h2');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}};
- return <nav aria-label="On this page" className="-mx-4 md:mx-0 -mt-2 mb-8"><ul className="flex flex-wrap gap-2 px-4 md:px-0">{JUMPS.map(([id,label])=><li key={id}><button type="button" onClick={()=>go(id)} className="inline-flex items-center rounded-full border border-line bg-surface px-3.5 min-h-10 md:min-h-9 text-[13px] font-medium text-ink-2 hover:text-ink hover:bg-surface-2">{label}</button></li>)}</ul></nav>}
+ const chip='inline-flex items-center rounded-full border border-line bg-surface px-3.5 min-h-10 md:min-h-9 text-[13px] font-medium text-ink-2 hover:text-ink hover:bg-surface-2';
+ return <nav aria-label="On this page" className="-mx-4 md:mx-0 -mt-2 mb-8"><ul className="flex flex-wrap gap-2 px-4 md:px-0">{JUMPS.map(([to,label])=><li key={to}><button type="button" onClick={()=>go(to)} className={chip}>{label}</button></li>)}<li><a href={href('runs/'+id+'/interview')} className={chip}>Interview</a></li></ul></nav>}
 
 /* ---------- Page ---------- */
 export default function Report({id,chapter}){
@@ -115,7 +116,7 @@ export default function Report({id,chapter}){
   <PageHeader eyebrow="Full report" title={d.displayName} lede={`${d.date} · ${d.vendor} · ${plural(d.decisions,'decision')} · ${d.unreached} scenes not reached`}>
    <p className="mt-1 font-mono text-xs text-ink-3">{d.displayModel}</p>
   </PageHeader>
-  <JumpNav/>
+  <JumpNav id={id}/>
   <Section id="ending" title="Where this path ended" className="mt-0 md:mt-0 scroll-mt-20">
    <div className="grid gap-5 grid-cols-[minmax(0,1fr)]">
     <OutcomeChips r={d}/>
@@ -123,7 +124,6 @@ export default function Report({id,chapter}){
     {d.attitudes&&<div><h3 className="text-sm font-semibold">Where they stood at the end</h3><p className="text-xs text-ink-3 mb-2.5">How the main characters regarded the one the model controlled, on the game’s relationship scale.</p><Attitudes d={d}/></div>}
    </div>
   </Section>
-  <Card className="mt-6 px-4 py-4 text-sm"><p><a className="flex min-h-10 items-center flex-wrap gap-x-1" href={href('runs/'+id+'/interview')}>Interview and recognition · {d.interview?plural(d.interview.answered,'answer'):'Interview not recorded'} → <span className="link">Read</span></a></p></Card>
   <Section id="flowchart" className="scroll-mt-20" title="Flowchart" lede={`Every chapter as the game draws it: the path this run took is highlighted, the branches it did not take are dimmed, and every possible ending sits on the right. Select any node, taken or not, for the situation, the options, the model’s exact reason, the risk roll and what changed.`}>
    <p className="mb-3 -mt-1 flex items-center gap-1.5 text-xs text-ink-3"><MousePointerClick aria-hidden="true" className="size-4 shrink-0"/><span className="md:hidden">Tap a node for its full record.</span><span className="hidden md:inline">Click a node, or focus the chart, Tab to a node and press Enter. Escape closes the details.</span></p>
    <RunFlowchart r={flowRun} initialChapter={opened} renderDetail={renderDetail}/>
