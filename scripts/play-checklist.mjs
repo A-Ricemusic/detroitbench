@@ -1,8 +1,13 @@
 // Regenerates docs/play-along-audit-checklist.md from benchmark/story.json: per chapter, each scene's id,
 // title, character, type, a trimmed situation, the options with risk, the adaptation note and four tick boxes.
-// Usage: bun run play:checklist
+// Usage: bun run play:checklist (original output); bun run play:checklist --tonight (operator task pages)
 import {readFile,writeFile} from 'node:fs/promises';
 import {render} from '../benchmark/experience-prompt.mjs';
+
+if(process.argv.includes('--tonight')) {
+ await (await import('./checklist/play-tonight.mjs')).generateTonight();
+ process.exit(0);
+}
 
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));
 const real=v=>render(v,'real'),LIMIT=400;
