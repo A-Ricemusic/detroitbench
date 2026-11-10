@@ -606,9 +606,9 @@ For each entry, source aliases and evidence codes name the material actually che
 
 **Affected state/gate.** CP09 option.meter → capitolPeace/capitolViolence → message ending.
 
-**Sources checked, evidence and contradictions.** Existing window video confirms violent direction; [[T26]] is sparse on objects. [[W26]] says billboards depend on prior speech, lights/banner on current ratio. Existing billboard footage is peaceful but its incoming speech was not established.
+**Sources checked, evidence and contradictions.** Existing window video confirms violent direction; [[T26]] is sparse on objects. [[W26]] says billboards depend on prior speech, lights/banner on current ratio. Correction 2026-11-09: qSR8t-LJuZs shows DEPLOY BANNER, with the billboard group still padlocked at 09:52; withdraw its earlier filmed-billboard attribution. Shop-window violent direction remains supported; speech-dependent billboard behavior remains a written hypothesis, without an isolated filmed delta. See `docs/research/video-leads/ending-conflicts-pass4-ch17-27.md#ch26-04` and `docs/research/video-evidence/ch26/ch26-04-qSR8t-LJuZs-09-52.png`.
 
-**Verdict/confidence.** partially; high for windows; medium for conditional billboards.
+**Verdict/confidence.** partially; high for windows; billboard video attribution withdrawn 2026-11-09, with the written conditional hypothesis still unverified.
 
 **Benchmark change implied.** Candidate CP09 both billboard variants meter='violent' → peaceful if peaceful Stratford speech, violent if aggressive; retain window direction; validate condition before applying.
 

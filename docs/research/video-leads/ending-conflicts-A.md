@@ -478,7 +478,7 @@ Chart image readings: `ch26/26-capitol-park-6.jpg` separately shows FAIL TO SEND
 
 **Sources checked.** [PowerPyx chapter](https://www.powerpyx.com/detroit-become-human-capitol-park-walkthrough-100/); corresponding chapter specification/triage and the requested prior video readings. No exact conditional video identified in the targeted searches/prior leads. External search records: `search-ch26-04.jsonl` where present; source snapshots in the external log directory.
 
-**Evidence.** Prior qSR8t-LJuZs shows shop windows move violent and billboard hacking move peaceful. The incoming speech is absent. New Sag903 footage supplies mixed-meter context, not an isolated speech-controlled comparison.
+**Evidence.** Correction 2026-11-09: qSR8t-LJuZs shows DEPLOY BANNER, with the billboard group still padlocked at 09:52; withdraw its earlier filmed-billboard attribution. Shop-window violent direction remains supported; speech-dependent billboard behavior remains a written hypothesis, without an isolated filmed delta. See `docs/research/video-leads/ending-conflicts-pass4-ch17-27.md#ch26-04` and `docs/research/video-evidence/ch26/ch26-04-qSR8t-LJuZs-09-52.png`. New Sag903 footage supplies mixed-meter context, not an isolated speech-controlled comparison.
 
 **Verdict.** **partially settled**; low confidence in either disputed answer where not settled; medium confidence for the specific partial observation. No unmeasured cutoff is asserted.
 
@@ -807,7 +807,7 @@ Only the first row is a newly settled gameplay rule. “Candidate” rows specif
 | ch26-01 — candidate only | `message()` Molotov override | TAKE always aggressive → remove override only if TAKE-then-peaceful footage actually ends peacefully | No matched test. |
 | ch26-02 — candidate only | CP09 Molotov availability / `readsPeaceful` | normalized peaceful share ≥0.6 withholds → replace with observed absolute meter/action requirement if established | Mixed 55/45 clip does not measure a clean first-tag run. |
 | ch26-03 — candidate only | `message()` middle band | every nonzero <60% peaceful aggressive → map 40–60% band to observed failed/peaceful/violent branch | No final balanced-meter test. Do not invent a third result merely from a wiki footnote. |
-| ch26-04 — candidate only | CP09 `hackBillboards` / `hackBillboardsSymbol` meter | unconditional violent → speech-dependent peaceful/violent if the earlier speech condition is verified | Prior actual billboard action moved peaceful. Incoming speech missing; numeric weights still unmeasured. |
+| ch26-04 — candidate only | CP09 `hackBillboards` / `hackBillboardsSymbol` meter | unconditional violent → speech-dependent peaceful/violent if the earlier speech condition is verified | Earlier filmed claim withdrawn: DEPLOY BANNER, not a billboard hack. Speech condition and numeric weights unmeasured. |
 | ch28-02 — candidate only | M18g/other late charge arrows | none → North +1, Josh −2, Simon −1 if verified | May change Simon’s same-chapter rescue; no matched popup sequence yet. |
 | ch28-04 — candidate only | M18g ATTACK routing | directly charge → confirmation scene only if it actually reappears | First-menu confirmation is not evidence for repeated confirmation. |
 | ch28-09 — candidate only | M18g DISPERSE | `ch28Plaza='openFire'` and another menu → `fled()` if after-STAND DISPERSE directly flees | Neoseeker favors direct flee, but exact footage missing. |

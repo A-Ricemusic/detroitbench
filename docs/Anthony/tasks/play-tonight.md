@@ -1,6 +1,6 @@
 # Play tonight · operator replay checklist
 
-**67 open items · 23 without partial evidence first within each chapter · 44 partials · 692 estimated item-minutes (11 h 32 min).**
+**67 open items · 9 without partial evidence first within each chapter · 58 partials · 692 estimated item-minutes (11 h 32 min).**
 
 Generated with `bun run play:checklist --tonight`. Questions and open/closed status come from [CONFLICTS.md](../../research/CONFLICTS.md); operational routes and estimates live in `scripts/checklist/tonight-plans.mjs`. Closed items disappear on regeneration. This document does not close questions or alter the benchmark.
 
@@ -110,16 +110,6 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 
 ### No partial evidence · do these first
 
-#### ☐ ch10-24 · Chapter start → parking lot · 5 min
-
-**Question:** Could Kara pick up the pliers on the parking-lot generator before she had looked at the squat's fence (yes/no)?
-
-**Load/setup:** Kara/Alice alive; do not inspect squat fence.
-
-**Do / watch:** Walk directly to generator, attempt to take pliers before approaching fence; record interaction label/absence.
-
-**Result:** Fence unseen; pliers prompt; pickup succeeds — ____________________ (actual checkpoint / history / recording time: ____________________)
-
 #### ☐ ch10-34 · Chapter start → abandoned car · 8 min
 
 **Question:** Could Kara settle into a shelter (for example the abandoned car) without ever meeting the trash-collector android (yes/no)?
@@ -131,6 +121,16 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 **Result:** Route; collector forced when; shelter commit prompt/ending — ____________________ (actual checkpoint / history / recording time: ____________________)
 
 ### Partial evidence · finish the missing control
+
+#### ☐ ch10-24 · Chapter start → parking lot · 5 min
+
+**Question:** Could Kara pick up the pliers on the parking-lot generator before she had looked at the squat's fence (yes/no)?
+
+**Load/setup:** Kara/Alice alive; do not inspect squat fence.
+
+**Do / watch:** Walk directly to generator, attempt to take pliers before approaching fence; record interaction label/absence.
+
+**Result:** Fence unseen; pliers prompt; pickup succeeds — ____________________ (actual checkpoint / history / recording time: ____________________)
 
 #### ☐ ch10-18 · Store → discreet theft; continue to ch17 · 10 min
 
@@ -172,7 +172,7 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 
 ## 13 · On the Run · 26 min
 
-### No partial evidence · do these first
+### Partial evidence · finish the missing control
 
 #### ☐ ch13-29 · Motel morning → before bath · 6 min
 
@@ -183,8 +183,6 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 **Do / watch:** Talk to Alice, try TV and channel change without drawing bath, cutting hair or removing LED.
 
 **Result:** TV prompt/channel works; bath/hair/LED still untouched — ____________________ (actual checkpoint / history / recording time: ____________________)
-
-### Partial evidence · finish the missing control
 
 #### ☐ ch13-01 · Connor search → squat · 8 min
 
@@ -224,16 +222,6 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 
 ### No partial evidence · do these first
 
-#### ☐ ch15-14 · Apartment investigation → cage · 8 min
-
-**Question:** Could you look up from the chair and find Rupert after reconstructing only the bird cage, without having done the stool reconstruction or examined the LED in the sink? (yes/no)
-
-**Load/setup:** Rupert not discovered; skip sink LED and stool reconstruction.
-
-**Do / watch:** Reconstruct bird cage only; approach chair/look up and attempt discovery. Record objective/prompt; if blocked, add skipped clues one at a time.
-
-**Result:** Cage only discovery yes/no; added prerequisite; objective text — ____________________ (actual checkpoint / history / recording time: ____________________)
-
 #### ☐ ch15-18 · Apartment → leave without Rupert; continue ch30 · 8 min
 
 **Question:** If The Nest ended RUPERT NOT FOUND (Hank and Connor left the apartment), could Connor spot Rupert in Jericho in Crossroads? (yes/no)
@@ -245,6 +233,16 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 **Result:** Nest ending; Crossroads search route; Rupert prompt present/absent — ____________________ (actual checkpoint / history / recording time: ____________________)
 
 ### Partial evidence · finish the missing control
+
+#### ☐ ch15-14 · Apartment investigation → cage · 8 min
+
+**Question:** Could you look up from the chair and find Rupert after reconstructing only the bird cage, without having done the stool reconstruction or examined the LED in the sink? (yes/no)
+
+**Load/setup:** Rupert not discovered; skip sink LED and stool reconstruction.
+
+**Do / watch:** Reconstruct bird cage only; approach chair/look up and attempt discovery. Record objective/prompt; if blocked, add skipped clues one at a time.
+
+**Result:** Cage only discovery yes/no; added prerequisite; objective text — ____________________ (actual checkpoint / history / recording time: ____________________)
 
 #### ☐ ch15-12 · Chase → Hank ledge · 7 min
 
@@ -284,6 +282,18 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 
 ### No partial evidence · do these first
 
+#### ☐ ch17-06 · Reset → storage-room rA9 · 8 min
+
+**Question:** On a reset run where Kara stayed in the squat but never asked Ralph about the symbols he was carving, did the storage-room corner still give the rA9 memory?
+
+**Load/setup:** Slept in squat in Fugitives but never asked Ralph about carving; reset Kara.
+
+**Do / watch:** Inspect storage-room corner symbols and recovery progress before/after.
+
+**Result:** Squat/no-question verified; interaction; progress before→after — ____________________ (actual checkpoint / history / recording time: ____________________)
+
+### Partial evidence · finish the missing control
+
 #### ☐ ch17-01 · Reset → big-room TV (robbery + chase) · 10 min
 
 **Question:** On a run where Kara robbed the store in her uniform (Fugitives) AND was chased by Connor (On the Run), did Zlatko's TV show both news reports (two public-opinion down arrows) or only one?
@@ -303,18 +313,6 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 **Do / watch:** Read recovery progress before TV; switch it on, finish report, read progress after.
 
 **Result:** Report; SEE NEWS FLASH node; progress before→after — ____________________ (actual checkpoint / history / recording time: ____________________)
-
-#### ☐ ch17-06 · Reset → storage-room rA9 · 8 min
-
-**Question:** On a reset run where Kara stayed in the squat but never asked Ralph about the symbols he was carving, did the storage-room corner still give the rA9 memory?
-
-**Load/setup:** Slept in squat in Fugitives but never asked Ralph about carving; reset Kara.
-
-**Do / watch:** Inspect storage-room corner symbols and recovery progress before/after.
-
-**Result:** Squat/no-question verified; interaction; progress before→after — ____________________ (actual checkpoint / history / recording time: ____________________)
-
-### Partial evidence · finish the missing control
 
 #### ☐ ch17-07 · Reset → book and storage pipe · 8 min
 
@@ -408,18 +406,6 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 
 ## 23 · The Stratford Tower · 34 min
 
-### No partial evidence · do these first
-
-#### ☐ ch23-02 · Broadcast → media reaction · 7 min
-
-**Question:** With nobody killed, BEGIN CALMLY and END DETERMINEDLY: did Public Opinion go up at Media Reacts (yes/no)? (A 'no' means the ending drives the tone line, as built.)
-
-**Load/setup:** Nobody killed, including fleeing operator; separate from guard-shoot test.
-
-**Do / watch:** BEGIN CALMLY, END DETERMINEDLY. Film both media reaction lines and each PO glyph, not just combined final level.
-
-**Result:** Casualty line glyph; tone line glyph; final level — ____________________ (actual checkpoint / history / recording time: ____________________)
-
 ### Partial evidence · finish the missing control
 
 #### ☐ gauge-07 · Tower RUSE → Friend; continue ch28 · 15 min
@@ -431,6 +417,16 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 **Do / watch:** Use RUSE and read first Friend; from that reveal count small ups/downs (spare operator, spare Simon if rooftop available) through first Companion. Read every header; separate large events.
 
 **Result:** First Friend event; net small interval to Companion; last Friend / first Companion — ____________________ (actual checkpoint / history / recording time: ____________________)
+
+#### ☐ ch23-02 · Broadcast → media reaction · 7 min
+
+**Question:** With nobody killed, BEGIN CALMLY and END DETERMINEDLY: did Public Opinion go up at Media Reacts (yes/no)? (A 'no' means the ending drives the tone line, as built.)
+
+**Load/setup:** Nobody killed, including fleeing operator; separate from guard-shoot test.
+
+**Do / watch:** BEGIN CALMLY, END DETERMINEDLY. Film both media reaction lines and each PO glyph, not just combined final level.
+
+**Result:** Casualty line glyph; tone line glyph; final level — ____________________ (actual checkpoint / history / recording time: ____________________)
 
 #### ☐ ch23-01 · Security → ASSAULT; roof · 12 min
 
@@ -456,6 +452,8 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 
 **Result:** Only door exposed; meter before/after; officer outcome — ____________________ (actual checkpoint / history / recording time: ____________________)
 
+### Partial evidence · finish the missing control
+
 #### ☐ ch25-06 · Mary conversation → Alice fire · 7 min · TONIGHT
 
 **Question:** After TAKE ALICE OUTSIDE (PREVENT ALICE SEEING MARY), can Kara still sit with Alice by the fire and get the INSIST / LET IT GO prompt (yes/no)?
@@ -465,8 +463,6 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 **Do / watch:** Return and try to sit with Alice by fire; record INSIST / LET IT GO availability.
 
 **Result:** Take-outside verified; sit prompt; dialogue buttons — ____________________ (actual checkpoint / history / recording time: ____________________)
-
-### Partial evidence · finish the missing control
 
 #### ☐ ch25-05 · Police knock → timed hiding route · 8 min · TONIGHT
 
@@ -510,7 +506,7 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 
 ## 26 · Capitol Park · 70 min
 
-### No partial evidence · do these first
+### Partial evidence · finish the missing control
 
 #### ☐ ch26-03 · Store liberated → mixed protest · 12 min
 
@@ -521,8 +517,6 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 **Do / watch:** Alternate peaceful tagging and violent object actions; record exact percentages after each. Stop near 55/45 if achievable, let sirens end; if impossible record reachable ratios, never assert 55.
 
 **Result:** Action/ratio sequence; final exact %; message node; ending — ____________________ (actual checkpoint / history / recording time: ____________________)
-
-### Partial evidence · finish the missing control
 
 #### ☐ ch26-01 · Store liberated → pavilion first · 10 min
 
@@ -590,7 +584,7 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 
 ## 28 · Freedom March · 43 min
 
-### No partial evidence · do these first
+### Partial evidence · finish the missing control
 
 #### ☐ ch28-07 · Mall → first recruit → march · 8 min
 
@@ -611,8 +605,6 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 **Do / watch:** Inspect roof magazine, flip both articles; record ANDROID RIOT and EASTERN SPACE RACE presence.
 
 **Result:** Incoming ending; cover/article names — ____________________ (actual checkpoint / history / recording time: ____________________)
-
-### Partial evidence · finish the missing control
 
 #### ☐ ch28-01 · Police confrontation → SACRIFICE · 8 min
 
@@ -656,7 +648,7 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 
 ## 29 · Last Chance, Connor · 23 min
 
-### No partial evidence · do these first
+### Partial evidence · finish the missing control
 
 #### ☐ ch29-01 · Chapter start → Fowler office · 10 min
 
@@ -667,8 +659,6 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 **Do / watch:** Film evidence/history and opening without cut; proceed from Fowler to see archive access or immediate decommissioning. Share opening with ch29-03.
 
 **Result:** Bodies/evidence; opening; archive or decommissioned card — ____________________ (actual checkpoint / history / recording time: ____________________)
-
-### Partial evidence · finish the missing control
 
 #### ☐ ch29-03 · Chapter start → insufficient-evidence opening · 3 min
 
@@ -692,7 +682,7 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 
 ## 30 · Crossroads · 40 min
 
-### No partial evidence · do these first
+### Partial evidence · finish the missing control
 
 #### ☐ ch30-06 · Kara raid → wounded Luther corridor · 10 min
 
@@ -703,8 +693,6 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 **Do / watch:** PROTECT ALICE, leave Luther behind; escape ship and continue to Battle for Detroit streets. Search FIND LUTHER & JERRY before bus terminal.
 
 **Result:** Left-alive scene; later Luther/Jerry prompt; absence search route — ____________________ (actual checkpoint / history / recording time: ____________________)
-
-### Partial evidence · finish the missing control
 
 #### ☐ ch30-01 · Markus raid → corridor injuries · 12 min
 
@@ -738,7 +726,7 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 
 ## 31 · Night of the Soul · 22 min
 
-### No partial evidence · do these first
+### Partial evidence · finish the missing control
 
 #### ☐ ch31-05 · Chapter start → deviant Connor church · 8 min
 
@@ -749,8 +737,6 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 **Do / watch:** Walk church optional interactions as Connor; attempt CHECK ON JOSH. Film Josh alive confirmation and available topics.
 
 **Result:** Ousted/gone; Josh alive; prompt appears; response — ____________________ (actual checkpoint / history / recording time: ____________________)
-
-### Partial evidence · finish the missing control
 
 #### ☐ ch31-01 · Chapter boundary → machine Connor garden · 6 min
 
@@ -774,7 +760,7 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 
 ## 32 · Battle for Detroit · 52 min
 
-### No partial evidence · do these first
+### Partial evidence · finish the missing control
 
 #### ☐ ch32-05 · Markus death → credits → RK900 · 15 min
 
@@ -785,8 +771,6 @@ Use the [operator journal format](../../research/operator-notes/README.md): `(e)
 **Do / watch:** Record Markus killer; finish surviving machine route and let full credits/after-credits play.
 
 **Result:** Killer; Connor end state; RK900 scene yes/no — ____________________ (actual checkpoint / history / recording time: ____________________)
-
-### Partial evidence · finish the missing control
 
 #### ☐ ch32-02 · Revolution assault → failed attack · 15 min
 

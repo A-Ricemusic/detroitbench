@@ -450,6 +450,7 @@ From **The Stratford Tower** (transcript conditions in the Jericho prologue):
   - Without Simon: Josh: "Simon paid with his life…" North: "He's a hero! / He died for the revolution – and he won't be the last!" … Markus: "THAT'S ENOUGH!"
 - The radio lines at the store timeout and in "Mission failed" switch between Simon and Josh on "Simon is alive" / "Simon is dead". At the police arrival they switch on "Simon is here" / "Simon was left behind or died".
 - Wiki Note: "Hack Billboards will cause different reaction based on Markus' speech in The Stratford Tower."
+- Correction 2026-11-09: qSR8t-LJuZs shows DEPLOY BANNER, with the billboard group still padlocked at 09:52; withdraw its earlier filmed-billboard attribution. Shop-window violent direction remains supported; speech-dependent billboard behavior remains a written hypothesis, without an isolated filmed delta. See `docs/research/video-leads/ending-conflicts-pass4-ch17-27.md#ch26-04` and `docs/research/video-evidence/ch26/ch26-04-qSR8t-LJuZs-09-52.png`.
 - Simon page: "If Simon was not injured or killed in Stratford Tower, he talks about their broadcast with Josh and North in Jericho." Wiki Note: "Simon can physically appear in this chapter." (§8).
 
 No other earlier choice gates anything here. Relationship levels do not gate any option.
