@@ -41,3 +41,17 @@ test('only completed runs count at a reasoning level, in creation order',()=>{
  const pair=assignReportNames([second,abandoned,first,running],ctx);
  assert.equal(pair.size,2);assert.equal(pair.get('first').displayName,'Grok 4.7 · high · run 1');assert.equal(pair.get('second').displayName,'Grok 4.7 · high · run 2');
 });
+
+test('archived runs consume no display or file numbers of published runs',()=>{
+ const ctx={registry:{vendors:[],models:{haiku:{name:'Claude Haiku 5.5'}}},reasoning:new Map([['old','low'],['older','low'],['new','low'],['pub1','medium'],['pub2','medium'],['gone','medium']])};
+ const older=stub('older','Haiku 5.5 low','haiku','2026-11-01T00:00:00.000Z'),old=stub('old','Haiku 5.5 low','haiku','2026-11-02T00:00:00.000Z'),gone=stub('gone','Haiku 5.5 medium','haiku','2026-11-03T00:00:00.000Z');
+ const fresh=stub('new','Haiku 5.5 low','haiku','2026-11-15T05:00:00.000Z'),pub1=stub('pub1','Haiku 5.5 medium','haiku','2026-11-15T06:00:00.000Z'),pub2=stub('pub2','Haiku 5.5 medium','haiku','2026-11-15T07:00:00.000Z');
+ const all=[older,old,gone,fresh,pub1,pub2],before=assignReportNames(all,ctx),names=assignReportNames(all,ctx,new Set,new Set(['older','old','gone']));
+ assert.equal(names.get('new').displayName,'Claude Haiku 5.5 · low','the only published run at its level has no run number');
+ assert.equal(names.get('new').file,'detroitbench-claude-haiku-5-5-low-run-01-2026-11-15.html');
+ assert.equal(names.get('pub1').displayName,'Claude Haiku 5.5 · medium · run 1');assert.equal(names.get('pub2').displayName,'Claude Haiku 5.5 · medium · run 2');
+ assert.equal(names.get('pub1').file,'detroitbench-claude-haiku-5-5-medium-run-1-run-01-2026-11-15.html');assert.equal(names.get('pub2').file,'detroitbench-claude-haiku-5-5-medium-run-2-run-01-2026-11-15.html');
+ for(const id of ['older','old','gone'])assert.deepEqual(names.get(id),before.get(id),'an archived run keeps the name and file it had when every run counted');
+ assert.equal(new Set([...names.values()].map(n=>n.file)).size,all.length);
+ assert.deepEqual(assignReportNames([...all].reverse(),ctx,new Set,new Set(['older','old','gone'])),names);
+});

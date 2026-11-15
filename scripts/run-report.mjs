@@ -51,23 +51,33 @@ export function modelDisplayName(run){const label=String(run.label??'').trim()||
 // ("GPT-6.1 Sol · run 1"), made unique by a run number when a model and level repeat; the file name follows the display
 // name, except that a run whose report already exists under its earlier, label-based name (`existing`, the file names
 // in docs/runs/) keeps that file. Without the context the earlier naming applies throughout.
-export function assignReportNames(runs,ctx=null,existing=new Set){
+// Runs listed in `archived` (ids retired in data/administration/archive.json, which the site does not publish) consume no
+// display or file numbers of published runs: published runs are numbered among themselves, so a model and level with a
+// single published run carries no "run k". Archived runs keep the names they had when numbered over every run, so
+// their existing report files stay where they are. The label-based (legacy) numbers still count every run.
+export function assignReportNames(runs,ctx=null,existing=new Set,archived=new Set){
  const unique=[...new Map(runs.filter(r=>r?.id&&r.status==='completed').map(r=>[r.id,r])).values()].sort((a,b)=>String(a.createdAt??'').localeCompare(String(b.createdAt??''))||String(a.id).localeCompare(String(b.id)));
- const counts=new Map,legacyCounts=new Map,used=new Set,names=new Map,shown=new Map,totals=new Map;
- if(ctx)for(const run of unique){const base=displayBase(run,ctx);totals.set(base,(totals.get(base)??0)+1)}
+ const legacyCounts=new Map,legacies=new Map,used=new Set,names=new Map;
  const numbered=(map,slug)=>{const n=(map.get(slug)??0)+1;map.set(slug,n);return String(n).padStart(2,'0')};
  for(const run of unique){const legacy=modelDisplayName(run),stamp=run.createdAt??run.completedAt,day=stamp&&!Number.isNaN(Date.parse(stamp))?new Date(stamp).toISOString().slice(0,10):'undated';
-  const legacyNumber=numbered(legacyCounts,slugify(legacy)),legacyFile=`detroitbench-${slugify(legacy)}-run-${legacyNumber}-${day}`;
-  let displayName=legacy,runNumber=legacyNumber,file=legacyFile;
-  if(ctx){const base=displayBase(run,ctx),k=(shown.get(base)??0)+1;shown.set(base,k);displayName=totals.get(base)>1?`${base} · run ${k}`:base;
-   if(!existing.has(legacyFile+'.html')){const slug=slugify(displayName);runNumber=numbered(counts,slug);file=`detroitbench-${slug}-run-${runNumber}-${day}`}}
-  if(used.has(file))file+='-'+slugify(run.id).slice(0,8);used.add(file);
-  names.set(run.id,{displayName,runNumber,title:ctx?displayName:`${displayName} · Run ${runNumber}`,date:friendlyDate(stamp),file:file+'.html',json:file+'.json'})}
- return names;
+  const legacyNumber=numbered(legacyCounts,slugify(legacy));legacies.set(run.id,{legacy,stamp,day,legacyNumber,legacyFile:`detroitbench-${slugify(legacy)}-run-${legacyNumber}-${day}`})}
+ // Numbers every run of `pool` in creation order and names those in `only`.
+ const assign=(pool,only)=>{const counts=new Map,shown=new Map,totals=new Map;
+  if(ctx)for(const run of pool){const base=displayBase(run,ctx);totals.set(base,(totals.get(base)??0)+1)}
+  for(const run of pool){const {legacy,stamp,day,legacyNumber,legacyFile}=legacies.get(run.id);
+   let displayName=legacy,runNumber=legacyNumber,file=legacyFile;
+   if(ctx){const base=displayBase(run,ctx),k=(shown.get(base)??0)+1;shown.set(base,k);displayName=totals.get(base)>1?`${base} · run ${k}`:base;
+    if(!existing.has(legacyFile+'.html')){const slug=slugify(displayName);runNumber=numbered(counts,slug);file=`detroitbench-${slug}-run-${runNumber}-${day}`}}
+   if(!only(run))continue;
+   if(used.has(file))file+='-'+slugify(run.id).slice(0,8);used.add(file);
+   names.set(run.id,{displayName,runNumber,title:ctx?displayName:`${displayName} · Run ${runNumber}`,date:friendlyDate(stamp),file:file+'.html',json:file+'.json'})}};
+ assign(unique,r=>archived.has(r.id));
+ assign(unique.filter(r=>!archived.has(r.id)),()=>true);
+ return new Map(unique.map(r=>[r.id,names.get(r.id)]));
 }
 export const reportFileName=(run,peers=[run])=>assignReportNames([...peers,run]).get(run.id).file;
 // Only completed sessions count; creation order determines their numbers.
-export async function loadReportNames(extra=[]){const dir=new URL('../data/experiences/',import.meta.url),all=[];for(const name of (await readdir(dir).catch(()=>[])).filter(n=>n.endsWith('.json'))){try{const {id,label,model,createdAt,completedAt,status}=JSON.parse(await readFile(new URL(name,dir),'utf8'));all.push({id,label,model,createdAt,completedAt,status})}catch{}}const existing=new Set(await readdir(new URL('../docs/runs/',import.meta.url)).catch(()=>[]));return assignReportNames([...all,...extra],await loadModelContext(),existing)}
+export async function loadReportNames(extra=[]){const dir=new URL('../data/experiences/',import.meta.url),all=[];for(const name of (await readdir(dir).catch(()=>[])).filter(n=>n.endsWith('.json'))){try{const {id,label,model,createdAt,completedAt,status}=JSON.parse(await readFile(new URL(name,dir),'utf8'));all.push({id,label,model,createdAt,completedAt,status})}catch{}}const existing=new Set(await readdir(new URL('../docs/runs/',import.meta.url)).catch(()=>[]));return assignReportNames([...all,...extra],await loadModelContext(),existing,archivedIds())}
 
 // ---- Shared standalone palette (never depends on host CSS variables) ----
 const BASE_CSS=`:root{color-scheme:dark;--bg:#0a0f16;--surface:#121a25;--surface-2:#182230;--node:#121a25;--node-hover:#182230;--chart:#0e141d;--text:#e8eef5;--text-2:#aab6c4;--text-3:#7d8a9a;--border:#243040;--border-strong:#2f3d50;--accent:#7fe0dc;--accent-soft:#1b3a40;--accent-text:#06211f;--edge:#2f3d50;--connor:#7fe0dc;--kara:#eac28b;--markus:#b8a3eb;--player:#9aa6b4;--shadow:0 1px 0 rgba(255,255,255,.03) inset,0 8px 24px rgba(0,0,0,.35);--radius:14px;--font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
