@@ -222,7 +222,7 @@ Rule of thumb: a label that appears in the string table but on none of the post-
 | June 2018 patch changing Chloe's menu behaviour | Ars Technica via https://pipedot.org/3S318 (2018-06-11) | Menu only. No story effect |
 | A bug fixed in patch 1.05 | PowerPyx Fugitives page (cited in `ch10`) | Already noted |
 | PC release: Epic Games Store 2019-12-12, Steam 2020-06-18 (wiki `Detroit:_Become_Human`) | Reviews report input and rendering changes only. No source reports any story, choice or flowchart difference from the patched PS4 version. The PC strings are what the transcript uses | Treat PS4 1.06+ and PC as the same content |
-| PS4 demo (The Hostage), April–May 2018 | GameFAQs demo guide, demo flowchart videos | Pre-release build. Do not use its chart |
+| PS4 demo (The Hostage), April–May 2018 | GameFAQs demo guide, demo flowchart videos | Demo build from before the game's launch. Do not use its chart |
 | Wiki `Title_Updates` | Empty stub | Nothing |
 
 ---
@@ -249,7 +249,7 @@ The game's own legend (the SHOW LEGEND button on the chart screen) is reproduced
 | Steam guide 2935499852 | On Casual "some endings are unavailable (such as most death endings in Stormy Night) and some scenes play out differently by removing certain prompts or QTEs" |
 | Chinese Steam guide 3361490965 | "Set difficulty to Experienced before going for 100%, because some death or injury nodes need failed QTEs" |
 | PowerPyx comments (Hostage) | Failing the negotiation is "very hard" on Casual |
-| PlayStation Blog, "7 things you'll notice in your first 30 minutes" https://blog.playstation.com/archive/2018/04/23/7-things-youll-notice-in-your-first-30-minutes-of-detroit-become-human | Pre-release description of the two modes |
+| PlayStation Blog, "7 things you'll notice in your first 30 minutes" https://blog.playstation.com/archive/2018/04/23/7-things-youll-notice-in-your-first-30-minutes-of-detroit-become-human | Description of the two modes, published before the game's launch |
 | `ch07-stormy-night.md` | Already marks the Experienced-only Stormy Night endings |
 
 No source gives per-difficulty timer lengths or QTE windows. The benchmark's risk probabilities stay calibrations, not game data.

@@ -2,8 +2,7 @@ import React,{useCallback,useEffect,useId,useLayoutEffect,useMemo,useRef,useStat
 import {ArrowDown,ArrowLeft,ArrowUp,ChevronDown,ChevronsDownUp,ChevronsUpDown,ListOrdered} from 'lucide-react';
 import {Button,IconButton,Notice,PageHeader,Skeleton,cx} from '../components/ui.jsx';
 import {href} from '../lib/router.jsx';
-import {Recognition,PreReleaseBadge} from '../components/Recognition.jsx';
-import {useArchived} from '../lib/cohort.js';
+import {Recognition} from '../components/Recognition.jsx';
 
 function useInterview(id){
  const [state,set]=useState({data:null,error:null}),[attempt,setAttempt]=useState(0);
@@ -121,7 +120,7 @@ function Answer({x,open,setOpen}){
 
 /* ---------- Page ---------- */
 export default function Interview({id}){
- const {data:d,error,retry}=useInterview(id),archived=useArchived(id);
+ const {data:d,error,retry}=useInterview(id);
  useEffect(()=>{document.title=(d?d.title+' · Interview':'Interview')+' · DetroitBench'},[d]);
  const iv=d?.interview;
  const items=useMemo(()=>iv?iv.items.map(shape):[],[iv]);
@@ -133,7 +132,7 @@ export default function Interview({id}){
  const toggleAll=useCallback(()=>setOpened(allOpen?new Set:new Set(collapsible.map(x=>x.n))),[allOpen,collapsible]);
  const setters=useMemo(()=>new Map(items.map(x=>[x.n,v=>setOpened(s=>{const t=new Set(s);if(typeof v==='function'?v(t.has(x.n)):v)t.add(x.n);else t.delete(x.n);return t})])),[items]);
  const pick=useCallback(x=>goTo('q-'+x.n),[]);
- const links=<nav aria-label="Run navigation" className="flex flex-wrap gap-x-6 mb-3 text-sm"><a className="link inline-flex items-center gap-1.5 min-h-11" href={href('runs/'+id+'/report')}><ArrowLeft aria-hidden="true" className="size-4"/>Back to report</a><a className="link inline-flex items-center min-h-11" href={href(archived?'runs?cohort=pre-release':'runs')}>All runs</a></nav>;
+ const links=<nav aria-label="Run navigation" className="flex flex-wrap gap-x-6 mb-3 text-sm"><a className="link inline-flex items-center gap-1.5 min-h-11" href={href('runs/'+id+'/report')}><ArrowLeft aria-hidden="true" className="size-4"/>Back to report</a><a className="link inline-flex items-center min-h-11" href={href('runs')}>All runs</a></nav>;
  if(error)return <>{links}<PageHeader title="Interview"/><Notice tone="bad">{error.message}. <Button variant="link" onClick={retry}>Try again</Button></Notice></>;
  if(!d)return <>{links}<div aria-busy="true" className="grid gap-4"><Skeleton className="h-10 w-full max-w-xl"/><Skeleton className="h-5 w-64"/><Skeleton className="h-24 max-w-3xl"/><Skeleton className="h-64 max-w-3xl"/><p className="sr-only" role="status">Loading the interview…</p></div></>;
  const count=iv?.total===7?'Seven':iv?.total===8?'Eight':iv?.total,shared={items,active,onPick:pick,allOpen,toggleAll,anyCollapsible:collapsible.length>0};
@@ -143,7 +142,7 @@ export default function Interview({id}){
    <div className="min-w-0">
     <PageHeader eyebrow="Interview" title={d.displayName}>
      <p className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-0.5 text-[15px] md:text-base text-ink-2"><span>{d.date}</span><span aria-hidden="true" className="text-ink-3">·</span><span>{d.vendor}</span></p>
-     <p className="mt-0.5 flex flex-wrap items-center gap-x-2.5 gap-y-1.5"><span className="font-mono text-xs text-ink-3 [overflow-wrap:anywhere]">{d.displayModel}</span>{archived&&<PreReleaseBadge/>}</p>
+     <p className="mt-0.5 font-mono text-xs text-ink-3 [overflow-wrap:anywhere]">{d.displayModel}</p>
      {iv&&<p className="mt-4 max-w-[62ch] text-[15px] md:text-base leading-relaxed text-ink-2">{count} questions asked after the final scene; answers are the model’s own words with real names restored.</p>}
     </PageHeader>
     <div className="max-w-[72ch]"><Recognition audit={d.recognition}/></div>

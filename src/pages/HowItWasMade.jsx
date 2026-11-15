@@ -76,7 +76,7 @@ function RunSection(){
 function HarnessSection(){
  return <Section id="how-harnesses" title="Harnesses" lede="Subjects play inside agent harnesses, in fresh scratch sessions with no project context.">
   <Prose>
-   <p>Runs are not made through a provider API. Each subject runs inside an agent harness that can execute a shell command: <strong>Codex</strong> for the GPT models and <strong>Claude Code</strong> for the Claude models; the pre-release Grok and GLM runs used <strong>Cursor</strong>. Each evidence file records its harness in <C>provenance.provider</C>.</p>
+   <p>Runs are not made through a provider API. Each subject runs inside an agent harness that can execute a shell command: <strong>Codex</strong> for the GPT models and <strong>Claude Code</strong> for the Claude models; the Grok and GLM runs used <strong>Cursor</strong>. Each evidence file records its harness in <C>provenance.provider</C>.</p>
    <p>Each run is a fresh scratch session: a new empty folder with no project, no instructions and no memory of other runs. The first message is the task text above with that run’s wrapper path. Each run has its own conversation, wrapper and evidence file, and runs can proceed in parallel.</p>
   </Prose>
   <H3>Reasoning effort</H3>
@@ -100,11 +100,11 @@ function ContextSection(){
   <p className="mb-2 text-sm text-ink-2 max-w-[72ch]">It depends on the run’s prompt version:</p>
   <List>
    <li>Versions 2 and 3 (version {EXPERIENCE_PROMPT_VERSION} is the default for new runs): <C>currentFacts</C>, the character’s current status lines. Everything the characters have read or seen so far is available on demand through the read-only <C>facts</C> command, and <C>whatHappened</C> after each choice reports the action and its outcome.</li>
-   <li>Version 1 (early pre-release runs): <C>yourStorySoFar</C>, everything this character has done so far as action → what happened; <C>recentEvents</C>, the last four steps across all three characters; and <C>currentFacts</C>, the status lines plus everything the character has read or seen.</li>
+   <li>Version 1 (the earliest runs): <C>yourStorySoFar</C>, everything this character has done so far as action → what happened; <C>recentEvents</C>, the last four steps across all three characters; and <C>currentFacts</C>, the status lines plus everything the character has read or seen.</li>
   </List>
   <H3>Reading a long run</H3>
   <Prose>
-   <p>A finished run is several hundred steps (the 30 completed pre-release runs recorded between 388 and 739 steps). The model’s own earlier reasoning lives only in the conversation, so consistency across chapters depends on the model and its harness together. The evidence does not record whether a harness compacted.</p>
+   <p>A finished run is several hundred steps (the 30 published runs recorded between 388 and 739 steps). The model’s own earlier reasoning lives only in the conversation, so consistency across chapters depends on the model and its harness together. The evidence does not record whether a harness compacted.</p>
   </Prose>
  </Section>}
 
@@ -290,8 +290,8 @@ function AdministrationSection(){
   </Disclosure>
   <H3>How runs reach the site</H3>
   <Prose><p>The build replays every completed evidence file and fails on any mismatch, then writes each run’s reports and the run library. Incomplete or abandoned runs stay out of the library; their records stay as recorded.</p></Prose>
-  <H3>Pre-release runs</H3>
-  <Prose><p>The 54 evidence files made before release {storyMeta.version} (30 completed, 24 abandoned partials, on stories 1.9.0 to 1.9.14) were tests of the benchmark itself. <C>scripts/archive-runs.mjs</C> lists them in <C>data/administration/archive.json</C>, and the site keeps them as archived pre-release tests, in a view of their own on the <a className="link" href={href('runs?cohort=pre-release')}>runs page</a>, never mixed with official runs. Official cohorts start at story {storyMeta.version}.</p></Prose>
+  <H3>Story versions of the published runs</H3>
+  <Prose><p>The 30 published runs were administered on story versions 1.9.0 to 1.9.14, during the final revisions before the {storyMeta.version} freeze. Each run records its own story version and replays against it. New runs use {storyMeta.version}.</p></Prose>
  </Section>}
 
 /* ---------- 10 ---------- */

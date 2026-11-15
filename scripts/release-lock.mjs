@@ -1,5 +1,5 @@
 // The release lock, benchmark/release.json: the story version and hash, the controller's prompt and interview versions and
-// the scales version an official cohort is administered under. tests/release-lock.test.mjs fails when the assembled story
+// the scales version new runs are administered under. tests/release-lock.test.mjs fails when the assembled story
 // or the controller defaults drift from it, so any change that would alter a new run must come with a deliberate story
 // version bump and a rewritten lock.
 // Usage: bun run release:lock [--date YYYY-MM-DD] [--force]

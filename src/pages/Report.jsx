@@ -6,8 +6,6 @@ import {StateChanges} from '../components/StateChanges.jsx';
 import {OutcomeChips,Endings} from './Runs.jsx';
 import {CHARS,WHO,CHAR_VAR,relTone,plural,tidy} from '../lib/data.js';
 import {href} from '../lib/router.jsx';
-import {useArchived} from '../lib/cohort.js';
-import {PreReleaseBadge} from '../components/Recognition.jsx';
 import {unpackPrompts} from '../../scripts/prompt-pack.mjs';
 
 // The full run report inside the app, read from public/data/reports/<id>.json (scripts/report-data.mjs). The chapter
@@ -102,7 +100,7 @@ function JumpNav({id}){
 
 /* ---------- Page ---------- */
 export default function Report({id,chapter}){
- const {data:d,error,retry}=useReport(id),archived=useArchived(id);
+ const {data:d,error,retry}=useReport(id);
  useEffect(()=>{document.title=(d?d.title+' · Full report':'Full report')+' · DetroitBench'},[d]);
  const entries=useMemo(()=>{const m=new Map;for(const c of d?.chapters??[])for(const e of c.entries)if(!m.has(keyOf(e)))m.set(keyOf(e),e);return m},[d]);
  const flowRun=useMemo(()=>({flowUrl:'/data/flows/'+encodeURIComponent(id)+'.json'}),[id]);
@@ -110,13 +108,13 @@ export default function Report({id,chapter}){
  // A link that names a chapter (#/runs/<id>/report?chapter=N) lands on the flowchart at that chapter.
  const opened=Number(chapter)||null;
  useEffect(()=>{if(!d||!opened)return;const t=setTimeout(()=>document.getElementById('flowchart')?.scrollIntoView({block:'start'}),60);return()=>clearTimeout(t)},[d,opened]);
- const back=<a href={href(archived?'runs?cohort=pre-release':'runs')} className="inline-flex items-center gap-1.5 min-h-11 -ml-1 px-1 text-sm font-medium text-ink-2 hover:text-ink"><ArrowLeft aria-hidden="true" className="size-4"/>All runs</a>;
+ const back=<a href={href('runs')} className="inline-flex items-center gap-1.5 min-h-11 -ml-1 px-1 text-sm font-medium text-ink-2 hover:text-ink"><ArrowLeft aria-hidden="true" className="size-4"/>All runs</a>;
  if(error)return <>{back}<PageHeader title="Full report"/><Notice tone={error.missing?'warn':'bad'}>{error.message}.{!error.missing&&<> <Button size="sm" variant="link" onClick={retry}>Try again</Button></>}</Notice></>;
  if(!d)return <>{back}<div className="grid gap-4 mt-2" aria-busy="true"><Skeleton className="h-9 w-72"/><Skeleton className="h-5 w-full max-w-md"/><Skeleton className="h-8 w-full max-w-lg"/><Skeleton className="h-48"/><Skeleton className="h-64"/><p className="sr-only" role="status">Loading the report…</p></div></>;
  return <>
   {back}
   <PageHeader eyebrow="Full report" title={d.displayName} lede={`${d.date} · ${d.vendor} · ${plural(d.decisions,'decision')} · ${d.unreached} scenes not reached`}>
-   <p className="mt-1 flex flex-wrap items-center gap-x-2.5 gap-y-1.5"><span className="font-mono text-xs text-ink-3 [overflow-wrap:anywhere]">{d.displayModel}</span>{archived&&<PreReleaseBadge/>}</p>
+   <p className="mt-1 font-mono text-xs text-ink-3">{d.displayModel}</p>
   </PageHeader>
   <JumpNav id={id}/>
   <Section id="ending" title="Where this path ended" className="mt-0 md:mt-0 scroll-mt-20">

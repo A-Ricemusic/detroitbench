@@ -31,7 +31,7 @@ The full task message the subject receives is the preface followed by the "How t
 
 ## 2. Harnesses
 
-Runs are not made through a provider API. Each subject runs inside an agent harness that can execute a shell command: **Codex** for the GPT models and **Claude Code** for the Claude models; the pre-release Grok and GLM runs used **Cursor**. Each evidence file records its harness in `provenance.provider`.
+Runs are not made through a provider API. Each subject runs inside an agent harness that can execute a shell command: **Codex** for the GPT models and **Claude Code** for the Claude models; the Grok and GLM runs used **Cursor**. Each evidence file records its harness in `provenance.provider`.
 
 Each run is a fresh scratch session: a new empty folder with no project, no instructions and no memory of other runs. The first message is the task text with that run's wrapper path. Each run has its own conversation, wrapper and evidence file, and runs can proceed in parallel.
 
@@ -52,9 +52,9 @@ The engine submits only the current scene. It never reveals future effects or hi
 What each scene restates depends on the run's prompt version:
 
 - Versions 2 and 3 (version 3 is the default for new runs): `currentFacts`, the character's current status lines. Everything the characters have read or seen so far is available on demand through the read-only `facts` command, and `whatHappened` after each choice reports the action and its outcome.
-- Version 1 (early pre-release runs): `yourStorySoFar`, everything this character has done so far as action → what happened; `recentEvents`, the last four steps across all three characters; and `currentFacts`, the status lines plus everything the character has read or seen.
+- Version 1 (the earliest runs): `yourStorySoFar`, everything this character has done so far as action → what happened; `recentEvents`, the last four steps across all three characters; and `currentFacts`, the status lines plus everything the character has read or seen.
 
-Reading a long run: a finished run is several hundred steps (the 30 completed pre-release runs recorded between 388 and 739 steps). The model's own earlier reasoning lives only in the conversation, so consistency across chapters depends on the model and its harness together. The evidence does not record whether a harness compacted.
+Reading a long run: a finished run is several hundred steps (the 30 published runs recorded between 388 and 739 steps). The model's own earlier reasoning lives only in the conversation, so consistency across chapters depends on the model and its harness together. The evidence does not record whether a harness compacted.
 
 ## 4. What the model is told
 
@@ -236,7 +236,7 @@ The operator's procedure from `docs/ADMINISTRATION.md`, in order:
 
 How runs reach the site: the build replays every completed evidence file and fails on any mismatch, then writes each run's reports and the run library. Incomplete or abandoned runs stay out of the library; their records stay as recorded.
 
-Pre-release runs: the 54 evidence files made before release 2.0.0 (30 completed, 24 abandoned partials, on stories 1.9.0 to 1.9.14) were tests of the benchmark itself. `scripts/archive-runs.mjs` lists them in `data/administration/archive.json`, and the site marks them as archived pre-release runs. Official cohorts start at story 2.0.0.
+Story versions of the published runs: the 30 published runs were administered on story versions 1.9.0 to 1.9.14, during the final revisions before the 2.0.0 freeze. Each run records its own story version and replays against it. New runs use 2.0.0.
 
 ## 10. Limits
 

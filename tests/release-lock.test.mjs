@@ -1,11 +1,11 @@
-// The release lock (benchmark/release.json). Official cohorts are administered under the locked story, prompt and
+// The release lock (benchmark/release.json). New runs are administered under the locked story, prompt and
 // interview versions; any change that would alter a new run must come with a story version bump and a new lock.
 import test from './helpers/test.mjs';import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';import {mkdtemp,readFile,rm} from 'node:fs/promises';import {tmpdir} from 'node:os';import {join} from 'node:path';
 import {storyHash} from '../benchmark/story-engine.mjs';
 import {EXPERIENCE_PROMPT_VERSION,EXPERIENCE_INTERVIEW_VERSION} from '../benchmark/experience-prompt.mjs';
 import {CURRENT_SCALES_VERSION} from '../benchmark/scales.mjs';
-import {validateArchive,loadArchive,evidenceFiles,archiveRuns,serializeArchive,cohortOf} from '../scripts/archive-runs.mjs';
+import {validateArchive,loadArchive,evidenceFiles,archiveRuns,serializeArchive,archivedIds,parseEvidence} from '../scripts/archive-runs.mjs';
 
 const lock=JSON.parse(readFileSync(new URL('../benchmark/release.json',import.meta.url),'utf8'));
 const story=JSON.parse(readFileSync(new URL('../benchmark/story.json',import.meta.url),'utf8'));
@@ -34,14 +34,19 @@ test('a run the controller initializes now carries the locked story, hash and ve
    {storyVersion:lock.storyVersion,storyHash:lock.storyHash,promptVersion:lock.promptVersion,interviewVersion:lock.interviewVersion,scalesVersion:lock.scalesVersion},`a new run would not be administered under the locked release. ${FIX}`)}
  finally{await rm(dir,{recursive:true,force:true})}});
 
-test('the pre-release archive is valid and archiving is idempotent',()=>{
+test('the run archive is valid, lists only runs that never completed, and archiving is idempotent',()=>{
  const archive=loadArchive(),files=evidenceFiles();assert.ok(archive,'data/administration/archive.json exists');
  assert.deepEqual(validateArchive(archive,files),[]);
+ assert.ok(archive.runs.every(r=>r.status==='abandoned'),'every archived run is an abandoned partial (none retired yet)');
  assert.equal(serializeArchive(archiveRuns(archive,files.filter(f=>archivedIdsOf(archive).has(f.runId)),archive.archivedAt)),serializeArchive(archive),'re-archiving the listed runs changes nothing');
- const listed=archive.runs[0];assert.deepEqual(cohortOf(listed.evidenceId,archive),{archived:true,cohort:'pre-release'});assert.deepEqual(cohortOf(listed.runId,archive),{archived:true,cohort:'pre-release'});
- assert.deepEqual(cohortOf('not-a-run',archive),{archived:false,cohort:'official'});
+ const listed=archive.runs[0],ids=archivedIds(archive);assert.ok(ids.has(listed.evidenceId)&&ids.has(listed.runId));assert.ok(!ids.has('not-a-run'));
  assert.ok(validateArchive({...archive,extra:1},files).some(e=>/unknown top-level/.test(e)));
  assert.ok(validateArchive({...archive,runs:[{...listed,surprise:true}]},files).some(e=>/unknown field/.test(e)));
- assert.ok(validateArchive({...archive,runs:[{...listed,runId:'00000000-0000-0000-0000-000000000000'}]},files).some(e=>/no evidence file/.test(e)));
+ assert.ok(validateArchive({...archive,runs:[{...listed,runId:'00000000-0000-0000-0000-000000000000'}]},files).some(e=>/no readable evidence file/.test(e)));
  assert.ok(validateArchive({...archive,runs:[listed,listed]},files).some(e=>/listed twice/.test(e)))});
+test('a run in progress outside the archive is tolerated, even caught mid-write',()=>{
+ const live={id:'live',status:'running',records:[{step:1}]},text='{\n"id": "live",\n"status": "running",\n"records": [\n{"step":1}';
+ assert.equal(parseEvidence(text),null,'a half-written running file is skipped');
+ assert.throws(()=>parseEvidence(text.replace('running','completed')),/JSON|Unexpected|parse/i,'a half-written completed file is an error');
+ const archive=loadArchive(),files=[...evidenceFiles(),{runId:'live-run',run:live}];assert.deepEqual(validateArchive(archive,files),[],'an unlisted running run is not an archive problem')});
 const archivedIdsOf=a=>new Set(a.runs.map(r=>r.runId));

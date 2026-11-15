@@ -40,8 +40,8 @@ test('fatal shot endings use a death icon and sparing North remains a success',(
 // start at least one option row below their hub's last option (caption included) and sit at least a column apart.
 import {readdirSync} from 'node:fs';
 import {flowProblems} from './helpers/flow-check.mjs';
-import {endings} from '../scripts/run-report.mjs';
-const runsOnDisk=()=>{const dir=new URL('../data/experiences/',import.meta.url);return readdirSync(dir).filter(f=>f.endsWith('.json')).map(f=>JSON.parse(readFileSync(new URL(f,dir),'utf8'))).filter(r=>r.status==='completed')};
+import {endings} from '../scripts/run-report.mjs';import {parseEvidence} from '../scripts/archive-runs.mjs';
+const runsOnDisk=()=>{const dir=new URL('../data/experiences/',import.meta.url);return readdirSync(dir).filter(f=>f.endsWith('.json')).map(f=>parseEvidence(readFileSync(new URL(f,dir),'utf8'),f)).filter(r=>r?.status==='completed')};
 test('run flowcharts render clean: no overlaps on screen, cut-ins clear of their hub and a column apart',{timeout:300000},()=>{
  const runs=runsOnDisk();assert.ok(runs.length>0,'no completed runs on disk');const problems=[];
  for(const run of runs)for(const flow of runFlows(run,{endings:endings(run)}))problems.push(...flowProblems(flow,`${run.id.slice(0,8)} ch${flow.chapter}`));

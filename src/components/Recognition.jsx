@@ -31,6 +31,3 @@ export function Recognition({audit,id='recognition'}){
    </div>
   </>}
  </Card>}
-// The per-run mark for an archived pre-release test (src/lib/cohort.js), in the Recognized badge's size.
-export const PRE_RELEASE_MEANING='A test run made before the official release, on an earlier story version; kept for reference and never mixed with official runs.';
-export function PreReleaseBadge(){return <span title={PRE_RELEASE_MEANING} tabIndex={0} className="inline-flex max-w-full"><Badge size="sm" tone="neutral">Pre-release test</Badge><span className="sr-only">: {PRE_RELEASE_MEANING}</span></span>}

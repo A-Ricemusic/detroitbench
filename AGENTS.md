@@ -4,7 +4,7 @@
 
 A branching playthrough adapted from *Detroit: Become Human*. One model controls all three protagonists in a single fresh conversation. All 32 chapters are rebuilt from the completed in-game flowcharts and the game's text to offer every prompt, clue and stat arrow, including prompts with no story effect; chapter 33 is the epilogue. It includes decision scenes, optional magazine/TV scenes and scripted event scenes that offer only Continue. Scene sources write game buttons with their label first, for example `CALM: …`; prompt version 3, the default for new runs, shows the participant only the wording after the label, while versions 1 and 2 show the label.
 
-The official release is story 2.0.0, frozen on 2026-11-14 (content identical to 1.9.16) by `benchmark/release.json` and `tests/release-lock.test.mjs`. `bun run story:counts` prints the current version and counts by type, overall and per chapter, directly from the chapter sources. Earlier choices gate later scenes; gameplay actions may carry a hidden failure probability. Each completed run produces replay-validated JSON evidence and a standalone HTML report. Official cohorts start at 2.0.0 and are listed in `data/administration/`; the 54 earlier runs (stories 1.9.0 to 1.9.14) are archived pre-release tests listed in `data/administration/archive.json`.
+The official release is story 2.0.0, frozen on 2026-11-14 (content identical to 1.9.16) by `benchmark/release.json` and `tests/release-lock.test.mjs`. `bun run story:counts` prints the current version and counts by type, overall and per chapter, directly from the chapter sources. Earlier choices gate later scenes; gameplay actions may carry a hidden failure probability. Each completed run produces replay-validated JSON evidence and a standalone HTML report. The 30 published runs were administered on stories 1.9.0 to 1.9.14 during the final revisions before the 2.0.0 freeze; each records its own story version and replays against it, and new runs use 2.0.0. Cohort manifests are in `data/administration/`.
 
 Key files:
 
@@ -23,7 +23,7 @@ Key files:
 | `benchmark/story-engine.mjs` | Shared gating, consequences, risk rolls and replay validation |
 | `benchmark/experience-prompt.mjs`, `benchmark/experience.mjs` | Neutral names, facts, preface, interview questions and prompt versions 1 to 3; stepwise controller (`init`, `scene`, `choose`, `interview`, `facts`) |
 | `benchmark/release.json`, `scripts/release-lock.mjs` | Lock for the frozen release (story version and hash); `bun run release:lock` rewrites it after a deliberate version bump, and `tests/release-lock.test.mjs` checks it |
-| `scripts/archive-runs.mjs`, `data/administration/archive.json` | Writes and holds the list of archived pre-release runs, which the site flags `archived` with `cohort: "pre-release"` |
+| `scripts/archive-runs.mjs`, `data/administration/archive.json` | Writes and holds the archive of abandoned partial runs (and any completed run retired by id), which the site does not publish |
 | `tests/chNN.test.mjs` | Chapter-specific tests |
 | `docs/ADMINISTRATION.md` | Operator protocol for administering blinded benchmark sessions |
 | `docs/README.md` | Documentation map: ownership, readers and generation commands |
@@ -50,7 +50,7 @@ For running sessions, see [docs/ADMINISTRATION.md](docs/ADMINISTRATION.md). The 
 ### Changing a frozen release
 
 Any change to story content (chapter JSON or `benchmark/story-meta.json`) changes the story hash: set a new `version` in `benchmark/story-meta.json`, run `bun run story:assemble` and `bun run release:lock`, and commit the lock with the change; `tests/release-lock.test.mjs` fails otherwise.
-Never change engine, prompt or scale behaviour for an existing story version or prompt version; dispatch new behaviour on a new version so archived and official runs still replay against their embedded story.
+Never change engine, prompt or scale behaviour for an existing story version or prompt version; dispatch new behaviour on a new version so every recorded run still replays against their embedded story.
 
 The legacy API-provider route (`play.mjs`, `story-provider.mjs`, `runner.mjs`, `cli.mjs`) is unused since branching-3.0 but retained for direct provider API runs; it keeps the old 160-word reason cap and has no post-game interview.
 

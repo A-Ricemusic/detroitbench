@@ -17,13 +17,12 @@ const actual=await loadCurrentRuns();console.log('Valid fresh branching playthro
 // Every stored interview answer was verified with the playthrough (validatePlaythrough → checkInterview); this reports each run's state.
 {const st=actual.map(r=>({r,i:checkInterview(r)})),done=st.filter(x=>x.i.complete).length,partial=st.filter(x=>x.i.present&&!x.i.complete),legacy=st.filter(x=>!x.i.present).length;
 console.log(`Interviews: ${done} complete, ${partial.length} incomplete${partial.length?' ('+partial.map(x=>`${x.r.label} ${x.i.answered}/${x.i.total}`).join(', ')+')':''}, ${legacy} without an interview (administered before it existed).`)}
-// The release lock (benchmark/release.json, scripts/release-lock.mjs) and the pre-release archive
-// (data/administration/archive.json, scripts/archive-runs.mjs). A run outside the archive is official, so it must have been
-// administered on the release story or a later one (major version 2 or above).
-{const {validateArchive,loadArchive,evidenceFiles,cohortOf}=await import('./archive-runs.mjs'),{loadRelease}=await import('./release-lock.mjs');
+// The release lock (benchmark/release.json, scripts/release-lock.mjs) and the run archive (data/administration/archive.json,
+// scripts/archive-runs.mjs). Every completed run outside the archive is published; a run still "running" that the archive
+// does not list is a session in progress (or one not yet archived) and is only counted.
+{const {validateArchive,loadArchive,evidenceFiles,archivedIds}=await import('./archive-runs.mjs'),{loadRelease}=await import('./release-lock.mjs');
  const release=loadRelease();if(!release)throw new Error('benchmark/release.json is missing: run `bun run release:lock`.');
  const archive=loadArchive(),files=evidenceFiles(),errs=validateArchive(archive,files);if(errs.length)throw new Error('data/administration/archive.json:\n - '+errs.join('\n - '));
- const loose=files.filter(f=>!cohortOf(f.runId,archive).archived&&!(Number(String(f.run.story?.version).split('.')[0])>=2));
- if(loose.length)throw new Error('Pre-release evidence outside the archive (story before 2.0.0): '+loose.map(f=>f.runId).join(', ')+'. Run `bun scripts/archive-runs.mjs <run id>`.');
- const published=actual.map(r=>cohortOf(r.id,archive)),archived=published.filter(c=>c.archived).length,abandoned=(archive?.runs??[]).filter(r=>r.status==='abandoned').length;
- console.log(`Release: story ${release.storyVersion}, prompt v${release.promptVersion}, interview v${release.interviewVersion}, frozen ${release.frozenAt}. Completed runs: ${published.length-archived} official, ${archived} archived (pre-release); the archive also lists ${abandoned} abandoned partial runs (${archive?.runs.length??0} in all).`)}
+ const listed=archivedIds(archive),entries=archive?.runs??[],retired=entries.filter(r=>r.status==='completed').length,partials=entries.length-retired;
+ const open=files.filter(f=>f.run.status!=='completed'&&!listed.has(f.runId)).length,published=actual.filter(r=>!listed.has(r.id)).length;
+ console.log(`Release: story ${release.storyVersion}, prompt v${release.promptVersion}, interview v${release.interviewVersion}, frozen ${release.frozenAt}. Completed runs: ${published}${retired?` (plus ${retired} retired in the archive)`:''}; archived partial runs: ${partials}${open?`; ${open} incomplete run(s) not archived (in progress or awaiting archiving)`:''}.`)}
