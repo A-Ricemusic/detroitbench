@@ -34,10 +34,10 @@ test('a run the controller initializes now carries the locked story, hash and ve
    {storyVersion:lock.storyVersion,storyHash:lock.storyHash,promptVersion:lock.promptVersion,interviewVersion:lock.interviewVersion,scalesVersion:lock.scalesVersion},`a new run would not be administered under the locked release. ${FIX}`)}
  finally{await rm(dir,{recursive:true,force:true})}});
 
-test('the run archive is valid, lists only runs that never completed, and archiving is idempotent',()=>{
+test('the run archive is valid, lists abandoned partials and retired completed runs, and archiving is idempotent',()=>{
  const archive=loadArchive(),files=evidenceFiles();assert.ok(archive,'data/administration/archive.json exists');
  assert.deepEqual(validateArchive(archive,files),[]);
- assert.ok(archive.runs.every(r=>r.status==='abandoned'),'every archived run is an abandoned partial (none retired yet)');
+ assert.ok(archive.runs.every(r=>r.status==='abandoned'||r.status==='completed'),'every archived run is an abandoned partial or a retired completed run');
  assert.equal(serializeArchive(archiveRuns(archive,files.filter(f=>archivedIdsOf(archive).has(f.runId)),archive.archivedAt)),serializeArchive(archive),'re-archiving the listed runs changes nothing');
  const listed=archive.runs[0],ids=archivedIds(archive);assert.ok(ids.has(listed.evidenceId)&&ids.has(listed.runId));assert.ok(!ids.has('not-a-run'));
  assert.ok(validateArchive({...archive,extra:1},files).some(e=>/unknown top-level/.test(e)));
