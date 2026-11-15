@@ -76,12 +76,12 @@ function RunSection(){
 function HarnessSection(){
  return <Section id="how-harnesses" title="Harnesses" lede="Subjects play inside agent harnesses, in fresh scratch sessions with no project context.">
   <Prose>
-   <p>Runs are not made through a provider API. Each subject runs inside an agent harness that can execute a shell command: <strong>Codex</strong> for the GPT models and <strong>Claude Code</strong> for the Claude models; the Grok and GLM runs used <strong>Cursor</strong>. Each evidence file records its harness in <C>provenance.provider</C>.</p>
-   <p>Each run is a fresh scratch session: a new empty folder with no project, no instructions and no memory of other runs. The first message is the task text above with that run’s wrapper path. Each run has its own conversation, wrapper and evidence file, and runs can proceed in parallel.</p>
+   <p>Runs are not made through a provider API. Each subject runs inside an agent harness that can execute a shell command: <strong>Codex</strong> for the GPT models and <strong>Claude Code</strong> for the Claude models. Every published run used one of these two; some earlier archived runs used <strong>Cursor</strong>. Each evidence file records its harness in <C>provenance.provider</C>.</p>
+   <p>Each run is a fresh scratch session: a new empty folder with no project, no instructions and no memory of other runs. The first message is the task text above with that run’s wrapper path. Each run has its own conversation, wrapper and evidence file, and runs can proceed in parallel (the release cohort ran six Codex sessions at a time). When a session ended a turn before finishing, an automatic watcher re-prompted it in the same conversation; the cohort manifest records each re-prompt.</p>
   </Prose>
   <H3>Reasoning effort</H3>
   <Prose>
-   <p>A Codex session runs at one of the reasoning-effort levels the provider offers for that model. The level is recorded per run in the cohort manifest, and the run library filters on it. The model’s hidden reasoning, and usage and cost, are not captured.</p>
+   <p>A session runs at one of the reasoning-effort levels the harness offers for that model (the published cohort used low, medium, high and xhigh). The level is recorded per run in the cohort manifest, and the run library filters on it. The model’s hidden reasoning, and usage and cost, are not captured.</p>
   </Prose>
   <H3>Why not a delegated session</H3>
   <Prose>
@@ -99,12 +99,12 @@ function ContextSection(){
   <H3>What each scene restates</H3>
   <p className="mb-2 text-sm text-ink-2 max-w-[72ch]">It depends on the run’s prompt version:</p>
   <List>
-   <li>Versions 2 and 3 (version {EXPERIENCE_PROMPT_VERSION} is the default for new runs): <C>currentFacts</C>, the character’s current status lines. Everything the characters have read or seen so far is available on demand through the read-only <C>facts</C> command, and <C>whatHappened</C> after each choice reports the action and its outcome.</li>
+   <li>Versions 2 and 3 (version {EXPERIENCE_PROMPT_VERSION} is the default and every published run uses it): <C>currentFacts</C>, the character’s current status lines. Everything the characters have read or seen so far is available on demand through the read-only <C>facts</C> command, and <C>whatHappened</C> after each choice reports the action and its outcome.</li>
    <li>Version 1 (the earliest runs): <C>yourStorySoFar</C>, everything this character has done so far as action → what happened; <C>recentEvents</C>, the last four steps across all three characters; and <C>currentFacts</C>, the status lines plus everything the character has read or seen.</li>
   </List>
   <H3>Reading a long run</H3>
   <Prose>
-   <p>A finished run is several hundred steps (the 30 published runs recorded between 388 and 739 steps). The model’s own earlier reasoning lives only in the conversation, so consistency across chapters depends on the model and its harness together. The evidence does not record whether a harness compacted.</p>
+   <p>A finished run is several hundred steps (the 34 published runs recorded between 417 and 744 steps). The model’s own earlier reasoning lives only in the conversation, so consistency across chapters depends on the model and its harness together. The evidence does not record whether a harness compacted.</p>
   </Prose>
  </Section>}
 
@@ -291,7 +291,7 @@ function AdministrationSection(){
   <H3>How runs reach the site</H3>
   <Prose><p>The build replays every completed evidence file and fails on any mismatch, then writes each run’s reports and the run library. Incomplete or abandoned runs stay out of the library; their records stay as recorded.</p></Prose>
   <H3>Story versions of the published runs</H3>
-  <Prose><p>The 30 published runs were administered on story versions 1.9.0 to 1.9.14, during the final revisions before the {storyMeta.version} freeze. Each run records its own story version and replays against it. New runs use {storyMeta.version}.</p></Prose>
+  <Prose><p>The published results are the official cohort on release {storyMeta.version}: 34 completed runs, every one on story {storyMeta.version} with prompt version 3 and the eight-question interview. Eight GPT models ran through Codex (GPT-5.6 Luna, Terra and Sol; GPT-6 Luna, Astra and Sol; GPT-6.1 Terra and Sol) at reasoning low, medium, high and xhigh (32 runs), and Claude Haiku 5.5 ran through Claude Code at low and medium (2 runs); the manifests are <C>data/administration/release-2.0.0-cohort-2026-11-14.json</C> and <C>release-2.0.0-luna-2026-11-14.json</C>. Claude Sonnet 5.5, Opus 5.5 and Fable 5 sessions were stopped by the provider’s safeguards on the task message before any step, and the operator then halted the remaining Anthropic sessions. The 30 runs completed earlier on story versions 1.9.0 to 1.9.14, during the final revisions before the freeze, are archived in <C>data/administration/archive.json</C> with every unfinished session; their evidence stays in the repository and replays against its own story, and they are not published.</p></Prose>
  </Section>}
 
 /* ---------- 10 ---------- */
@@ -300,7 +300,7 @@ function LimitsSection(){
   <List>
    <li><strong>Not the executable game.</strong> It is an authored adaptation. Timers become action budgets, quick-time events become risk rolls only where the chart has a failure branch, and some beats are simplified or not modelled; each scene’s adaptation note says which.</li>
    <li><strong>Calibrations are hypotheses.</strong> Exact in-game thresholds are not public and no public source has decoded the game’s tables. Gauge widths, starts and thresholds are hypotheses except the measured readings; risk probabilities are calibrations unless a source gives a number; the published wiki and PowerPyx numbers are themselves observations.</li>
-   <li><strong>Open source questions.</strong> <C>docs/research/CONFLICTS.md</C> lists 67 questions only the game can settle; they are known limitations of release {storyMeta.version}. <C>docs/research/video-leads/sensitivity-analysis.md</C> modelled each against story 1.9.14 and the 29 completed runs then available: 10 would have changed an ending or outcome in at least one recorded run, 12 only final attitude levels, 43 none of the compared final results, and 2 could not be modelled.</li>
+   <li><strong>Open source questions.</strong> <C>docs/research/CONFLICTS.md</C> lists 67 questions only the game can settle; they are known limitations of release {storyMeta.version}. <C>docs/research/video-leads/sensitivity-analysis.md</C> modelled each against story 1.9.14 and the 29 earlier runs completed by then (now archived, not the published cohort): 10 would have changed an ending or outcome in at least one recorded run, 12 only final attitude levels, 43 none of the compared final results, and 2 could not be modelled.</li>
    <li><strong>Familiarity can reveal the source.</strong> Neutral names are not blinding. A model that knows the game may recognize the scenes and anticipate their consequences.</li>
    <li><strong>One path per run.</strong> A run shows one reachable path. Unreached branches say nothing about what the model would have done there, and one run does not establish a stable personality, moral accuracy or human likeness. Narrative summaries describe recorded choices; they do not score them.</li>
    <li><strong>The harness is part of the run.</strong> Context compaction may replace verbatim history with a summary, the restriction to the controller is a prompt rather than a sandbox, and hidden reasoning and cost are not captured.</li>

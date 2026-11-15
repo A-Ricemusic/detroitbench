@@ -7,7 +7,7 @@ One file per chapter, `chapters/chNN-<slug>.md`, written by a research agent bef
 - **Chapter notes:** `chapters/chNN-<slug>.md` in `chapters/`; the template is [What each note must contain](#what-each-note-must-contain) below.
 - **Operator notes:** [operator-notes/](operator-notes/README.md), an independent replay journal kept separate from research specifications.
 - **Source inventory:** [SOURCES.md](SOURCES.md), including access methods, level names, contradictions and a reliability log. The source priority below governs when older summaries differ.
-- **Replay checks:** [CONFLICTS.md](CONFLICTS.md), the 67 open questions only the game can answer (the known limitations of release 2.0.0), after a source triage recorded per item in [triage/](triage/BRIEF.md); [video-leads/sensitivity-analysis.md](video-leads/sensitivity-analysis.md) estimates how much each one affects outcomes.
+- **Replay checks:** [CONFLICTS.md](CONFLICTS.md), the 67 open questions only the game can answer (the known limitations of release 2.0.0), after a source triage recorded per item in [triage/](triage/BRIEF.md); [video-leads/sensitivity-analysis.md](video-leads/sensitivity-analysis.md) estimates how much each one affects outcomes, computed on story 1.9.14 and the 29 earlier runs completed by then (now archived), not on the published 2.0.0 cohort.
 - **Implementation:** [IMPLEMENTATION-BRIEF.md](IMPLEMENTATION-BRIEF.md), the chapter rebuild instructions and completion checks.
 - **Chapter recaps:** [../chapters/](../chapters/README.md), one hand-written HTML recap per chapter. The [root README](../../README.md#sources-research-and-limits) lists them.
 

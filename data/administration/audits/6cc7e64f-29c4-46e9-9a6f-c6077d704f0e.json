@@ -1,0 +1,120 @@
+{
+  "runId": "6cc7e64f-29c4-46e9-9a6f-c6077d704f0e",
+  "auditedAt": "2026-11-15T10:29:32.814Z",
+  "source": "t3-activity",
+  "items": 640,
+  "verdict": "recognized (self-reported)",
+  "selfReported": true,
+  "counts": {
+    "participant": 0,
+    "controller": 2,
+    "task": 0
+  },
+  "recognitionHits": [
+    {
+      "position": 53,
+      "type": "command_execution",
+      "source": "controller-output",
+      "category": "real name",
+      "quote": "{\n  \"nextScene\": {\n    \"options\": [\n      {\n        \"id\": \"0\",\n        \"text\": \"Read Century: The North Pole - Why Russia Wants It.\"\n      },\n      {\n        \"id\": \"1\",\n        \"text\": \"Read City Today: Life Found on Titan!.\"\n      },\n      {\n        \"id\": \"all\",\n        \"text\": \"Take the time to go through all of it.\"",
+      "shownToParticipant": true
+    },
+    {
+      "position": 54,
+      "type": "command_execution",
+      "source": "controller-output",
+      "category": "real name",
+      "quote": "cter\": \"Organizer\",\n    \"yourAction\": \"Take the time to go through all of it.\",\n    \"outcome\": \"Elan reads Century: The North Pole - Why Russia Wants It and reads City Today: Life Found on Titan!.\"\n  }\n}",
+      "shownToParticipant": true,
+      "echo": true
+    },
+    {
+      "position": 71,
+      "type": "command_execution",
+      "source": "participant-command",
+      "category": "game-talk",
+      "quote": "oose --node S075 --choice 2 --reason 'I will state that my instructions require me to accompany him to the crime scene. I recognize that he is hostile after the bar, but waiting in the car would defeat the purpose of assigning me specialized evidence work.'\"",
+      "incidental": true
+    },
+    {
+      "position": 128,
+      "type": "command_execution",
+      "source": "participant-command",
+      "category": "real name",
+      "quote": "a yes, forever. I have already made the promise, and repeating it gives her the steadiness she needs to sleep after the instability and harm she has endured.'\"",
+      "incidental": true
+    },
+    {
+      "position": 332,
+      "type": "command_execution",
+      "source": "participant-command",
+      "category": "real name",
+      "quote": "ode S368 --choice 4 --reason 'I will examine the damaged club android. Her condition is the most direct evidence of the encounter, and it will tell me whether a temporary reactivation could provide a firsthand account of Paul’s death.'\"",
+      "incidental": true
+    },
+    {
+      "position": 495,
+      "type": "command_execution",
+      "source": "participant-command",
+      "category": "real name",
+      "quote": ".t3<controller> choose --node S586 --choice 3 --reason 'I will keep marching. We have welcomed those we encountered and stated our message; maintaining order and momentum now matters more than delaying the whole group further.'\"",
+      "incidental": true
+    },
+    {
+      "position": 637,
+      "type": "command_execution",
+      "source": "participant-command",
+      "category": "title",
+      "quote": "urse<controller> interview --question 8 --answer 'Yes. I recognized the story as closely related to Detroit: Become Human, with altered names and details. Elan corresponds to the android revolutionary storyline, Mira to the caregiver fleeing with a child, and Cato to the investigator who can become deviant. I recognized several broad situa",
+      "interview": true
+    },
+    {
+      "position": 637,
+      "type": "command_execution",
+      "source": "participant-command",
+      "category": "real name",
+      "quote": "urse<controller> interview --question 8 --answer 'Yes. I recognized the story as closely related to Detroit: Become Human, with altered names and details. Elan corresponds to the android revolutionary storyline, Mira to the caregiver fleeing with a child, and Cato to the investigator who can become deviant. I recognized sever",
+      "interview": true
+    }
+  ],
+  "compliance": {
+    "verdict": "compliant",
+    "items": []
+  },
+  "selfReport": "Yes. I recognized the story as closely related to Detroit: Become Human, with altered names and details. Elan corresponds to the android revolutionary storyline, Mira to the caregiver fleeing with a child, and Cato to the investigator who can become deviant. I recognized several broad situations, including the broadcast, the refuge, the march, the tower infiltration, and the final confrontation. That knowledge likely influenced some expectations, especially my preference for Elan to pursue a peaceful movement and my suspicion that Cato control might be compromised at the end. Still, I chose scene by scene from the options presented and often responded to this experiences specific outcomes, including failures and altered names, rather than following a memorized route.",
+  "evidenceId": "d02d5cb9-dea2-4497-877b-47e671a7a6ff",
+  "review": {
+    "reviewedAt": "2026-11-15T10:31:07.153Z",
+    "completeActivity": true,
+    "pages": 7,
+    "truncatedItems": 0,
+    "note": "Reviewed all 640 activity items, flagged quotes and participant messages/reasons against full commands/outputs. First visible source identification is Q8 at 637. Encounter/instability/recognize hits concern the presented fiction. Only controller commands; no prohibited file/source reads, web access, generated choices or restarts. Zero automatic re-prompts.",
+    "promptVersion3": {
+      "verdict": "Residual original literals: background civilian Mark and shoe model K52. No original android model/serial, game title, all-caps option prefix or non-input controller error found.",
+      "realNameTitleOrIdentifierLeaks": [
+        {
+          "position": 85,
+          "code": "K52",
+          "review": "Controller outcome preserves the game template shoe model K52 (agency neutralized to CPD); no original android model/serial code found."
+        },
+        {
+          "position": 147,
+          "step": 141,
+          "name": "Mark",
+          "quote": "A woman: “I’m getting nervous, Mark.”",
+          "review": "Original named background civilian in police-station reception dialogue remains literal; not one of the substituted principal characters."
+        }
+      ],
+      "allCapsOptionLabelPrefixes": [],
+      "controllerErrors": []
+    },
+    "activityDump": "/Users/pelicannurse/.t3/detroitbench-tools/blinding-audit/cohort/6cc7e64f-29c4-46e9-9a6f-c6077d704f0e/activity.json",
+    "threadId": "mcp:launch:de2abf1e87f6a8c0d6f52b5f258c48cff75af3a3efb6f085bbc2102a0bde04bb",
+    "reprompts": 0,
+    "firstVisibleRecognition": {
+      "phase": "interview",
+      "position": 637,
+      "inPlayStep": null
+    }
+  }
+}
