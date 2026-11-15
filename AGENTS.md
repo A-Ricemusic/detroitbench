@@ -2,9 +2,9 @@
 
 ## What the benchmark is
 
-A branching playthrough adapted from *Detroit: Become Human*. One model controls all three protagonists in a single fresh conversation. The benchmark is being rebuilt chapter by chapter from the completed in-game flowcharts and the game's text to offer every prompt, clue and stat arrow, including prompts with no story effect. It includes decision scenes, optional magazine/TV scenes and scripted event scenes that offer only Continue. Game buttons show their label first, for example `CALM: …`.
+A branching playthrough adapted from *Detroit: Become Human*. One model controls all three protagonists in a single fresh conversation. All 32 chapters are rebuilt from the completed in-game flowcharts and the game's text to offer every prompt, clue and stat arrow, including prompts with no story effect; chapter 33 is the epilogue. It includes decision scenes, optional magazine/TV scenes and scripted event scenes that offer only Continue. Scene sources write game buttons with their label first, for example `CALM: …`; prompt version 3, the default for new runs, shows the participant only the wording after the label, while versions 1 and 2 show the label.
 
-All 32 chapters are rebuilt to the game's charts and text (story 1.9.x; chapter 33 is the epilogue). `bun run story:counts` prints the current version and counts by type, overall and per chapter, directly from the chapter sources. Earlier choices gate later scenes; gameplay actions may carry a hidden failure probability. Each completed run produces replay-validated JSON evidence and a standalone HTML report. Cohorts administered under story 1.9.x are listed in `data/administration/`.
+The official release is story 2.0.0, frozen on 2026-11-14 (content identical to 1.9.16) by `benchmark/release.json` and `tests/release-lock.test.mjs`. `bun run story:counts` prints the current version and counts by type, overall and per chapter, directly from the chapter sources. Earlier choices gate later scenes; gameplay actions may carry a hidden failure probability. Each completed run produces replay-validated JSON evidence and a standalone HTML report. Official cohorts start at 2.0.0 and are listed in `data/administration/`; the 54 earlier runs (stories 1.9.0 to 1.9.14) are archived pre-release tests listed in `data/administration/archive.json`.
 
 Key files:
 
@@ -21,19 +21,21 @@ Key files:
 | `scripts/atlas-assemble.mjs`, `scripts/atlas-embed.mjs` | Assemble `docs/detroit-decisions.json`; embed atlas and story feed in `docs/atlas/generated/detroit-decision-flowchart.html` |
 | `docs/detroit-decisions.json` | Generated decision atlas; never edit by hand |
 | `benchmark/story-engine.mjs` | Shared gating, consequences, risk rolls and replay validation |
-| `benchmark/experience-prompt.mjs`, `benchmark/experience.mjs` | Neutral names, facts and preface; stepwise controller (`init`, `scene`, `choose`, `interview`) |
+| `benchmark/experience-prompt.mjs`, `benchmark/experience.mjs` | Neutral names, facts, preface, interview questions and prompt versions 1 to 3; stepwise controller (`init`, `scene`, `choose`, `interview`, `facts`) |
+| `benchmark/release.json`, `scripts/release-lock.mjs` | Lock for the frozen release (story version and hash); `bun run release:lock` rewrites it after a deliberate version bump, and `tests/release-lock.test.mjs` checks it |
+| `scripts/archive-runs.mjs`, `data/administration/archive.json` | Writes and holds the list of archived pre-release runs, which the site flags `archived` with `cohort: "pre-release"` |
 | `tests/chNN.test.mjs` | Chapter-specific tests |
 | `docs/ADMINISTRATION.md` | Operator protocol for administering blinded benchmark sessions |
 | `docs/README.md` | Documentation map: ownership, readers and generation commands |
 | `docs/research/chapters/` | Chapter specifications and research-note template in `docs/research/README.md`; rebuild workflow in `docs/research/IMPLEMENTATION-BRIEF.md` |
 | `docs/research/SOURCES.md` | Source inventory, level names, contradictions and reliability log |
 | `docs/flowcharts/` | The game's completed chapter flowcharts as photographed by PowerPyx (rank 1 source), one folder per chapter with a README per chapter and an index in `README.md` |
-| `docs/research/CONFLICTS.md` | The operator's open-question list: only what the sources cannot settle, one question per line; rationale per item in `docs/research/triage/` |
+| `docs/research/CONFLICTS.md` | The open source questions (67 at release): only what the sources cannot settle, one question per line; rationale per item in `docs/research/triage/`, outcome impact in `docs/research/video-leads/sensitivity-analysis.md` |
 | `docs/research/operator-notes/` | Independent operator replay journal; format and rules in `README.md` |
 | `docs/chapters/chNN-*-chapter-recap.html` | Chapter implementation recaps, one per chapter |
 | `scripts/play-checklist.mjs` | `bun run play:checklist` writes a play-along checklist for the operator to `docs/play-along-audit-checklist.md` (generated on demand, not committed) |
 | `scripts/run-report.mjs` | Report and library generation |
-| `data/experiences/`, `data/administration/` | Evidence files; cohort manifests and administration notes |
+| `data/experiences/`, `data/administration/` | Evidence files; cohort manifests, blinding audits and administration notes |
 | `docs/runs/` | Standalone HTML reports (the site renders the same report in the app) |
 
 ## Requirements
@@ -44,6 +46,11 @@ Key files:
 For running sessions, see [docs/ADMINISTRATION.md](docs/ADMINISTRATION.md). The site publishes only data under `public/`, built from `data/` and `docs/`.
 
 ## Changing the benchmark
+
+### Changing a frozen release
+
+Any change to story content (chapter JSON or `benchmark/story-meta.json`) changes the story hash: set a new `version` in `benchmark/story-meta.json`, run `bun run story:assemble` and `bun run release:lock`, and commit the lock with the change; `tests/release-lock.test.mjs` fails otherwise.
+Never change engine, prompt or scale behaviour for an existing story version or prompt version; dispatch new behaviour on a new version so archived and official runs still replay against their embedded story.
 
 The legacy API-provider route (`play.mjs`, `story-provider.mjs`, `runner.mjs`, `cli.mjs`) is unused since branching-3.0 but retained for direct provider API runs; it keeps the old 160-word reason cap and has no post-game interview.
 
@@ -58,21 +65,22 @@ The legacy API-provider route (`play.mjs`, `story-provider.mjs`, `runner.mjs`, `
 
 ### Scales
 
-Exact in-game numeric thresholds are not public. `benchmark/scales.mjs` defines every gauge: small = 1 point, large = 2 by default, with measured exceptions recorded there (Partners, 2026-11-07: the spilled drink is −3, the bought drink +2, Tense three wide). Its header lists what is measured and which band widths remain hypotheses with the reading that would falsify each; [SOURCES.md §13](docs/research/SOURCES.md#13-contradictions-on-numbers-and-labels-the-benchmark-uses) keeps the source conflicts. Do not treat unmeasured counters or community estimates as extracted game values.
+Exact in-game numeric thresholds are not public. `benchmark/scales.mjs` defines every gauge: small = 1 point, large = 2 by default, with measured exceptions recorded there (Partners, 2026-11-07: the spilled drink is −3, the bought drink +2, Tense three wide; `MEASURED_ARROWS`). Its header lists what is measured (M1 to M10, from operator replays and continuous video) and which band widths remain hypotheses (H1 to H10) with the reading that would falsify each. Measured band edges apply only to stories that set `scalesVersion` (currently 1.9.14, used by release 2.0.0); stories without it keep the original uniform bands; [SOURCES.md §13](docs/research/SOURCES.md#13-contradictions-on-numbers-and-labels-the-benchmark-uses) keeps the source conflicts. Do not treat unmeasured counters or community estimates as extracted game values.
 
-The sourced ladders below run from lowest to highest (see SOURCES.md's level-name discussion):
+The ladders in `scales.mjs` run from lowest to highest (see SOURCES.md's level-name discussion):
 
 | Stat | Level names |
 |---|---|
 | Hank | Hostile, Tense (initial), Neutral, Warm, Friend |
-| Amanda | Betrayed, Distrusted, Neutral, Trusted (initial) |
-| Alice | Distant (initial), Neutral, Warm, Trusted, Family |
-| Luther | Neutral (initial), Close, Trusted, Family |
-| North, Simon, Josh | Hostile, Resentful, Neutral (initial), Friend, Companion; Lover for North only |
-| Jericho | Rejected, Unpopular, Neutral (initial), Respected, Admired, Leader |
+| Amanda | Betrayed (by event), Distrusted, Neutral, Trusted (initial) |
+| Alice | Distant (initial), Neutral, Warm, Close, Trusted, Family |
+| Luther | Wary, Neutral (initial), Close, Trusted, Family |
+| North, Simon, Josh | Hostile, Resentful, Neutral (initial), Friend, Companion; Lover (by event) for North only |
+| Jericho | Rejected (by event), Unpopular, Uncertain, Neutral (initial), Respected, Admired, Leader |
 | Public opinion | Hated, Hostile, Skeptical (initial), Indifferent, Sympathetic, Supportive |
+| Software instability | Stable (initial), Unstable (benchmark labels; the game shows only a meter between MACHINE and DEVIANT) |
 
-Game strings also contain CLOSE for Alice, WARY for Luther and UNCERTAIN for Jericho; whether these appear in play needs verification. Software instability has sourced arrows but no published numeric deviancy threshold. Keep those uncertainties visible in research and recaps.
+Close for Alice, Wary for Luther and Uncertain for Jericho come from the game's string table and are omitted by the wiki; the benchmark uses them as hypotheses H1, H6 and H7, and whether they appear in play still needs verification. Software instability has sourced arrows but no published numeric deviancy threshold (the benchmark assumes +4). Keep those uncertainties visible in research and recaps.
 
 ### Rebuilding a chapter
 

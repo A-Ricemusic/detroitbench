@@ -2,8 +2,8 @@ import {useSyncExternalStore} from 'react';
 // Page state that belongs in the address bar, as on Slopalytics: the model selection, the excluded reasoning levels, the
 // theme and the chart in view live in the hash's query (`#/runs?chart=hank&models=…`). Values equal to their
 // default are removed, nothing goes to storage, and updates replace the history entry rather than adding one.
-// SHARED keys travel with every in-app link, so the selection and the theme survive moving between pages.
-export const SHARED=['models','hide-reasoning','theme'];
+// SHARED keys travel with every in-app link, so the cohort, the selection and the theme survive moving between pages.
+export const SHARED=['cohort','models','hide-reasoning','theme'];
 const listeners=new Set,emit=()=>{for(const l of listeners)l()};
 addEventListener('hashchange',emit);addEventListener('popstate',emit);
 const split=h=>{const i=h.indexOf('?');return [i<0?h:h.slice(0,i),new URLSearchParams(i<0?'':h.slice(i+1))]};

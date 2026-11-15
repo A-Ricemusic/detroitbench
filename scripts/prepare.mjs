@@ -59,6 +59,12 @@ explainUnmet(summaries.map(s=>s.track));
 // the site's model sidebar stays a pure view of prepared data. The display name already comes from loadReportNames.
 const modelCtx=await loadModelContext();
 for(const s of summaries){const info=modelInfo(s,modelCtx);if(!info.registered){info.vendor=s.vendor.toLowerCase();info.vendorName=s.vendor}s.modelInfo=info;s.reasoning=modelCtx.reasoning.get(s.id)??'none'}
+// Cohorts (data/administration/archive.json, scripts/archive-runs.mjs): a run the archive lists is a pre-release test run,
+// every other published run is official. `archived` and `cohort` go on each run of public/data/experiences.json, and its
+// top-level `release` (benchmark/release.json) and `cohorts` (counts) let the site label them without scanning the runs.
+const {loadArchive,cohortOf}=await import('./archive-runs.mjs'),{loadRelease}=await import('./release-lock.mjs');
+const archive=loadArchive(),release=loadRelease();if(!release)throw new Error('benchmark/release.json is missing: run `bun run release:lock`.');
+for(const s of summaries)Object.assign(s,cohortOf(s.id,archive));
 // The results page loads only what its first paint draws: public/data/experiences.json holds every run's summary with
 // the trend series reduced to one value per chapter (libraryTrack) and the chapter titles once for the library. Each
 // run's choices and per-step track (trackDetail) go to public/data/runs/<id>.json, which the relationship charts fetch
@@ -68,7 +74,8 @@ await mkdir(new URL('interviews/',target),{recursive:true});
 for(const s of summaries)await writeFile(new URL('interviews/'+s.id+'.json',target),JSON.stringify({id:s.id,displayName:s.displayName,title:s.title,date:s.date,vendor:s.vendor,model:s.model,displayModel:s.displayModel,recognition:s.recognition,interview:interviewData(actual.find(r=>r.id===s.id))}));
 await mkdir(new URL('runs/',target),{recursive:true});
 for(const s of summaries){const {choices,track}=s;await writeFile(new URL('runs/'+s.id+'.json',target),JSON.stringify({id:s.id,displayName:s.displayName,title:s.title,date:s.date,vendor:s.vendor,model:s.model,displayModel:s.displayModel,...trackDetail(track),choices:choices.map(({chapterTitle,...c})=>c),interview:interviewData(actual.find(r=>r.id===s.id))}))}
-await writeFile(new URL('experiences.json',target),JSON.stringify({chapters:chapterTitles(summaries.map(s=>s.track)),runs:summaries.map(({choices,track,...s})=>({...s,track:libraryTrack(track)}))}));
+const cohorts={official:summaries.filter(s=>!s.archived).length,archived:summaries.filter(s=>s.archived).length};
+await writeFile(new URL('experiences.json',target),JSON.stringify({chapters:chapterTitles(summaries.map(s=>s.track)),release:{storyVersion:release.storyVersion,storyHash:release.storyHash,promptVersion:release.promptVersion,interviewVersion:release.interviewVersion,scalesVersion:release.scalesVersion,frozenAt:release.frozenAt},cohorts,runs:summaries.map(({choices,track,...s})=>({...s,track:libraryTrack(track)}))}));
 // Chapter flowcharts for the report page, one file per run, loaded only when the chart is opened.
 await mkdir(new URL('flows/',target),{recursive:true});
 for(const r of actual)await writeFile(new URL('flows/'+r.id+'.json',target),JSON.stringify({id:r.id,chapters:runFlows(r,{endings:endings(r)})}));

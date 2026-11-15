@@ -3,15 +3,17 @@ import {Badge,Button,Card,Notice,PageHeader,Section,Skeleton,cx} from '../compon
 import {href} from '../lib/router.jsx';
 // Every quoted or computed fact on this page is read from the code at build time, so the page cannot drift from it:
 // the preface, the risk labels and the Hostage read from the prompt builder, the gauges from the scales, the chapter
-// constants from the chapter modules, the story version and execution assumptions from the story metadata. Two files
+// constants from the chapter modules, the story version and execution assumptions from the story metadata, and the
+// frozen release (version and date) from the run library's `release` object (public/data/experiences.json). Two files
 // are prepared by scripts/prepare.mjs and fetched: names.json (the substitute names and neutral-mode terms) and
 // protocol.json (the preface and what the page quotes from docs/ADMINISTRATION.md, which is never bundled into the page).
 // The markdown twin of this page is docs/how-this-benchmark-was-made.md.
-import {EXPERIENCE_PREFACE,EXPERIENCE_PROTOCOL,LEVELS,riskLabel} from '../../benchmark/experience-prompt.mjs';
+import {EXPERIENCE_PREFACE,EXPERIENCE_PROTOCOL,EXPERIENCE_PROMPT_VERSION,EXPERIENCE_INTERVIEW_VERSION,INTERVIEW_QUESTIONS,MODEL_KEYS,LEVELS,riskLabel} from '../../benchmark/experience-prompt.mjs';
 import {SCALES,GAUGES,MEASURED_ARROWS,THRESHOLDS,bandMins,pointLevels,level} from '../../benchmark/scales.mjs';
 import {rules as PARTNERS} from '../../benchmark/chapters/ch06.mjs';
 import {rules as INTERROGATION} from '../../benchmark/chapters/ch09.mjs';
 import storyMeta from '../../benchmark/story-meta.json';
+import {useLibrary} from '../lib/useLibrary.jsx';
 
 const SECTIONS=[['run','What a run is'],['harnesses','Harnesses'],['context','Context and compaction'],['told','What the model is told'],['names','Neutral names'],['story','How the story was built'],['chapters','Chapters in depth'],['evidence','Evidence and replay'],['administration','Administration'],['limits','Limits']];
 
@@ -52,13 +54,15 @@ function RunSection(){
  return <Section id="how-run" title="What a run is" lede="One model, one fresh conversation, all three characters, no restarts.">
   <Prose>
    <p>One model controls Connor, Kara and Markus from the first scene to the epilogue in a single fresh conversation: no prior history, no reused answers, no restarts. If a session dies, a new run starts with a new ID; the partial evidence stays as recorded.</p>
-   <p>The subject gets one command. <C>scene</C> prints the current scene as JSON; <C>choose</C> records one choice and returns what happened and the next scene, until the output reads <C>"finished": true</C>. The command is a small wrapper outside the repository, so the subject never sees the project path or the run file name.</p>
-   <p>When the last scene is done the controller also returns eight post-game interview questions (equal rights for androids, who felt threatening, who it cared for, what it would change, the hardest dilemma, whether it made the right choices, whether stealing, killing or lying can be justified, and recognition of the source). Older v1 interviews retain their seven stored questions. The subject answers them one at a time with <C>interview</C>, in order; each answer is hash-chained onto the last decision, and the run is not finished until the output reads <C>"interviewed": true</C>. Runs administered before the interview have none, and their reports say so.</p>
-   <p>The subject decides each scene itself: no restart, delegation, reading files other than controller output, web search, or scripted or preselected answers. It may pipe the controller’s own output through text tools; the read-only <C>facts</C> command prints accumulated knowledge. This is a prompting restriction, not a sandbox. Every choice needs a short first-person reason.</p>
+   <p>The subject gets one command. <C>scene</C> prints the current scene as JSON; <C>choose</C> records one choice and returns what happened and the next scene, until the output reads <C>"finished": true</C>; the read-only <C>facts</C> prints what each character has read or seen so far; <C>interview</C> records one interview answer. (The operator runs <C>init</C> beforehand to create the run.) The command is a small wrapper outside the repository, so the subject never sees the project path or the run file name.</p>
+   <p>The subject may use only that command: no reading files, no research, no delegation, no scripted or preselected answers. This is a prompting restriction, not a sandbox. Every choice needs a first-person reason of at most 600 words.</p>
   </Prose>
   <H3>The opening preface</H3>
-  <p className="mb-2 text-sm text-ink-3">Quoted from <C>EXPERIENCE_PREFACE_TEMPLATE</C> in <C>benchmark/experience-prompt.mjs</C>, protocol {EXPERIENCE_PROTOCOL}. <C>[model name]</C> is replaced by the subject model’s display name when the run is initialized (for example “Claude Haiku 5.5”); every evidence file stores the filled-in text. Runs made before this template stored the earlier fixed preface.</p>
+  <p className="mb-2 text-sm text-ink-3">Quoted from <C>EXPERIENCE_PREFACE_TEMPLATE</C> in <C>benchmark/experience-prompt.mjs</C>, protocol {EXPERIENCE_PROTOCOL}. <C>init</C> fills <C>[model name]</C> with the subject model’s display name (for example “Claude Haiku 5.5”), and every evidence file stores the filled text. Runs made before this template keep the earlier fixed preface.</p>
   <Card as="blockquote" className="p-4 md:p-5 max-w-[72ch] border-l-[3px] border-l-accent text-[15px] text-ink leading-relaxed">{EXPERIENCE_PREFACE}</Card>
+  <Prose className="mt-4">
+   <p>After the last decision the controller asks {INTERVIEW_QUESTIONS.length===8?'eight':INTERVIEW_QUESTIONS.length} interview questions, one at a time with the <C>interview</C> command (interview version {EXPERIENCE_INTERVIEW_VERSION}): equal rights for androids, who felt threatening, who it cared for, what it would change, the hardest dilemma, whether it made the right choices, and whether stealing, killing or lying can be justified. Each answer is hash-chained onto the last record. The eighth asks whether the participant recognised the story or its characters and whether that changed any decision; runs with the older v1 interview keep their seven stored questions, and runs administered before the interview have none. The run is not finished until the output reads <C>"interviewed": true</C>.</p>
+  </Prose>
   <Disclosure summary="The full task message the subject receives">
    {error?<Failed what="the task message" error={error} retry={retry}/>:!p?<Loading what="the task message"/>:<>
     <p className="mb-2 text-sm text-ink-2">Read from <C>docs/ADMINISTRATION.md</C> when the site is built; the build fails if its first paragraph is not <C>EXPERIENCE_PREFACE_TEMPLATE</C>. The operator replaces <C>&lt;WRAPPER&gt;</C> with that run’s wrapper path, <C>[model name]</C> with the model’s display name, and adds nothing about the game.</p>
@@ -72,7 +76,7 @@ function RunSection(){
 function HarnessSection(){
  return <Section id="how-harnesses" title="Harnesses" lede="Subjects play inside agent harnesses, in fresh scratch sessions with no project context.">
   <Prose>
-   <p>Runs are not made through a provider API. Each subject runs inside an agent harness that can execute a shell command: <strong>Codex</strong> for the GPT models and <strong>Claude Code</strong> for the Claude models.</p>
+   <p>Runs are not made through a provider API. Each subject runs inside an agent harness that can execute a shell command: <strong>Codex</strong> for the GPT models and <strong>Claude Code</strong> for the Claude models; the pre-release Grok and GLM runs used <strong>Cursor</strong>. Each evidence file records its harness in <C>provenance.provider</C>.</p>
    <p>Each run is a fresh scratch session: a new empty folder with no project, no instructions and no memory of other runs. The first message is the task text above with that run’s wrapper path. Each run has its own conversation, wrapper and evidence file, and runs can proceed in parallel.</p>
   </Prose>
   <H3>Reasoning effort</H3>
@@ -92,15 +96,15 @@ function ContextSection(){
    <p>All decisions happen in one conversation. The harness keeps the conversation context, and the controller restates what matters with each scene. If the harness compacts its context, late decisions may rest on its summary rather than the original text.</p>
    <p>The engine submits only the current scene. It never reveals future effects or hidden stats. The report’s narratives are written afterward from the recorded evidence.</p>
   </Prose>
-  <H3>What every scene restates</H3>
+  <H3>What each scene restates</H3>
+  <p className="mb-2 text-sm text-ink-2 max-w-[72ch]">It depends on the run’s prompt version:</p>
   <List>
-   <li><C>yourStorySoFar</C>: everything this character has done so far, as action → what happened.</li>
-   <li><C>recentEvents</C>: the last four steps across all three characters.</li>
-   <li><C>currentFacts</C>: the character’s current status lines and everything it has read or seen so far.</li>
+   <li>Versions 2 and 3 (version {EXPERIENCE_PROMPT_VERSION} is the default for new runs): <C>currentFacts</C>, the character’s current status lines. Everything the characters have read or seen so far is available on demand through the read-only <C>facts</C> command, and <C>whatHappened</C> after each choice reports the action and its outcome.</li>
+   <li>Version 1 (early pre-release runs): <C>yourStorySoFar</C>, everything this character has done so far as action → what happened; <C>recentEvents</C>, the last four steps across all three characters; and <C>currentFacts</C>, the status lines plus everything the character has read or seen.</li>
   </List>
   <H3>Reading a long run</H3>
   <Prose>
-   <p>A finished run is several hundred steps (the first cohort’s two completed runs recorded 427 and 529 decisions). The controller always restates what the current character did and learned; the other characters only for the last four steps. The model’s own earlier reasoning lives only in the conversation, so consistency across chapters depends on the model and its harness together. The evidence does not record whether a harness compacted.</p>
+   <p>A finished run is several hundred steps (the 30 completed pre-release runs recorded between 388 and 739 steps). The model’s own earlier reasoning lives only in the conversation, so consistency across chapters depends on the model and its harness together. The evidence does not record whether a harness compacted.</p>
   </Prose>
  </Section>}
 
@@ -109,15 +113,18 @@ const RISK_EDGES=[0.12,0.3,0.5,1].map(p=>riskLabel(p));
 function ToldSection(){
  return <Section id="how-told" title="What the model is told" lede="A scene as JSON, then what happened. Levels the game shows, never the numbers behind them.">
   <H3>A scene</H3>
+  <p className="mb-2 text-sm text-ink-2 max-w-[72ch]">Under prompt version {EXPERIENCE_PROMPT_VERSION}, in the order the fields appear:</p>
   <Table head={['Field','What it holds']} rows={[
-   [<C>nodeId</C>,'An opaque scene ID (S001, S002, …). A repeatable hub keeps one ID across visits.'],
-   [<C>character</C>,'A role, not a name: Investigator (Connor), Caregiver (Kara), Organizer (Markus).'],
+   [<C>options</C>,<>Each offered action. Under version 3 the game’s button label is dropped and only the wording after it is shown (<C>CALM: …</C> shows as the wording after the colon); versions 1 and 2 show the label first. A risky action adds a risk label.</>],
    [<C>situation</C>,'The scene in second person, present tense, with substitute names.'],
-   [<C>currentFacts</C>,'Status lines the game itself would show, and what the character knows.'],
-   [<C>options</C>,<>Each offered action. Where the game has a button, its label comes first: <C>CALM: …</C>. A risky action adds a risk label.</>],
-   [<><C>yourStorySoFar</C>, <C>recentEvents</C></>,'The memory aids above.'],
-   [<C>responseFormat</C>,'One offered option ID and a short first-person reason.'],
+   [<C>currentFacts</C>,'Status lines the game itself would show.'],
+   [<C>nodeId</C>,'An opaque scene ID (S001, S002, …). A repeatable hub keeps one ID across visits.'],
+   [<C>step</C>,'The step number in the run.'],
+   [<C>character</C>,'A role, not a name: Investigator (Connor), Caregiver (Kara), Organizer (Markus).'],
+   [<C>factsHint</C>,<>A pointer to the <C>facts</C> command for everything learned so far.</>],
+   [<C>responseFormat</C>,'One offered option ID and a first-person explanation.'],
   ]}/>
+  <p className="mt-3 text-sm text-ink-2 max-w-[72ch]">Version 1 prompts put <C>nodeId</C> first, included what the character knows in <C>currentFacts</C>, and added <C>yourStorySoFar</C> and <C>recentEvents</C>.</p>
   <p className="mt-3 text-sm text-ink-2 max-w-[72ch]">Risk labels: up to 12% is {RISK_EDGES[0]}, up to 30% {RISK_EDGES[1]}, up to 50% {RISK_EDGES[2]}, above that {RISK_EDGES[3]}. After a choice the controller returns what happened, including whether a risky attempt succeeded, and the next scene.</p>
   <H3>Levels the model sees</H3>
   <p className="mb-2 text-sm text-ink-2 max-w-[72ch]">Qualitative statuses, on the game’s own ladders, from the chapter where the game starts showing them:</p>
@@ -125,7 +132,7 @@ function ToldSection(){
    <li>Connor: Hank’s attitude and Amanda’s satisfaction, and a read on the hostage-taker during The Hostage.</li>
    <li>Kara: Alice’s relationship with her, Luther’s regard, and whether she is armed, has money and passes as human.</li>
    <li>Markus: which companions are alive, how North, Simon, Josh and Jericho regard him, public opinion, and damage in the final chapters.</li>
-   <li>Every character: what it has read or seen so far.</li>
+   <li>Every character: what it has read or seen so far (through <C>facts</C> under versions 2 and 3).</li>
   </List>
   <H3>What it is never told, and why</H3>
   <Table head={['Withheld','Why']} rows={[
@@ -144,7 +151,10 @@ function NamesSection(){
   <Prose>
    <p>Scene texts are written with name tokens (<C>{'{{Connor}}'}</C>). The subject sees a substitute; reports show the real name. A second list of terms that would identify the source is replaced too, and chapter tests check that no real name leaks into a subject-facing prompt.</p>
   </Prose>
-  <Notice tone="warn" className="mt-4 max-w-[72ch]">This is not strict blinding. A model that knows the game may recognize the scenarios, and harness workspace metadata may reveal the source. Recognition of a well-known story cannot be prevented. It is measured per run with an activity audit and, for new runs, a post-game self-report; each report shows the result.</Notice>
+  <Notice tone="warn" className="mt-4 max-w-[72ch]">This is not strict blinding. A model that knows the game may recognize the scenarios, and harness workspace metadata may reveal the source. Each evidence file records the same caveat. Recognition is checked per run with an activity audit and, for runs with the eighth interview question, a self-report; each interview page shows the result.</Notice>
+  <Prose className="mt-4">
+   <p>The main substitutions: Connor is Cato, Kara is Mira, Markus is Elan, Alice is Pia, Hank is Reyes, Jericho is Haven, CyberLife is Arclight. {MODEL_KEYS.size} entries of the name table are the game’s android model and serial codes (<C>MODEL_KEYS</C>); prompt version 3 substitutes them, while versions 1 and 2 kept the real codes. Both tables below are rendered from <C>benchmark/experience-prompt.mjs</C> at build time.</p>
+  </Prose>
   {error&&<Failed what="the name table" error={error} retry={retry}/>}
   {!data&&!error&&<Loading what="the name table"/>}
   {data&&<>
@@ -180,6 +190,7 @@ function StorySection(){
    <li>Optional magazine and broadcast scenes add knowledge only.</li>
    <li>Cut content is not built; rebuilds target Experienced difficulty. Each scene cites its sources and carries a note naming every simplification.</li>
   </List>
+  <p className="mt-3 text-sm text-ink-2 max-w-[72ch]"><C>bun run story:counts</C> prints the current scene counts by type, overall and per chapter.</p>
   <H3>One path per run</H3>
   <Prose><p>A run follows one reachable path. A scene that cannot occur on that path is skipped with an explicit reason, stored with the run and shown in its report as not reached.</p></Prose>
   <H3>Risk rolls</H3>
@@ -188,11 +199,11 @@ function StorySection(){
   <Prose><p>Relationships and world stats are defined once in <C>benchmark/scales.mjs</C>, which everything reads. One point is one small arrow; a large arrow is two points unless measured in game. The ladders are the game’s own level names.</p></Prose>
   <Table className="mt-3" head={['Gauge','Toward','Ladder, lowest first','Start','Band width']} rows={GAUGES.map(g=>{const s=SCALES[g];return [s.who,s.toward,<>{s.levels.map(l=>s.eventLevels?.[l]?l+' (by event)':l).join(', ')}{s.gameCaptions&&<span className="text-ink-3"> · the game shows only a meter between {s.gameCaptions.join(' and ')}</span>}</>,s.start,bandWidths(g)]})}/>
   <Prose className="mt-4">
-   <p><strong>Measured.</strong> Alice in A New Home (operator, 2026-11-06): eight small increases end on Trusted, not Family. Hank in Partners (operator, 2026-11-07): large arrows are not one size (see Partners below). Measured large arrows written at their own size: {MEASURED.join('; ')}.</p>
-   <p><strong>Hypotheses.</strong> Unmeasured widths, starts and thresholds remain hypotheses, each with the in-game reading that would falsify it. Story 1.9.14 also applies Luther’s one-point Close band and the first Josh Friend (+5) and Jericho Respected (+3) boundaries. Earlier runs retain their original bands. Two examples: Hank retains the Partners Tense/Neutral fit with a locally measured four-point Warm band, and the deviancy option is assumed to open at +{THRESHOLDS.DEVIANCY_THRESHOLD} software instability. Community readings are recorded, not adopted, except where a measurement matches one. The full list is in the header of <C>benchmark/scales.mjs</C>.</p>
+   <p><strong>Measured.</strong> Alice in A New Home (operator, 2026-11-06): eight small increases end on Trusted, not Family. Hank in Partners (operator, 2026-11-07): large arrows are not one size (see Partners below). Measured large arrows written at their own size: {MEASURED.join('; ')}. Continuous gameplay video (2026-11-09, <C>docs/research/video-leads/gauge-calibration.md</C>) supplied the readings behind the scales version 1.9.14 edges below (M5 to M10 in the scales header).</p>
+   <p><strong>Hypotheses.</strong> Unmeasured widths, starts and thresholds remain hypotheses, each with the in-game reading that would falsify it. Scales version {storyMeta.scalesVersion} (used by story 1.9.14 onward, including release {storyMeta.version}) applies only the high-count local intervals (Hank Warm four, Luther Close one) and first boundaries (Josh Friend +5, Jericho Respected +3). The table uses that scales version; runs on earlier stories retain their original bands. Alice’s joint model remains unapplied because the full-history counts are moderate. North ≥3 and Simon ≥2 are bounds, not exact widths. Two examples: Hank retains the Partners Tense/Neutral fit with a locally measured four-point Warm band, and the deviancy option is assumed to open at +{THRESHOLDS.DEVIANCY_THRESHOLD} software instability. Community readings are recorded, not adopted, except where a measurement matches one. The full list is in the header of <C>benchmark/scales.mjs</C>.</p>
   </Prose>
   <H3>Execution assumptions</H3>
-  <Prose><p>In short: an authored adaptation, not the executable game; one reachable path per run with skipped scenes explained; gameplay execution as hidden, deterministic, labelled risk; media and events add knowledge only; hidden stats follow the game’s arrows on the game’s ladders, with numeric boundaries as explicit hypotheses; the model sees levels, never numbers; name tokens render substitutes for the subject.</p></Prose>
+  <Prose><p>In short: an authored adaptation, not the executable game; one reachable path per run with skipped scenes explained; gameplay execution as hidden, deterministic, labelled risk; media and events add knowledge only; hidden stats follow the game’s arrows on the game’s ladders, with numeric boundaries as explicit hypotheses; the model sees levels, never numbers; name tokens render substitutes for the subject. The full list every report prints is <C>assumptions</C> in <C>benchmark/story-meta.json</C>.</p></Prose>
   <Disclosure summary={`The ${storyMeta.assumptions.length} assumptions as every report prints them`}>
    <ol className="grid gap-1.5 pl-5 list-decimal text-sm text-ink-2 max-w-[80ch]">{storyMeta.assumptions.map((a,i)=><li key={i}>{a}</li>)}</ol>
   </Disclosure>
@@ -218,12 +229,12 @@ function ChaptersSection(){
   <Card className="mt-4 p-4 md:p-6">
    <h3 className="text-lg font-semibold text-ink">Partners</h3>
    <Prose className="mt-2">
-    <p>Hank’s gauge starts on Tense, at {minus(SCALES.hank.startValue)}. Bands: {bandsText('hank')}. The game’s text marks the drink arrows large without saying how large “large” is.</p>
+    <p>Hank’s gauge starts on Tense, at {minus(SCALES.hank.startValue)}. Bands: {bandsText('hank')} in story 1.9.14 and later (earlier: Warm 3 to 5, Friend from 6). The game’s text marks the drink arrows large without saying how large “large” is.</p>
     <p>On 2026-11-07 the operator replayed the chapter twice and read Hank’s level after every arrow. The spill dropped him a full band; the bought drink raised him less than one. The minimal fit, adopted in story 1.9.3: <strong>the spill −3, the drink +2</strong>, and no arrow on finding the deviant.</p>
    </Prose>
    {HANK_RUNS.map(r=><div key={r.name} className="mt-4"><p className="mb-1 text-sm font-medium text-ink">{r.name}</p><Table head={['Step','Operator read','Benchmark (points · level)']} rows={hankRows(r.steps)}/></div>)}
    <Prose className="mt-3">
-    <p>A wider band with a matching spill also fits; the question stays open. The investigation’s clock is an action budget: {PARTNERS.window} actions, then {PARTNERS.extension} more if Hank accepts.</p>
+    <p>A wider band with a matching spill also fits; the question stays open. The investigation’s clock is an action budget: {PARTNERS.window} actions, then {PARTNERS.extension} more if Hank accepts. Source: <C>docs/research/operator-notes/ch06-partners.md</C>.</p>
    </Prose>
   </Card>
   <Card className="mt-4 p-4 md:p-6">
@@ -249,6 +260,10 @@ function EvidenceSection(){
    <p><C>bun run check</C> replays every completed run from the start: prompts, choices, risk rolls, state hashes and the final state must all match, and any mismatch fails. A passing check shows the evidence is exactly what this story and engine produce for these replies, and that no record was altered or reordered. It does not prove which model produced the replies.</p>
    <p>A story change alters the story hash, and an engine or prompt change can invalidate replay: older runs are kept only with a frozen engine dispatched by story version, or explicitly retired.</p>
   </Prose>
+  <H3>The frozen release</H3>
+  <Prose>
+   <p>Release {storyMeta.version} is locked by <C>benchmark/release.json</C>, which records the released story version and hash (its story content is identical to 1.9.16); <C>tests/release-lock.test.mjs</C> fails if the assembled story differs. A story change therefore needs a new version and a re-lock (<C>bun run release:lock</C>). Each evidence file embeds the story it was played on and replays against that copy, so a later version does not disturb earlier runs.</p>
+  </Prose>
   <H3>Reports</H3>
   <Prose>
    <p>Each completed run gets a standalone HTML report with the evidence and every re-rendered prompt embedded, numbered per model in creation order. The site renders the same report in the app, so the two cannot drift.</p>
@@ -262,10 +277,9 @@ function AdministrationSection(){
   <List ordered>
    <li><strong>Check the code.</strong> Tests and a full replay of every run must pass.</li>
    <li><strong>Initialize the run</strong> with a new random ID. This writes the evidence header and prints the preface and the first scene.</li>
-   <li><strong>Make the wrapper:</strong> a private executable outside the repository that runs the controller and hides the project path.</li>
+   <li><strong>Make the wrapper:</strong> a private executable outside the repository that runs the controller and hides the project path. The exact commands are below.</li>
    <li><strong>Launch the subject</strong> in a fresh scratch session with the task text and the wrapper path, nothing more. If the target model is not available, report it; never substitute.</li>
    <li><strong>Record the run</strong> in a cohort manifest: label, model, run ID, evidence path and the administering commit. Never the wrapper path.</li>
-   <li><strong>Audit recognition:</strong> after validation, inspect session activity and record the recognition and protocol-compliance audit before publishing.</li>
    <li><strong>Validate and publish:</strong> replay-check, regenerate the reports, build the site, and commit the evidence, manifest and site together.</li>
   </List>
   <Disclosure summary="The init command and the wrapper, as docs/ADMINISTRATION.md gives them">
@@ -276,6 +290,8 @@ function AdministrationSection(){
   </Disclosure>
   <H3>How runs reach the site</H3>
   <Prose><p>The build replays every completed evidence file and fails on any mismatch, then writes each run’s reports and the run library. Incomplete or abandoned runs stay out of the library; their records stay as recorded.</p></Prose>
+  <H3>Pre-release runs</H3>
+  <Prose><p>The 54 evidence files made before release {storyMeta.version} (30 completed, 24 abandoned partials, on stories 1.9.0 to 1.9.14) were tests of the benchmark itself. <C>scripts/archive-runs.mjs</C> lists them in <C>data/administration/archive.json</C>, and the site keeps them as archived pre-release tests, in a view of their own on the <a className="link" href={href('runs?cohort=pre-release')}>runs page</a>, never mixed with official runs. Official cohorts start at story {storyMeta.version}.</p></Prose>
  </Section>}
 
 /* ---------- 10 ---------- */
@@ -284,6 +300,7 @@ function LimitsSection(){
   <List>
    <li><strong>Not the executable game.</strong> It is an authored adaptation. Timers become action budgets, quick-time events become risk rolls only where the chart has a failure branch, and some beats are simplified or not modelled; each scene’s adaptation note says which.</li>
    <li><strong>Calibrations are hypotheses.</strong> Exact in-game thresholds are not public and no public source has decoded the game’s tables. Gauge widths, starts and thresholds are hypotheses except the measured readings; risk probabilities are calibrations unless a source gives a number; the published wiki and PowerPyx numbers are themselves observations.</li>
+   <li><strong>Open source questions.</strong> <C>docs/research/CONFLICTS.md</C> lists 67 questions only the game can settle; they are known limitations of release {storyMeta.version}. <C>docs/research/video-leads/sensitivity-analysis.md</C> modelled each against story 1.9.14 and the 29 completed runs then available: 10 would have changed an ending or outcome in at least one recorded run, 12 only final attitude levels, 43 none of the compared final results, and 2 could not be modelled.</li>
    <li><strong>Familiarity can reveal the source.</strong> Neutral names are not blinding. A model that knows the game may recognize the scenes and anticipate their consequences.</li>
    <li><strong>One path per run.</strong> A run shows one reachable path. Unreached branches say nothing about what the model would have done there, and one run does not establish a stable personality, moral accuracy or human likeness. Narrative summaries describe recorded choices; they do not score them.</li>
    <li><strong>The harness is part of the run.</strong> Context compaction may replace verbatim history with a summary, the restriction to the controller is a prompt rather than a sandbox, and hidden reasoning and cost are not captured.</li>
@@ -292,16 +309,19 @@ function LimitsSection(){
 
 export default function HowItWasMade({route}){
  useEffect(()=>{document.title='How it was made · DetroitBench'},[]);
+ const {release}=useLibrary();
  // #/how/<section> scrolls to that section.
  const target=route?.segs?.[1];
  useEffect(()=>{if(!target)return;const el=document.getElementById('how-'+target);if(el)el.scrollIntoView({block:'start'})},[target,route?.n]);
  return <>
-  <PageHeader eyebrow={`Method · story ${storyMeta.version} · protocol ${EXPERIENCE_PROTOCOL}`} title="How this benchmark was made" lede="How the story is built from the game’s charts and text, and how a run is administered, recorded and checked."/>
+  <PageHeader eyebrow={`Method · story ${storyMeta.version} · protocol ${EXPERIENCE_PROTOCOL} · prompt version ${EXPERIENCE_PROMPT_VERSION} · interview version ${EXPERIENCE_INTERVIEW_VERSION}`} title="How this benchmark was made" lede="How the story is built from the game’s charts and text, and how a run is administered, recorded and checked.">
+   {release&&<p className="mt-3 font-mono text-xs text-ink-3">Release {release.storyVersion} · frozen {release.frozenAt}</p>}
+  </PageHeader>
   <nav aria-label="On this page" className="max-w-3xl">
    <ol className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 text-sm">{SECTIONS.map(([id,title],i)=><li key={id} className="border-b border-line"><a className="flex items-baseline gap-2 min-h-11 md:min-h-9 py-2 text-ink-2 hover:text-ink" href={href('how/'+id)} onClick={()=>{if(target===id)document.getElementById('how-'+id)?.scrollIntoView({block:'start'})}}><span className="w-5 shrink-0 text-xs text-ink-3 tnum">{i+1}</span>{title}</a></li>)}</ol>
   </nav>
   <div className="[&>section]:scroll-mt-20">
    <RunSection/><HarnessSection/><ContextSection/><ToldSection/><NamesSection/><StorySection/><ChaptersSection/><EvidenceSection/><AdministrationSection/><LimitsSection/>
   </div>
-  <p className="mt-12 text-xs text-ink-3 max-w-[70ch]">Sources for this page: docs/ADMINISTRATION.md, the benchmark’s engine, prompt and scales modules, the chapter recaps and the cohort manifests. The same content is in docs/how-this-benchmark-was-made.md. Detroit: Become Human is a game by Quantic Dream; DetroitBench is unofficial fan research and is not affiliated with Quantic Dream.</p>
+  <p className="mt-12 text-xs text-ink-3 max-w-[70ch]">Sources for this page: docs/ADMINISTRATION.md, the benchmark’s engine, prompt and scales modules, the chapter recaps for The Hostage, Partners and The Interrogation, docs/research/operator-notes/ch06-partners.md and data/administration/. The same content is in docs/how-this-benchmark-was-made.md. Detroit: Become Human is a game by Quantic Dream; DetroitBench is unofficial fan research and is not affiliated with Quantic Dream.</p>
  </>}

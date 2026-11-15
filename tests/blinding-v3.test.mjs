@@ -63,7 +63,7 @@ test('a running v2 session continues against its embedded 1.9.14 story after the
  // Preserve the pre-correction scene when reconstructing the token-only 1.9.14 snapshot.
  const beforeOfferCorrection=structuredClone(story);
  beforeOfferCorrection.nodes[beforeOfferCorrection.nodes.findIndex(n=>n.id==='CP09')]=JSON.parse(readFileSync(new URL('./fixtures/ch26-cp09-before-1.9.16.json',import.meta.url)));
- const legacy=JSON.parse(JSON.stringify(beforeOfferCorrection).replace(/\{\{(\w+)\}\}/g,(token,key)=>MODEL_KEYS.has(key)?NAMES[key][0]:token));legacy.version='1.9.14';
+ const legacy=JSON.parse(JSON.stringify(beforeOfferCorrection).replace(/\{\{(\w+)\}\}/g,(token,key)=>MODEL_KEYS.has(key)?NAMES[key][0]:token));legacy.version='1.9.14';legacy.protocolVersion='branching-2.3'; // story 2.0.0 corrected the stale protocolVersion
  assert.equal(storyHash(legacy),golden.originalStoryHash);
  const run={id:'v2-active-test',protocol:'branching-3.0',kind:'agent-playthrough',model:'test',promptVersion:2,interviewVersion:2,story:legacy,storyHash:storyHash(legacy),createdAt:'2026-11-09T00:00:00Z',status:'running',records:[]};
  for(let i=0;i<8;i++){const p=promptFor(legacy,run),reply={choice:p.options[0].id,reason:'I will help.'};run.records.push(await recordChoice(legacy,run,reply,JSON.stringify(reply)))}

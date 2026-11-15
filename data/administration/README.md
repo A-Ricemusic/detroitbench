@@ -36,7 +36,13 @@ Shape of a manifest (`<cohort-name>.json`):
 
 Rules: one fresh conversation per run, no reused answers, no restarts. A run that dies mid-session keeps its partial evidence file and is marked `abandoned`; start a new run with a new ID rather than resuming.
 
-No cohort has been administered under the current story version. All runs made under story versions 0.2.1 through 1.1.3 were discarded on 2026-11-06 ahead of a full rewrite of the scene set. Git history was not rewritten.
+No official cohort has been administered yet. Every run to date is a pre-release test of the benchmark on stories 1.9.0 to 1.9.14 (30 completed, 24 partial and abandoned), archived on 2026-11-14 in `archive.json`; official cohorts start at story 2.0.0, the release locked in `benchmark/release.json`. Earlier runs made under story versions 0.2.1 through 1.1.3 were discarded on 2026-11-06 ahead of a full rewrite of the scene set. Git history was not rewritten.
+
+## Release lock and pre-release archive
+
+`benchmark/release.json` records the release an official cohort is administered under: story version and hash (as the controller stores `storyHash`), prompt and interview versions, scales version and freeze date. `tests/release-lock.test.mjs` fails when the assembled story or the controller defaults drift from it; to change the benchmark deliberately, bump the story version in `benchmark/story-meta.json`, run `bun run story:assemble`, then `bun run release:lock` (it refuses while the story version equals the locked one unless `--force` is passed).
+
+`archive.json` lists runs kept as evidence but outside every official cohort: `{note, archivedAt, cohort: "pre-release", runs: [{runId, evidenceId, model, storyVersion, status: "completed" | "abandoned", records, archivedAt?}]}`. `runId` is the file name's run ID, `evidenceId` the immutable `id` inside the file (the site joins on either); a run that never completed is `abandoned`; a per-run `archivedAt` appears only when it differs from the top-level date. Archiving is metadata only: evidence files are never moved, edited or deleted. Add runs with `bun run archive:runs <run id> [...]` or `bun run archive:runs --all-existing` (idempotent; `--date YYYY-MM-DD`, `--check` validates only). `bun run check` validates the archive against the evidence files, fails on a run older than story 2.0.0 that is not archived, and reports official and archived counts. `scripts/prepare.mjs` sets `archived` and `cohort` (`"pre-release"` or `"official"`) on every run in `public/data/experiences.json` and adds top-level `release` and `cohorts` (`{official, archived}`); standalone reports of archived runs say "Pre-release test run" under the title.
 
 ## Model registry (`data/models.json`)
 

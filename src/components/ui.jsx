@@ -20,6 +20,13 @@ export const Button=forwardRef(function Button({as:Tag='button',variant='seconda
  return <Tag ref={ref} className={cx('inline-flex items-center justify-center font-medium border transition-colors duration-150 select-none disabled:opacity-45 disabled:pointer-events-none whitespace-nowrap',BTN[variant],variant==='link'?'':SIZE[size],className)} {...props}>{Icon&&<Icon aria-hidden="true" className="size-4 shrink-0"/>}{children}{Right&&<Right aria-hidden="true" className="size-4 shrink-0"/>}</Tag>});
 export const IconButton=forwardRef(function IconButton({label,icon:Icon,className,size='md',variant='ghost',...rest},ref){return <Button ref={ref} aria-label={label} variant={variant} className={cx('px-0 shrink-0',size==='sm'?'size-11 md:size-9':'size-11 md:size-10',className)} {...rest}><Icon aria-hidden="true" className="size-4.5"/></Button>});
 
+// A two-or-three-way switch with the look of Segmented (ui-radix.jsx) but no Radix, for the main chunk: a group of
+// pressed/unpressed buttons. Options are {value,label,count?}.
+export function SwitchGroup({label,value,options,onChange,className}){
+ return <div role="group" aria-label={label} className={cx('inline-flex max-w-full flex-wrap rounded-lg border border-line bg-surface-2 p-0.5 gap-0.5',className)}>
+  {options.map(o=>{const on=o.value===value;return <button key={o.value} type="button" aria-pressed={on} onClick={()=>onChange(o.value)} className={cx('inline-flex grow items-center justify-center gap-1.5 rounded-md whitespace-nowrap px-3 min-h-10 md:min-h-9 text-sm font-medium transition-colors',on?'bg-surface text-ink shadow-sm ring-1 ring-inset ring-line-2':'text-ink-2 hover:text-ink')}>{o.label}{o.count!==undefined&&<><span className="sr-only">, </span><span className="text-xs text-ink-3 tnum">{o.count}</span></>}</button>})}
+ </div>}
+
 /* ---------- Badges & tones ---------- */
 export const TONE={
  neutral:'bg-surface-2 text-ink-2 border-line',accent:'bg-accent-soft text-accent border-transparent',
