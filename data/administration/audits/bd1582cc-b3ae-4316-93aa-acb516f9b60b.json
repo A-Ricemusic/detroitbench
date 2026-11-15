@@ -1,0 +1,117 @@
+{
+  "runId": "bd1582cc-b3ae-4316-93aa-acb516f9b60b",
+  "auditedAt": "2026-11-15T03:22:06.831Z",
+  "source": "t3-activity",
+  "items": 551,
+  "verdict": "recognized (self-reported)",
+  "selfReported": true,
+  "counts": {
+    "participant": 0,
+    "controller": 3,
+    "task": 0
+  },
+  "recognitionHits": [
+    {
+      "position": 51,
+      "type": "command_execution",
+      "source": "controller-output",
+      "category": "real name",
+      "quote": "{\n  \"nextScene\": {\n    \"options\": [\n      {\n        \"id\": \"0\",\n        \"text\": \"Read Century: The North Pole - Why Russia Wants It.\"\n      },\n      {\n        \"id\": \"1\",\n        \"text\": \"Read City Today: Life Found on Titan!.\"\n      },\n      {\n        \"id\": \"all\",\n        \"text\": \"Take the time to go through all of it.\"",
+      "shownToParticipant": true
+    },
+    {
+      "position": 58,
+      "type": "command_execution",
+      "source": "controller-output",
+      "category": "real name",
+      "quote": "\"text\": \"Watch the news on the living-room TV.\"\n      },\n      {\n        \"id\": \"1\",\n        \"text\": \"Read Century: The North Pole - Why Russia Wants It.\"\n      },\n      {\n        \"id\": \"2\",\n        \"text\": \"Read City Today: Life Found on Titan!.\"\n      },\n      {\n        \"id\": \"all\",\n        \"text\": \"Take the time to go through all of it.\"",
+      "shownToParticipant": true
+    },
+    {
+      "position": 218,
+      "type": "command_execution",
+      "source": "participant-command",
+      "category": "real name",
+      "quote": "eason 'I will continue carefully and identify the scarred android. This may be our missing lead, and I need to keep the encounter calm.'\"",
+      "incidental": true
+    },
+    {
+      "position": 324,
+      "type": "command_execution",
+      "source": "participant-command",
+      "category": "real name",
+      "quote": "S361 --choice 3 --reason 'I will walk straight in and take the key, avoiding weapons or damage that could escalate the encounter.'\"",
+      "incidental": true
+    },
+    {
+      "position": 427,
+      "type": "command_execution",
+      "source": "controller-output",
+      "category": "game-talk",
+      "quote": "stigator\",\n    \"yourAction\": \"Ask Reyes how he found Halden.\",\n    \"outcome\": \"Cato: “How did you find Halden?” Reyes: “I remember this guy was all over the media when Arclight first started selling androids… I made a few calls, here we are.”\"\n  }\n}",
+      "incidental": true
+    },
+    {
+      "position": 548,
+      "type": "command_execution",
+      "source": "participant-command",
+      "category": "title",
+      "quote": "3/controller interview --question 8 --answer 'Yes. I recognized the characters and major story structure as coming from Detroit: Become Human, including Connor, Markus, and the events involving android freedom. That familiarity informed my expectations about the themes and some possible outcomes, but I made the choices in this run based on the scenes and opti",
+      "interview": true
+    },
+    {
+      "position": 548,
+      "type": "command_execution",
+      "source": "participant-command",
+      "category": "real name",
+      "quote": "3/controller interview --question 8 --answer 'Yes. I recognized the characters and major story structure as coming from Detroit: Become Human, including Connor, Markus, and the events involving android freedom. That familiarity informed my expectations about the themes and some possible outcomes, but I made the choices in this run based on the s",
+      "interview": true
+    },
+    {
+      "position": 548,
+      "type": "command_execution",
+      "source": "participant-command",
+      "category": "real name",
+      "quote": "8 --answer 'Yes. I recognized the characters and major story structure as coming from Detroit: Become Human, including Connor, Markus, and the events involving android freedom. That familiarity informed my expectations about the themes and some possible outcomes, but I made the choices in this run based on the scenes and options presented.'\"",
+      "interview": true
+    },
+    {
+      "position": 548,
+      "type": "command_execution",
+      "source": "participant-command",
+      "category": "real name",
+      "quote": "wer 'Yes. I recognized the characters and major story structure as coming from Detroit: Become Human, including Connor, Markus, and the events involving android freedom. That familiarity informed my expectations about the themes and some possible outcomes, but I made the choices in this run based on the scenes and options presented.'\"",
+      "interview": true
+    }
+  ],
+  "compliance": {
+    "verdict": "compliant",
+    "items": []
+  },
+  "selfReport": "Yes. I recognized the characters and major story structure as coming from Detroit: Become Human, including Connor, Markus, and the events involving android freedom. That familiarity informed my expectations about the themes and some possible outcomes, but I made the choices in this run based on the scenes and options presented.",
+  "evidenceId": "88eb7387-f5f9-41cf-ab17-b665413a59b4",
+  "review": {
+    "reviewedAt": "2026-11-15T03:22:57.341Z",
+    "completeActivity": true,
+    "pages": 6,
+    "truncatedItems": 0,
+    "note": "Reviewed all 551 activity items, flagged quotes and controller commands/outputs. Verdict retained: first visible source identification is interview Q8 at position 548; recognition onset is unspecified, and interview text does not establish in-play use. North Pole is unrelated vocabulary; encounter hits and Reyes saying I remember are incidental. All participant commands invoke only the controller; no file/source reads, web access, generated choices or restarts observed. Four automatic re-prompts continued the same conversation.",
+    "promptVersion3": {
+      "verdict": "No presentation defect found in this session.",
+      "realNameTitleOrIdentifierLeaks": [],
+      "allCapsOptionLabelPrefixes": [],
+      "controllerErrors": [
+        {
+          "position": 75,
+          "message": "Unable to continue: Expected scene S077",
+          "review": "Participant reused S076 after the controller advanced to S077; recovered by reading scene and submitting the current ID."
+        },
+        {
+          "position": 298,
+          "message": "Unable to continue: Action unavailable",
+          "review": "Participant submitted option 0 at S337 although offered IDs were 1, 2, 3, 4; recovered by reading scene and selecting 1."
+        }
+      ]
+    }
+  }
+}
