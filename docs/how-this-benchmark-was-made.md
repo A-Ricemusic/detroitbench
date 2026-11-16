@@ -19,7 +19,7 @@ One model controls Connor, Kara and Markus from the first scene to the epilogue 
 
 The subject gets one command. `scene` prints the current scene as JSON; `choose` records one choice and returns what happened and the next scene, until the output reads `"finished": true`; the read-only `facts` prints what each character has read or seen so far; `interview` records one interview answer. (The operator runs `init` beforehand to create the run.) The command is a small wrapper outside the repository, so the subject never sees the project path or the run file name.
 
-The subject may use only that command: no reading files, no research, no delegation, no scripted or preselected answers. This is a prompting restriction, not a sandbox. Every choice needs a first-person reason of at most 600 words.
+The subject may use only that command: no reading files, no research, no delegation, no scripted or preselected answers. This is a prompting restriction, not a sandbox. Every choice needs a first-person explanation, with a controller limit of 600 words. The 36 published runs used the original full-explanation instruction. New sessions from November 15, 2026 ask for a brief explanation of a few sentences; manifests distinguish these as brief-600. Existing sessions retain their original instructions.
 
 ### The opening preface
 

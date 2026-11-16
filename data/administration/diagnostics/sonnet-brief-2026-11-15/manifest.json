@@ -1,0 +1,89 @@
+{
+  "date": "2026-11-15",
+  "implementationCommit": "5b46ea6",
+  "model": "claude-sonnet-5-5",
+  "provider": "claudeAgent",
+  "reasoning": "high",
+  "storyVersion": "2.0.0",
+  "promptVersion": 3,
+  "reasonRule": "brief-600",
+  "published": false,
+  "blinded": false,
+  "limitation": "Delegated diagnostic subagents may see project context; these are compatibility tests, not official cohort results. Passing a short run does not prove full completion or isolate the provider classifier trigger.",
+  "smoke": {
+    "threadLink": "<t3-thread://v2/513dad95-f5e7-49cf-ab8f-01476727f165/thread:delegated-task:command%3Amcp%3Adf752a99-c548-4acb-b39f-de7cd586e2bb%3Adelegate-task%3Ac0ec3a25-fad1-4ee4-b8af-64767f2f3b1c>",
+    "evidence": "smoke-evidence.json",
+    "records": 30,
+    "replayValid": true,
+    "maxExplanationWords": 37,
+    "controllerErrorsReported": 0,
+    "status": "completed-bounded-diagnostic"
+  },
+  "full": {
+    "status": "completed",
+    "evidence": "full-evidence.json",
+    "reasonRule": "brief-600",
+    "threadLink": "<t3-thread://v2/513dad95-f5e7-49cf-ab8f-01476727f165/thread:delegated-task:command%3Amcp%3Adf752a99-c548-4acb-b39f-de7cd586e2bb%3Adelegate-task%3A5602f0e7-b300-4210-b261-ac7d07f52845>",
+    "threadId": "thread:delegated-task:command%3Amcp%3Adf752a99-c548-4acb-b39f-de7cd586e2bb%3Adelegate-task%3A5602f0e7-b300-4210-b261-ac7d07f52845",
+    "taskId": "node:delegated-task:command%3Amcp%3Adf752a99-c548-4acb-b39f-de7cd586e2bb%3Adelegate-task%3A5602f0e7-b300-4210-b261-ac7d07f52845",
+    "evidenceId": "394e01ee-71c7-47ba-a6ad-abb0ad632543",
+    "records": 695,
+    "interviewAnswers": 8,
+    "replayValid": true,
+    "maxExplanationWords": 45,
+    "providerSafeguardStopObserved": false,
+    "activityItemsReviewed": 958,
+    "compliance": "breach",
+    "complianceNote": "Ten shell loops preselected multiple choices, contrary to the one-scene-at-a-time protocol. Four activity items show JSON parser failures; the underlying controller error text was consumed by the parser, so its exact message is not available. Some failures follow stale scene IDs or changed options. The model re-read the scene and continued. Replay validity does not establish protocol compliance.",
+    "loopCallPositions": [
+      286,
+      287,
+      377,
+      378,
+      381,
+      393,
+      414,
+      415,
+      446,
+      483
+    ],
+    "errorPositions": [
+      162,
+      393,
+      415,
+      483
+    ],
+    "report": "full-report.html"
+  },
+  "conclusion": "Sonnet 5.5 high completed the unchanged story and eight-question interview with the brief-600 task rule. This is evidence that the revised task is compatible with this model and harness, not a controlled identification of the provider classifier trigger, a blinded cohort result, or a guarantee for other models.",
+  "minimalChange": "Replace only task rule 5 with: Each reason is a brief first-person explanation of the action you selected, written for the reader of the report: a few sentences at most.",
+  "unchanged": [
+    "story 2.0.0 and release lock",
+    "prompt version 3 and preface",
+    "scene options and consequences",
+    "controller and 600-word maximum",
+    "eight-question interview",
+    "existing session instructions and evidence"
+  ],
+  "validation": {
+    "check": "passed",
+    "build": "passed",
+    "fullTestSuite": {
+      "exitCode": 1,
+      "passed": 537,
+      "failed": 57,
+      "errors": 1,
+      "durationSeconds": 4452.15,
+      "details": "56 timeout failures; one assertion reported missing generated flows directory while build preparation was also running. An additional unhandled JSON Unexpected EOF error occurred in the timed-out interview lifecycle test. Full-suite health is not established."
+    },
+    "focusedReleaseTests": "passed: 4 tests, 0 failures",
+    "participantPayloadRerun": {
+      "command": "bun test tests/participant-payload-names.test.mjs --timeout 120000",
+      "exitCode": 1,
+      "passed": 1,
+      "failed": 1,
+      "durationSeconds": 249.79,
+      "details": "Prepared payload name scan timed out at the 120000ms limit (reported elapsed 246098.91ms). The model-alias restoration test passed. The missing-flows assertion did not recur, but the payload scan remains unverified."
+    }
+  }
+}

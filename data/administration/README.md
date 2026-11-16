@@ -22,13 +22,15 @@ Shape of a manifest (`<cohort-name>.json`):
       "artifact": "data/experiences/<run id>.json",
       "status": "initialized | completed | abandoned",
       "interview": "v2",
-      "reasonRule": "full-600",
+      "reasonRule": "brief-600",
       "blindingAudit": "data/administration/audits/<run id>.json",
       "initialDecisions": 0
     }
   ]
 }
 ```
+
+`reasonRule` is `"brief-600"` for sessions started with the brief reader-facing explanation rule introduced on 2026-11-15. The 600-word controller maximum is unchanged; the instruction asks for a few sentences. Existing `"full-600"` sessions keep their original rule. Report the difference when comparing cohorts; do not relabel historical runs. Diagnostic subagent runs are not blinded cohort results.
 
 `promptVersion` is `3` for new runs; v1/v2 evidence retains its stored rendering and hashes. Version 3 substitutes identifying model/serial codes and renders option wording without redundant game labels.
 
