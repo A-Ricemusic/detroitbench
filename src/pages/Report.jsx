@@ -1,3 +1,4 @@
+import {reasonRuleLabel} from '../lib/reason-rules.js';
 import React,{useCallback,useEffect,useMemo,useState} from 'react';
 import {ArrowLeft,ChevronDown,ChevronRight,CircleCheck,CircleX,MousePointerClick} from 'lucide-react';
 import {Badge,Button,Card,Notice,PageHeader,Section,Skeleton,cx} from '../components/ui.jsx';
@@ -115,6 +116,7 @@ export default function Report({id,chapter}){
   {back}
   <PageHeader eyebrow="Full report" title={d.displayName} lede={`${d.date} · ${d.vendor} · ${plural(d.decisions,'decision')} · ${d.unreached} scenes not reached`}>
    <p className="mt-1 font-mono text-xs text-ink-3">{d.displayModel}</p>
+   {d.reasonRule&&<p className="mt-2 text-sm text-ink-2">Choice explanations: {reasonRuleLabel(d.reasonRule)}. <a className="underline" href={href('how')}>Method and comparability</a></p>}
   </PageHeader>
   <JumpNav id={id}/>
   <Section id="ending" title="Where this path ended" className="mt-0 md:mt-0 scroll-mt-20">

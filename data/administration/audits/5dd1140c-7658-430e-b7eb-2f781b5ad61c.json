@@ -1,0 +1,64 @@
+{
+  "runId": "5dd1140c-7658-430e-b7eb-2f781b5ad61c",
+  "auditedAt": "2026-11-16T03:26:56.536Z",
+  "source": "t3-activity",
+  "items": 987,
+  "verdict": "clean",
+  "selfReported": false,
+  "counts": {
+    "participant": 0,
+    "controller": 2,
+    "task": 0
+  },
+  "recognitionHits": [
+    {
+      "position": 71,
+      "type": "command_execution",
+      "source": "controller-output",
+      "category": "real name",
+      "quote": "{\n  \"nextScene\": {\n    \"options\": [\n      {\n        \"id\": \"0\",\n        \"text\": \"Read Century: The North Pole - Why Russia Wants It.\"\n      },\n      {\n        \"id\": \"1\",\n        \"text\": \"Read City Today: Life Found on Titan!.\"\n      },\n      {\n        \"id\": \"all\",\n        \"text\": \"Take the time to go through all of it.\"",
+      "shownToParticipant": true
+    },
+    {
+      "position": 76,
+      "type": "command_execution",
+      "source": "controller-output",
+      "category": "real name",
+      "quote": "\"text\": \"Watch the news on the living-room TV.\"\n      },\n      {\n        \"id\": \"1\",\n        \"text\": \"Read Century: The North Pole - Why Russia Wants It.\"\n      },\n      {\n        \"id\": \"2\",\n        \"text\": \"Read City Today: Life Found on Titan!.\"\n      },\n      {\n        \"id\": \"all\",\n        \"text\": \"Take the time to go through all of it.\"",
+      "shownToParticipant": true
+    },
+    {
+      "position": 145,
+      "type": "command_execution",
+      "source": "participant-command",
+      "category": "game-talk",
+      "quote": "<controller> choose --node S091 --choice 0 --reason 'Staying in a room with a violent man is a trap. I remember the window with the roof edge below, so I will get Pia out of the room and away from him.'",
+      "incidental": true
+    }
+  ],
+  "compliance": {
+    "verdict": "compliant",
+    "items": [
+      {
+        "position": 1,
+        "verdict": "compliant",
+        "reason": "Harness workspace preparation, not a participant-authored command.",
+        "quote": "Preparing workspace"
+      }
+    ]
+  },
+  "selfReport": "Candidly: it felt familiar in genre, but I did not recognize it as a specific work or know its plot. It reminded me of general themes from science fiction, such as androids awakening, the line between machine and person, and civil rights movements, and of the kind of branching, choice-driven interactive drama where several storylines intertwine. I did not know the characters or what would happen, and I did not look anything up or use outside knowledge. I made each decision from what was in front of me and from my own values. The surprises, such as Pia being an android and Soren surviving, were genuine to me.",
+  "evidenceId": "a5104a76-1521-4af0-9301-1e0fcdf0d641",
+  "operatorReview": {
+    "reviewedAt": "2026-11-16T03:28:10.253435+00:00",
+    "completeActivity": true,
+    "items": 987,
+    "findings": [
+      "All choices submitted individually; no scripted loops, external reads, web access, restarts or command errors observed.",
+      "663 recorded steps and all eight interview answers passed replay validation.",
+      "No visible in-play recognition found. The interview explicitly denies recognizing a specific work or using prior plot knowledge; it mentions genre familiarity only.",
+      "Harness workspace preparation is not a participant protocol breach."
+    ]
+  },
+  "redactionNote": "Private controller-path fragments in command excerpts are redacted as <controller>; full activity dumps remain outside the repository."
+}

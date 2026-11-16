@@ -58,7 +58,7 @@ explainUnmet(summaries.map(s=>s.track));
 // The model registry and each run's reasoning level (scripts/model-registry.mjs), joined onto the run summaries so
 // the site's model sidebar stays a pure view of prepared data. The display name already comes from loadReportNames.
 const modelCtx=await loadModelContext();
-for(const s of summaries){const info=modelInfo(s,modelCtx);if(!info.registered){info.vendor=s.vendor.toLowerCase();info.vendorName=s.vendor}s.modelInfo=info;s.reasoning=modelCtx.reasoning.get(s.id)??'none'}
+for(const s of summaries){const info=modelInfo(s,modelCtx);if(!info.registered){info.vendor=s.vendor.toLowerCase();info.vendorName=s.vendor}s.modelInfo=info;s.reasoning=modelCtx.reasoning.get(s.id)??'none';s.reasonRule=modelCtx.reasonRules.get(s.id)??null}
 // The release the site names (benchmark/release.json): the top-level `release` of public/data/experiences.json. Each run
 // records its own story version; runs the archive lists (data/administration/archive.json) were already left out by
 // publishRunLibrary.
@@ -69,7 +69,7 @@ const {loadRelease}=await import('./release-lock.mjs'),release=loadRelease();if(
 // the first time a details card needs the choice that moved a gauge. `summaries` keeps the full tracks for the gauge
 // scales and the reports below.
 await mkdir(new URL('interviews/',target),{recursive:true});
-for(const s of summaries)await writeFile(new URL('interviews/'+s.id+'.json',target),JSON.stringify({id:s.id,displayName:s.displayName,title:s.title,date:s.date,vendor:s.vendor,model:s.model,displayModel:s.displayModel,recognition:s.recognition,interview:interviewData(actual.find(r=>r.id===s.id))}));
+for(const s of summaries)await writeFile(new URL('interviews/'+s.id+'.json',target),JSON.stringify({id:s.id,displayName:s.displayName,title:s.title,date:s.date,vendor:s.vendor,model:s.model,displayModel:s.displayModel,recognition:s.recognition,reasonRule:s.reasonRule,interview:interviewData(actual.find(r=>r.id===s.id))}));
 await mkdir(new URL('runs/',target),{recursive:true});
 for(const s of summaries){const {choices,track}=s;await writeFile(new URL('runs/'+s.id+'.json',target),JSON.stringify({id:s.id,displayName:s.displayName,title:s.title,date:s.date,vendor:s.vendor,model:s.model,displayModel:s.displayModel,...trackDetail(track),choices:choices.map(({chapterTitle,...c})=>c),interview:interviewData(actual.find(r=>r.id===s.id))}))}
 await writeFile(new URL('experiences.json',target),JSON.stringify({chapters:chapterTitles(summaries.map(s=>s.track)),release:{storyVersion:release.storyVersion,storyHash:release.storyHash,promptVersion:release.promptVersion,interviewVersion:release.interviewVersion,scalesVersion:release.scalesVersion,frozenAt:release.frozenAt},runs:summaries.map(({choices,track,...s})=>({...s,track:libraryTrack(track)}))}));

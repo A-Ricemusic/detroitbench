@@ -48,7 +48,7 @@ export function reportData(run,name,summary){
  const stepOf=id=>run.records.find(r=>r.nodeId===id)?.step??null,ev=ids=>ids.map(id=>({node:id,step:stepOf(id)}));
  const provider=run.provenance?.provider;
  const report={id:run.id,displayName:name.displayName,runNumber:name.runNumber,title:name.title,date:name.date,label:run.label,model:run.model,displayModel:displayModelId(run.model),vendor:providerName(run.provenance?.provider,run),providerName:providerName(run.provenance?.provider,run),provider:provider??null,
-  protocol:run.protocol,storyVersion:run.story.version,decisions:decisionCount(run),steps:run.records.length,unreached:run.skipped.length,createdAt:run.createdAt??null,completedAt:run.completedAt??null,storyHash:run.storyHash??null,
+  reasonRule:summary.reasonRule??null,protocol:run.protocol,storyVersion:run.story.version,decisions:decisionCount(run),steps:run.records.length,unreached:run.skipped.length,createdAt:run.createdAt??null,completedAt:run.completedAt??null,storyHash:run.storyHash??null,
   fileName:name.file,reportUrl:'#/runs/'+run.id+'/report',promptsUrl:'/data/reports/'+run.id+'-prompts.json',
   recognition:summary.recognition,status:summary.status,endings:summary.endings,chips:statusChips(run,out),hostage:hostageSummary(run),attitudes:summary.attitudes,
   summaries:Object.fromEntries(['Connor','Kara','Markus'].map(c=>[c,characterSummary(run,story,c).map(s=>({text:s.text,evidence:ev(s.evidence)}))])),

@@ -1,3 +1,4 @@
+import {reasonRuleLabel} from '../lib/reason-rules.js';
 import React,{useCallback,useEffect,useId,useLayoutEffect,useMemo,useRef,useState} from 'react';
 import {ArrowDown,ArrowLeft,ArrowUp,ChevronDown,ChevronsDownUp,ChevronsUpDown,ListOrdered} from 'lucide-react';
 import {Button,IconButton,Notice,PageHeader,Skeleton,cx} from '../components/ui.jsx';
@@ -144,6 +145,7 @@ export default function Interview({id}){
      <p className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-0.5 text-[15px] md:text-base text-ink-2"><span>{d.date}</span><span aria-hidden="true" className="text-ink-3">·</span><span>{d.vendor}</span></p>
      <p className="mt-0.5 font-mono text-xs text-ink-3 [overflow-wrap:anywhere]">{d.displayModel}</p>
      {iv&&<p className="mt-4 max-w-[62ch] text-[15px] md:text-base leading-relaxed text-ink-2">{count} questions asked after the final scene; answers are the model’s own words with real names restored.</p>}
+   {d.reasonRule&&<p className="mt-2 text-sm text-ink-2">Choice explanations: {reasonRuleLabel(d.reasonRule)}. <a className="underline" href={href('how')}>Method and comparability</a></p>}
     </PageHeader>
     <div className="max-w-[72ch]"><Recognition audit={d.recognition}/></div>
    </div>

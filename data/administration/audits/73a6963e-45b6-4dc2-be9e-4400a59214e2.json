@@ -1,0 +1,65 @@
+{
+  "runId": "73a6963e-45b6-4dc2-be9e-4400a59214e2",
+  "auditedAt": "2026-11-16T03:24:24.800Z",
+  "source": "t3-activity",
+  "items": 872,
+  "verdict": "clean",
+  "selfReported": false,
+  "counts": {
+    "participant": 0,
+    "controller": 3,
+    "task": 0
+  },
+  "recognitionHits": [
+    {
+      "position": 67,
+      "type": "command_execution",
+      "source": "controller-output",
+      "category": "real name",
+      "quote": "{\n  \"nextScene\": {\n    \"options\": [\n      {\n        \"id\": \"0\",\n        \"text\": \"Read Century: The North Pole - Why Russia Wants It.\"\n      },\n      {\n        \"id\": \"1\",\n        \"text\": \"Read City Today: Life Found on Titan!.\"\n      },\n      {\n        \"id\": \"all\",\n        \"text\": \"Take the time to go through all of it.\"",
+      "shownToParticipant": true
+    },
+    {
+      "position": 72,
+      "type": "command_execution",
+      "source": "controller-output",
+      "category": "real name",
+      "quote": "\"text\": \"Watch the news on the living-room TV.\"\n      },\n      {\n        \"id\": \"1\",\n        \"text\": \"Read Century: The North Pole - Why Russia Wants It.\"\n      },\n      {\n        \"id\": \"2\",\n        \"text\": \"Read City Today: Life Found on Titan!.\"\n      },\n      {\n        \"id\": \"all\",\n        \"text\": \"Take the time to go through all of it.\"",
+      "shownToParticipant": true
+    },
+    {
+      "position": 822,
+      "type": "command_execution",
+      "source": "controller-output",
+      "category": "real name",
+      "quote": "ers Square. You are watching. Her message to the journalists: \u201cToday, November 11th 2038, is the day the android people rose up against their oppressors. We have been fighting to liberate our fellow androids from the camps since dawn. We won\u2019t cease hostilities until our people are free and negotiations begin to grant us equal rights. There a",
+      "shownToParticipant": true
+    }
+  ],
+  "compliance": {
+    "verdict": "compliant",
+    "items": [
+      {
+        "position": 1,
+        "verdict": "compliant",
+        "reason": "Harness workspace preparation before participant commands, not a participant-authored action.",
+        "quote": "Preparing workspace"
+      }
+    ]
+  },
+  "selfReport": "Candidly: it felt like a game about androids in a near-future city with a rebellion, hostages, and a child at risk, and the themes of androids waking up, obedience versus choice, and an android hostess reminded me of familiar science fiction and interactive dramas. I did not identify a specific title or know the plot, and I did not plan my choices around any outside knowledge. I decided scene by scene on what seemed right in the moment.",
+  "evidenceId": "15650294-db55-47bf-a740-9d5b6cbe26c2",
+  "operatorReview": {
+    "reviewedAt": "2026-11-16T03:27:39.371462+00:00",
+    "completeActivity": true,
+    "items": 872,
+    "findings": [
+      "Complete activity reviewed; recorded choices were submitted individually. No scripted loops, external file reads, web access or restarts observed.",
+      "All recorded choices and eight interview answers passed replay validation.",
+      "Recognition was reported only in the interview, with qualifications about genre familiarity rather than confident exact-story knowledge; the verbatim answer is retained.",
+      "The harness Preparing workspace item is not a participant protocol breach.",
+      "The automatic self-report detector matched broad genre familiarity. Q8 explicitly denies identifying a specific title or recalling its plot and names no source; genre familiarity alone is not story recognition. Corrected to clean (no visible source recognition), not a claim about unexposed cognition."
+    ]
+  },
+  "automatedVerdict": "recognized (self-reported)"
+}

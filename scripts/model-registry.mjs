@@ -11,12 +11,15 @@ const schema=z.object({vendors:z.array(z.object({id:z.string(),name:z.string()})
 export async function loadRegistry(){return schema.parse(JSON.parse(await readFile(new URL('../data/models.json',import.meta.url),'utf8')))}
 // Reasoning level by run id. A manifest's runId can name the evidence file rather than the run's own id, so the
 // artifact's id is read too. An unknown level stops the build with the run named.
-export async function loadReasoning(){const out=new Map,dir=new URL('../data/administration/',import.meta.url);
+async function loadRunField(field){const out=new Map,dir=new URL('../data/administration/',import.meta.url);
  for(const f of (await readdir(dir)).filter(f=>f.endsWith('.json'))){const m=JSON.parse(await readFile(new URL(f,dir),'utf8'));
-  for(const q of m.requests??[])if(q.runId&&q.reasoning){if(!EFFORTS.includes(q.reasoning))throw new Error(`data/administration/${f}: run ${q.runId}${q.label?` (${q.label})`:''} has unknown reasoning level "${q.reasoning}"; expected one of ${EFFORTS.join(', ')}`);
-   out.set(q.runId,q.reasoning);if(q.artifact){const ev=await readFile(new URL('../'+q.artifact,import.meta.url),'utf8').catch(()=>null),id=ev?.slice(0,400).match(/"id"\s*:\s*"([^"]+)"/)?.[1];if(id)out.set(id,q.reasoning)}}}
+  for(const q of m.requests??[]){const value=q[field]??(field==='reasonRule'?m.reasonRule:null);if(!q.runId||!value)continue;
+   if(field==='reasoning'&&!EFFORTS.includes(value))throw new Error(`data/administration/${f}: run ${q.runId}${q.label?` (${q.label})`:''} has unknown reasoning level "${value}"; expected one of ${EFFORTS.join(', ')}`);
+   out.set(q.runId,value);if(q.artifact){const ev=await readFile(new URL('../'+q.artifact,import.meta.url),'utf8').catch(()=>null),id=ev?.slice(0,400).match(/"id"\s*:\s*"([^"]+)"/)?.[1];if(id)out.set(id,value)}}}
  return out}
-export async function loadModelContext(){return {registry:await loadRegistry(),reasoning:await loadReasoning()}}
+export const loadReasoning=()=>loadRunField('reasoning');
+export const loadReasonRules=()=>loadRunField('reasonRule');
+export async function loadModelContext(){return {registry:await loadRegistry(),reasoning:await loadReasoning(),reasonRules:await loadReasonRules()}}
 // A model missing from the registry is named from its id: "gpt-6.1-terra" → "GPT-6.1 Terra", "claude-opus-5-5" →
 // "Claude Opus 5.5".
 export function fallbackName(model){const m=displayModelId(model??'model'),g=m.match(/^gpt-([\d.]+)-(.+)$/i);if(g)return `GPT-${g[1]} ${g[2].split('-').map(w=>w[0].toUpperCase()+w.slice(1)).join(' ')}`;
