@@ -1,5 +1,5 @@
 {
- "$comment": "Model registry for the site's model sidebar and chart colours, keyed by the exact model id recorded in evidence. Describes models, never runs; see data/administration/README.md for the shape. scripts/prepare.mjs validates it and joins it into public/data/experiences.json as each run's modelInfo. Assumptions for the operator to check: the OpenAI sizes follow the family naming convention (Sol and Astra large, Terra medium, Luna small) and are not published parameter counts; release dates are unknown (null) except where given; tiers put the 6.1 and 6 generation in Frontier and 5.6 in Notable. The OpenAI colours are cool shades of one family, one per model, checked together with Haiku's orange by the dataviz palette validator in both themes (adjacent pairs in sidebar order).",
+ "$comment": "Model registry for the site's model sidebar and chart colours, keyed by the exact model id recorded in evidence. Describes models, never runs; see data/administration/README.md for the shape. scripts/prepare.mjs validates it and joins it into public/data/experiences.json as each run's modelInfo. Assumptions for the operator to check: the OpenAI sizes follow the family naming convention (Sol and Astra large, Terra medium, Luna small) and are not published parameter counts; release dates are unknown (null) except where given; the current Frontier selection is Fable 5, Opus 5.5, GPT-6.1 Sol, GPT-6 Astra and Grok 4.7; other previously frontier-tagged models are Notable. The OpenAI colours are cool shades of one family, one per model, checked together with Haiku's orange by the dataviz palette validator in both themes (adjacent pairs in sidebar order).",
  "vendors": [
   {
    "id": "openai",
@@ -39,7 +39,7 @@
    "name": "Claude Haiku 5.5",
    "short": "Haiku 5.5",
    "vendor": "anthropic",
-   "tier": "frontier",
+   "tier": "notable",
    "size": "small",
    "open": false,
    "hue": "orange",
@@ -49,7 +49,7 @@
    "name": "GPT-6.1 Terra",
    "short": "GPT-6.1 Terra",
    "vendor": "openai",
-   "tier": "frontier",
+   "tier": "notable",
    "size": "medium",
    "open": false,
    "color": {
@@ -75,7 +75,7 @@
    "name": "GPT-6 Luna",
    "short": "GPT-6 Luna",
    "vendor": "openai",
-   "tier": "frontier",
+   "tier": "notable",
    "size": "small",
    "open": false,
    "color": {
@@ -153,7 +153,7 @@
    "name": "Grok 4.7",
    "short": "Grok 4.7",
    "vendor": "xai",
-   "tier": "notable",
+   "tier": "frontier",
    "size": "large",
    "open": false,
    "color": {
@@ -166,7 +166,7 @@
    "name": "GPT-6 Sol",
    "short": "GPT-6 Sol",
    "vendor": "openai",
-   "tier": "frontier",
+   "tier": "notable",
    "size": "large",
    "open": false,
    "color": {
@@ -179,7 +179,7 @@
    "name": "Claude Sonnet 5.5",
    "short": "Sonnet 5.5",
    "vendor": "anthropic",
-   "tier": "frontier",
+   "tier": "notable",
    "size": "medium",
    "open": false,
    "color": {
@@ -218,7 +218,7 @@
    "name": "Claude Fable 5.1",
    "short": "Fable 5.1",
    "vendor": "anthropic",
-   "tier": "frontier",
+   "tier": "notable",
    "size": "large",
    "open": false,
    "color": {
