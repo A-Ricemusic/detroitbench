@@ -1,6 +1,6 @@
 # Documentation map
 
-Start here to find documentation. The [root README's Status section](../README.md#status) gives the release state (2.0.0, frozen 2026-11-14) and the published cohort (50 completed runs, all on story 2.0.0; earlier runs are archived in `data/administration/archive.json` and not published); see [ADMINISTRATION.md](ADMINISTRATION.md) for administering runs and [AGENTS.md](../AGENTS.md) for changing the benchmark, changing a frozen release and validation commands.
+Start here to find documentation. The [root README's Status section](../README.md#status) gives the release state (2.0.0, frozen 2026-11-14) and the published cohort (54 completed runs, all on story 2.0.0; earlier runs are archived in `data/administration/archive.json` and not published); see [ADMINISTRATION.md](ADMINISTRATION.md) for administering runs and [AGENTS.md](../AGENTS.md) for changing the benchmark, changing a frozen release and validation commands.
 
 | Location | Contents and ownership | Readers |
 |---|---|---|

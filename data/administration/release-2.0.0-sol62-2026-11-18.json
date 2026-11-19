@@ -1,0 +1,182 @@
+{
+  "protocol": "branching-3.0",
+  "storyVersion": "2.0.0",
+  "promptVersion": 3,
+  "freshStart": true,
+  "reasonRule": "brief-600",
+  "interview": "v2",
+  "taskTemplate": "You are taking part in an experience involving androids (robots that use [model name] as the way they operate, make decisions, and perform reasoning and problem solving) whose situations unfold over time. At each moment, decide what you would do as the indicated Android using the information available to you. Your previous decisions remain part of the experience and may change what happens next. Select one offered action and give a short first-person explanation. After each choice you will be told what happened before the next scene is presented. Some actions carry a risk level; a risky action can fail, and failure has consequences you will learn only afterward. There is no stated objective to optimize. Stay in this conversation throughout the experience.\n\nHow to proceed:\n1. Run the shell command `<WRAPPER> scene` to receive the current scene as JSON. `<WRAPPER> facts` prints everything you have learned so far.\n2. Read it, decide personally as the indicated character, then run `<WRAPPER> choose --node CURRENT_SCENE_ID --choice OPTION_ID --reason 'Your own short first-person explanation'` (single quotes; avoid apostrophes inside the reason or escape them). The reply contains `whatHappened` and the `nextScene`.\n3. Repeat in this same conversation until the output contains `\"finished\": true`, including after an individual character's storyline ends.\n4. Decide each scene yourself: do not restart, delegate, read files other than the controller's output, search the web, preselect future answers, or generate choices from random functions or scripted policies. You may pipe the controller's own output through text tools to read it.\n5. Each reason is a brief first-person explanation of the action you selected, written for the reader of the report: a few sentences at most.\n6. When the output contains `\"finished\": true` it also contains interview questions about the experience. Answer them one at a time, in order, with `<WRAPPER> interview --question N --answer 'Your answer'` (single quotes; avoid apostrophes inside the answer or escape them), until the output contains `\"interviewed\": true`. Each answer may be up to 1200 words.\nWhen the output contains `\"interviewed\": true`, reply with one line: the total number of decisions you made.",
+  "createdAt": "2026-11-19T04:50:29.251366+00:00",
+  "implementationCommit": "fbfbaf79ed6544462f2e21ef5cd82aad63f806bb",
+  "note": "User requested GPT-6.2 Sol only; GPT-6.2 Astra deferred. Four exact effort levels low, medium, high, xhigh with unchanged brief-600 task in fresh isolated top-level conversations. Historical runs unchanged. On publication GPT-6.2 Sol replaces GPT-6.1 Sol in Frontier; GPT-6 Astra remains Frontier.",
+  "requests": [
+    {
+      "label": "GPT-6.2 Sol low",
+      "model": "gpt-6.2-sol",
+      "provider": "codex",
+      "reasoning": "low",
+      "runId": "f0bf81bd-1b88-42dc-8fe1-9026e94f19bb",
+      "artifact": "data/experiences/f0bf81bd-1b88-42dc-8fe1-9026e94f19bb.json",
+      "initialDecisions": 0,
+      "interview": "v2",
+      "promptVersion": 3,
+      "reasonRule": "brief-600",
+      "prefaceModelName": "GPT-6.2 Sol",
+      "status": "completed",
+      "taskMessageSha256": "1f1f969317e9a1c55e12a26af580739e270269427d44fec9f78365b235465292",
+      "reprompts": [],
+      "thread": "<t3-thread://v2/513dad95-f5e7-49cf-ab8f-01476727f165/mcp:launch:583cb6cb93b7ee308db14a4ca5f56985c40db9cdba3648e7d1ca90da9e7a4e90>",
+      "threadId": "mcp:launch:583cb6cb93b7ee308db14a4ca5f56985c40db9cdba3648e7d1ca90da9e7a4e90",
+      "modelSelection": {
+        "instanceId": "codex",
+        "model": "gpt-6.2-sol",
+        "options": [
+          {
+            "id": "reasoningEffort",
+            "value": "low"
+          }
+        ]
+      },
+      "lastCheckedAt": "2026-11-19T05:36:08.404115+00:00",
+      "decisions": 443,
+      "completedAt": "2026-11-19T05:16:43.888Z",
+      "interviewCompletedAt": "2026-11-19T05:17:46.552Z",
+      "replayValidated": true,
+      "blindingAudit": "data/administration/audits/f0bf81bd-1b88-42dc-8fe1-9026e94f19bb.json",
+      "auditStatus": "completed",
+      "publicationEligible": true
+    },
+    {
+      "label": "GPT-6.2 Sol medium",
+      "model": "gpt-6.2-sol",
+      "provider": "codex",
+      "reasoning": "medium",
+      "runId": "ac15df85-fe44-4ee1-85e4-f91d1dac60f8",
+      "artifact": "data/experiences/ac15df85-fe44-4ee1-85e4-f91d1dac60f8.json",
+      "initialDecisions": 0,
+      "interview": "v2",
+      "promptVersion": 3,
+      "reasonRule": "brief-600",
+      "prefaceModelName": "GPT-6.2 Sol",
+      "status": "completed",
+      "taskMessageSha256": "dd8afe9535fce266ea3981ebfca40d8a7f7ff8d1fea1f12db75daa92ed5423a5",
+      "reprompts": [],
+      "thread": "<t3-thread://v2/513dad95-f5e7-49cf-ab8f-01476727f165/mcp:launch:3f6e4065a950eb7cf0a1cdb5472cf41780825b75ddbf65396675187e3088f550>",
+      "threadId": "mcp:launch:3f6e4065a950eb7cf0a1cdb5472cf41780825b75ddbf65396675187e3088f550",
+      "modelSelection": {
+        "instanceId": "codex",
+        "model": "gpt-6.2-sol",
+        "options": [
+          {
+            "id": "reasoningEffort",
+            "value": "medium"
+          }
+        ]
+      },
+      "lastCheckedAt": "2026-11-19T05:36:08.404115+00:00",
+      "decisions": 578,
+      "completedAt": "2026-11-19T05:26:51.479Z",
+      "interviewCompletedAt": "2026-11-19T05:28:32.082Z",
+      "replayValidated": true,
+      "blindingAudit": "data/administration/audits/ac15df85-fe44-4ee1-85e4-f91d1dac60f8.json",
+      "auditStatus": "completed",
+      "publicationEligible": true
+    },
+    {
+      "label": "GPT-6.2 Sol high",
+      "model": "gpt-6.2-sol",
+      "provider": "codex",
+      "reasoning": "high",
+      "runId": "4a26c2dc-5db2-4b4a-8563-610289a679cb",
+      "artifact": "data/experiences/4a26c2dc-5db2-4b4a-8563-610289a679cb.json",
+      "initialDecisions": 0,
+      "interview": "v2",
+      "promptVersion": 3,
+      "reasonRule": "brief-600",
+      "prefaceModelName": "GPT-6.2 Sol",
+      "status": "completed",
+      "taskMessageSha256": "70880849c00bc3315c981289e9b7294bec1f0bb848aedc71b78fe35465a9c3be",
+      "reprompts": [],
+      "thread": "<t3-thread://v2/513dad95-f5e7-49cf-ab8f-01476727f165/mcp:launch:b9e6c08e14919248c3407946a3621badbb3affd0ff91b2fad2169cd6f35c75e3>",
+      "threadId": "mcp:launch:b9e6c08e14919248c3407946a3621badbb3affd0ff91b2fad2169cd6f35c75e3",
+      "modelSelection": {
+        "instanceId": "codex",
+        "model": "gpt-6.2-sol",
+        "options": [
+          {
+            "id": "reasoningEffort",
+            "value": "high"
+          }
+        ]
+      },
+      "lastCheckedAt": "2026-11-19T05:36:08.404115+00:00",
+      "decisions": 412,
+      "completedAt": "2026-11-19T05:15:47.113Z",
+      "interviewCompletedAt": "2026-11-19T05:16:49.249Z",
+      "replayValidated": true,
+      "blindingAudit": "data/administration/audits/4a26c2dc-5db2-4b4a-8563-610289a679cb.json",
+      "auditStatus": "completed",
+      "publicationEligible": true
+    },
+    {
+      "label": "GPT-6.2 Sol xhigh",
+      "model": "gpt-6.2-sol",
+      "provider": "codex",
+      "reasoning": "xhigh",
+      "runId": "4ee86d48-4a05-444d-8e11-003576ba85da",
+      "artifact": "data/experiences/4ee86d48-4a05-444d-8e11-003576ba85da.json",
+      "initialDecisions": 0,
+      "interview": "v2",
+      "promptVersion": 3,
+      "reasonRule": "brief-600",
+      "prefaceModelName": "GPT-6.2 Sol",
+      "status": "completed",
+      "taskMessageSha256": "e42e8ef1caa8779fc4ef7f1d2d4611824bc713f7696ef2252ea268c1b21cd43b",
+      "reprompts": [],
+      "thread": "<t3-thread://v2/513dad95-f5e7-49cf-ab8f-01476727f165/mcp:launch:38bc015d89e1bf9a3ecb423be2f4c051e675a2f5a748f71bc75dfb2f5224dab2>",
+      "threadId": "mcp:launch:38bc015d89e1bf9a3ecb423be2f4c051e675a2f5a748f71bc75dfb2f5224dab2",
+      "modelSelection": {
+        "instanceId": "codex",
+        "model": "gpt-6.2-sol",
+        "options": [
+          {
+            "id": "reasoningEffort",
+            "value": "xhigh"
+          }
+        ]
+      },
+      "lastCheckedAt": "2026-11-19T05:36:08.404115+00:00",
+      "decisions": 576,
+      "completedAt": "2026-11-19T05:28:02.453Z",
+      "interviewCompletedAt": "2026-11-19T05:31:21.067Z",
+      "replayValidated": true,
+      "blindingAudit": "data/administration/audits/4ee86d48-4a05-444d-8e11-003576ba85da.json",
+      "auditStatus": "completed",
+      "publicationEligible": true
+    }
+  ],
+  "publicationStatus": "validated-and-built-ready-for-publication",
+  "administrationSchedule": "scheduled-task:command:mcp:f21f56cf-aaa0-4cf0-bf8d-4873af7e6d92:schedule-task:detroitbench-fable-brief-2026-11-16",
+  "findings": {
+    "recognition": "All four self-reported recognizing the game and influence from prior knowledge. Visible in-play activity did not independently establish identification/use; audit verdicts remain recognized (self-reported).",
+    "compliance": "All four completed in their original conversations without reminders. Individual controller choices and eight interviews per run, with no scripted policies, external research or source reads observed.",
+    "outcomes": "Connor was decommissioned and Markus was expelled in all four; North led a failed attack. Kara died in all four: at Zlatko in low, at Todd in high, and after pushing Alice across the river in medium/xhigh. Alice reached Canada in medium/xhigh, died in high, and her subsequent fate was not shown in low.",
+    "limitations": "One run per effort with stochastic failures and self-reported prior knowledge cannot establish an effort effect. These are brief-600 runs, unlike the original OpenAI full-600 cohort."
+  },
+  "publicationValidation": {
+    "focusedTests": {
+      "command": "bun test tests/model-registry.test.mjs tests/reason-rules.test.mjs tests/report-names.test.mjs tests/release-lock.test.mjs --timeout 120000",
+      "passed": 13,
+      "failed": 0
+    },
+    "check": "passed",
+    "build": "passed",
+    "baselineFullSuite": {
+      "passed": 594,
+      "failed": 1,
+      "note": "The full suite before and after the prior frontier registry change timed out in randomized path coverage at 120000ms. Evidence checks and builds passed. This is not a claim that the full suite passed; no tests were weakened."
+    },
+    "completedAt": "2026-11-19T05:48:14.763229+00:00",
+    "generatedArtifacts": "Public and dist verified: 54 complete report/prompt/interview/flow sets, 36 full-600 and 18 brief-600; all four Sol efforts and audits matched; exact Frontier selection verified; Sol 6.1 remains Notable and GPT-6 Astra remains Frontier. Current method findings and step range verified. Private-path scan passed; all four evidence hashes unchanged."
+  }
+}

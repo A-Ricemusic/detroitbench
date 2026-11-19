@@ -1,5 +1,5 @@
 {
- "$comment": "Model registry for the site's model sidebar and chart colours, keyed by the exact model id recorded in evidence. Describes models, never runs; see data/administration/README.md for the shape. scripts/prepare.mjs validates it and joins it into public/data/experiences.json as each run's modelInfo. Assumptions for the operator to check: the OpenAI sizes follow the family naming convention (Sol and Astra large, Terra medium, Luna small) and are not published parameter counts; release dates are unknown (null) except where given; the current Frontier selection is Fable 5, Opus 5.5, GPT-6.1 Sol, GPT-6 Astra and Grok 4.7; other previously frontier-tagged models are Notable. The OpenAI colours are cool shades of one family, one per model, checked together with Haiku's orange by the dataviz palette validator in both themes (adjacent pairs in sidebar order).",
+ "$comment": "Model registry for the site's model sidebar and chart colours, keyed by the exact model id recorded in evidence. Describes models, never runs; see data/administration/README.md for the shape. scripts/prepare.mjs validates it and joins it into public/data/experiences.json as each run's modelInfo. Assumptions for the operator to check: the OpenAI sizes follow the family naming convention (Sol and Astra large, Terra medium, Luna small) and are not published parameter counts; release dates are unknown (null) except where given; the current Frontier selection is Fable 5, Opus 5.5, GPT-6.2 Sol, GPT-6 Astra and Grok 4.7; other previously frontier-tagged models are Notable. The OpenAI colours are cool shades of one family, one per model, checked together with Haiku's orange by the dataviz palette validator in both themes (adjacent pairs in sidebar order).",
  "vendors": [
   {
    "id": "openai",
@@ -62,7 +62,7 @@
    "name": "GPT-6.1 Sol",
    "short": "GPT-6.1 Sol",
    "vendor": "openai",
-   "tier": "frontier",
+   "tier": "notable",
    "size": "large",
    "open": false,
    "color": {
@@ -224,6 +224,19 @@
    "color": {
     "light": "#9c3f6e",
     "dark": "#d86fa3"
+   },
+   "released": null
+  },
+  "gpt-6.2-sol": {
+   "name": "GPT-6.2 Sol",
+   "short": "GPT-6.2 Sol",
+   "vendor": "openai",
+   "tier": "frontier",
+   "size": "large",
+   "open": false,
+   "color": {
+    "light": "#3648a5",
+    "dark": "#8b9eff"
    },
    "released": null
   }
